@@ -6,29 +6,53 @@
 
     <title>006.STUDIO</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f1ea;
-            color: #111;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: #F3F0E8;
+            color: #111111;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 32px;
+            padding: 28px 32px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         nav {
@@ -37,145 +61,259 @@
         }
 
         nav a {
-            color: #111;
+            color: #111111;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: opacity 0.2s ease;
         }
 
+        nav a:hover {
+            opacity: 0.5;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
-            min-height: 80vh;
+            min-height: 100vh;
+            padding: 140px 32px 60px;
             display: flex;
-            align-items: center;
-            padding: 40px 32px;
+            align-items: flex-end;
+        }
+
+        .hero-text {
+            width: 100%;
+        }
+
+        .hero-small {
+            font-size: 13px;
+            font-weight: 600;
+            color: #008C8C;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: clamp(60px, 12vw, 180px);
-            line-height: 0.9;
-            max-width: 1200px;
-        }.hero-text {
-    width: 100%;
-}
+            font-size: clamp(64px, 13vw, 190px);
+            line-height: 0.82;
+            letter-spacing: -0.07em;
+            font-weight: 800;
+            max-width: 1400px;
+        }
 
-.hero-small {
-    font-size: 14px;
-    margin-bottom: 24px;
-    color: #008c8c;
-}
+        .hero h1 span {
+            color: #F26B38;
+        }
 
-.hero h1 span {
-    color: #f26b38;
-}
+        .hero-text p {
+            margin-top: 42px;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-.hero-text p {
-    margin-top: 28px;
-    font-size: 16px;
-}
+
+        /* =========================
+           SECTIONS
+        ========================= */
 
         .section {
-            padding: 120px 32px;
+            padding: 140px 32px;
         }
 
         .section-title {
-            font-size: 14px;
-            margin-bottom: 40px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            margin-bottom: 40px;
         }
 
         .placeholder {
-            min-height: 400px;
-            background: #d9d4c9;
+            min-height: 500px;
+            background: #D9D4C9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
         }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             padding: 32px;
+            font-size: 11px;
+            font-weight: 600;
         }
 
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 700px) {
+
             header {
-                padding: 20px;
+                padding: 22px 20px;
             }
 
             nav {
-                gap: 16px;
+                gap: 14px;
             }
 
             nav a {
-                font-size: 12px;
+                font-size: 9px;
             }
 
             .hero {
-                padding: 20px;
+                padding: 120px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: clamp(58px, 17vw, 110px);
+            }
+
+            .hero-small {
+                margin-bottom: 22px;
+            }
+
+            .hero-text p {
+                margin-top: 30px;
+                font-size: 12px;
             }
 
             .section {
-                padding: 80px 20px;
+                padding: 90px 20px;
+            }
+
+            .placeholder {
+                min-height: 300px;
+            }
+
+            footer {
+                padding: 24px 20px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-<header>
-    <div class="logo">006.STUDIO</div>
 
-    <nav>
-        <a href="#work">2D/3D MOTION</a>
-        <a href="#lab">3D LAB</a>
-        <a href="#about">ABOUT</a>
-    </nav>
-</header>
+    <!-- HEADER -->
 
-<main>
+    <header>
 
-    <section class="hero">
-    <div class="hero-text">
-        <div class="hero-small">006.STUDIO</div>
-
-        <h1>
-            2D / 3D<br>
-            <span>MOTION</span>
-        </h1>
-
-        <p>Creative studio by 006</p>
-    </div>
-</section>
-
-    <section id="work" class="section">
-        <div class="section-title">01 — 2D/3D Motion</div>
-
-        <div class="placeholder">
-            PROJECTS
+        <div class="logo">
+            006.STUDIO
         </div>
-    </section>
 
-    <section id="lab" class="section">
-        <div class="section-title">02 — 3D Lab</div>
+        <nav>
+            <a href="#work">2D/3D MOTION</a>
+            <a href="#lab">3D LAB</a>
+            <a href="#about">ABOUT</a>
+        </nav>
 
-        <div class="placeholder">
-            3D PRINTING / OBJECTS / EXPERIMENTS
-        </div>
-    </section>
+    </header>
 
-    <section id="about" class="section">
-        <div class="section-title">03 — About</div>
 
-        <div class="placeholder">
-            ABOUT / CONTACT
-        </div>
-    </section>
+    <!-- MAIN -->
 
-</main>
+    <main>
 
-<footer>
-    © 006.STUDIO
-</footer>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <div class="hero-small">
+                    006.STUDIO
+                </div>
+
+                <h1>
+                    2D / 3D<br>
+                    <span>MOTION</span>
+                </h1>
+
+                <p>
+                    Creative studio by 006
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- WORK -->
+
+        <section id="work" class="section">
+
+            <div class="section-title">
+                01 — 2D/3D Motion
+            </div>
+
+            <div class="placeholder">
+                PROJECTS
+            </div>
+
+        </section>
+
+
+
+        <!-- 3D LAB -->
+
+        <section id="lab" class="section">
+
+            <div class="section-title">
+                02 — 3D Lab
+            </div>
+
+            <div class="placeholder">
+                3D PRINTING / OBJECTS / EXPERIMENTS
+            </div>
+
+        </section>
+
+
+
+        <!-- ABOUT -->
+
+        <section id="about" class="section">
+
+            <div class="section-title">
+                03 — About
+            </div>
+
+            <div class="placeholder">
+                ABOUT / CONTACT
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 006.STUDIO
+
+    </footer>
+
 
 </body>
 </html>
