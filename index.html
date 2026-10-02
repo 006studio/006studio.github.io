@@ -3,13 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>006.studio</title>
+
+    <title>006.STUDIO</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f1ea;
+            color: #111;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 12vw, 180px);
+            line-height: 0.9;
+            max-width: 1200px;
+        }
+
+        .section {
+            padding: 120px 32px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .placeholder {
+            min-height: 400px;
+            background: #d9d4c9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 32px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>006.studio</h1>
-    <p>Motion Designer & 3D Artist</p>
+<header>
+    <div class="logo">006.STUDIO</div>
+
+    <nav>
+        <a href="#work">2D/3D MOTION</a>
+        <a href="#lab">3D LAB</a>
+        <a href="#about">ABOUT</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="hero">
+        <h1>
+            MOTION<br>
+            & 3D
+        </h1>
+    </section>
+
+    <section id="work" class="section">
+        <div class="section-title">01 — 2D/3D Motion</div>
+
+        <div class="placeholder">
+            PROJECTS
+        </div>
+    </section>
+
+    <section id="lab" class="section">
+        <div class="section-title">02 — 3D Lab</div>
+
+        <div class="placeholder">
+            3D PRINTING / OBJECTS / EXPERIMENTS
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-title">03 — About</div>
+
+        <div class="placeholder">
+            ABOUT / CONTACT
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © 006.STUDIO
+</footer>
 
 </body>
 </html>
