@@ -38,8 +38,8 @@
             color: #111111;
         }
 
-        a {
-            color: inherit;
+        body.no-scroll {
+            overflow: hidden;
         }
 
 
@@ -253,7 +253,7 @@
 
         .project:hover .project-image {
             transform: scale(0.985);
-            filter: brightness(0.95);
+            filter: brightness(0.94);
         }
 
         .project-number {
@@ -293,6 +293,169 @@
             text-align: right;
 
             color: #666666;
+        }
+
+
+        /* =========================
+           PROJECT DETAIL OVERLAY
+        ========================= */
+
+        .project-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: #F3F0E8;
+
+            z-index: 1000;
+
+            overflow-y: auto;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .project-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .project-detail-header {
+            padding: 28px 32px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            background: #F3F0E8;
+
+            z-index: 5;
+        }
+
+        .project-detail-logo {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .close-project {
+            border: none;
+
+            background: transparent;
+
+            font-family: inherit;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            padding: 8px 0;
+        }
+
+        .project-detail {
+            padding: 80px 32px 120px;
+
+            max-width: 1500px;
+
+            margin: 0 auto;
+        }
+
+        .project-detail-category {
+            margin-bottom: 20px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            color: #008C8C;
+        }
+
+        .project-detail h2 {
+            max-width: 1100px;
+
+            font-size: clamp(50px, 9vw, 130px);
+
+            line-height: 0.88;
+
+            letter-spacing: -0.06em;
+
+            margin-bottom: 70px;
+        }
+
+        .project-detail-main-image {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background: #D9D4C9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 60px;
+        }
+
+        .project-detail-main-image span {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .project-detail-info {
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 60px;
+
+            margin-bottom: 80px;
+        }
+
+        .detail-label {
+            font-size: 10px;
+            font-weight: 700;
+
+            margin-bottom: 10px;
+
+            text-transform: uppercase;
+        }
+
+        .detail-text {
+            max-width: 700px;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            font-weight: 500;
+        }
+
+        .project-detail-gallery {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .detail-gallery-item {
+            aspect-ratio: 4 / 3;
+
+            background: #D9D4C9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-gallery-item span {
+            font-size: 11px;
+            font-weight: 700;
         }
 
 
@@ -558,6 +721,27 @@
                 grid-template-columns: 1fr;
             }
 
+            .project-detail-header {
+                padding: 22px 20px;
+            }
+
+            .project-detail {
+                padding: 60px 20px 90px;
+            }
+
+            .project-detail h2 {
+                margin-bottom: 45px;
+            }
+
+            .project-detail-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-detail-gallery {
+                grid-template-columns: 1fr;
+            }
+
             .about-top {
                 margin-bottom: 50px;
             }
@@ -713,7 +897,12 @@
 
         <!-- PROJECT 01 -->
 
-        <a href="#" class="project" data-category="1">
+        <a
+            href="#"
+            class="project"
+            data-category="1"
+            data-project="project1"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -738,7 +927,12 @@
 
         <!-- PROJECT 02 -->
 
-        <a href="#" class="project" data-category="2">
+        <a
+            href="#"
+            class="project"
+            data-category="2"
+            data-project="project2"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -763,7 +957,12 @@
 
         <!-- PROJECT 03 -->
 
-        <a href="#" class="project" data-category="3">
+        <a
+            href="#"
+            class="project"
+            data-category="3"
+            data-project="project3"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -788,7 +987,12 @@
 
         <!-- PROJECT 04 -->
 
-        <a href="#" class="project" data-category="4">
+        <a
+            href="#"
+            class="project"
+            data-category="4"
+            data-project="project4"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -813,7 +1017,12 @@
 
         <!-- PROJECT 05 -->
 
-        <a href="#" class="project" data-category="5">
+        <a
+            href="#"
+            class="project"
+            data-category="5"
+            data-project="project5"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -838,7 +1047,12 @@
 
         <!-- PROJECT 06 -->
 
-        <a href="#" class="project" data-category="1">
+        <a
+            href="#"
+            class="project"
+            data-category="1"
+            data-project="project6"
+        >
 
             <div class="project-image">
                 <span class="project-number">
@@ -914,33 +1128,10 @@
             03 — About
         </div>
 
-
-        <div class="language-switch">
-
-            <button
-                class="language-button active"
-                data-language="en"
-            >
-                EN
-            </button>
-
-            <span>/</span>
-
-            <button
-                class="language-button"
-                data-language="vi"
-            >
-                VI
-            </button>
-
-        </div>
-
     </div>
 
 
-    <!-- ENGLISH -->
-
-    <div class="about-content language-content" id="about-en">
+    <div class="about-content">
 
         <div class="about-heading">
             FROM<br>
@@ -978,13 +1169,6 @@
                 <strong>006LAB</strong> — 3D Printing & Object Design.
             </p>
 
-            <br>
-
-            <p>
-                From digital motion to physical objects,
-                we turn ideas into visuals with character and purpose.
-            </p>
-
         </div>
 
 
@@ -1019,118 +1203,23 @@
 
         </div>
 
-    </div>
 
+        <div class="contact">
 
-
-    <!-- VIETNAMESE -->
-
-    <div
-        class="about-content language-content"
-        id="about-vi"
-        style="display: none;"
-    >
-
-        <div class="about-heading">
-            FROM<br>
-            VISION<br>
-            TO VISUAL.
-        </div>
-
-
-        <div class="about-text">
-
-            <p>
-                006studio bắt đầu từ một creative trẻ với niềm đam mê
-                và mong muốn không ngừng sáng tạo.
-            </p>
-
-            <br>
-
-            <p>
-                Với hơn 7 năm kinh nghiệm trong ngành, chúng tôi tập trung
-                vào 2D & 3D Motion Design, biến ý tưởng và vision thành
-                những visual rõ ràng, có cá tính và mục đích.
-            </p>
-
-            <br>
-
-            <p>
-                From Vision to Visual.
-            </p>
-
-            <br>
-
-            <p>
-                006studio là sự kết hợp của hai mảng sáng tạo:
-                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
-                <strong>006LAB</strong> — 3D Printing & Object Design.
-            </p>
-
-            <br>
-
-            <p>
-                Từ chuyển động kỹ thuật số đến những sản phẩm vật thể,
-                chúng tôi biến ý tưởng thành những visual có cá tính
-                và giá trị riêng.
-            </p>
-
-        </div>
-
-
-        <div class="about-identity">
-
-
-            <div class="identity-card">
-
-                <div class="identity-name">
-                    COLORBLIND
-                </div>
-
-                <div class="identity-description">
-                    Nhận diện sáng tạo cá nhân trong lĩnh vực
-                    2D & 3D Motion Design.
-                </div>
-
+            <div class="contact-title">
+                CONTACT
             </div>
 
-
-            <div class="identity-card">
-
-                <div class="identity-name">
-                    006LAB
-                </div>
-
-                <div class="identity-description">
-                    3D Printing & Object Design.
-                </div>
-
-            </div>
-
+            <a
+                class="contact-email"
+                href="mailto:hello@006studio.com"
+            >
+                LET'S WORK TOGETHER →
+            </a>
 
         </div>
 
     </div>
-
-
-
-    <!-- CONTACT -->
-
-    <div class="contact">
-
-        <div class="contact-title">
-            CONTACT
-        </div>
-
-        <a
-            class="contact-email"
-            href="mailto:hello@006studio.com"
-        >
-            LET'S WORK TOGETHER →
-        </a>
-
-    </div>
-
 
 </section>
 
@@ -1157,14 +1246,131 @@
 
 
 
+<!-- =========================
+     PROJECT DETAIL OVERLAY
+========================= -->
+
+<div
+    class="project-overlay"
+    id="projectOverlay"
+>
+
+
+    <div class="project-detail-header">
+
+        <div class="project-detail-logo">
+            006.STUDIO
+        </div>
+
+        <button
+            class="close-project"
+            id="closeProject"
+        >
+            CLOSE ×
+        </button>
+
+    </div>
+
+
+    <div class="project-detail">
+
+        <div
+            class="project-detail-category"
+            id="detailCategory"
+        >
+            CATEGORY 1
+        </div>
+
+
+        <h2 id="detailTitle">
+            Project Name
+        </h2>
+
+
+        <div class="project-detail-main-image">
+
+            <span>
+                MAIN PROJECT MEDIA
+            </span>
+
+        </div>
+
+
+        <div class="project-detail-info">
+
+
+            <div>
+
+                <div class="detail-label">
+                    TYPE
+                </div>
+
+                <div id="detailType">
+                    2D / 3D MOTION
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="detail-label">
+                    ABOUT
+                </div>
+
+                <div
+                    class="detail-text"
+                    id="detailDescription"
+                >
+                    Project description will live here.
+                    This area can later contain the story,
+                    creative direction, animation process,
+                    client information and credits.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-detail-gallery">
+
+            <div class="detail-gallery-item">
+                <span>IMAGE / VIDEO</span>
+            </div>
+
+            <div class="detail-gallery-item">
+                <span>IMAGE / VIDEO</span>
+            </div>
+
+            <div class="detail-gallery-item">
+                <span>IMAGE / VIDEO</span>
+            </div>
+
+            <div class="detail-gallery-item">
+                <span>IMAGE / VIDEO</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <script>
 
     /* =========================
        PROJECT FILTER
     ========================= */
 
-    const filters = document.querySelectorAll(".filter");
-    const projects = document.querySelectorAll(".project");
+    const filters =
+        document.querySelectorAll(".filter");
+
+    const projects =
+        document.querySelectorAll(".project");
+
 
     filters.forEach(filter => {
 
@@ -1176,11 +1382,16 @@
 
             filter.classList.add("active");
 
-            const selected = filter.dataset.filter;
+
+            const selected =
+                filter.dataset.filter;
+
 
             projects.forEach(project => {
 
-                const category = project.dataset.category;
+                const category =
+                    project.dataset.category;
+
 
                 if (
                     selected === "all" ||
@@ -1204,49 +1415,155 @@
 
 
     /* =========================
-       LANGUAGE SWITCH
+       PROJECT DETAILS
     ========================= */
 
-    const languageButtons =
-        document.querySelectorAll(".language-button");
+    const overlay =
+        document.getElementById("projectOverlay");
 
-    const englishContent =
-        document.getElementById("about-en");
+    const closeProject =
+        document.getElementById("closeProject");
 
-    const vietnameseContent =
-        document.getElementById("about-vi");
+    const detailCategory =
+        document.getElementById("detailCategory");
 
+    const detailTitle =
+        document.getElementById("detailTitle");
 
-    languageButtons.forEach(button => {
+    const detailType =
+        document.getElementById("detailType");
 
-        button.addEventListener("click", () => {
-
-            const language =
-                button.dataset.language;
-
-
-            languageButtons.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            button.classList.add("active");
+    const detailDescription =
+        document.getElementById("detailDescription");
 
 
-            if (language === "en") {
+    const projectData = {
 
-                englishContent.style.display = "block";
-                vietnameseContent.style.display = "none";
+        project1: {
+            category: "CATEGORY 1",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        },
 
-            } else {
+        project2: {
+            category: "CATEGORY 2",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        },
 
-                englishContent.style.display = "none";
-                vietnameseContent.style.display = "block";
+        project3: {
+            category: "CATEGORY 3",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        },
 
-            }
+        project4: {
+            category: "CATEGORY 4",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        },
+
+        project5: {
+            category: "CATEGORY 5",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        },
+
+        project6: {
+            category: "CATEGORY 1",
+            title: "Project Name",
+            type: "2D / 3D MOTION",
+            description:
+                "Project description will live here."
+        }
+
+    };
+
+
+    projects.forEach(project => {
+
+        project.addEventListener("click", event => {
+
+            event.preventDefault();
+
+
+            const id =
+                project.dataset.project;
+
+
+            const data =
+                projectData[id];
+
+
+            if (!data) return;
+
+
+            detailCategory.textContent =
+                data.category;
+
+            detailTitle.textContent =
+                data.title;
+
+            detailType.textContent =
+                data.type;
+
+            detailDescription.textContent =
+                data.description;
+
+
+            overlay.classList.add("open");
+
+            document.body.classList.add("no-scroll");
+
+            overlay.scrollTop = 0;
 
         });
 
     });
+
+
+    closeProject.addEventListener("click", () => {
+
+        overlay.classList.remove("open");
+
+        document.body.classList.remove("no-scroll");
+
+    });
+
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            overlay.classList.contains("open")
+        ) {
+
+            overlay.classList.remove("open");
+
+            document.body.classList.remove("no-scroll");
+
+        }
+
+    });
+
+
+
+    /* =========================
+       LANGUAGE NOTE
+       ABOUT IS CURRENTLY ENGLISH
+       VIETNAMESE VERSION WILL BE
+       ADDED AFTER CONTENT IS FINALIZED.
+    ========================= */
 
 </script>
 
