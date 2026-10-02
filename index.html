@@ -201,30 +201,98 @@
 
 
         /* =========================
-           2D / 3D MOTION COLORS
-           ORANGE → BLACK
+           2D / 3D MOTION
+           BLACK BACKGROUND
         ========================= */
 
-        #motion .discipline-intro h2 {
+        #motion {
+            background: #111111;
+            color: #F3F0E8;
+        }
+
+        #motion .section-title {
             color: #F26B38;
         }
 
+        #motion .section-description {
+            color: #D0CCC3;
+        }
+
+        #motion .discipline-intro h2 {
+            color: #008C8C;
+        }
+
         #motion .discipline-intro h2 span {
-            color: #111111;
+            color: #F3F0E8;
+        }
+
+        #motion .category-card {
+            color: #F3F0E8;
+        }
+
+        #motion .category-image {
+            background: #242424;
+        }
+
+        #motion .category-card:nth-child(2) .category-image,
+        #motion .category-card:nth-child(5) .category-image {
+            background: #008C8C;
+        }
+
+        #motion .category-card:nth-child(3) .category-image,
+        #motion .category-card:nth-child(6) .category-image {
+            background: #F26B38;
+        }
+
+        #motion .category-count {
+            color: #A9A59D;
         }
 
 
         /* =========================
-           3D LAB COLORS
-           TEAL → BEIGE
+           3D LAB
+           BEIGE BACKGROUND
         ========================= */
 
-        #lab .discipline-intro h2 {
+        #lab {
+            background: #F3F0E8;
+            color: #111111;
+        }
+
+        #lab .section-title {
             color: #008C8C;
         }
 
+        #lab .section-description {
+            color: #111111;
+        }
+
+        #lab .discipline-intro h2 {
+            color: #F26B38;
+        }
+
         #lab .discipline-intro h2 span {
-            color: #F3F0E8;
+            color: #111111;
+        }
+
+        #lab .category-card {
+            color: #111111;
+        }
+
+        #lab .category-image {
+            background: #D9D4C9;
+        }
+
+        #lab .category-card:nth-child(2) .category-image {
+            background: #008C8C;
+        }
+
+        #lab .category-card:nth-child(3) .category-image {
+            background: #F26B38;
+        }
+
+        #lab .category-count {
+            color: #77736B;
         }
 
 
@@ -249,8 +317,6 @@
             height: 54px;
 
             border-radius: 50%;
-
-            background: #008C8C;
 
             left: 0;
             top: 0;
@@ -278,13 +344,29 @@
 
             border-radius: 7px;
 
-            background: #F26B38;
-
             right: -22px;
             bottom: -8px;
 
             transform: rotate(18deg);
         }
+
+
+        /* Motion object */
+
+        #motion .discipline-object-main {
+            background: #008C8C;
+        }
+
+        #motion .discipline-object-center {
+            background: #111111;
+        }
+
+        #motion .discipline-object-accent {
+            background: #F26B38;
+        }
+
+
+        /* Lab object */
 
         #lab .discipline-object-main {
             background: #F26B38;
@@ -314,8 +396,6 @@
         .category-card {
             text-decoration: none;
 
-            color: #111111;
-
             cursor: pointer;
 
             min-width: 0;
@@ -323,8 +403,6 @@
 
         .category-image {
             aspect-ratio: 4 / 3;
-
-            background: #D9D4C9;
 
             display: flex;
             align-items: flex-end;
@@ -338,16 +416,6 @@
             transition:
                 transform 0.35s ease,
                 filter 0.35s ease;
-        }
-
-        .category-card:nth-child(2) .category-image,
-        .category-card:nth-child(5) .category-image {
-            background: #008C8C;
-        }
-
-        .category-card:nth-child(3) .category-image,
-        .category-card:nth-child(6) .category-image {
-            background: #F26B38;
         }
 
         .category-card:hover .category-image {
@@ -392,8 +460,6 @@
         .category-count {
             font-size: 9px;
             font-weight: 700;
-
-            color: #77736B;
 
             text-align: right;
         }
@@ -820,44 +886,6 @@
 
         .project-nav-next {
             text-align: right;
-        }
-
-
-        /* =========================
-           3D LAB
-        ========================= */
-
-        .lab-section {
-            background: #111111;
-            color: #F3F0E8;
-        }
-
-        .lab-section .section-title {
-            color: #F26B38;
-        }
-
-        .lab-section .section-description {
-            color: #D0CCC3;
-        }
-
-        .lab-section .category-card {
-            color: #F3F0E8;
-        }
-
-        .lab-section .category-image {
-            background: #242424;
-        }
-
-        .lab-section .category-card:nth-child(2) .category-image {
-            background: #008C8C;
-        }
-
-        .lab-section .category-card:nth-child(3) .category-image {
-            background: #F26B38;
-        }
-
-        .lab-section .category-count {
-            color: #A9A59D;
         }
 
 
@@ -1805,7 +1833,7 @@
 
 <section
     id="lab"
-    class="section lab-section"
+    class="section"
 >
 
     <div class="section-top">
