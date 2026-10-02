@@ -683,6 +683,8 @@ footer {
         visibility 0.35s ease;
 
     overflow-y: auto;
+
+    overscroll-behavior-x: none;
 }
 
 .overlay.active {
@@ -2236,10 +2238,6 @@ if (supportsMouse) {
                     .fill(0);
 
 
-            /*
-             * Smooth animation
-             */
-
             function animate() {
 
                 currentX +=
@@ -2332,10 +2330,6 @@ if (supportsMouse) {
             animate();
 
 
-            /*
-             * Pointer enter
-             */
-
             element.addEventListener(
                 "pointerenter",
                 () => {
@@ -2345,10 +2339,6 @@ if (supportsMouse) {
                 }
             );
 
-
-            /*
-             * Pointer move
-             */
 
             element.addEventListener(
                 "pointermove",
@@ -2405,10 +2395,6 @@ if (supportsMouse) {
                         );
 
 
-                    /*
-                     * Main movement
-                     */
-
                     targetX =
                         normalizedX * -14;
 
@@ -2417,17 +2403,9 @@ if (supportsMouse) {
                         normalizedY * -9;
 
 
-                    /*
-                     * Slight rotation
-                     */
-
                     targetRotation =
                         normalizedX * 3;
 
-
-                    /*
-                     * Individual line movement
-                     */
 
                     lines.forEach(
                         (line, index) => {
@@ -2459,10 +2437,6 @@ if (supportsMouse) {
             );
 
 
-            /*
-             * Pointer leave
-             */
-
             element.addEventListener(
                 "pointerleave",
                 () => {
@@ -2491,6 +2465,192 @@ if (supportsMouse) {
     );
 
 }
+
+
+/* =========================================================
+   SWIPE BACK — MOBILE / IPAD
+========================================================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchTracking = false;
+
+const SWIPE_EDGE_ZONE = 70;
+const SWIPE_MIN_DISTANCE = 90;
+const SWIPE_MAX_VERTICAL = 80;
+
+
+const categoryOverlay =
+    document.getElementById(
+        "categoryOverlay"
+    );
+
+
+categoryOverlay.addEventListener(
+    "touchstart",
+    function(event) {
+
+        if (
+            !categoryOverlay.classList.contains(
+                "active"
+            )
+        ) {
+            return;
+        }
+
+
+        const touch =
+            event.touches[0];
+
+
+        /*
+         * Chỉ bắt đầu gesture nếu ngón tay
+         * bắt đầu gần mép trái màn hình.
+         */
+
+        if (
+            touch.clientX <=
+            SWIPE_EDGE_ZONE
+        ) {
+
+            touchStartX =
+                touch.clientX;
+
+            touchStartY =
+                touch.clientY;
+
+            touchTracking = true;
+
+        } else {
+
+            touchTracking = false;
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+categoryOverlay.addEventListener(
+    "touchend",
+    function(event) {
+
+        if (!touchTracking) {
+            return;
+        }
+
+
+        const touch =
+            event.changedTouches[0];
+
+
+        const deltaX =
+            touch.clientX -
+            touchStartX;
+
+
+        const deltaY =
+            touch.clientY -
+            touchStartY;
+
+
+        touchTracking = false;
+
+
+        /*
+         * Phải là swipe sang phải.
+         */
+
+        const isRightSwipe =
+            deltaX >=
+            SWIPE_MIN_DISTANCE;
+
+
+        /*
+         * Không cho gesture hoạt động
+         * nếu người dùng đang kéo dọc.
+         */
+
+        const isMostlyHorizontal =
+            Math.abs(deltaY) <=
+            SWIPE_MAX_VERTICAL;
+
+
+        if (
+            isRightSwipe &&
+            isMostlyHorizontal
+        ) {
+
+            const projectDetail =
+                document.getElementById(
+                    "projectDetail"
+                );
+
+
+            /*
+             * Nếu đang xem Project Detail:
+             *
+             * Project Detail
+             *       ↓
+             * Swipe Right
+             *       ↓
+             * Project List
+             */
+
+            if (
+                projectDetail.classList.contains(
+                    "active"
+                )
+            ) {
+
+                backToProjects();
+
+            }
+
+            /*
+             * Nếu đang ở Project List:
+             *
+             * Project List
+             *       ↓
+             * Swipe Right
+             *       ↓
+             * Website
+             */
+
+            else {
+
+                closeCategory();
+
+            }
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   SWIPE CANCEL
+========================================================= */
+
+categoryOverlay.addEventListener(
+    "touchcancel",
+    function() {
+
+        touchTracking = false;
+
+    },
+    {
+        passive: true
+    }
+);
 
 
 /* =========================================================
