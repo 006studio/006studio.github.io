@@ -687,7 +687,7 @@ footer {
 
 
 /* =========================================================
-   SWIPE EXIT ANIMATION
+   INTERACTIVE SWIPE
 ========================================================= */
 
 .overlay-content {
@@ -696,53 +696,52 @@ footer {
     transform-origin: right center;
 
     will-change: transform, opacity;
+
+    transform:
+        translate3d(0, 0, 0)
+        scale(1);
+
+    opacity: 1;
+
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
 /*
- * Khi swipe sang phải:
- * toàn bộ nội dung co lại về phía bên phải.
+ * Được thêm khi user đã swipe đủ xa.
+ * Nội dung tiếp tục biến mất về phía phải.
  */
 
-.overlay-content.swipe-exit {
-    animation: swipeScaleOut 0.48s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+.overlay-content.swipe-complete {
+    transform:
+        translate3d(75px, 0, 0)
+        scale(0.02);
+
+    opacity: 0;
+
+    transition:
+        transform 0.24s cubic-bezier(0.65, 0, 0.35, 1),
+        opacity 0.24s ease;
 }
 
 
-@keyframes swipeScaleOut {
+/*
+ * Dùng khi gesture bị huỷ
+ * và content cần quay lại vị trí ban đầu.
+ */
 
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
+.overlay-content.swipe-reset {
+    transform:
+        translate3d(0, 0, 0)
+        scale(1);
 
-        opacity: 1;
-    }
+    opacity: 1;
 
-    45% {
-        transform:
-            translate3d(25px, 0, 0)
-            scale(0.72);
-
-        opacity: 0.85;
-    }
-
-    75% {
-        transform:
-            translate3d(75px, 0, 0)
-            scale(0.35);
-
-        opacity: 0.45;
-    }
-
-    100% {
-        transform:
-            translate3d(140px, 0, 0)
-            scale(0.02);
-
-        opacity: 0;
-    }
-
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s ease;
 }
 
 
@@ -1075,8 +1074,8 @@ footer {
         transition: none;
     }
 
-    .overlay-content.swipe-exit {
-        animation: none;
+    .overlay-content {
+        transition: none;
     }
 
     *,
@@ -1994,8 +1993,14 @@ function openCategory(categoryId) {
 
 
     overlayContent.classList.remove(
-        "swipe-exit"
+        "swipe-complete",
+        "swipe-reset"
     );
+
+    overlayContent.style.transform =
+        "translate3d(0, 0, 0) scale(1)";
+
+    overlayContent.style.opacity = "1";
 
 
     title.textContent =
@@ -2078,8 +2083,15 @@ function closeCategory() {
 
 
     overlayContent.classList.remove(
-        "swipe-exit"
+        "swipe-complete",
+        "swipe-reset"
     );
+
+    overlayContent.style.transform =
+        "";
+
+    overlayContent.style.opacity =
+        "";
 
 
     overlay.classList.remove(
@@ -2133,8 +2145,15 @@ function openProject(project) {
 
 
     overlayContent.classList.remove(
-        "swipe-exit"
+        "swipe-complete",
+        "swipe-reset"
     );
+
+    overlayContent.style.transform =
+        "translate3d(0, 0, 0) scale(1)";
+
+    overlayContent.style.opacity =
+        "1";
 
 
     document.getElementById(
@@ -2178,8 +2197,15 @@ function backToProjects() {
 
 
     overlayContent.classList.remove(
-        "swipe-exit"
+        "swipe-complete",
+        "swipe-reset"
     );
+
+    overlayContent.style.transform =
+        "translate3d(0, 0, 0) scale(1)";
+
+    overlayContent.style.opacity =
+        "1";
 
 
     document.getElementById(
@@ -2557,19 +2583,21 @@ if (supportsMouse) {
 
 
 /* =========================================================
-   SWIPE BACK — SCALE TO RIGHT
+   INTERACTIVE SWIPE BACK
 ========================================================= */
 
 let touchStartX = 0;
 let touchStartY = 0;
 
 let touchTracking = false;
+let touchHorizontalIntent = false;
+
+let currentSwipeX = 0;
 
 const SWIPE_EDGE_ZONE = 70;
 const SWIPE_MIN_DISTANCE = 90;
-const SWIPE_MAX_VERTICAL = 80;
-
-const SWIPE_ANIMATION_TIME = 480;
+const SWIPE_MAX_VERTICAL = 100;
+const SWIPE_COMPLETE_DISTANCE = 180;
 
 
 const categoryOverlay =
@@ -2584,10 +2612,9 @@ const overlayContent =
 
 
 /*
- * Bắt đầu gesture.
- *
- * Chỉ nhận gesture nếu ngón tay
- * bắt đầu gần mép trái.
+ * Khi bắt đầu touch:
+ * chỉ kích hoạt nếu ngón tay bắt đầu
+ * trong vùng 70px bên trái màn hình.
  */
 
 categoryOverlay.addEventListener(
@@ -2619,10 +2646,24 @@ categoryOverlay.addEventListener(
                 touch.clientY;
 
             touchTracking = true;
+            touchHorizontalIntent = false;
+
+            currentSwipeX = 0;
+
+
+            overlayContent.classList.remove(
+                "swipe-complete",
+                "swipe-reset"
+            );
+
+
+            overlayContent.style.transition =
+                "none";
 
         } else {
 
             touchTracking = false;
+            touchHorizontalIntent = false;
 
         }
 
@@ -2634,7 +2675,163 @@ categoryOverlay.addEventListener(
 
 
 /*
- * Kết thúc gesture.
+ * Trong lúc kéo:
+ * content thực sự follow ngón tay.
+ */
+
+categoryOverlay.addEventListener(
+    "touchmove",
+    function(event) {
+
+        if (!touchTracking) {
+            return;
+        }
+
+
+        const touch =
+            event.touches[0];
+
+
+        const deltaX =
+            touch.clientX -
+            touchStartX;
+
+
+        const deltaY =
+            touch.clientY -
+            touchStartY;
+
+
+        /*
+         * Chỉ bắt gesture khi người dùng
+         * đang kéo sang phải rõ ràng.
+         */
+
+        if (
+            !touchHorizontalIntent
+        ) {
+
+            if (
+                Math.abs(deltaX) < 8 &&
+                Math.abs(deltaY) < 8
+            ) {
+                return;
+            }
+
+
+            if (
+                deltaX <= 0 ||
+                Math.abs(deltaY) > Math.abs(deltaX) * 1.15
+            ) {
+
+                touchTracking = false;
+
+                overlayContent.style.transition =
+                    "";
+
+                return;
+
+            }
+
+
+            touchHorizontalIntent = true;
+
+        }
+
+
+        if (
+            !touchHorizontalIntent ||
+            deltaX <= 0
+        ) {
+            return;
+        }
+
+
+        /*
+         * Giới hạn khoảng kéo.
+         */
+
+        currentSwipeX =
+            Math.min(
+                deltaX,
+                SWIPE_COMPLETE_DISTANCE
+            );
+
+
+        /*
+         * Progress 0 → 1.
+         */
+
+        const progress =
+            Math.min(
+                currentSwipeX /
+                SWIPE_COMPLETE_DISTANCE,
+                1
+            );
+
+
+        /*
+         * Scale giảm dần theo khoảng kéo.
+         */
+
+        const scale =
+            1 -
+            (
+                progress *
+                0.92
+            );
+
+
+        /*
+         * Content trượt sang phải
+         * nhưng ít hơn khoảng kéo của tay,
+         * tạo cảm giác "co về góc".
+         */
+
+        const translateX =
+            progress *
+            75;
+
+
+        /*
+         * Fade nhẹ khi thu nhỏ.
+         */
+
+        const opacity =
+            1 -
+            (
+                progress *
+                0.9
+            );
+
+
+        overlayContent.style.transform =
+            `
+            translate3d(
+                ${translateX}px,
+                0,
+                0
+            )
+            scale(
+                ${scale}
+            )
+            `;
+
+
+        overlayContent.style.opacity =
+            opacity;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/*
+ * Khi thả tay:
+ * - đủ xa → complete
+ * - chưa đủ → spring back
  */
 
 categoryOverlay.addEventListener(
@@ -2673,11 +2870,27 @@ categoryOverlay.addEventListener(
             SWIPE_MAX_VERTICAL;
 
 
+        /*
+         * Nếu không phải gesture hợp lệ:
+         * reset nhẹ nhàng.
+         */
+
         if (
             !isRightSwipe ||
             !isMostlyHorizontal
         ) {
+
+            overlayContent.style.transition =
+                "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
+
+            overlayContent.style.transform =
+                "translate3d(0, 0, 0) scale(1)";
+
+            overlayContent.style.opacity =
+                "1";
+
             return;
+
         }
 
 
@@ -2698,40 +2911,31 @@ categoryOverlay.addEventListener(
 
 
         /*
-         * Bắt đầu animation.
+         * Hoàn tất animation.
          */
 
-        overlayContent.classList.remove(
-            "swipe-exit"
-        );
+        overlayContent.style.transition =
+            "transform 0.24s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.24s ease";
 
 
-        /*
-         * Force browser render lại
-         * để animation luôn chạy lại
-         * kể cả khi swipe nhiều lần.
-         */
+        overlayContent.style.transform =
+            "translate3d(75px, 0, 0) scale(0.02)";
 
-        void overlayContent.offsetWidth;
+        overlayContent.style.opacity =
+            "0";
 
-
-        overlayContent.classList.add(
-            "swipe-exit"
-        );
-
-
-        /*
-         * Chờ animation scale xuống
-         * gần như biến mất rồi mới
-         * chuyển navigation.
-         */
 
         setTimeout(
             function() {
 
-                overlayContent.classList.remove(
-                    "swipe-exit"
-                );
+                overlayContent.style.transition =
+                    "";
+
+                overlayContent.style.transform =
+                    "";
+
+                overlayContent.style.opacity =
+                    "";
 
 
                 if (isProjectDetail) {
@@ -2739,7 +2943,7 @@ categoryOverlay.addEventListener(
                     /*
                      * DETAIL
                      * ↓
-                     * SCALE OUT
+                     * SWIPE OUT
                      * ↓
                      * PROJECT LIST
                      */
@@ -2751,7 +2955,7 @@ categoryOverlay.addEventListener(
                     /*
                      * PROJECT LIST
                      * ↓
-                     * SCALE OUT
+                     * SWIPE OUT
                      * ↓
                      * MAIN WEBSITE
                      */
@@ -2761,7 +2965,7 @@ categoryOverlay.addEventListener(
                 }
 
             },
-            SWIPE_ANIMATION_TIME
+            250
         );
 
     },
@@ -2771,15 +2975,27 @@ categoryOverlay.addEventListener(
 );
 
 
-/* =========================================================
-   SWIPE CANCEL
-========================================================= */
+/*
+ * Nếu touch bị cancel:
+ * đưa content về trạng thái bình thường.
+ */
 
 categoryOverlay.addEventListener(
     "touchcancel",
     function() {
 
         touchTracking = false;
+        touchHorizontalIntent = false;
+
+
+        overlayContent.style.transition =
+            "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
+
+        overlayContent.style.transform =
+            "translate3d(0, 0, 0) scale(1)";
+
+        overlayContent.style.opacity =
+            "1";
 
     },
     {
