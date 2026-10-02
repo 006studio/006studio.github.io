@@ -159,6 +159,10 @@ header {
     color: var(--teal);
 }
 
+.hero-copy h1 .headline-orange {
+    color: var(--orange);
+}
+
 .hero-copy p {
     margin-top: 28px;
 
@@ -371,6 +375,10 @@ header {
 
 .hero-copy .playful-line span {
     display: inline;
+}
+
+.hero-copy .playful-line .headline-orange {
+    color: var(--orange);
 }
 
 
@@ -2075,7 +2083,8 @@ if (supportsMouse) {
                     </span>
 
                     <span class="playful-line">
-                        by <span>Colorblind</span> × 006
+                        by <span>Colorblind</span> ×
+                        <span class="headline-orange">006</span>
                     </span>
                 `;
 
@@ -2174,9 +2183,6 @@ if (supportsMouse) {
 
             function animate() {
 
-                /*
-                 * Main spring.
-                 */
                 currentX +=
                     (
                         targetX -
@@ -2198,9 +2204,6 @@ if (supportsMouse) {
                     ) * 0.12;
 
 
-                /*
-                 * Individual line springs.
-                 */
                 lines.forEach(
                     (line, index) => {
 
@@ -2218,10 +2221,6 @@ if (supportsMouse) {
                             ) * 0.15;
 
 
-                        /*
-                         * Mỗi dòng có một chút
-                         * chuyển động khác nhau.
-                         */
                         const lineFactor =
                             index === 0
                                 ? 1
@@ -2321,9 +2320,6 @@ if (supportsMouse) {
                         headline.getBoundingClientRect();
 
 
-                    /*
-                     * Cursor position.
-                     */
                     const x =
                         event.clientX -
                         (
@@ -2340,9 +2336,6 @@ if (supportsMouse) {
                         );
 
 
-                    /*
-                     * Normalize.
-                     */
                     const normalizedX =
                         Math.max(
                             -1,
@@ -2372,15 +2365,11 @@ if (supportsMouse) {
 
 
                     /*
-                     * -------------------------------------------------
-                     * MAIN MOVEMENT
-                     * -------------------------------------------------
-                     *
                      * Chữ né nhẹ cursor.
                      */
+
                     targetX =
                         normalizedX * -15;
-
 
                     targetY =
                         normalizedY * -9;
@@ -2389,17 +2378,15 @@ if (supportsMouse) {
                     /*
                      * Tilt.
                      */
+
                     targetRotation =
                         normalizedX * 3.2;
 
 
                     /*
-                     * -------------------------------------------------
-                     * INDIVIDUAL LINE MOVEMENT
-                     * -------------------------------------------------
-                     *
-                     * Hai dòng phản ứng ngược nhau.
+                     * Individual line movement.
                      */
+
                     lines.forEach(
                         (line, index) => {
 
@@ -2443,9 +2430,6 @@ if (supportsMouse) {
                     mouseInside = false;
 
 
-                    /*
-                     * Spring back.
-                     */
                     targetX = 0;
                     targetY = 0;
                     targetRotation = 0;
