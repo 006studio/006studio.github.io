@@ -160,7 +160,7 @@
         }
 
         .section-description {
-            max-width: 380px;
+            max-width: 420px;
 
             font-size: 14px;
             line-height: 1.6;
@@ -169,58 +169,43 @@
 
 
         /* =========================
-           WORK FILTER
+           DISCIPLINE INTRO
         ========================= */
 
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
+        .discipline-intro {
+            max-width: 900px;
 
-            gap: 8px;
-
-            margin-bottom: 32px;
+            margin-bottom: 70px;
         }
 
-        .filter {
-            border: 1px solid #111111;
+        .discipline-intro h2 {
+            font-size: clamp(48px, 8vw, 110px);
 
-            background: transparent;
+            line-height: 0.88;
 
-            padding: 9px 14px;
+            letter-spacing: -0.06em;
 
-            font-family: inherit;
-            font-size: 10px;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
+            font-weight: 800;
         }
 
-        .filter:hover,
-        .filter.active {
-            background: #111111;
-            color: #F3F0E8;
+        .discipline-intro h2 span {
+            color: #F26B38;
         }
 
 
         /* =========================
-           PROJECT GRID
+           CATEGORY GRID
         ========================= */
 
-        .project-grid {
+        .category-grid {
             display: grid;
 
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
 
             gap: 18px;
         }
 
-        .project {
-            display: block;
-
+        .category-card {
             text-decoration: none;
 
             color: #111111;
@@ -228,18 +213,15 @@
             cursor: pointer;
         }
 
-        .project.hidden {
-            display: none;
-        }
-
-        .project-image {
-            aspect-ratio: 16 / 10;
+        .category-image {
+            aspect-ratio: 1 / 1;
 
             background: #D9D4C9;
 
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+
+            padding: 20px;
 
             position: relative;
 
@@ -250,49 +232,237 @@
                 filter 0.35s ease;
         }
 
-        .project:hover .project-image {
+        .category-card:nth-child(2) .category-image,
+        .category-card:nth-child(5) .category-image {
+            background: #008C8C;
+        }
+
+        .category-card:nth-child(3) .category-image,
+        .category-card:nth-child(6) .category-image {
+            background: #F26B38;
+        }
+
+        .category-card:hover .category-image {
             transform: scale(0.985);
             filter: brightness(0.94);
         }
 
-        .project-number {
-            font-size: 12px;
+        .category-number {
+            position: absolute;
+
+            top: 18px;
+            left: 20px;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .category-image-title {
+            font-size: clamp(22px, 3vw, 42px);
+
+            line-height: 0.9;
+
+            letter-spacing: -0.04em;
+
+            font-weight: 800;
+        }
+
+        .category-info {
+            padding: 15px 0 45px;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .category-name {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .category-count {
+            font-size: 9px;
+            font-weight: 700;
+
+            color: #77736B;
+
+            text-align: right;
+        }
+
+
+        /* =========================
+           CATEGORY PAGE
+        ========================= */
+
+        .category-page {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 900;
+
+            background: #F3F0E8;
+
+            overflow-y: auto;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .category-page.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .category-page-header {
+            padding: 28px 32px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            background: #F3F0E8;
+
+            z-index: 5;
+        }
+
+        .category-page-logo {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .close-category {
+            border: none;
+
+            background: transparent;
+
+            font-family: inherit;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            padding: 8px 0;
+
+            transition: opacity 0.2s ease;
+        }
+
+        .close-category:hover {
+            opacity: 0.45;
+        }
+
+        .category-page-content {
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            padding: 80px 32px 120px;
+        }
+
+        .category-page-label {
+            margin-bottom: 20px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            color: #008C8C;
+        }
+
+        .category-page h2 {
+            max-width: 1100px;
+
+            margin-bottom: 25px;
+
+            font-size: clamp(50px, 9vw, 130px);
+
+            line-height: 0.88;
+
+            letter-spacing: -0.06em;
+        }
+
+        .category-page-description {
+            max-width: 650px;
+
+            margin-bottom: 65px;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            font-weight: 500;
+        }
+
+        .category-project-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .category-project {
+            cursor: pointer;
+        }
+
+        .category-project-image {
+            aspect-ratio: 16 / 10;
+
+            background: #D9D4C9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                transform 0.35s ease,
+                filter 0.35s ease;
+        }
+
+        .category-project:nth-child(2n) .category-project-image {
+            background: #E1DDD4;
+        }
+
+        .category-project:hover .category-project-image {
+            transform: scale(0.985);
+            filter: brightness(0.94);
+        }
+
+        .category-project-image span {
+            font-size: 11px;
             font-weight: 700;
 
             color: #77736B;
         }
 
-        .project:nth-child(2) .project-image,
-        .project:nth-child(5) .project-image {
-            background: #008C8C;
-        }
-
-        .project:nth-child(3) .project-image,
-        .project:nth-child(6) .project-image {
-            background: #F26B38;
-        }
-
-        .project-info {
+        .category-project-info {
             display: flex;
             justify-content: space-between;
 
+            padding: 14px 0 40px;
+
             gap: 20px;
-
-            padding: 14px 0 38px;
         }
 
-        .project-name {
+        .category-project-name {
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
-        .project-tags {
-            font-size: 10px;
-            font-weight: 600;
+        .category-project-type {
+            font-size: 9px;
+            font-weight: 700;
+
+            color: #77736B;
 
             text-align: right;
-
-            color: #666666;
         }
 
 
@@ -337,8 +507,6 @@
             background: #F3F0E8;
 
             z-index: 5;
-
-            border-bottom: 1px solid transparent;
         }
 
         .project-detail-logo {
@@ -359,12 +527,6 @@
             cursor: pointer;
 
             padding: 8px 0;
-
-            transition: opacity 0.2s ease;
-        }
-
-        .close-project:hover {
-            opacity: 0.45;
         }
 
         .project-detail {
@@ -372,7 +534,7 @@
 
             margin: 0 auto;
 
-            padding: 80px 32px 40px;
+            padding: 80px 32px 120px;
         }
 
         .project-detail-category {
@@ -417,19 +579,11 @@
             color: #77736B;
         }
 
-
-        /* =========================
-           PROJECT META
-        ========================= */
-
         .project-meta {
             display: grid;
 
             grid-template-columns:
-                1fr
-                1fr
-                1fr
-                1fr;
+                repeat(4, 1fr);
 
             gap: 30px;
 
@@ -438,10 +592,6 @@
             border-top: 1px solid #111111;
 
             margin-bottom: 80px;
-        }
-
-        .meta-item {
-            min-width: 0;
         }
 
         .detail-label {
@@ -459,11 +609,6 @@
 
             font-weight: 600;
         }
-
-
-        /* =========================
-           PROJECT ABOUT
-        ========================= */
 
         .project-about {
             display: grid;
@@ -484,11 +629,6 @@
             font-weight: 500;
         }
 
-
-        /* =========================
-           PROJECT GALLERY
-        ========================= */
-
         .project-detail-gallery {
             display: grid;
 
@@ -507,8 +647,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            overflow: hidden;
         }
 
         .detail-gallery-item.wide {
@@ -524,11 +662,6 @@
             color: #77736B;
         }
 
-
-        /* =========================
-           PROJECT NAVIGATION
-        ========================= */
-
         .project-navigation {
             border-top: 1px solid #111111;
 
@@ -536,7 +669,6 @@
 
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
 
             gap: 30px;
         }
@@ -550,11 +682,9 @@
 
             cursor: pointer;
 
-            text-align: left;
-
             padding: 0;
 
-            max-width: 45%;
+            text-align: left;
 
             transition: opacity 0.2s ease;
         }
@@ -579,8 +709,6 @@
 
             font-size: 20px;
             font-weight: 800;
-
-            letter-spacing: -0.03em;
         }
 
         .project-nav-next {
@@ -605,40 +733,32 @@
             color: #D0CCC3;
         }
 
-        .lab-box {
-            min-height: 520px;
-
-            border: 1px solid #3A3A3A;
-
-            padding: 32px;
-
-            display: flex;
-            align-items: flex-end;
-
-            position: relative;
-            overflow: hidden;
+        .lab-section .discipline-intro h2 {
+            color: #F3F0E8;
         }
 
-        .lab-box h2 {
-            font-size: clamp(48px, 9vw, 120px);
-
-            line-height: 0.85;
-
-            letter-spacing: -0.06em;
+        .lab-section .discipline-intro h2 span {
+            color: #008C8C;
         }
 
-        .lab-accent {
-            position: absolute;
+        .lab-section .category-card {
+            color: #F3F0E8;
+        }
 
-            width: 120px;
-            height: 120px;
+        .lab-section .category-image {
+            background: #242424;
+        }
 
-            border-radius: 50%;
-
+        .lab-section .category-card:nth-child(2) .category-image {
             background: #008C8C;
+        }
 
-            right: 8%;
-            top: 12%;
+        .lab-section .category-card:nth-child(3) .category-image {
+            background: #F26B38;
+        }
+
+        .lab-section .category-count {
+            color: #A9A59D;
         }
 
 
@@ -785,6 +905,8 @@
 
             text-decoration: none;
 
+            color: #111111;
+
             transition: color 0.2s ease;
         }
 
@@ -812,7 +934,7 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
 
             header {
                 padding: 22px 20px;
@@ -855,7 +977,23 @@
                 margin-top: 20px;
             }
 
-            .project-grid {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-page-header {
+                padding: 22px 20px;
+            }
+
+            .category-page-content {
+                padding: 60px 20px 90px;
+            }
+
+            .category-page h2 {
+                margin-bottom: 20px;
+            }
+
+            .category-project-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -864,15 +1002,11 @@
             }
 
             .project-detail {
-                padding: 60px 20px 30px;
+                padding: 60px 20px 90px;
             }
 
             .project-detail h2 {
                 margin-bottom: 45px;
-            }
-
-            .project-detail-main-image {
-                margin-bottom: 50px;
             }
 
             .project-meta {
@@ -929,20 +1063,6 @@
                 font-size: 14px;
             }
 
-            .lab-box {
-                min-height: 360px;
-                padding: 22px;
-            }
-
-            .lab-accent {
-                width: 80px;
-                height: 80px;
-            }
-
-            .contact {
-                margin-top: 70px;
-            }
-
             footer {
                 padding: 24px 20px;
             }
@@ -969,7 +1089,7 @@
 
     <nav>
 
-        <a href="#work">
+        <a href="#motion">
             2D/3D MOTION
         </a>
 
@@ -1017,10 +1137,13 @@
 
 
 <!-- =========================
-     WORK
+     2D / 3D MOTION
 ========================= -->
 
-<section id="work" class="section">
+<section
+    id="motion"
+    class="section"
+>
 
     <div class="section-top">
 
@@ -1029,210 +1152,236 @@
         </div>
 
         <div class="section-description">
-            Selected motion, animation and 3D work.
+            Motion, animation, visual design and digital image-making.
         </div>
 
     </div>
 
 
-    <div class="filters">
+    <div class="discipline-intro">
 
-        <button class="filter active" data-filter="all">
-            ALL
-        </button>
-
-        <button class="filter" data-filter="1">
-            1
-        </button>
-
-        <button class="filter" data-filter="2">
-            2
-        </button>
-
-        <button class="filter" data-filter="3">
-            3
-        </button>
-
-        <button class="filter" data-filter="4">
-            4
-        </button>
-
-        <button class="filter" data-filter="5">
-            5
-        </button>
+        <h2>
+            FROM IDEA<br>
+            <span>TO MOTION</span>
+        </h2>
 
     </div>
 
 
-    <div class="project-grid">
+    <div class="category-grid">
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="1"
-            data-project="project1"
+        <!-- VISUAL LED -->
+
+        <div
+            class="category-card"
+            data-category="visual-led"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 01
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    01
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 1
+                <div class="category-image-title">
+                    VISUAL<br>
+                    LED
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    Visual LED
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="2"
-            data-project="project2"
+
+        <!-- FRAME BY FRAME -->
+
+        <div
+            class="category-card"
+            data-category="frame-by-frame"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 02
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    02
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 2
+                <div class="category-image-title">
+                    FRAME<br>
+                    BY FRAME
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    Frame by Frame Animation
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="3"
-            data-project="project3"
+
+        <!-- INFOGRAPHIC -->
+
+        <div
+            class="category-card"
+            data-category="infographic"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 03
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    03
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 3
+                <div class="category-image-title">
+                    INFOGRAPHIC<br>
+                    & BRAND FILM
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    Infographic & Brand Film
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="4"
-            data-project="project4"
+
+        <!-- CGI -->
+
+        <div
+            class="category-card"
+            data-category="cgi"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 04
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    04
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 4
+                <div class="category-image-title">
+                    CGI
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    CGI
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="5"
-            data-project="project5"
+
+        <!-- SCULPTING -->
+
+        <div
+            class="category-card"
+            data-category="sculpting"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 05
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    05
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 5
+                <div class="category-image-title">
+                    SCULPTING
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    Sculpting
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
-        <a
-            href="#"
-            class="project"
-            data-category="1"
-            data-project="project6"
+
+        <!-- AI VIDEO -->
+
+        <div
+            class="category-card"
+            data-category="ai-video"
         >
 
-            <div class="project-image">
-                <span class="project-number">
-                    PROJECT 06
-                </span>
-            </div>
+            <div class="category-image">
 
-            <div class="project-info">
-
-                <div class="project-name">
-                    Project Name
+                <div class="category-number">
+                    06
                 </div>
 
-                <div class="project-tags">
-                    CATEGORY 1
+                <div class="category-image-title">
+                    AI VIDEO<br>
+                    SOLUTION
                 </div>
 
             </div>
 
-        </a>
+            <div class="category-info">
+
+                <div class="category-name">
+                    AI Video Solution
+                </div>
+
+                <div class="category-count">
+                    PROJECTS
+                </div>
+
+            </div>
+
+        </div>
 
 
     </div>
@@ -1245,7 +1394,10 @@
      3D LAB
 ========================= -->
 
-<section id="lab" class="section lab-section">
+<section
+    id="lab"
+    class="section lab-section"
+>
 
     <div class="section-top">
 
@@ -1260,14 +1412,124 @@
     </div>
 
 
-    <div class="lab-box">
-
-        <div class="lab-accent"></div>
+    <div class="discipline-intro">
 
         <h2>
-            3D<br>
-            LAB
+            FROM DIGITAL<br>
+            <span>TO OBJECT</span>
         </h2>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <!-- BRAND MERCHANDISE -->
+
+        <div
+            class="category-card"
+            data-category="brand-merchandise"
+        >
+
+            <div class="category-image">
+
+                <div class="category-number">
+                    01
+                </div>
+
+                <div class="category-image-title">
+                    BRAND<br>
+                    MERCHANDISE
+                </div>
+
+            </div>
+
+            <div class="category-info">
+
+                <div class="category-name">
+                    Brand Merchandise
+                </div>
+
+                <div class="category-count">
+                    PRODUCTS
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MASCOT -->
+
+        <div
+            class="category-card"
+            data-category="mascot"
+        >
+
+            <div class="category-image">
+
+                <div class="category-number">
+                    02
+                </div>
+
+                <div class="category-image-title">
+                    MASCOT
+                </div>
+
+            </div>
+
+            <div class="category-info">
+
+                <div class="category-name">
+                    Mascot
+                </div>
+
+                <div class="category-count">
+                    PRODUCTS
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SMALL DECOR -->
+
+        <div
+            class="category-card"
+            data-category="small-decor"
+        >
+
+            <div class="category-image">
+
+                <div class="category-number">
+                    03
+                </div>
+
+                <div class="category-image-title">
+                    SMALL<br>
+                    DECOR
+                </div>
+
+            </div>
+
+            <div class="category-info">
+
+                <div class="category-name">
+                    Small Decor
+                </div>
+
+                <div class="category-count">
+                    PRODUCTS
+                </div>
+
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -1279,7 +1541,10 @@
      ABOUT
 ========================= -->
 
-<section id="about" class="section about-section">
+<section
+    id="about"
+    class="section about-section"
+>
 
 
     <div class="about-top">
@@ -1539,7 +1804,69 @@
 
 
 <!-- =========================
-     PROJECT DETAIL OVERLAY
+     CATEGORY PAGE
+========================= -->
+
+<div
+    class="category-page"
+    id="categoryPage"
+>
+
+
+    <div class="category-page-header">
+
+        <div class="category-page-logo">
+            006.STUDIO
+        </div>
+
+        <button
+            class="close-category"
+            id="closeCategory"
+        >
+            CLOSE ×
+        </button>
+
+    </div>
+
+
+    <div class="category-page-content">
+
+        <div
+            class="category-page-label"
+            id="categoryPageLabel"
+        >
+            CATEGORY
+        </div>
+
+
+        <h2 id="categoryPageTitle">
+            CATEGORY NAME
+        </h2>
+
+
+        <div
+            class="category-page-description"
+            id="categoryPageDescription"
+        >
+            Category description will live here.
+        </div>
+
+
+        <div
+            class="category-project-grid"
+            id="categoryProjectGrid"
+        >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     PROJECT DETAIL
 ========================= -->
 
 <div
@@ -1570,7 +1897,7 @@
             class="project-detail-category"
             id="detailCategory"
         >
-            CATEGORY 1
+            CATEGORY
         </div>
 
 
@@ -1582,17 +1909,16 @@
         <div class="project-detail-main-image">
 
             <span>
-                MAIN PROJECT MEDIA
+                MAIN PROJECT MEDIA PLACEHOLDER
             </span>
 
         </div>
 
 
-        <!-- PROJECT META -->
-
         <div class="project-meta">
 
-            <div class="meta-item">
+
+            <div>
 
                 <div class="detail-label">
                     YEAR
@@ -1608,7 +1934,7 @@
             </div>
 
 
-            <div class="meta-item">
+            <div>
 
                 <div class="detail-label">
                     TYPE
@@ -1624,7 +1950,7 @@
             </div>
 
 
-            <div class="meta-item">
+            <div>
 
                 <div class="detail-label">
                     ROLE
@@ -1640,7 +1966,7 @@
             </div>
 
 
-            <div class="meta-item">
+            <div>
 
                 <div class="detail-label">
                     TOOLS
@@ -1655,11 +1981,10 @@
 
             </div>
 
+
         </div>
 
 
-
-        <!-- PROJECT ABOUT -->
 
         <div class="project-about">
 
@@ -1679,8 +2004,6 @@
                     id="detailDescription"
                 >
                     Project description will live here.
-                    This area will later contain the story,
-                    creative direction and context behind the project.
                 </div>
 
             </div>
@@ -1689,50 +2012,35 @@
 
 
 
-        <!-- PROJECT GALLERY -->
-
         <div class="project-detail-gallery">
 
             <div class="detail-gallery-item wide">
-
-                <span>
-                    IMAGE / VIDEO PLACEHOLDER
-                </span>
-
-            </div>
-
-
-            <div class="detail-gallery-item">
-
-                <span>
-                    IMAGE PLACEHOLDER
-                </span>
-
-            </div>
-
-
-            <div class="detail-gallery-item">
-
-                <span>
-                    IMAGE PLACEHOLDER
-                </span>
-
-            </div>
-
-
-            <div class="detail-gallery-item wide">
-
                 <span>
                     VIDEO / IMAGE PLACEHOLDER
                 </span>
+            </div>
 
+            <div class="detail-gallery-item">
+                <span>
+                    IMAGE PLACEHOLDER
+                </span>
+            </div>
+
+            <div class="detail-gallery-item">
+                <span>
+                    IMAGE PLACEHOLDER
+                </span>
+            </div>
+
+            <div class="detail-gallery-item wide">
+                <span>
+                    VIDEO / IMAGE PLACEHOLDER
+                </span>
             </div>
 
         </div>
 
 
-
-        <!-- PROJECT NAVIGATION -->
 
         <div class="project-navigation">
 
@@ -1787,60 +2095,398 @@
 
 
     /* =========================
-       PROJECT FILTER
+       CATEGORY DATA
     ========================= */
 
-    const filters =
-        document.querySelectorAll(".filter");
+    const categories = {
 
-    const projects =
-        document.querySelectorAll(".project");
+        "visual-led": {
+            label: "2D / 3D MOTION — 01",
+            title: "VISUAL LED",
+            description:
+                "Large-scale visual content, motion graphics and digital experiences created for LED screens and spatial environments."
+        },
 
+        "frame-by-frame": {
+            label: "2D / 3D MOTION — 02",
+            title: "FRAME BY FRAME",
+            description:
+                "Frame-by-frame animation, hand-crafted movement and illustrated motion experiments."
+        },
 
-    filters.forEach(filter => {
+        "infographic": {
+            label: "2D / 3D MOTION — 03",
+            title: "INFOGRAPHIC & BRAND FILM",
+            description:
+                "Visual storytelling, information design and brand films built to communicate ideas through motion."
+        },
 
-        filter.addEventListener("click", () => {
+        "cgi": {
+            label: "2D / 3D MOTION — 04",
+            title: "CGI",
+            description:
+                "3D imagery, product visuals, environments and CGI experiments."
+        },
 
-            filters.forEach(item => {
-                item.classList.remove("active");
-            });
+        "sculpting": {
+            label: "2D / 3D MOTION — 05",
+            title: "SCULPTING",
+            description:
+                "Digital sculpting, character development and 3D form exploration."
+        },
 
-            filter.classList.add("active");
+        "ai-video": {
+            label: "2D / 3D MOTION — 06",
+            title: "AI VIDEO SOLUTION",
+            description:
+                "AI-assisted video production, visual development and creative solutions for faster content creation."
+        },
 
+        "brand-merchandise": {
+            label: "3D LAB — 01",
+            title: "BRAND MERCHANDISE",
+            description:
+                "Physical objects, merchandise and branded products developed through 3D design and fabrication."
+        },
 
-            const selected =
-                filter.dataset.filter;
+        "mascot": {
+            label: "3D LAB — 02",
+            title: "MASCOT",
+            description:
+                "Character and mascot design translated from digital concepts into physical objects."
+        },
 
+        "small-decor": {
+            label: "3D LAB — 03",
+            title: "SMALL DECOR",
+            description:
+                "Small-scale objects, functional pieces and decorative experiments made for the physical world."
+        }
 
-            projects.forEach(project => {
-
-                const category =
-                    project.dataset.category;
-
-
-                if (
-                    selected === "all" ||
-                    category === selected
-                ) {
-
-                    project.classList.remove("hidden");
-
-                } else {
-
-                    project.classList.add("hidden");
-
-                }
-
-            });
-
-        });
-
-    });
+    };
 
 
 
     /* =========================
-       PROJECT DETAILS
+       PROJECT DATA
+    ========================= */
+
+    const projects = {
+
+        "visual-led": [
+            {
+                title: "Visual LED Project 01",
+                type: "VISUAL LED"
+            },
+            {
+                title: "Visual LED Project 02",
+                type: "VISUAL LED"
+            },
+            {
+                title: "Visual LED Project 03",
+                type: "VISUAL LED"
+            },
+            {
+                title: "Visual LED Project 04",
+                type: "VISUAL LED"
+            }
+        ],
+
+        "frame-by-frame": [
+            {
+                title: "Frame by Frame Project 01",
+                type: "FRAME BY FRAME"
+            },
+            {
+                title: "Frame by Frame Project 02",
+                type: "FRAME BY FRAME"
+            },
+            {
+                title: "Frame by Frame Project 03",
+                type: "FRAME BY FRAME"
+            }
+        ],
+
+        "infographic": [
+            {
+                title: "Brand Film Project 01",
+                type: "INFOGRAPHIC & BRAND FILM"
+            },
+            {
+                title: "Infographic Project 02",
+                type: "INFOGRAPHIC & BRAND FILM"
+            },
+            {
+                title: "Brand Film Project 03",
+                type: "INFOGRAPHIC & BRAND FILM"
+            }
+        ],
+
+        "cgi": [
+            {
+                title: "CGI Project 01",
+                type: "CGI"
+            },
+            {
+                title: "CGI Project 02",
+                type: "CGI"
+            },
+            {
+                title: "CGI Project 03",
+                type: "CGI"
+            },
+            {
+                title: "CGI Project 04",
+                type: "CGI"
+            }
+        ],
+
+        "sculpting": [
+            {
+                title: "Sculpting Project 01",
+                type: "SCULPTING"
+            },
+            {
+                title: "Sculpting Project 02",
+                type: "SCULPTING"
+            }
+        ],
+
+        "ai-video": [
+            {
+                title: "AI Video Project 01",
+                type: "AI VIDEO SOLUTION"
+            },
+            {
+                title: "AI Video Project 02",
+                type: "AI VIDEO SOLUTION"
+            },
+            {
+                title: "AI Video Project 03",
+                type: "AI VIDEO SOLUTION"
+            }
+        ],
+
+        "brand-merchandise": [
+            {
+                title: "Brand Merchandise 01",
+                type: "BRAND MERCHANDISE"
+            },
+            {
+                title: "Brand Merchandise 02",
+                type: "BRAND MERCHANDISE"
+            },
+            {
+                title: "Brand Merchandise 03",
+                type: "BRAND MERCHANDISE"
+            }
+        ],
+
+        "mascot": [
+            {
+                title: "Mascot Project 01",
+                type: "MASCOT"
+            },
+            {
+                title: "Mascot Project 02",
+                type: "MASCOT"
+            },
+            {
+                title: "Mascot Project 03",
+                type: "MASCOT"
+            }
+        ],
+
+        "small-decor": [
+            {
+                title: "Small Decor 01",
+                type: "SMALL DECOR"
+            },
+            {
+                title: "Small Decor 02",
+                type: "SMALL DECOR"
+            },
+            {
+                title: "Small Decor 03",
+                type: "SMALL DECOR"
+            }
+        ]
+
+    };
+
+
+
+    /* =========================
+       CATEGORY PAGE
+    ========================= */
+
+    const categoryPage =
+        document.getElementById("categoryPage");
+
+    const closeCategory =
+        document.getElementById("closeCategory");
+
+    const categoryPageLabel =
+        document.getElementById("categoryPageLabel");
+
+    const categoryPageTitle =
+        document.getElementById("categoryPageTitle");
+
+    const categoryPageDescription =
+        document.getElementById("categoryPageDescription");
+
+    const categoryProjectGrid =
+        document.getElementById("categoryProjectGrid");
+
+
+
+    let currentCategory = "";
+
+    let currentProjectIndex = 0;
+
+
+
+    /* =========================
+       OPEN CATEGORY
+    ========================= */
+
+    function openCategory(categoryId) {
+
+        const category =
+            categories[categoryId];
+
+        if (!category) return;
+
+
+        currentCategory =
+            categoryId;
+
+
+        categoryPageLabel.textContent =
+            category.label;
+
+        categoryPageTitle.textContent =
+            category.title;
+
+        categoryPageDescription.textContent =
+            category.description;
+
+
+        categoryProjectGrid.innerHTML = "";
+
+
+        const categoryProjects =
+            projects[categoryId] || [];
+
+
+        categoryProjects.forEach(
+            (project, index) => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "category-project";
+
+
+                card.innerHTML = `
+
+                    <div class="category-project-image">
+
+                        <span>
+                            PROJECT ${String(index + 1).padStart(2, "0")}
+                            — MEDIA PLACEHOLDER
+                        </span>
+
+                    </div>
+
+                    <div class="category-project-info">
+
+                        <div class="category-project-name">
+                            ${project.title}
+                        </div>
+
+                        <div class="category-project-type">
+                            ${project.type}
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        openProject(
+                            categoryId,
+                            index
+                        );
+
+                    }
+                );
+
+
+                categoryProjectGrid.appendChild(card);
+
+            }
+        );
+
+
+        categoryPage.classList.add("open");
+
+        document.body.classList.add("no-scroll");
+
+        categoryPage.scrollTop = 0;
+
+    }
+
+
+
+    /* =========================
+       CATEGORY CARDS
+    ========================= */
+
+    document
+        .querySelectorAll(".category-card")
+        .forEach(card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    const category =
+                        card.dataset.category;
+
+                    openCategory(category);
+
+                }
+            );
+
+        });
+
+
+
+    /* =========================
+       CLOSE CATEGORY
+    ========================= */
+
+    closeCategory.addEventListener(
+        "click",
+        () => {
+
+            categoryPage.classList.remove("open");
+
+            document.body.classList.remove("no-scroll");
+
+        }
+    );
+
+
+
+    /* =========================
+       PROJECT DETAIL
     ========================= */
 
     const overlay =
@@ -1885,172 +2531,45 @@
 
 
     /* =========================
-       PROJECT DATA
+       OPEN PROJECT
     ========================= */
 
-    const projectData = {
+    function openProject(
+        categoryId,
+        projectIndex
+    ) {
 
-        project1: {
-            category: "CATEGORY 1",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        },
+        const category =
+            categories[categoryId];
 
-        project2: {
-            category: "CATEGORY 2",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        },
+        const categoryProjects =
+            projects[categoryId];
 
-        project3: {
-            category: "CATEGORY 3",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        },
-
-        project4: {
-            category: "CATEGORY 4",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        },
-
-        project5: {
-            category: "CATEGORY 5",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        },
-
-        project6: {
-            category: "CATEGORY 1",
-            title: "Project Name",
-            year: "2026",
-            type: "2D / 3D MOTION",
-            role: "Motion Design",
-            tools: "Blender / C4D / AE",
-            description:
-                "Project description will live here. This area will later contain the story, creative direction and context behind the project."
-        }
-
-    };
+        const project =
+            categoryProjects[projectIndex];
 
 
-
-    /* =========================
-       PROJECT ORDER
-    ========================= */
-
-    const projectOrder = [
-        "project1",
-        "project2",
-        "project3",
-        "project4",
-        "project5",
-        "project6"
-    ];
+        if (
+            !category ||
+            !project
+        ) return;
 
 
+        currentCategory =
+            categoryId;
 
-    /* =========================
-       CURRENT PROJECT
-    ========================= */
-
-    let currentProjectIndex = 0;
-
+        currentProjectIndex =
+            projectIndex;
 
 
-    /* =========================
-       UPDATE PROJECT DETAIL
-    ========================= */
-
-    function updateProjectDetail(index) {
-
-        const projectId =
-            projectOrder[index];
-
-        const data =
-            projectData[projectId];
+        updateProjectDetail();
 
 
-        if (!data) return;
+        overlay.classList.add("open");
 
+        categoryPage.classList.remove("open");
 
-        currentProjectIndex = index;
-
-
-        detailCategory.textContent =
-            data.category;
-
-        detailTitle.textContent =
-            data.title;
-
-        detailYear.textContent =
-            data.year;
-
-        detailType.textContent =
-            data.type;
-
-        detailRole.textContent =
-            data.role;
-
-        detailTools.textContent =
-            data.tools;
-
-        detailDescription.textContent =
-            data.description;
-
-
-
-        /* PREVIOUS */
-
-        const previousIndex =
-            (index - 1 + projectOrder.length)
-            % projectOrder.length;
-
-        const previousId =
-            projectOrder[previousIndex];
-
-        previousProjectName.textContent =
-            projectData[previousId].title;
-
-
-
-        /* NEXT */
-
-        const nextIndex =
-            (index + 1)
-            % projectOrder.length;
-
-        const nextId =
-            projectOrder[nextIndex];
-
-        nextProjectName.textContent =
-            projectData[nextId].title;
-
+        document.body.classList.add("no-scroll");
 
         overlay.scrollTop = 0;
 
@@ -2059,80 +2578,134 @@
 
 
     /* =========================
-       OPEN PROJECT
+       UPDATE PROJECT
     ========================= */
 
-    projects.forEach(project => {
+    function updateProjectDetail() {
 
-        project.addEventListener("click", event => {
+        const category =
+            categories[currentCategory];
 
-            event.preventDefault();
+        const categoryProjects =
+            projects[currentCategory];
 
-
-            const id =
-                project.dataset.project;
-
-
-            const index =
-                projectOrder.indexOf(id);
+        const project =
+            categoryProjects[currentProjectIndex];
 
 
-            if (index === -1) return;
+        if (!project) return;
 
 
-            updateProjectDetail(index);
+        detailCategory.textContent =
+            category.title;
+
+        detailTitle.textContent =
+            project.title;
+
+        detailYear.textContent =
+            "2026";
+
+        detailType.textContent =
+            project.type;
+
+        detailRole.textContent =
+            "Motion Design / Creative";
+
+        detailTools.textContent =
+            "Placeholder Tools";
+
+        detailDescription.textContent =
+            "Project description will live here. This area will later contain the story, creative direction, process and context behind the project.";
 
 
-            overlay.classList.add("open");
-
-            document.body.classList.add("no-scroll");
-
-            overlay.scrollTop = 0;
-
-        });
-
-    });
-
-
-
-    /* =========================
-       PREVIOUS PROJECT
-    ========================= */
-
-    previousProject.addEventListener("click", () => {
 
         const previousIndex =
             (
                 currentProjectIndex
                 - 1
-                + projectOrder.length
+                + categoryProjects.length
             )
-            % projectOrder.length;
+            % categoryProjects.length;
 
-
-        updateProjectDetail(previousIndex);
-
-    });
-
-
-
-    /* =========================
-       NEXT PROJECT
-    ========================= */
-
-    nextProject.addEventListener("click", () => {
 
         const nextIndex =
             (
                 currentProjectIndex
                 + 1
             )
-            % projectOrder.length;
+            % categoryProjects.length;
 
 
-        updateProjectDetail(nextIndex);
+        previousProjectName.textContent =
+            categoryProjects[
+                previousIndex
+            ].title;
 
-    });
+        nextProjectName.textContent =
+            categoryProjects[
+                nextIndex
+            ].title;
+
+    }
+
+
+
+    /* =========================
+       PREVIOUS
+    ========================= */
+
+    previousProject.addEventListener(
+        "click",
+        () => {
+
+            const categoryProjects =
+                projects[currentCategory];
+
+
+            currentProjectIndex =
+                (
+                    currentProjectIndex
+                    - 1
+                    + categoryProjects.length
+                )
+                % categoryProjects.length;
+
+
+            updateProjectDetail();
+
+            overlay.scrollTop = 0;
+
+        }
+    );
+
+
+
+    /* =========================
+       NEXT
+    ========================= */
+
+    nextProject.addEventListener(
+        "click",
+        () => {
+
+            const categoryProjects =
+                projects[currentCategory];
+
+
+            currentProjectIndex =
+                (
+                    currentProjectIndex
+                    + 1
+                )
+                % categoryProjects.length;
+
+
+            updateProjectDetail();
+
+            overlay.scrollTop = 0;
+
+        }
+    );
 
 
 
@@ -2140,34 +2713,76 @@
        CLOSE PROJECT
     ========================= */
 
-    closeProject.addEventListener("click", () => {
+    closeProject.addEventListener(
+        "click",
+        () => {
 
-        overlay.classList.remove("open");
+            overlay.classList.remove("open");
 
-        document.body.classList.remove("no-scroll");
+            document.body.classList.add("no-scroll");
 
-    });
+        }
+    );
 
 
 
     /* =========================
-       ESCAPE
+       KEYBOARD
     ========================= */
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener(
+        "keydown",
+        event => {
 
-        if (
-            event.key === "Escape" &&
-            overlay.classList.contains("open")
-        ) {
+            if (
+                event.key === "Escape"
+            ) {
 
-            overlay.classList.remove("open");
+                if (
+                    overlay.classList.contains("open")
+                ) {
 
-            document.body.classList.remove("no-scroll");
+                    overlay.classList.remove("open");
+
+                } else if (
+                    categoryPage.classList.contains("open")
+                ) {
+
+                    categoryPage.classList.remove("open");
+
+                }
+
+                document.body.classList.remove(
+                    "no-scroll"
+                );
+
+            }
+
+
+            if (
+                overlay.classList.contains("open")
+            ) {
+
+                if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    nextProject.click();
+
+                }
+
+                if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    previousProject.click();
+
+                }
+
+            }
 
         }
-
-    });
+    );
 
 
 
@@ -2187,34 +2802,50 @@
 
     languageButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-            const language =
-                button.dataset.language;
-
-
-            languageButtons.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            button.classList.add("active");
+                const language =
+                    button.dataset.language;
 
 
-            if (language === "en") {
+                languageButtons.forEach(item => {
 
-                englishContent.style.display = "block";
+                    item.classList.remove(
+                        "active"
+                    );
 
-                vietnameseContent.style.display = "none";
+                });
 
-            } else {
 
-                englishContent.style.display = "none";
+                button.classList.add(
+                    "active"
+                );
 
-                vietnameseContent.style.display = "block";
+
+                if (
+                    language === "en"
+                ) {
+
+                    englishContent.style.display =
+                        "block";
+
+                    vietnameseContent.style.display =
+                        "none";
+
+                } else {
+
+                    englishContent.style.display =
+                        "none";
+
+                    vietnameseContent.style.display =
+                        "block";
+
+                }
 
             }
-
-        });
+        );
 
     });
 
