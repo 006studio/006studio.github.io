@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,9 +10,17 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
+        /* =========================
+           BASIC
+        ========================= */
 
         * {
             box-sizing: border-box;
@@ -28,19 +38,28 @@
             color: #111111;
         }
 
+        a {
+            color: inherit;
+        }
 
-        /* HEADER */
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             width: 100%;
+            padding: 28px 32px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 28px 32px;
+
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 10;
+
+            z-index: 100;
         }
 
         .logo {
@@ -55,23 +74,28 @@
         }
 
         nav a {
-            color: #111111;
             text-decoration: none;
-            font-size: 12px;
+
+            font-size: 11px;
             font-weight: 700;
+
             transition: opacity 0.2s ease;
         }
 
         nav a:hover {
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             min-height: 100vh;
+
             padding: 140px 32px 60px;
+
             display: flex;
             align-items: flex-end;
         }
@@ -81,18 +105,25 @@
         }
 
         .hero-small {
-            font-size: 13px;
-            font-weight: 600;
-            color: #008C8C;
             margin-bottom: 28px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            color: #008C8C;
+
+            letter-spacing: 0.5px;
         }
 
         .hero h1 {
+            max-width: 1400px;
+
             font-size: clamp(64px, 13vw, 190px);
             line-height: 0.82;
+
             letter-spacing: -0.07em;
+
             font-weight: 800;
-            max-width: 1400px;
         }
 
         .hero h1 span {
@@ -101,12 +132,15 @@
 
         .hero-text p {
             margin-top: 42px;
+
             font-size: 14px;
             font-weight: 500;
         }
 
 
-        /* SECTIONS */
+        /* =========================
+           GENERAL SECTION
+        ========================= */
 
         .section {
             padding: 140px 32px;
@@ -116,42 +150,56 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+
             margin-bottom: 50px;
         }
 
         .section-title {
             font-size: 12px;
             font-weight: 700;
+
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
         .section-description {
-            max-width: 360px;
+            max-width: 380px;
+
             font-size: 14px;
             line-height: 1.6;
             font-weight: 500;
         }
 
 
-        /* FILTER */
+        /* =========================
+           WORK FILTER
+        ========================= */
 
         .filters {
             display: flex;
-            gap: 10px;
-            margin-bottom: 32px;
             flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 32px;
         }
 
         .filter {
             border: 1px solid #111111;
+
             background: transparent;
+
             padding: 9px 14px;
+
             font-family: inherit;
             font-size: 10px;
             font-weight: 700;
+
             cursor: pointer;
-            transition: all 0.2s ease;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
         }
 
         .filter:hover,
@@ -161,38 +209,57 @@
         }
 
 
-        /* PROJECT GRID */
+        /* =========================
+           PROJECT GRID
+        ========================= */
 
         .project-grid {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 18px;
         }
 
         .project {
-            text-decoration: none;
-            color: #111111;
             display: block;
+
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+        .project.hidden {
+            display: none;
         }
 
         .project-image {
             aspect-ratio: 16 / 10;
+
             background: #D9D4C9;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             position: relative;
+
             overflow: hidden;
-            transition: transform 0.35s ease;
+
+            transition:
+                transform 0.35s ease,
+                filter 0.35s ease;
         }
 
         .project:hover .project-image {
             transform: scale(0.985);
+            filter: brightness(0.95);
         }
 
         .project-number {
             font-size: 12px;
             font-weight: 700;
+
             color: #77736B;
         }
 
@@ -210,6 +277,7 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
+
             padding: 14px 0 38px;
         }
 
@@ -221,12 +289,16 @@
         .project-tags {
             font-size: 10px;
             font-weight: 600;
+
             text-align: right;
+
             color: #666666;
         }
 
 
-        /* LAB */
+        /* =========================
+           3D LAB
+        ========================= */
 
         .lab-section {
             background: #111111;
@@ -243,52 +315,201 @@
 
         .lab-box {
             min-height: 520px;
+
             border: 1px solid #3A3A3A;
+
+            padding: 32px;
+
             display: flex;
             align-items: flex-end;
-            padding: 32px;
+
+            position: relative;
+            overflow: hidden;
         }
 
         .lab-box h2 {
             font-size: clamp(48px, 9vw, 120px);
+
             line-height: 0.85;
+
             letter-spacing: -0.06em;
         }
 
+        .lab-accent {
+            position: absolute;
 
-        /* ABOUT */
+            width: 120px;
+            height: 120px;
 
-        .about-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            border-radius: 50%;
+
+            background: #008C8C;
+
+            right: 8%;
+            top: 12%;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-section {
+            padding-bottom: 80px;
+        }
+
+        .about-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            margin-bottom: 70px;
+        }
+
+        .language-switch {
+            display: flex;
+            gap: 6px;
+        }
+
+        .language-button {
+            border: none;
+
+            background: transparent;
+
+            font-family: inherit;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            opacity: 0.35;
+        }
+
+        .language-button.active {
+            opacity: 1;
+            color: #008C8C;
+        }
+
+        .about-content {
+            max-width: 1000px;
         }
 
         .about-heading {
-            font-size: clamp(42px, 6vw, 80px);
-            line-height: 0.95;
-            letter-spacing: -0.05em;
+            margin-bottom: 50px;
+
+            font-size: clamp(42px, 7vw, 100px);
+
+            line-height: 0.9;
+
+            letter-spacing: -0.06em;
+
+            font-weight: 800;
         }
 
         .about-text {
+            max-width: 850px;
+
             font-size: 16px;
-            line-height: 1.7;
-            max-width: 550px;
+
+            line-height: 1.8;
+
+            font-weight: 500;
+        }
+
+        .about-text strong {
+            font-weight: 800;
+        }
+
+        .about-identity {
+            margin-top: 70px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .identity-card {
+            border-top: 1px solid #111111;
+
+            padding-top: 18px;
+        }
+
+        .identity-name {
+            margin-bottom: 10px;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .identity-description {
+            font-size: 13px;
+            line-height: 1.6;
+
+            font-weight: 500;
         }
 
 
-        /* FOOTER */
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            margin-top: 100px;
+
+            padding-top: 30px;
+
+            border-top: 1px solid #111111;
+        }
+
+        .contact-title {
+            margin-bottom: 20px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .contact-email {
+            display: inline-block;
+
+            font-size: clamp(30px, 5vw, 70px);
+
+            line-height: 1;
+
+            letter-spacing: -0.05em;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: color 0.2s ease;
+        }
+
+        .contact-email:hover {
+            color: #008C8C;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             padding: 32px;
+
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+
+            font-size: 10px;
             font-weight: 600;
         }
 
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
 
@@ -301,7 +522,7 @@
             }
 
             nav a {
-                font-size: 9px;
+                font-size: 8px;
             }
 
             .hero {
@@ -310,6 +531,15 @@
 
             .hero h1 {
                 font-size: clamp(58px, 17vw, 110px);
+            }
+
+            .hero-small {
+                margin-bottom: 22px;
+            }
+
+            .hero-text p {
+                margin-top: 30px;
+                font-size: 12px;
             }
 
             .section {
@@ -328,14 +558,34 @@
                 grid-template-columns: 1fr;
             }
 
-            .about-box {
+            .about-top {
+                margin-bottom: 50px;
+            }
+
+            .about-identity {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+
+            .about-heading {
+                margin-bottom: 35px;
+            }
+
+            .about-text {
+                font-size: 14px;
             }
 
             .lab-box {
                 min-height: 360px;
                 padding: 22px;
+            }
+
+            .lab-accent {
+                width: 80px;
+                height: 80px;
+            }
+
+            .contact {
+                margin-top: 70px;
             }
 
             footer {
@@ -344,11 +594,16 @@
         }
 
     </style>
+
 </head>
 
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -357,9 +612,19 @@
     </div>
 
     <nav>
-        <a href="#work">2D/3D MOTION</a>
-        <a href="#lab">3D LAB</a>
-        <a href="#about">ABOUT</a>
+
+        <a href="#work">
+            2D/3D MOTION
+        </a>
+
+        <a href="#lab">
+            3D LAB
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
     </nav>
 
 </header>
@@ -368,263 +633,622 @@
 <main>
 
 
-    <!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="hero-text">
+    <div class="hero-text">
 
-            <div class="hero-small">
-                006.STUDIO
+        <div class="hero-small">
+            006.STUDIO
+        </div>
+
+        <h1>
+            2D / 3D<br>
+            <span>MOTION</span>
+        </h1>
+
+        <p>
+            Creative studio by Colorblind × 006
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORK
+========================= -->
+
+<section id="work" class="section">
+
+    <div class="section-top">
+
+        <div class="section-title">
+            01 — 2D/3D Motion
+        </div>
+
+        <div class="section-description">
+            Selected motion, animation and 3D work.
+        </div>
+
+    </div>
+
+
+    <div class="filters">
+
+        <button class="filter active" data-filter="all">
+            ALL
+        </button>
+
+        <button class="filter" data-filter="1">
+            1
+        </button>
+
+        <button class="filter" data-filter="2">
+            2
+        </button>
+
+        <button class="filter" data-filter="3">
+            3
+        </button>
+
+        <button class="filter" data-filter="4">
+            4
+        </button>
+
+        <button class="filter" data-filter="5">
+            5
+        </button>
+
+    </div>
+
+
+    <div class="project-grid">
+
+
+        <!-- PROJECT 01 -->
+
+        <a href="#" class="project" data-category="1">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 01
+                </span>
             </div>
 
-            <h1>
-                2D / 3D<br>
-                <span>MOTION</span>
-            </h1>
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 1
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- PROJECT 02 -->
+
+        <a href="#" class="project" data-category="2">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 02
+                </span>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 2
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- PROJECT 03 -->
+
+        <a href="#" class="project" data-category="3">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 03
+                </span>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 3
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- PROJECT 04 -->
+
+        <a href="#" class="project" data-category="4">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 04
+                </span>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 4
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- PROJECT 05 -->
+
+        <a href="#" class="project" data-category="5">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 05
+                </span>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 5
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- PROJECT 06 -->
+
+        <a href="#" class="project" data-category="1">
+
+            <div class="project-image">
+                <span class="project-number">
+                    PROJECT 06
+                </span>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-name">
+                    Project Name
+                </div>
+
+                <div class="project-tags">
+                    CATEGORY 1
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     3D LAB
+========================= -->
+
+<section id="lab" class="section lab-section">
+
+    <div class="section-top">
+
+        <div class="section-title">
+            02 — 3D Lab
+        </div>
+
+        <div class="section-description">
+            Objects, experiments and things made in the physical world.
+        </div>
+
+    </div>
+
+
+    <div class="lab-box">
+
+        <div class="lab-accent"></div>
+
+        <h2>
+            3D<br>
+            LAB
+        </h2>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="section about-section">
+
+
+    <div class="about-top">
+
+        <div class="section-title">
+            03 — About
+        </div>
+
+
+        <div class="language-switch">
+
+            <button
+                class="language-button active"
+                data-language="en"
+            >
+                EN
+            </button>
+
+            <span>/</span>
+
+            <button
+                class="language-button"
+                data-language="vi"
+            >
+                VI
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ENGLISH -->
+
+    <div class="about-content language-content" id="about-en">
+
+        <div class="about-heading">
+            FROM<br>
+            VISION<br>
+            TO VISUAL.
+        </div>
+
+
+        <div class="about-text">
 
             <p>
-                Creative studio by 006
+                006studio started as a young creative driven by curiosity,
+                passion, and a desire to create.
+            </p>
+
+            <br>
+
+            <p>
+                With 7+ years of experience in the creative industry,
+                we specialize in 2D & 3D Motion Design, turning ideas
+                and visions into clear, distinctive visual experiences.
+            </p>
+
+            <br>
+
+            <p>
+                From Vision to Visual.
+            </p>
+
+            <br>
+
+            <p>
+                006studio brings together two creative disciplines:
+                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
+                <strong>006LAB</strong> — 3D Printing & Object Design.
+            </p>
+
+            <br>
+
+            <p>
+                From digital motion to physical objects,
+                we turn ideas into visuals with character and purpose.
             </p>
 
         </div>
 
-    </section>
+
+        <div class="about-identity">
 
 
-    <!-- WORK -->
+            <div class="identity-card">
 
-    <section id="work" class="section">
+                <div class="identity-name">
+                    COLORBLIND
+                </div>
 
-        <div class="section-top">
+                <div class="identity-description">
+                    Personal creative identity for 2D & 3D Motion Design.
+                </div>
 
-            <div class="section-title">
-                01 — 2D/3D Motion
             </div>
 
-            <div class="section-description">
-                Selected motion, animation and 3D work.
+
+            <div class="identity-card">
+
+                <div class="identity-name">
+                    006LAB
+                </div>
+
+                <div class="identity-description">
+                    3D Printing & Object Design.
+                </div>
+
             </div>
-
-        </div>
-
-
-        <div class="filters">
-
-            <button class="filter active">ALL</button>
-            <button class="filter">2D</button>
-            <button class="filter">3D</button>
-            <button class="filter">CLIENT</button>
-            <button class="filter">PERSONAL</button>
-
-        </div>
-
-
-        <div class="project-grid">
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 01</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        3D / CLIENT
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 02</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        2D / CLIENT
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 03</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        3D / PERSONAL
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 04</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        MOTION / CLIENT
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 05</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        3D / PERSONAL
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="project">
-
-                <div class="project-image">
-                    <span class="project-number">PROJECT 06</span>
-                </div>
-
-                <div class="project-info">
-
-                    <div class="project-name">
-                        Project Name
-                    </div>
-
-                    <div class="project-tags">
-                        2D / CLIENT
-                    </div>
-
-                </div>
-
-            </a>
 
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- 3D LAB -->
 
-    <section id="lab" class="section lab-section">
+    <!-- VIETNAMESE -->
 
-        <div class="section-top">
+    <div
+        class="about-content language-content"
+        id="about-vi"
+        style="display: none;"
+    >
 
-            <div class="section-title">
-                02 — 3D Lab
-            </div>
+        <div class="about-heading">
+            FROM<br>
+            VISION<br>
+            TO VISUAL.
+        </div>
 
-            <div class="section-description">
-                Objects, experiments and things made in the physical world.
-            </div>
+
+        <div class="about-text">
+
+            <p>
+                006studio bắt đầu từ một creative trẻ với niềm đam mê
+                và mong muốn không ngừng sáng tạo.
+            </p>
+
+            <br>
+
+            <p>
+                Với hơn 7 năm kinh nghiệm trong ngành, chúng tôi tập trung
+                vào 2D & 3D Motion Design, biến ý tưởng và vision thành
+                những visual rõ ràng, có cá tính và mục đích.
+            </p>
+
+            <br>
+
+            <p>
+                From Vision to Visual.
+            </p>
+
+            <br>
+
+            <p>
+                006studio là sự kết hợp của hai mảng sáng tạo:
+                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
+                <strong>006LAB</strong> — 3D Printing & Object Design.
+            </p>
+
+            <br>
+
+            <p>
+                Từ chuyển động kỹ thuật số đến những sản phẩm vật thể,
+                chúng tôi biến ý tưởng thành những visual có cá tính
+                và giá trị riêng.
+            </p>
 
         </div>
 
 
-        <div class="lab-box">
+        <div class="about-identity">
 
-            <h2>
-                3D<br>
-                LAB
-            </h2>
+
+            <div class="identity-card">
+
+                <div class="identity-name">
+                    COLORBLIND
+                </div>
+
+                <div class="identity-description">
+                    Nhận diện sáng tạo cá nhân trong lĩnh vực
+                    2D & 3D Motion Design.
+                </div>
+
+            </div>
+
+
+            <div class="identity-card">
+
+                <div class="identity-name">
+                    006LAB
+                </div>
+
+                <div class="identity-description">
+                    3D Printing & Object Design.
+                </div>
+
+            </div>
+
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- ABOUT -->
 
-    <section id="about" class="section">
+    <!-- CONTACT -->
 
-        <div class="section-top">
+    <div class="contact">
 
-            <div class="section-title">
-                03 — About
-            </div>
-
+        <div class="contact-title">
+            CONTACT
         </div>
 
+        <a
+            class="contact-email"
+            href="mailto:hello@006studio.com"
+        >
+            LET'S WORK TOGETHER →
+        </a>
 
-        <div class="about-box">
+    </div>
 
-            <div class="about-heading">
-                MAKING<br>
-                THINGS<br>
-                MOVE.
-            </div>
 
-            <div class="about-text">
-                About and contact information will live here.
-                <br><br>
-                Motion design, 3D, creative direction and selected experiments by 006.
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-    <span>© 006.STUDIO</span>
+    <span>
+        © 006.STUDIO
+    </span>
 
-    <span>HANOI / VIETNAM</span>
+    <span>
+        COLORBLIND × 006
+    </span>
 
 </footer>
+
+
+
+<script>
+
+    /* =========================
+       PROJECT FILTER
+    ========================= */
+
+    const filters = document.querySelectorAll(".filter");
+    const projects = document.querySelectorAll(".project");
+
+    filters.forEach(filter => {
+
+        filter.addEventListener("click", () => {
+
+            filters.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            filter.classList.add("active");
+
+            const selected = filter.dataset.filter;
+
+            projects.forEach(project => {
+
+                const category = project.dataset.category;
+
+                if (
+                    selected === "all" ||
+                    category === selected
+                ) {
+
+                    project.classList.remove("hidden");
+
+                } else {
+
+                    project.classList.add("hidden");
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+
+    /* =========================
+       LANGUAGE SWITCH
+    ========================= */
+
+    const languageButtons =
+        document.querySelectorAll(".language-button");
+
+    const englishContent =
+        document.getElementById("about-en");
+
+    const vietnameseContent =
+        document.getElementById("about-vi");
+
+
+    languageButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const language =
+                button.dataset.language;
+
+
+            languageButtons.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+
+            if (language === "en") {
+
+                englishContent.style.display = "block";
+                vietnameseContent.style.display = "none";
+
+            } else {
+
+                englishContent.style.display = "none";
+                vietnameseContent.style.display = "block";
+
+            }
+
+        });
+
+    });
+
+</script>
 
 
 </body>
