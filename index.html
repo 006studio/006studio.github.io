@@ -140,37 +140,79 @@ header {
     display: block;
 }
 
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
 .hero-copy {
-    padding: 55px 9.8% 75px;
+    padding: 70px 9.8% 110px;
 }
 
-.hero-copy h1 {
-    max-width: 900px;
 
-    font-size: clamp(42px, 7vw, 100px);
-    line-height: 0.92;
+/* MAIN STATEMENT */
+
+.hero-copy h1 {
+    max-width: 1100px;
+
+    font-size: clamp(70px, 11vw, 165px);
+    line-height: 0.82;
     font-weight: 900;
-    letter-spacing: -4px;
+    letter-spacing: -7px;
 
     will-change: transform;
 }
 
-.hero-copy h1 span {
+.hero-copy h1 .vision-line {
+    display: block;
     color: var(--teal);
 }
 
-.hero-copy h1 .headline-orange {
+.hero-copy h1 .visual-line {
+    display: block;
+    color: var(--black);
+}
+
+
+/* SMALL IDENTITY LINE */
+
+.hero-identity {
+    margin-top: 48px;
+
+    font-size: clamp(24px, 3vw, 44px);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    max-width: 850px;
+
+    will-change: transform;
+}
+
+.hero-identity .colorblind {
+    color: var(--teal);
+}
+
+.hero-identity .headline-orange {
     color: var(--orange);
 }
 
-.hero-copy p {
-    margin-top: 28px;
 
-    max-width: 580px;
+/* =========================================================
+   PLAYFUL HEADLINE
+========================================================= */
 
-    font-size: 15px;
-    line-height: 1.65;
-    font-weight: 500;
+.mouse-reactive {
+    cursor: default;
+}
+
+.playful-line {
+    display: block;
+    position: relative;
+
+    will-change: transform;
+
+    transform-origin: center center;
 }
 
 
@@ -233,6 +275,7 @@ header {
     font-weight: 800;
 
     cursor: pointer;
+
     transition:
         background 0.25s ease,
         color 0.25s ease;
@@ -349,36 +392,6 @@ header {
 
 .discipline-intro h2 span {
     display: block;
-}
-
-
-/* =========================================================
-   PLAYFUL HEADLINE
-========================================================= */
-
-.mouse-reactive {
-    cursor: default;
-}
-
-.playful-line {
-    display: block;
-    position: relative;
-
-    will-change: transform;
-
-    transform-origin: center center;
-}
-
-.hero-copy .playful-line {
-    display: block;
-}
-
-.hero-copy .playful-line span {
-    display: inline;
-}
-
-.hero-copy .playful-line .headline-orange {
-    color: var(--orange);
 }
 
 
@@ -871,12 +884,21 @@ footer {
     }
 
     .hero-copy {
-        padding: 45px 20px 65px;
+        padding: 55px 20px 80px;
     }
 
     .hero-copy h1 {
-        font-size: 48px;
-        letter-spacing: -2.5px;
+        font-size: 68px;
+        letter-spacing: -4px;
+    }
+
+    .hero-identity {
+        margin-top: 32px;
+
+        font-size: 24px;
+        line-height: 0.98;
+
+        letter-spacing: -1.2px;
     }
 
     .about,
@@ -1039,13 +1061,41 @@ footer {
 
         <div class="hero-copy">
 
-            <h1 class="reveal mouse-reactive mouse-reactive-hero">
+            <!-- MAIN STATEMENT -->
 
-                Creative studio<br>
+            <h1 class="reveal mouse-reactive main-headline">
 
-                by <span>Colorblind</span> × 006
+                <span class="playful-line vision-line">
+                    FROM VISION
+                </span>
+
+                <span class="playful-line visual-line">
+                    TO VISUAL
+                </span>
 
             </h1>
+
+
+            <!-- SMALLER IDENTITY -->
+
+            <div class="hero-identity reveal reveal-delay-1 mouse-reactive">
+
+                <span class="playful-line">
+                    Creative studio
+                </span>
+
+                <span class="playful-line">
+                    by
+                    <span class="colorblind">
+                        Colorblind
+                    </span>
+                    ×
+                    <span class="headline-orange">
+                        006
+                    </span>
+                </span>
+
+            </div>
 
         </div>
 
@@ -1079,7 +1129,9 @@ footer {
                     <p class="reveal reveal-delay-2">
                         With 7+ years of experience in the creative industry,
                         we specialize in
-                        <span class="highlight">2D & 3D Motion Design</span>,
+                        <span class="highlight">
+                            2D & 3D Motion Design
+                        </span>,
                         turning ideas and visions into clear, distinctive visual experiences.
                     </p>
 
@@ -1089,9 +1141,13 @@ footer {
 
                     <p class="reveal reveal-delay-4">
                         006studio brings together two creative disciplines:
-                        <span class="orange">COLORBLIND</span> —
+                        <span class="orange">
+                            COLORBLIND
+                        </span> —
                         2D & 3D Motion Design;
-                        <span class="highlight">006LAB</span> —
+                        <span class="highlight">
+                            006LAB
+                        </span> —
                         3D Printing & Object Design.
                     </p>
 
@@ -1115,7 +1171,9 @@ footer {
                     <p>
                         Với hơn 7 năm kinh nghiệm trong ngành sáng tạo,
                         chúng tôi tập trung vào
-                        <span class="highlight">2D & 3D Motion Design</span>,
+                        <span class="highlight">
+                            2D & 3D Motion Design
+                        </span>,
                         biến ý tưởng và vision thành những trải nghiệm hình ảnh
                         rõ ràng và có cá tính.
                     </p>
@@ -1126,9 +1184,13 @@ footer {
 
                     <p>
                         006studio kết hợp hai hướng sáng tạo:
-                        <span class="orange">COLORBLIND</span> —
+                        <span class="orange">
+                            COLORBLIND
+                        </span> —
                         2D & 3D Motion Design;
-                        <span class="highlight">006LAB</span> —
+                        <span class="highlight">
+                            006LAB
+                        </span> —
                         3D Printing & Object Design.
                     </p>
 
@@ -1168,7 +1230,9 @@ footer {
 
             <div class="identity-card reveal reveal-delay-1">
 
-                <h3>COLORBLIND</h3>
+                <h3>
+                    COLORBLIND
+                </h3>
 
                 <p>
                     Personal creative identity for
@@ -1180,7 +1244,9 @@ footer {
 
             <div class="identity-card reveal reveal-delay-2">
 
-                <h3>006LAB</h3>
+                <h3>
+                    006LAB
+                </h3>
 
                 <p>
                     3D Printing & Object Design.
@@ -1219,7 +1285,9 @@ footer {
 
                 FROM IDEA
 
-                <span>TO MOTION</span>
+                <span>
+                    TO MOTION
+                </span>
 
             </h2>
 
@@ -1243,9 +1311,13 @@ footer {
                 class="category-card reveal reveal-delay-1"
                 onclick="openCategory('visual-led')">
 
-                <div class="category-number">01</div>
+                <div class="category-number">
+                    01
+                </div>
 
-                <h3>VISUAL<br>LED</h3>
+                <h3>
+                    VISUAL<br>LED
+                </h3>
 
                 <p>
                     Large-scale visual content, motion graphics and
@@ -1253,7 +1325,9 @@ footer {
                     and spatial environments.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1262,16 +1336,22 @@ footer {
                 class="category-card reveal reveal-delay-2"
                 onclick="openCategory('frame-by-frame')">
 
-                <div class="category-number">02</div>
+                <div class="category-number">
+                    02
+                </div>
 
-                <h3>FRAME BY<br>FRAME</h3>
+                <h3>
+                    FRAME BY<br>FRAME
+                </h3>
 
                 <p>
                     Frame-by-frame animation, hand-crafted movement
                     and illustrated motion experiments.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1280,16 +1360,22 @@ footer {
                 class="category-card reveal reveal-delay-3"
                 onclick="openCategory('infographic')">
 
-                <div class="category-number">03</div>
+                <div class="category-number">
+                    03
+                </div>
 
-                <h3>INFOGRAPHIC<br>& BRAND FILM</h3>
+                <h3>
+                    INFOGRAPHIC<br>& BRAND FILM
+                </h3>
 
                 <p>
                     Visual storytelling, information design and brand
                     films built to communicate ideas through motion.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1298,16 +1384,22 @@ footer {
                 class="category-card reveal reveal-delay-1"
                 onclick="openCategory('cgi')">
 
-                <div class="category-number">04</div>
+                <div class="category-number">
+                    04
+                </div>
 
-                <h3>CGI</h3>
+                <h3>
+                    CGI
+                </h3>
 
                 <p>
                     3D imagery, product visuals, environments
                     and CGI experiments.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1316,16 +1408,22 @@ footer {
                 class="category-card reveal reveal-delay-2"
                 onclick="openCategory('sculpting')">
 
-                <div class="category-number">05</div>
+                <div class="category-number">
+                    05
+                </div>
 
-                <h3>SCULPTING</h3>
+                <h3>
+                    SCULPTING
+                </h3>
 
                 <p>
                     Digital sculpting, character development
                     and 3D form exploration.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1334,16 +1432,22 @@ footer {
                 class="category-card reveal reveal-delay-3"
                 onclick="openCategory('ai-video')">
 
-                <div class="category-number">06</div>
+                <div class="category-number">
+                    06
+                </div>
 
-                <h3>AI VIDEO<br>SOLUTION</h3>
+                <h3>
+                    AI VIDEO<br>SOLUTION
+                </h3>
 
                 <p>
                     AI-assisted video production, visual development
                     and creative solutions for faster content creation.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1378,7 +1482,9 @@ footer {
 
                 FROM DIGITAL
 
-                <span>TO OBJECT</span>
+                <span>
+                    TO OBJECT
+                </span>
 
             </h2>
 
@@ -1402,16 +1508,22 @@ footer {
                 class="category-card reveal reveal-delay-1"
                 onclick="openCategory('brand-merchandise')">
 
-                <div class="category-number">01</div>
+                <div class="category-number">
+                    01
+                </div>
 
-                <h3>BRAND<br>MERCHANDISE</h3>
+                <h3>
+                    BRAND<br>MERCHANDISE
+                </h3>
 
                 <p>
                     Physical objects, merchandise and branded products
                     developed through 3D design and fabrication.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1420,16 +1532,22 @@ footer {
                 class="category-card reveal reveal-delay-2"
                 onclick="openCategory('mascot')">
 
-                <div class="category-number">02</div>
+                <div class="category-number">
+                    02
+                </div>
 
-                <h3>MASCOT</h3>
+                <h3>
+                    MASCOT
+                </h3>
 
                 <p>
                     Character and mascot design translated from
                     digital concepts into physical objects.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -1438,16 +1556,22 @@ footer {
                 class="category-card reveal reveal-delay-3"
                 onclick="openCategory('small-decor')">
 
-                <div class="category-number">03</div>
+                <div class="category-number">
+                    03
+                </div>
 
-                <h3>SMALL<br>DECOR</h3>
+                <h3>
+                    SMALL<br>DECOR
+                </h3>
 
                 <p>
                     Small-scale objects, functional pieces and
                     decorative experiments made for the physical world.
                 </p>
 
-                <div class="category-arrow">↗</div>
+                <div class="category-arrow">
+                    ↗
+                </div>
 
             </div>
 
@@ -2045,10 +2169,10 @@ revealElements.forEach(
 
 
 /* =========================================================
-   PLAYFUL HEADLINE INTERACTION
+   PLAYFUL MOUSE INTERACTION
 ========================================================= */
 
-const reactiveHeadlines =
+const reactiveElements =
     document.querySelectorAll(
         ".mouse-reactive"
     );
@@ -2062,82 +2186,14 @@ const supportsMouse =
 
 if (supportsMouse) {
 
-    reactiveHeadlines.forEach(
-        headline => {
-
-            /*
-             * -------------------------------------------------
-             * PREPARE LINES
-             * -------------------------------------------------
-             */
-
-            if (
-                headline.classList.contains(
-                    "mouse-reactive-hero"
-                )
-            ) {
-
-                headline.innerHTML = `
-                    <span class="playful-line">
-                        Creative studio
-                    </span>
-
-                    <span class="playful-line">
-                        by <span>Colorblind</span> ×
-                        <span class="headline-orange">006</span>
-                    </span>
-                `;
-
-            } else {
-
-                const firstLine =
-                    headline.childNodes[0]
-                        .textContent
-                        .trim();
-
-
-                const secondLine =
-                    headline.querySelector(
-                        ":scope > span"
-                    );
-
-
-                if (secondLine) {
-
-                    const secondText =
-                        secondLine.textContent.trim();
-
-
-                    headline.childNodes[0]
-                        .textContent = "";
-
-
-                    headline.innerHTML = `
-                        <span class="playful-line">
-                            ${firstLine}
-                        </span>
-
-                        <span class="playful-line">
-                            ${secondText}
-                        </span>
-                    `;
-
-                }
-
-            }
-
+    reactiveElements.forEach(
+        element => {
 
             const lines =
-                headline.querySelectorAll(
-                    ":scope > .playful-line"
+                element.querySelectorAll(
+                    ".playful-line"
                 );
 
-
-            /*
-             * -------------------------------------------------
-             * STATE
-             * -------------------------------------------------
-             */
 
             let mouseInside = false;
 
@@ -2156,29 +2212,21 @@ if (supportsMouse) {
                 new Array(lines.length)
                     .fill(0);
 
-
             const targetLineY =
                 new Array(lines.length)
                     .fill(0);
 
-
             const currentLineX =
                 new Array(lines.length)
                     .fill(0);
-
 
             const currentLineY =
                 new Array(lines.length)
                     .fill(0);
 
 
-            let animationStarted = false;
-
-
             /*
-             * -------------------------------------------------
-             * ANIMATION LOOP
-             * -------------------------------------------------
+             * Smooth animation
              */
 
             function animate() {
@@ -2227,7 +2275,7 @@ if (supportsMouse) {
                                 : 0.82;
 
 
-                        const lineRotation =
+                        const rotation =
                             currentRotation *
                             (
                                 index === 0
@@ -2255,7 +2303,7 @@ if (supportsMouse) {
                             )
 
                             rotate(
-                                ${lineRotation}deg
+                                ${rotation}deg
                             )
                             `;
 
@@ -2270,28 +2318,14 @@ if (supportsMouse) {
             }
 
 
-            /*
-             * -------------------------------------------------
-             * START
-             * -------------------------------------------------
-             */
-
-            if (!animationStarted) {
-
-                animationStarted = true;
-
-                animate();
-
-            }
+            animate();
 
 
             /*
-             * -------------------------------------------------
-             * POINTER ENTER
-             * -------------------------------------------------
+             * Pointer enter
              */
 
-            headline.addEventListener(
+            element.addEventListener(
                 "pointerenter",
                 () => {
 
@@ -2302,12 +2336,10 @@ if (supportsMouse) {
 
 
             /*
-             * -------------------------------------------------
-             * POINTER MOVE
-             * -------------------------------------------------
+             * Pointer move
              */
 
-            headline.addEventListener(
+            element.addEventListener(
                 "pointermove",
                 event => {
 
@@ -2317,7 +2349,7 @@ if (supportsMouse) {
 
 
                     const rect =
-                        headline.getBoundingClientRect();
+                        element.getBoundingClientRect();
 
 
                     const x =
@@ -2343,8 +2375,7 @@ if (supportsMouse) {
                                 1,
                                 x /
                                 (
-                                    rect.width /
-                                    2
+                                    rect.width / 2
                                 )
                             )
                         );
@@ -2357,34 +2388,34 @@ if (supportsMouse) {
                                 1,
                                 y /
                                 (
-                                    rect.height /
-                                    2
+                                    rect.height / 2
                                 )
                             )
                         );
 
 
                     /*
-                     * Chữ né nhẹ cursor.
+                     * Main movement
                      */
 
                     targetX =
-                        normalizedX * -15;
+                        normalizedX * -14;
+
 
                     targetY =
                         normalizedY * -9;
 
 
                     /*
-                     * Tilt.
+                     * Slight rotation
                      */
 
                     targetRotation =
-                        normalizedX * 3.2;
+                        normalizedX * 3;
 
 
                     /*
-                     * Individual line movement.
+                     * Individual line movement
                      */
 
                     lines.forEach(
@@ -2418,12 +2449,10 @@ if (supportsMouse) {
 
 
             /*
-             * -------------------------------------------------
-             * POINTER LEAVE
-             * -------------------------------------------------
+             * Pointer leave
              */
 
-            headline.addEventListener(
+            element.addEventListener(
                 "pointerleave",
                 () => {
 
@@ -2463,14 +2492,14 @@ if (
     ).matches
 ) {
 
-    reactiveHeadlines.forEach(
-        headline => {
+    reactiveElements.forEach(
+        element => {
 
-            headline.style.transform =
+            element.style.transform =
                 "none";
 
 
-            headline
+            element
                 .querySelectorAll(
                     ".playful-line"
                 )
