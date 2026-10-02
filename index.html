@@ -18,10 +18,6 @@
 
     <style>
 
-        /* =========================
-           BASIC
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -75,6 +71,7 @@
 
         nav a {
             text-decoration: none;
+            color: #111111;
 
             font-size: 11px;
             font-weight: 700;
@@ -226,6 +223,8 @@
 
             text-decoration: none;
 
+            color: #111111;
+
             cursor: pointer;
         }
 
@@ -276,6 +275,7 @@
         .project-info {
             display: flex;
             justify-content: space-between;
+
             gap: 20px;
 
             padding: 14px 0 38px;
@@ -297,7 +297,7 @@
 
 
         /* =========================
-           PROJECT DETAIL OVERLAY
+           PROJECT DETAIL
         ========================= */
 
         .project-overlay {
@@ -360,11 +360,11 @@
         }
 
         .project-detail {
-            padding: 80px 32px 120px;
-
             max-width: 1500px;
 
             margin: 0 auto;
+
+            padding: 80px 32px 120px;
         }
 
         .project-detail-category {
@@ -531,6 +531,8 @@
 
         .language-switch {
             display: flex;
+            align-items: center;
+
             gap: 6px;
         }
 
@@ -547,11 +549,18 @@
             cursor: pointer;
 
             opacity: 0.35;
+
+            padding: 0;
         }
 
         .language-button.active {
             opacity: 1;
             color: #008C8C;
+        }
+
+        .language-divider {
+            font-size: 10px;
+            opacity: 0.3;
         }
 
         .about-content {
@@ -775,6 +784,7 @@
             footer {
                 padding: 24px 20px;
             }
+
         }
 
     </style>
@@ -895,8 +905,6 @@
     <div class="project-grid">
 
 
-        <!-- PROJECT 01 -->
-
         <a
             href="#"
             class="project"
@@ -924,8 +932,6 @@
 
         </a>
 
-
-        <!-- PROJECT 02 -->
 
         <a
             href="#"
@@ -955,8 +961,6 @@
         </a>
 
 
-        <!-- PROJECT 03 -->
-
         <a
             href="#"
             class="project"
@@ -984,8 +988,6 @@
 
         </a>
 
-
-        <!-- PROJECT 04 -->
 
         <a
             href="#"
@@ -1015,8 +1017,6 @@
         </a>
 
 
-        <!-- PROJECT 05 -->
-
         <a
             href="#"
             class="project"
@@ -1044,8 +1044,6 @@
 
         </a>
 
-
-        <!-- PROJECT 06 -->
 
         <a
             href="#"
@@ -1128,15 +1126,44 @@
             03 — About
         </div>
 
+
+        <div class="language-switch">
+
+            <button
+                class="language-button active"
+                data-language="en"
+            >
+                EN
+            </button>
+
+            <span class="language-divider">
+                /
+            </span>
+
+            <button
+                class="language-button"
+                data-language="vi"
+            >
+                VI
+            </button>
+
+        </div>
+
     </div>
 
 
-    <div class="about-content">
+
+    <!-- ENGLISH -->
+
+    <div
+        class="about-content language-content"
+        id="about-en"
+    >
 
         <div class="about-heading">
             FROM<br>
             VISION<br>
-            TO VISUAL.
+            TO VISUAL
         </div>
 
 
@@ -1158,7 +1185,7 @@
             <br>
 
             <p>
-                From Vision to Visual.
+                From Vision to Visual
             </p>
 
             <br>
@@ -1167,6 +1194,13 @@
                 006studio brings together two creative disciplines:
                 <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
                 <strong>006LAB</strong> — 3D Printing & Object Design.
+            </p>
+
+            <br>
+
+            <p>
+                From digital motion to physical objects,
+                we turn ideas into visuals with character and purpose.
             </p>
 
         </div>
@@ -1203,23 +1237,119 @@
 
         </div>
 
+    </div>
 
-        <div class="contact">
 
-            <div class="contact-title">
-                CONTACT
+
+    <!-- VIETNAMESE -->
+
+    <div
+        class="about-content language-content"
+        id="about-vi"
+        style="display: none;"
+    >
+
+        <div class="about-heading">
+            FROM<br>
+            VISION<br>
+            TO VISUAL
+        </div>
+
+
+        <div class="about-text">
+
+            <p>
+                006studio bắt đầu từ một creative trẻ với niềm đam mê,
+                sự tò mò và mong muốn không ngừng sáng tạo.
+            </p>
+
+            <br>
+
+            <p>
+                Với hơn 7 năm kinh nghiệm trong ngành sáng tạo,
+                chúng tôi tập trung vào 2D & 3D Motion Design,
+                biến ý tưởng và vision thành những trải nghiệm
+                hình ảnh rõ ràng và có cá tính.
+            </p>
+
+            <br>
+
+            <p>
+                From Vision to Visual
+            </p>
+
+            <br>
+
+            <p>
+                006studio kết hợp hai hướng sáng tạo:
+                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
+                <strong>006LAB</strong> — 3D Printing & Object Design.
+            </p>
+
+            <br>
+
+            <p>
+                Từ chuyển động kỹ thuật số đến những vật thể trong
+                thế giới thực, chúng tôi biến ý tưởng thành những
+                visual có cá tính và mục đích.
+            </p>
+
+        </div>
+
+
+        <div class="about-identity">
+
+
+            <div class="identity-card">
+
+                <div class="identity-name">
+                    COLORBLIND
+                </div>
+
+                <div class="identity-description">
+                    Nhận diện sáng tạo cá nhân trong lĩnh vực
+                    2D & 3D Motion Design.
+                </div>
+
             </div>
 
-            <a
-                class="contact-email"
-                href="mailto:hello@006studio.com"
-            >
-                LET'S WORK TOGETHER →
-            </a>
+
+            <div class="identity-card">
+
+                <div class="identity-name">
+                    006LAB
+                </div>
+
+                <div class="identity-description">
+                    3D Printing & Object Design.
+                </div>
+
+            </div>
+
 
         </div>
 
     </div>
+
+
+
+    <!-- CONTACT -->
+
+    <div class="contact">
+
+        <div class="contact-title">
+            CONTACT
+        </div>
+
+        <a
+            class="contact-email"
+            href="mailto:hello@006studio.com"
+        >
+            LET'S WORK TOGETHER →
+        </a>
+
+    </div>
+
 
 </section>
 
@@ -1298,7 +1428,6 @@
 
         <div class="project-detail-info">
 
-
             <div>
 
                 <div class="detail-label">
@@ -1323,9 +1452,6 @@
                     id="detailDescription"
                 >
                     Project description will live here.
-                    This area can later contain the story,
-                    creative direction, animation process,
-                    client information and credits.
                 </div>
 
             </div>
@@ -1360,6 +1486,7 @@
 
 
 <script>
+
 
     /* =========================
        PROJECT FILTER
@@ -1559,11 +1686,49 @@
 
 
     /* =========================
-       LANGUAGE NOTE
-       ABOUT IS CURRENTLY ENGLISH
-       VIETNAMESE VERSION WILL BE
-       ADDED AFTER CONTENT IS FINALIZED.
+       LANGUAGE SWITCH
     ========================= */
+
+    const languageButtons =
+        document.querySelectorAll(".language-button");
+
+    const englishContent =
+        document.getElementById("about-en");
+
+    const vietnameseContent =
+        document.getElementById("about-vi");
+
+
+    languageButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const language =
+                button.dataset.language;
+
+
+            languageButtons.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+
+            if (language === "en") {
+
+                englishContent.style.display = "block";
+                vietnameseContent.style.display = "none";
+
+            } else {
+
+                englishContent.style.display = "none";
+                vietnameseContent.style.display = "block";
+
+            }
+
+        });
+
+    });
 
 </script>
 
