@@ -211,10 +211,19 @@
             color: #111111;
 
             cursor: pointer;
+
+            min-width: 0;
         }
 
         .category-image {
-            aspect-ratio: 1 / 1;
+            /*
+                Horizontal 4:3 ratio.
+                This keeps the card noticeably wider
+                than a square while preserving enough
+                vertical space for the typography.
+            */
+
+            aspect-ratio: 4 / 3;
 
             background: #D9D4C9;
 
@@ -931,6 +940,23 @@
 
 
         /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-image-title {
+                font-size: clamp(24px, 4vw, 40px);
+            }
+
+        }
+
+
+        /* =========================
            MOBILE
         ========================= */
 
@@ -979,6 +1005,22 @@
 
             .category-grid {
                 grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .category-image {
+                aspect-ratio: 4 / 3;
+
+                padding: 18px;
+            }
+
+            .category-info {
+                padding: 13px 0 35px;
+            }
+
+            .category-image-title {
+                font-size: clamp(26px, 9vw, 46px);
             }
 
             .category-page-header {
@@ -2719,7 +2761,7 @@
 
             overlay.classList.remove("open");
 
-            document.body.classList.add("no-scroll");
+            document.body.classList.remove("no-scroll");
 
         }
     );
