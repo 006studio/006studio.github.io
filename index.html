@@ -51,11 +51,13 @@
             justify-content: space-between;
             align-items: center;
 
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
 
-            z-index: 100;
+            background: #F3F0E8;
+
+            z-index: 2000;
         }
 
         .logo {
@@ -76,7 +78,9 @@
             font-size: 11px;
             font-weight: 700;
 
-            transition: opacity 0.2s ease;
+            transition:
+                opacity 0.2s ease,
+                color 0.2s ease;
         }
 
         nav a:hover {
@@ -91,7 +95,7 @@
         .hero {
             min-height: 100vh;
 
-            padding: 115px 32px 60px;
+            padding: 105px 32px 60px;
 
             display: flex;
             flex-direction: column;
@@ -187,6 +191,13 @@
 
         .hero h1 span {
             color: #F26B38;
+        }
+
+        /* NEW:
+           2D / 3D is now teal */
+
+        .hero h1 .hero-teal {
+            color: #008C8C;
         }
 
         .hero-text p {
@@ -1502,7 +1513,7 @@
         </div>
 
         <h1>
-            2D / 3D<br>
+            <span class="hero-teal">2D / 3D</span><br>
             <span>MOTION</span>
         </h1>
 
