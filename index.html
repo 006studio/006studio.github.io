@@ -337,8 +337,15 @@ header {
     font-weight: 900;
     letter-spacing: -6px;
 
-    /* Mouse interaction */
+    /*
+     * Mouse interaction
+     */
     will-change: transform;
+    transform-origin: center center;
+}
+
+.discipline-intro h2 span {
+    display: block;
 }
 
 
@@ -483,7 +490,6 @@ header {
 }
 
 #motion .discipline-intro h2 span {
-    display: block;
     color: var(--beige);
 }
 
@@ -530,7 +536,6 @@ header {
 }
 
 #lab .discipline-intro h2 span {
-    display: block;
     color: var(--black);
 }
 
@@ -803,6 +808,22 @@ footer {
 
 
 /* =========================================================
+   MOUSE REACTIVE HEADLINES
+========================================================= */
+
+/*
+ * Quan trọng:
+ * Headline mouse-reactive không dùng transition transform.
+ * Scroll reveal vẫn animate opacity + transform trước khi xuất hiện.
+ * Sau khi xuất hiện, JavaScript sẽ điều khiển transform.
+ */
+
+.mouse-reactive {
+    will-change: transform;
+}
+
+
+/* =========================================================
    MOBILE
 ========================================================= */
 
@@ -1023,8 +1044,6 @@ footer {
 
             <div class="about-copy">
 
-                <!-- EN -->
-
                 <div class="about-version active" id="about-en">
 
                     <p class="reveal reveal-delay-1">
@@ -1058,8 +1077,6 @@ footer {
 
                 </div>
 
-
-                <!-- VI -->
 
                 <div class="about-version" id="about-vi">
 
@@ -1850,12 +1867,6 @@ const revealObserver = new IntersectionObserver(
 
             entry.target.classList.add("is-visible");
 
-            /*
-             * Chỉ animate một lần.
-             * Sau khi xuất hiện thì observer không cần
-             * theo dõi element này nữa.
-             */
-
             observer.unobserve(entry.target);
 
         });
@@ -1876,247 +1887,168 @@ revealElements.forEach(element => {
 
 
 /* =========================================================
-   MOUSE INTERACTION — MAGNETIC / PLAYFUL
+   HEADLINE MOUSE INTERACTION
 ========================================================= */
 
-const mouseReactiveElements = document.querySelectorAll(".mouse-reactive");
-
-let mouseX = 0;
-let mouseY = 0;
-
-let targetX = 0;
-let targetY = 0;
-
-let currentX = 0;
-let currentY = 0;
-
-let mouseInside = false;
-
-
 /*
- * Chỉ bật interaction trên thiết bị có
- * chuột / trackpad.
+ * Interaction mới:
+ *
+ * Không còn tính khoảng cách toàn trang.
+ *
+ * Khi con trỏ đi vào chính headline:
+ * - chữ di chuyển nhẹ theo hướng con trỏ
+ * - có một chút rotation
+ *
+ * Khi rời headline:
+ * - chữ trở về vị trí ban đầu
+ *
+ * Cách này ổn định hơn và dễ cảm nhận hơn.
  */
+
+const mouseReactiveElements =
+    document.querySelectorAll(".mouse-reactive");
+
+
 const canUseMouse =
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 
-/*
- * Tìm element gần con trỏ nhất.
- */
-function updateMouseTarget(event) {
-
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-
-    let closestElement = null;
-    let closestDistance = Infinity;
-
-    mouseReactiveElements.forEach(element => {
-
-        const rect = element.getBoundingClientRect();
-
-        /*
-         * Tâm của heading.
-         */
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        const dx = mouseX - centerX;
-        const dy = mouseY - centerY;
-
-        const distance = Math.sqrt(
-            dx * dx + dy * dy
-        );
-
-        if (distance < closestDistance) {
-
-            closestDistance = distance;
-            closestElement = element;
-
-        }
-
-    });
-
-
-    /*
-     * Nếu chuột quá xa tất cả heading,
-     * interaction trở về vị trí ban đầu.
-     */
-    const activationDistance = 750;
-
-    if (
-        closestElement &&
-        closestDistance < activationDistance
-    ) {
-
-        const rect =
-            closestElement.getBoundingClientRect();
-
-        const centerX =
-            rect.left + rect.width / 2;
-
-        const centerY =
-            rect.top + rect.height / 2;
-
-        /*
-         * Khoảng cách chuẩn hóa.
-         *
-         * 0 = rất gần
-         * 1 = ở rìa interaction
-         */
-        const proximity =
-            Math.max(
-                0,
-                Math.min(
-                    1,
-                    1 - closestDistance / activationDistance
-                )
-            );
-
-
-        /*
-         * Hướng từ tâm chữ tới chuột.
-         */
-        const directionX =
-            (mouseX - centerX) / Math.max(rect.width / 2, 1);
-
-        const directionY =
-            (mouseY - centerY) / Math.max(rect.height / 2, 1);
-
-
-        /*
-         * Magnetic movement.
-         *
-         * Xa → gần như 0px
-         * Gần → tối đa khoảng 18px
-         */
-        targetX =
-            directionX * 18 * proximity;
-
-        targetY =
-            directionY * 12 * proximity;
-
-
-        /*
-         * Khi tới gần hơn,
-         * thêm một chút rotation.
-         */
-        const maxRotation = 2.8;
-
-        targetRotation =
-            directionX * maxRotation * proximity;
-
-
-        /*
-         * Đánh dấu đang active.
-         */
-        activeReactiveElement = closestElement;
-
-    } else {
-
-        targetX = 0;
-        targetY = 0;
-        targetRotation = 0;
-
-        activeReactiveElement = null;
-
-    }
-
-}
-
-
-/*
- * Các giá trị hiện tại.
- */
-let targetRotation = 0;
-let currentRotation = 0;
-
-let activeReactiveElement = null;
-
-
-/*
- * Smooth animation loop.
- *
- * Dùng requestAnimationFrame thay vì
- * update transform trực tiếp theo mousemove,
- * giúp chuyển động mượt hơn.
- */
-function animateMouseInteraction() {
-
-    /*
-     * Ease.
-     */
-    currentX +=
-        (targetX - currentX) * 0.10;
-
-    currentY +=
-        (targetY - currentY) * 0.10;
-
-    currentRotation +=
-        (targetRotation - currentRotation) * 0.10;
-
-
-    /*
-     * Reset toàn bộ heading trước.
-     */
-    mouseReactiveElements.forEach(element => {
-
-        const isActive =
-            element === activeReactiveElement;
-
-        if (isActive) {
-
-            element.style.transform =
-                `translate3d(${currentX}px, ${currentY}px, 0)
-                 rotate(${currentRotation}deg)`;
-
-        } else {
-
-            element.style.transform =
-                "translate3d(0, 0, 0) rotate(0deg)";
-
-        }
-
-    });
-
-
-    requestAnimationFrame(animateMouseInteraction);
-}
-
-
-/*
- * Mouse listener.
- */
 if (canUseMouse) {
 
-    document.addEventListener(
-        "mousemove",
-        updateMouseTarget,
-        { passive: true }
-    );
+    mouseReactiveElements.forEach(element => {
 
-    animateMouseInteraction();
+        let targetX = 0;
+        let targetY = 0;
+        let targetRotation = 0;
+
+        let currentX = 0;
+        let currentY = 0;
+        let currentRotation = 0;
+
+        let animationFrame;
+
+
+        function animate() {
+
+            currentX +=
+                (targetX - currentX) * 0.12;
+
+            currentY +=
+                (targetY - currentY) * 0.12;
+
+            currentRotation +=
+                (targetRotation - currentRotation) * 0.12;
+
+
+            element.style.transform =
+                `translate3d(
+                    ${currentX}px,
+                    ${currentY}px,
+                    0
+                )
+                rotate(${currentRotation}deg)`;
+
+
+            animationFrame =
+                requestAnimationFrame(animate);
+
+        }
+
+
+        element.addEventListener(
+            "pointermove",
+            function(event) {
+
+                const rect =
+                    element.getBoundingClientRect();
+
+
+                /*
+                 * Vị trí chuột bên trong headline.
+                 *
+                 * -1 = mép trái / trên
+                 *  0 = chính giữa
+                 * +1 = mép phải / dưới
+                 */
+                const relativeX =
+                    ((event.clientX - rect.left) / rect.width) * 2 - 1;
+
+                const relativeY =
+                    ((event.clientY - rect.top) / rect.height) * 2 - 1;
+
+
+                /*
+                 * Movement.
+                 *
+                 * Headline sẽ di chuyển nhẹ
+                 * về phía con trỏ.
+                 */
+                targetX =
+                    relativeX * 16;
+
+                targetY =
+                    relativeY * 10;
+
+
+                /*
+                 * Rotation rất nhẹ.
+                 */
+                targetRotation =
+                    relativeX * 2.5;
+
+            },
+            { passive: true }
+        );
+
+
+        element.addEventListener(
+            "pointerenter",
+            function() {
+
+                if (!animationFrame) {
+                    animate();
+                }
+
+            }
+        );
+
+
+        element.addEventListener(
+            "pointerleave",
+            function() {
+
+                targetX = 0;
+                targetY = 0;
+                targetRotation = 0;
+
+                /*
+                 * Cho animation tiếp tục chạy
+                 * để chữ smoothly trở về.
+                 */
+
+            }
+        );
+
+    });
 
 }
 
 
 /* =========================================================
-   MOUSE LEAVE
+   REDUCED MOTION
 ========================================================= */
 
-document.addEventListener(
-    "mouseleave",
-    function() {
+if (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
 
-        targetX = 0;
-        targetY = 0;
-        targetRotation = 0;
+    mouseReactiveElements.forEach(element => {
 
-        activeReactiveElement = null;
+        element.style.transform = "none";
 
-    }
-);
+    });
+
+}
 
 </script>
 
