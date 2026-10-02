@@ -336,10 +336,9 @@ header {
     line-height: 0.82;
     font-weight: 900;
     letter-spacing: -6px;
-}
 
-.discipline-intro h2 span {
-    display: block;
+    /* Mouse interaction */
+    will-change: transform;
 }
 
 
@@ -484,6 +483,7 @@ header {
 }
 
 #motion .discipline-intro h2 span {
+    display: block;
     color: var(--beige);
 }
 
@@ -530,6 +530,7 @@ header {
 }
 
 #lab .discipline-intro h2 span {
+    display: block;
     color: var(--black);
 }
 
@@ -997,7 +998,7 @@ footer {
 
         <div class="hero-copy">
 
-            <h1 class="reveal">
+            <h1 class="reveal mouse-reactive mouse-reactive-hero">
                 Creative studio<br>
                 by <span>Colorblind</span> × 006
             </h1>
@@ -1170,7 +1171,7 @@ footer {
 
         <div class="discipline-intro">
 
-            <h2 class="reveal">
+            <h2 class="reveal mouse-reactive">
                 FROM IDEA
                 <span>TO MOTION</span>
             </h2>
@@ -1325,7 +1326,7 @@ footer {
 
         <div class="discipline-intro">
 
-            <h2 class="reveal">
+            <h2 class="reveal mouse-reactive">
                 FROM DIGITAL
                 <span>TO OBJECT</span>
             </h2>
@@ -1873,6 +1874,249 @@ revealElements.forEach(element => {
 
 });
 
+
+/* =========================================================
+   MOUSE INTERACTION — MAGNETIC / PLAYFUL
+========================================================= */
+
+const mouseReactiveElements = document.querySelectorAll(".mouse-reactive");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+let mouseInside = false;
+
+
+/*
+ * Chỉ bật interaction trên thiết bị có
+ * chuột / trackpad.
+ */
+const canUseMouse =
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+
+/*
+ * Tìm element gần con trỏ nhất.
+ */
+function updateMouseTarget(event) {
+
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    let closestElement = null;
+    let closestDistance = Infinity;
+
+    mouseReactiveElements.forEach(element => {
+
+        const rect = element.getBoundingClientRect();
+
+        /*
+         * Tâm của heading.
+         */
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const dx = mouseX - centerX;
+        const dy = mouseY - centerY;
+
+        const distance = Math.sqrt(
+            dx * dx + dy * dy
+        );
+
+        if (distance < closestDistance) {
+
+            closestDistance = distance;
+            closestElement = element;
+
+        }
+
+    });
+
+
+    /*
+     * Nếu chuột quá xa tất cả heading,
+     * interaction trở về vị trí ban đầu.
+     */
+    const activationDistance = 750;
+
+    if (
+        closestElement &&
+        closestDistance < activationDistance
+    ) {
+
+        const rect =
+            closestElement.getBoundingClientRect();
+
+        const centerX =
+            rect.left + rect.width / 2;
+
+        const centerY =
+            rect.top + rect.height / 2;
+
+        /*
+         * Khoảng cách chuẩn hóa.
+         *
+         * 0 = rất gần
+         * 1 = ở rìa interaction
+         */
+        const proximity =
+            Math.max(
+                0,
+                Math.min(
+                    1,
+                    1 - closestDistance / activationDistance
+                )
+            );
+
+
+        /*
+         * Hướng từ tâm chữ tới chuột.
+         */
+        const directionX =
+            (mouseX - centerX) / Math.max(rect.width / 2, 1);
+
+        const directionY =
+            (mouseY - centerY) / Math.max(rect.height / 2, 1);
+
+
+        /*
+         * Magnetic movement.
+         *
+         * Xa → gần như 0px
+         * Gần → tối đa khoảng 18px
+         */
+        targetX =
+            directionX * 18 * proximity;
+
+        targetY =
+            directionY * 12 * proximity;
+
+
+        /*
+         * Khi tới gần hơn,
+         * thêm một chút rotation.
+         */
+        const maxRotation = 2.8;
+
+        targetRotation =
+            directionX * maxRotation * proximity;
+
+
+        /*
+         * Đánh dấu đang active.
+         */
+        activeReactiveElement = closestElement;
+
+    } else {
+
+        targetX = 0;
+        targetY = 0;
+        targetRotation = 0;
+
+        activeReactiveElement = null;
+
+    }
+
+}
+
+
+/*
+ * Các giá trị hiện tại.
+ */
+let targetRotation = 0;
+let currentRotation = 0;
+
+let activeReactiveElement = null;
+
+
+/*
+ * Smooth animation loop.
+ *
+ * Dùng requestAnimationFrame thay vì
+ * update transform trực tiếp theo mousemove,
+ * giúp chuyển động mượt hơn.
+ */
+function animateMouseInteraction() {
+
+    /*
+     * Ease.
+     */
+    currentX +=
+        (targetX - currentX) * 0.10;
+
+    currentY +=
+        (targetY - currentY) * 0.10;
+
+    currentRotation +=
+        (targetRotation - currentRotation) * 0.10;
+
+
+    /*
+     * Reset toàn bộ heading trước.
+     */
+    mouseReactiveElements.forEach(element => {
+
+        const isActive =
+            element === activeReactiveElement;
+
+        if (isActive) {
+
+            element.style.transform =
+                `translate3d(${currentX}px, ${currentY}px, 0)
+                 rotate(${currentRotation}deg)`;
+
+        } else {
+
+            element.style.transform =
+                "translate3d(0, 0, 0) rotate(0deg)";
+
+        }
+
+    });
+
+
+    requestAnimationFrame(animateMouseInteraction);
+}
+
+
+/*
+ * Mouse listener.
+ */
+if (canUseMouse) {
+
+    document.addEventListener(
+        "mousemove",
+        updateMouseTarget,
+        { passive: true }
+    );
+
+    animateMouseInteraction();
+
+}
+
+
+/* =========================================================
+   MOUSE LEAVE
+========================================================= */
+
+document.addEventListener(
+    "mouseleave",
+    function() {
+
+        targetX = 0;
+        targetY = 0;
+        targetRotation = 0;
+
+        activeReactiveElement = null;
+
+    }
+);
 
 </script>
 
