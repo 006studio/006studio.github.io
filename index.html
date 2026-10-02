@@ -95,10 +95,15 @@
 
             display: flex;
             align-items: flex-end;
+
+            position: relative;
         }
 
         .hero-text {
             width: 100%;
+
+            position: relative;
+            z-index: 2;
         }
 
         .hero-small {
@@ -132,6 +137,37 @@
 
             font-size: 14px;
             font-weight: 500;
+        }
+
+
+        /* =========================
+           HERO SHOWREEL
+        ========================= */
+
+        .hero-showreel {
+            position: absolute;
+
+            top: 120px;
+            right: 32px;
+
+            width: min(720px, 45vw);
+
+            aspect-ratio: 16 / 9;
+
+            background: #D9D4C9;
+
+            overflow: hidden;
+
+            z-index: 1;
+        }
+
+        .hero-showreel iframe {
+            width: 100%;
+            height: 100%;
+
+            border: 0;
+
+            display: block;
         }
 
 
@@ -216,13 +252,6 @@
         }
 
         .category-image {
-            /*
-                Horizontal 4:3 ratio.
-                This keeps the card noticeably wider
-                than a square while preserving enough
-                vertical space for the typography.
-            */
-
             aspect-ratio: 4 / 3;
 
             background: #D9D4C9;
@@ -953,6 +982,13 @@
                 font-size: clamp(24px, 4vw, 40px);
             }
 
+            .hero-showreel {
+                width: min(600px, 48vw);
+
+                right: 28px;
+                top: 120px;
+            }
+
         }
 
 
@@ -975,7 +1011,29 @@
             }
 
             .hero {
-                padding: 120px 20px 40px;
+                padding: 110px 20px 40px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: stretch;
+            }
+
+            .hero-showreel {
+                position: relative;
+
+                top: auto;
+                right: auto;
+
+                width: 100%;
+
+                margin-bottom: auto;
+
+                flex-shrink: 0;
+            }
+
+            .hero-text {
+                margin-top: 55px;
             }
 
             .hero h1 {
@@ -1157,6 +1215,22 @@
 
 <section class="hero">
 
+
+    <!-- SHOWREEL -->
+
+    <div class="hero-showreel">
+
+        <iframe
+            src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=1&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
+            title="006.STUDIO Showreel"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+        ></iframe>
+
+    </div>
+
+
+
     <div class="hero-text">
 
         <div class="hero-small">
@@ -1213,8 +1287,6 @@
     <div class="category-grid">
 
 
-        <!-- VISUAL LED -->
-
         <div
             class="category-card"
             data-category="visual-led"
@@ -1248,8 +1320,6 @@
         </div>
 
 
-
-        <!-- FRAME BY FRAME -->
 
         <div
             class="category-card"
@@ -1285,8 +1355,6 @@
 
 
 
-        <!-- INFOGRAPHIC -->
-
         <div
             class="category-card"
             data-category="infographic"
@@ -1321,8 +1389,6 @@
 
 
 
-        <!-- CGI -->
-
         <div
             class="category-card"
             data-category="cgi"
@@ -1356,8 +1422,6 @@
 
 
 
-        <!-- SCULPTING -->
-
         <div
             class="category-card"
             data-category="sculpting"
@@ -1390,8 +1454,6 @@
         </div>
 
 
-
-        <!-- AI VIDEO -->
 
         <div
             class="category-card"
@@ -1467,8 +1529,6 @@
     <div class="category-grid">
 
 
-        <!-- BRAND MERCHANDISE -->
-
         <div
             class="category-card"
             data-category="brand-merchandise"
@@ -1503,8 +1563,6 @@
 
 
 
-        <!-- MASCOT -->
-
         <div
             class="category-card"
             data-category="mascot"
@@ -1537,8 +1595,6 @@
         </div>
 
 
-
-        <!-- SMALL DECOR -->
 
         <div
             class="category-card"
@@ -1622,8 +1678,6 @@
 
 
 
-    <!-- ENGLISH -->
-
     <div
         class="about-content language-content"
         id="about-en"
@@ -1677,7 +1731,6 @@
 
         <div class="about-identity">
 
-
             <div class="identity-card">
 
                 <div class="identity-name">
@@ -1703,14 +1756,11 @@
 
             </div>
 
-
         </div>
 
     </div>
 
 
-
-    <!-- VIETNAMESE -->
 
     <div
         class="about-content language-content"
@@ -1768,7 +1818,6 @@
 
         <div class="about-identity">
 
-
             <div class="identity-card">
 
                 <div class="identity-name">
@@ -1795,14 +1844,11 @@
 
             </div>
 
-
         </div>
 
     </div>
 
 
-
-    <!-- CONTACT -->
 
     <div class="contact">
 
@@ -1854,7 +1900,6 @@
     id="categoryPage"
 >
 
-
     <div class="category-page-header">
 
         <div class="category-page-logo">
@@ -1897,9 +1942,7 @@
         <div
             class="category-project-grid"
             id="categoryProjectGrid"
-        >
-
-        </div>
+        ></div>
 
     </div>
 
@@ -1915,7 +1958,6 @@
     class="project-overlay"
     id="projectOverlay"
 >
-
 
     <div class="project-detail-header">
 
@@ -1958,7 +2000,6 @@
 
 
         <div class="project-meta">
-
 
             <div>
 
@@ -2022,7 +2063,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
@@ -2381,7 +2421,6 @@
         document.getElementById("categoryProjectGrid");
 
 
-
     let currentCategory = "";
 
     let currentProjectIndex = 0;
@@ -2658,7 +2697,6 @@
 
         detailDescription.textContent =
             "Project description will live here. This area will later contain the story, creative direction, process and context behind the project.";
-
 
 
         const previousIndex =
