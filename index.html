@@ -1,3044 +1,1880 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>006.STUDIO — Creative Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
+:root {
+    --teal: #008C8C;
+    --orange: #F26B38;
+    --beige: #F3F0E8;
+    --black: #111111;
+    --light-gray: #D0CCC3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--beige);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    width: 100%;
+    padding: 28px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+
+    background: var(--beige);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav a {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    transition: opacity 0.25s ease;
+}
+
+.nav a:hover {
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    padding-top: 100px;
+    position: relative;
+}
+
+.hero-showreel {
+    width: 100%;
+    padding: 35px 9.8% 34px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-showreel::before {
+    content: "SHOWREEL / 2026";
+    display: block;
+    margin-bottom: 14px;
+
+    color: var(--teal);
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.hero-showreel-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    background: #000000;
+    overflow: hidden;
+}
+
+.hero-showreel iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.hero-copy {
+    padding: 55px 9.8% 75px;
+}
+
+.hero-copy h1 {
+    max-width: 900px;
+
+    font-size: clamp(42px, 7vw, 100px);
+    line-height: 0.92;
+    font-weight: 900;
+    letter-spacing: -4px;
+}
+
+.hero-copy h1 span {
+    color: var(--teal);
+}
+
+.hero-copy p {
+    margin-top: 28px;
+
+    max-width: 580px;
+
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+    padding: 100px 9.8% 120px;
+    background: var(--beige);
+}
+
+.about-top {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 8%;
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.about-copy {
+    max-width: 780px;
+}
+
+.about-copy p {
+    font-size: clamp(20px, 2.4vw, 34px);
+    line-height: 1.28;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.about-copy p + p {
+    margin-top: 30px;
+}
+
+.about-copy .highlight {
+    color: var(--teal);
+}
+
+.about-copy .orange {
+    color: var(--orange);
+}
+
+.about-language {
+    margin-top: 42px;
+    display: flex;
+    gap: 8px;
+}
+
+.lang-button {
+    border: 1px solid var(--black);
+    background: transparent;
+    padding: 8px 13px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.lang-button.active {
+    background: var(--black);
+    color: var(--beige);
+}
+
+.about-version {
+    display: none;
+}
+
+.about-version.active {
+    display: block;
+}
+
+.about-bottom {
+    margin-top: 90px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.identity-card {
+    padding: 32px;
+
+    border: 1px solid rgba(17, 17, 17, 0.2);
+
+    min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease;
+}
+
+.identity-card:hover {
+    transform: translateY(-6px);
+    background: #ebe7dd;
+}
+
+.identity-card h3 {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--teal);
+}
+
+.identity-card p {
+    max-width: 400px;
+
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   DISCIPLINE SECTIONS
+========================================================= */
+
+.discipline {
+    padding: 100px 9.8% 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.discipline-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 8%;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.section-description {
+    max-width: 720px;
 
-    <title>006.STUDIO</title>
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 500;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
+/* =========================================================
+   DISCIPLINE INTRO
+========================================================= */
 
-    <style>
+.discipline-intro {
+    margin-top: 100px;
+    position: relative;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+.discipline-intro h2 {
+    max-width: 1100px;
+
+    font-size: clamp(55px, 10vw, 150px);
+    line-height: 0.82;
+    font-weight: 900;
+    letter-spacing: -6px;
+}
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
+.discipline-intro h2 span {
+    display: block;
+}
+
+
+/* =========================================================
+   DISCIPLINE OBJECT
+========================================================= */
+
+.discipline-object {
+    position: absolute;
+    right: 8%;
+    bottom: 8px;
+
+    width: 54px;
+    height: 54px;
+}
+
+.discipline-object-main {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 50%;
+}
 
-        body {
-            font-family: "Montserrat", sans-serif;
-            background: #F3F0E8;
-            color: #111111;
-        }
+.discipline-object-center {
+    position: absolute;
 
-        body.no-scroll {
-            overflow: hidden;
-        }
+    width: 18px;
+    height: 18px;
 
+    left: 50%;
+    top: 50%;
 
-        /* =========================
-           HEADER
-        ========================= */
+    transform: translate(-50%, -50%);
 
-        header {
-            width: 100%;
-            padding: 28px 32px;
+    background: var(--black);
+    border-radius: 50%;
+}
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+.discipline-object-accent {
+    position: absolute;
 
-            position: fixed;
-            top: 0;
-            left: 0;
+    width: 12px;
+    height: 12px;
 
-            z-index: 2000;
+    right: -4px;
+    top: 3px;
+
+    border-radius: 50%;
+}
 
-            background: #F3F0E8;
-        }
+
+/* =========================================================
+   CATEGORY GRID
+========================================================= */
+
+.category-grid {
+    margin-top: 80px;
 
-        .logo {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    aspect-ratio: 4 / 3;
+
+    padding: 25px;
+
+    position: relative;
 
-        nav {
-            display: flex;
-            gap: 32px;
-        }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-        nav a {
-            text-decoration: none;
-            color: #111111;
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease;
+}
 
-            font-size: 11px;
-            font-weight: 700;
+.category-number {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.category-card h3 {
+    font-size: clamp(20px, 2vw, 30px);
+    line-height: 0.98;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
 
-            transition: opacity 0.2s ease;
-        }
+.category-card p {
+    max-width: 90%;
+
+    font-size: 11px;
+    line-height: 1.5;
+    font-weight: 500;
+}
 
-        nav a:hover {
-            opacity: 0.45;
-        }
+.category-arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 22px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+}
+
+.category-card:hover .category-arrow {
+    transform: translate(5px, -5px);
+}
 
 
-        /* =========================
-           HERO / SHOWREEL
-        ========================= */
+/* =========================================================
+   MOTION SECTION
+========================================================= */
 
-        .hero {
-            padding-top: 100px;
+#motion {
+    background: var(--black);
+    color: var(--beige);
+}
+
+#motion .section-title {
+    color: var(--orange);
+}
+
+#motion .section-description {
+    color: var(--light-gray);
+}
+
+#motion .discipline-intro h2 {
+    color: var(--teal);
+}
+
+#motion .discipline-intro h2 span {
+    color: var(--beige);
+}
+
+#motion .discipline-object-main {
+    background: var(--teal);
+}
+
+#motion .discipline-object-accent {
+    background: var(--orange);
+}
+
+#motion .category-card {
+    background: #1c1c1c;
+    border: 1px solid #333333;
+    color: var(--beige);
+}
+
+#motion .category-card:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--black);
+}
 
-            position: relative;
-        }
 
-        .hero-showreel {
-            width: 100%;
+/* =========================================================
+   LAB SECTION
+========================================================= */
 
-            padding: 35px 9.8% 34px;
+#lab {
+    background: var(--beige);
+    color: var(--black);
+}
 
-            background: #111111;
+#lab .section-title {
+    color: var(--teal);
+}
 
-            position: relative;
+#lab .section-description {
+    color: var(--black);
+}
 
-            overflow: hidden;
-        }
+#lab .discipline-intro h2 {
+    color: var(--orange);
+}
 
-        .hero-showreel::before {
-            content: "SHOWREEL / 2026";
+#lab .discipline-intro h2 span {
+    color: var(--black);
+}
 
-            display: block;
+#lab .discipline-object-main {
+    background: var(--orange);
+}
 
-            margin-bottom: 14px;
+#lab .discipline-object-accent {
+    background: var(--teal);
+}
 
-            color: #008C8C;
+#lab .category-card {
+    background: #ebe7dd;
+    border: 1px solid rgba(17, 17, 17, 0.16);
+    color: var(--black);
+}
 
-            font-size: 12px;
-            font-weight: 800;
+#lab .category-card:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+}
 
-            letter-spacing: 0.5px;
-        }
 
-        .hero-showreel-frame {
-            width: 100%;
+/* =========================================================
+   FOOTER
+========================================================= */
 
-            aspect-ratio: 16 / 9;
+footer {
+    padding: 70px 9.8% 35px;
 
-            background: #000000;
+    background: var(--black);
+    color: var(--beige);
+}
 
-            overflow: hidden;
-        }
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
 
-        .hero-showreel iframe {
-            width: 100%;
-            height: 100%;
+.footer-logo {
+    font-size: clamp(40px, 7vw, 100px);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -5px;
+}
 
-            border: 0;
+.footer-contact {
+    text-align: right;
+}
 
-            display: block;
-        }
+.footer-contact p {
+    margin-bottom: 8px;
 
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
 
-        /* =========================
-           GENERAL SECTION
-        ========================= */
+.footer-contact a {
+    color: var(--teal);
+}
 
-        .section {
-            padding: 100px 32px;
-        }
+.footer-bottom {
+    margin-top: 100px;
 
-        .section-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
 
-            margin-bottom: 50px;
-        }
+    font-size: 10px;
+    font-weight: 600;
 
-        .section-title {
-            font-size: 12px;
-            font-weight: 700;
+    color: #777;
+}
 
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
 
-        .section-description {
-            max-width: 420px;
+/* =========================================================
+   CATEGORY OVERLAY
+========================================================= */
 
-            font-size: 14px;
-            line-height: 1.6;
-            font-weight: 500;
-        }
+.overlay {
+    position: fixed;
+    inset: 0;
 
+    background: var(--beige);
 
-        /* =========================
-           DISCIPLINE INTRO
-        ========================= */
+    z-index: 3000;
 
-        .discipline-intro {
-            max-width: 900px;
+    opacity: 0;
+    visibility: hidden;
 
-            margin-bottom: 70px;
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
 
-            position: relative;
-        }
+    overflow-y: auto;
+}
 
-        .discipline-intro h2 {
-            font-size: clamp(48px, 8vw, 110px);
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-            line-height: 0.88;
+.overlay-header {
+    padding: 28px 32px;
 
-            letter-spacing: -0.06em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-            font-weight: 800;
-        }
+    position: sticky;
+    top: 0;
 
+    background: var(--beige);
+    z-index: 2;
+}
 
-        /* =========================
-           2D / 3D MOTION
-           BLACK BACKGROUND
-        ========================= */
+.overlay-close {
+    border: 0;
+    background: transparent;
 
-        #motion {
-            background: #111111;
-            color: #F3F0E8;
-        }
+    font-size: 12px;
+    font-weight: 800;
 
-        #motion .section-title {
-            color: #F26B38;
-        }
+    cursor: pointer;
+}
 
-        #motion .section-description {
-            color: #D0CCC3;
-        }
+.overlay-content {
+    padding: 80px 9.8% 120px;
+}
 
-        #motion .discipline-intro h2 {
-            color: #008C8C;
-        }
+.overlay-content h2 {
+    max-width: 900px;
 
-        #motion .discipline-intro h2 span {
-            color: #F3F0E8;
-        }
+    font-size: clamp(50px, 9vw, 130px);
+    line-height: 0.84;
+    letter-spacing: -5px;
+    font-weight: 900;
 
-        #motion .category-card {
-            color: #F3F0E8;
-        }
+    color: var(--teal);
+}
 
-        #motion .category-image {
-            background: #242424;
-        }
+.overlay-description {
+    max-width: 650px;
+    margin-top: 35px;
 
-        #motion .category-card:nth-child(2) .category-image,
-        #motion .category-card:nth-child(5) .category-image {
-            background: #008C8C;
-        }
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-        #motion .category-card:nth-child(3) .category-image,
-        #motion .category-card:nth-child(6) .category-image {
-            background: #F26B38;
-        }
+.project-grid {
+    margin-top: 80px;
 
-        #motion .category-count {
-            color: #A9A59D;
-        }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
 
+.project-card {
+    min-height: 350px;
 
-        /* =========================
-           3D LAB
-           BEIGE BACKGROUND
-        ========================= */
+    padding: 28px;
 
-        #lab {
-            background: #F3F0E8;
-            color: #111111;
-        }
+    background: #ebe7dd;
 
-        #lab .section-title {
-            color: #008C8C;
-        }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
-        #lab .section-description {
-            color: #111111;
-        }
+    cursor: pointer;
 
-        #lab .discipline-intro h2 {
-            color: #F26B38;
-        }
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease;
+}
 
-        #lab .discipline-intro h2 span {
-            color: #111111;
-        }
+.project-card:hover {
+    transform: translateY(-7px);
+    background: var(--teal);
+}
 
-        #lab .category-card {
-            color: #111111;
-        }
+.project-card span {
+    font-size: 10px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
 
-        #lab .category-image {
-            background: #D9D4C9;
-        }
+.project-card h3 {
+    font-size: 30px;
+    line-height: 0.95;
+    font-weight: 900;
+}
 
-        #lab .category-card:nth-child(2) .category-image {
-            background: #008C8C;
-        }
 
-        #lab .category-card:nth-child(3) .category-image {
-            background: #F26B38;
-        }
+/* =========================================================
+   PROJECT DETAIL
+========================================================= */
 
-        #lab .category-count {
-            color: #77736B;
-        }
+.project-detail {
+    display: none;
+}
 
+.project-detail.active {
+    display: block;
+}
 
-        /* =========================
-           DISCIPLINE OBJECT
-        ========================= */
+.project-detail h2 {
+    font-size: clamp(45px, 8vw, 110px);
+    line-height: 0.86;
+    font-weight: 900;
+    letter-spacing: -5px;
+}
 
-        .discipline-object {
-            position: absolute;
+.project-detail-meta {
+    margin-top: 30px;
 
-            right: 8%;
-            bottom: 8px;
+    display: flex;
+    gap: 30px;
 
-            width: 54px;
-            height: 54px;
-        }
+    font-size: 11px;
+    font-weight: 800;
+}
 
-        .discipline-object-main {
-            position: absolute;
+.project-detail-description {
+    max-width: 650px;
+    margin-top: 35px;
 
-            width: 54px;
-            height: 54px;
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-            border-radius: 50%;
 
-            left: 0;
-            top: 0;
-        }
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-        .discipline-object-center {
-            position: absolute;
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
 
-            width: 19px;
-            height: 19px;
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-            border-radius: 50%;
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            background: #111111;
+.reveal-delay-1 {
+    transition-delay: 0.08s;
+}
 
-            left: 18px;
-            top: 18px;
-        }
+.reveal-delay-2 {
+    transition-delay: 0.16s;
+}
 
-        .discipline-object-accent {
-            position: absolute;
+.reveal-delay-3 {
+    transition-delay: 0.24s;
+}
 
-            width: 34px;
-            height: 25px;
+.reveal-delay-4 {
+    transition-delay: 0.32s;
+}
 
-            border-radius: 7px;
+.reveal-delay-5 {
+    transition-delay: 0.40s;
+}
 
-            right: -22px;
-            bottom: -8px;
 
-            transform: rotate(18deg);
-        }
+/* =========================================================
+   MOBILE
+========================================================= */
 
+@media (max-width: 800px) {
 
-        /* Motion object */
+    header {
+        padding: 20px;
+    }
 
-        #motion .discipline-object-main {
-            background: #008C8C;
-        }
+    .logo {
+        font-size: 17px;
+    }
 
-        #motion .discipline-object-center {
-            background: #111111;
-        }
+    .nav {
+        gap: 13px;
+    }
 
-        #motion .discipline-object-accent {
-            background: #F26B38;
-        }
+    .nav a {
+        font-size: 8px;
+    }
 
+    .hero {
+        padding-top: 76px;
+    }
 
-        /* Lab object */
+    .hero-showreel {
+        padding: 25px 20px 24px;
+    }
 
-        #lab .discipline-object-main {
-            background: #F26B38;
-        }
+    .hero-copy {
+        padding: 45px 20px 65px;
+    }
 
-        #lab .discipline-object-center {
-            background: #111111;
-        }
+    .hero-copy h1 {
+        font-size: 48px;
+        letter-spacing: -2.5px;
+    }
 
-        #lab .discipline-object-accent {
-            background: #008C8C;
-        }
+    .about,
+    .discipline {
+        padding: 75px 20px 85px;
+    }
 
+    .about-top,
+    .discipline-header {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
 
-        /* =========================
-           CATEGORY GRID
-        ========================= */
+    .about-copy p {
+        font-size: 22px;
+    }
 
-        .category-grid {
-            display: grid;
+    .about-bottom {
+        margin-top: 65px;
+        grid-template-columns: 1fr;
+    }
 
-            grid-template-columns: repeat(3, 1fr);
+    .discipline-intro {
+        margin-top: 70px;
+    }
 
-            gap: 18px;
-        }
+    .discipline-intro h2 {
+        font-size: 65px;
+        letter-spacing: -3px;
+    }
 
-        .category-card {
-            text-decoration: none;
+    .discipline-object {
+        position: relative;
 
-            cursor: pointer;
+        right: auto;
+        bottom: auto;
 
-            min-width: 0;
-        }
+        margin-top: 35px;
 
-        .category-image {
-            aspect-ratio: 4 / 3;
+        width: 42px;
+        height: 42px;
+    }
 
-            display: flex;
-            align-items: flex-end;
+    .category-grid {
+        margin-top: 55px;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
 
-            padding: 20px;
+    .category-card {
+        aspect-ratio: 4 / 3;
+        padding: 22px;
+    }
 
-            position: relative;
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
 
-            overflow: hidden;
+    .project-card {
+        min-height: 280px;
+    }
 
-            transition:
-                transform 0.35s ease,
-                filter 0.35s ease;
-        }
+    .overlay-content {
+        padding: 60px 20px 90px;
+    }
 
-        .category-card:hover .category-image {
-            transform: scale(0.985);
-            filter: brightness(0.94);
-        }
+    .overlay-content h2 {
+        font-size: 60px;
+        letter-spacing: -3px;
+    }
 
-        .category-number {
-            position: absolute;
+    .footer-top {
+        flex-direction: column;
+    }
 
-            top: 18px;
-            left: 20px;
+    .footer-contact {
+        text-align: left;
+    }
 
-            font-size: 10px;
-            font-weight: 700;
-        }
+    .footer-bottom {
+        margin-top: 70px;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
 
-        .category-image-title {
-            font-size: clamp(22px, 3vw, 42px);
 
-            line-height: 0.9;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
-            letter-spacing: -0.04em;
+@media (prefers-reduced-motion: reduce) {
 
-            font-weight: 800;
-        }
+    html {
+        scroll-behavior: auto;
+    }
 
-        .category-info {
-            padding: 15px 0 45px;
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 
-            display: flex;
-            justify-content: space-between;
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+}
 
-            gap: 20px;
-        }
-
-        .category-name {
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        .category-count {
-            font-size: 9px;
-            font-weight: 700;
-
-            text-align: right;
-        }
-
-
-        /* =========================
-           CATEGORY PAGE
-        ========================= */
-
-        .category-page {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 900;
-
-            background: #F3F0E8;
-
-            overflow-y: auto;
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition:
-                opacity 0.3s ease,
-                visibility 0.3s ease;
-        }
-
-        .category-page.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .category-page-header {
-            padding: 28px 32px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            position: sticky;
-            top: 0;
-
-            background: #F3F0E8;
-
-            z-index: 5;
-        }
-
-        .category-page-logo {
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .close-category {
-            border: none;
-
-            background: transparent;
-
-            font-family: inherit;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            padding: 8px 0;
-
-            transition: opacity 0.2s ease;
-        }
-
-        .close-category:hover {
-            opacity: 0.45;
-        }
-
-        .category-page-content {
-            max-width: 1500px;
-
-            margin: 0 auto;
-
-            padding: 80px 32px 120px;
-        }
-
-        .category-page-label {
-            margin-bottom: 20px;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            color: #008C8C;
-        }
-
-        .category-page h2 {
-            max-width: 1100px;
-
-            margin-bottom: 25px;
-
-            font-size: clamp(50px, 9vw, 130px);
-
-            line-height: 0.88;
-
-            letter-spacing: -0.06em;
-        }
-
-        .category-page-description {
-            max-width: 650px;
-
-            margin-bottom: 65px;
-
-            font-size: 15px;
-            line-height: 1.7;
-
-            font-weight: 500;
-        }
-
-        .category-project-grid {
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-        .category-project {
-            cursor: pointer;
-        }
-
-        .category-project-image {
-            aspect-ratio: 16 / 10;
-
-            background: #D9D4C9;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            transition:
-                transform 0.35s ease,
-                filter 0.35s ease;
-        }
-
-        .category-project:nth-child(2n) .category-project-image {
-            background: #E1DDD4;
-        }
-
-        .category-project:hover .category-project-image {
-            transform: scale(0.985);
-            filter: brightness(0.94);
-        }
-
-        .category-project-image span {
-            font-size: 11px;
-            font-weight: 700;
-
-            color: #77736B;
-        }
-
-        .category-project-info {
-            display: flex;
-            justify-content: space-between;
-
-            padding: 14px 0 40px;
-
-            gap: 20px;
-        }
-
-        .category-project-name {
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        .category-project-type {
-            font-size: 9px;
-            font-weight: 700;
-
-            color: #77736B;
-
-            text-align: right;
-        }
-
-
-        /* =========================
-           PROJECT DETAIL
-        ========================= */
-
-        .project-overlay {
-            position: fixed;
-
-            inset: 0;
-
-            background: #F3F0E8;
-
-            z-index: 1000;
-
-            overflow-y: auto;
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition:
-                opacity 0.3s ease,
-                visibility 0.3s ease;
-        }
-
-        .project-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .project-detail-header {
-            padding: 28px 32px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            position: sticky;
-            top: 0;
-
-            background: #F3F0E8;
-
-            z-index: 5;
-        }
-
-        .project-detail-logo {
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .close-project {
-            border: none;
-
-            background: transparent;
-
-            font-family: inherit;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            padding: 8px 0;
-        }
-
-        .project-detail {
-            max-width: 1500px;
-
-            margin: 0 auto;
-
-            padding: 80px 32px 120px;
-        }
-
-        .project-detail-category {
-            margin-bottom: 20px;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            color: #008C8C;
-        }
-
-        .project-detail h2 {
-            max-width: 1100px;
-
-            font-size: clamp(50px, 9vw, 130px);
-
-            line-height: 0.88;
-
-            letter-spacing: -0.06em;
-
-            margin-bottom: 70px;
-        }
-
-        .project-detail-main-image {
-            width: 100%;
-
-            aspect-ratio: 16 / 9;
-
-            background: #D9D4C9;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 70px;
-        }
-
-        .project-detail-main-image span {
-            font-size: 13px;
-            font-weight: 700;
-
-            color: #77736B;
-        }
-
-        .project-meta {
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 30px;
-
-            padding-top: 25px;
-
-            border-top: 1px solid #111111;
-
-            margin-bottom: 80px;
-        }
-
-        .detail-label {
-            font-size: 10px;
-            font-weight: 700;
-
-            margin-bottom: 10px;
-
-            text-transform: uppercase;
-        }
-
-        .meta-value {
-            font-size: 13px;
-            line-height: 1.5;
-
-            font-weight: 600;
-        }
-
-        .project-about {
-            display: grid;
-
-            grid-template-columns: 1fr 2fr;
-
-            gap: 60px;
-
-            margin-bottom: 100px;
-        }
-
-        .detail-text {
-            max-width: 750px;
-
-            font-size: 16px;
-            line-height: 1.7;
-
-            font-weight: 500;
-        }
-
-        .project-detail-gallery {
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 100px;
-        }
-
-        .detail-gallery-item {
-            aspect-ratio: 4 / 3;
-
-            background: #D9D4C9;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .detail-gallery-item.wide {
-            grid-column: span 2;
-
-            aspect-ratio: 16 / 8;
-        }
-
-        .detail-gallery-item span {
-            font-size: 11px;
-            font-weight: 700;
-
-            color: #77736B;
-        }
-
-        .project-navigation {
-            border-top: 1px solid #111111;
-
-            padding-top: 25px;
-
-            display: flex;
-            justify-content: space-between;
-
-            gap: 30px;
-        }
-
-        .project-nav-button {
-            border: none;
-
-            background: transparent;
-
-            font-family: inherit;
-
-            cursor: pointer;
-
-            padding: 0;
-
-            text-align: left;
-
-            transition: opacity 0.2s ease;
-        }
-
-        .project-nav-button:hover {
-            opacity: 0.45;
-        }
-
-        .project-nav-label {
-            display: block;
-
-            margin-bottom: 10px;
-
-            font-size: 9px;
-            font-weight: 700;
-
-            color: #008C8C;
-        }
-
-        .project-nav-name {
-            display: block;
-
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .project-nav-next {
-            text-align: right;
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-section {
-            padding-top: 85px;
-            padding-bottom: 90px;
-        }
-
-        .about-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-
-            margin-bottom: 60px;
-        }
-
-        .language-switch {
-            display: flex;
-            align-items: center;
-
-            gap: 6px;
-        }
-
-        .language-button {
-            border: none;
-
-            background: transparent;
-
-            font-family: inherit;
-
-            font-size: 10px;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            opacity: 0.35;
-
-            padding: 0;
-        }
-
-        .language-button.active {
-            opacity: 1;
-            color: #008C8C;
-        }
-
-        .language-divider {
-            font-size: 10px;
-            opacity: 0.3;
-        }
-
-        .about-content {
-            max-width: 1000px;
-        }
-
-        .about-heading {
-            margin-bottom: 45px;
-
-            font-size: clamp(42px, 7vw, 100px);
-
-            line-height: 0.9;
-
-            letter-spacing: -0.06em;
-
-            font-weight: 800;
-        }
-
-        .about-text {
-            max-width: 850px;
-
-            font-size: 16px;
-
-            line-height: 1.8;
-
-            font-weight: 500;
-        }
-
-        .about-text strong {
-            font-weight: 800;
-        }
-
-        .about-identity {
-            margin-top: 60px;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 18px;
-        }
-
-        .identity-card {
-            border-top: 1px solid #111111;
-
-            padding-top: 18px;
-        }
-
-        .identity-name {
-            margin-bottom: 10px;
-
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .identity-description {
-            font-size: 13px;
-            line-height: 1.6;
-
-            font-weight: 500;
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            margin-top: 90px;
-
-            padding-top: 30px;
-
-            border-top: 1px solid #111111;
-        }
-
-        .contact-title {
-            margin-bottom: 20px;
-
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .contact-email {
-            display: inline-block;
-
-            font-size: clamp(30px, 5vw, 70px);
-
-            line-height: 1;
-
-            letter-spacing: -0.05em;
-
-            font-weight: 700;
-
-            text-decoration: none;
-
-            color: #111111;
-
-            transition: color 0.2s ease;
-        }
-
-        .contact-email:hover {
-            color: #008C8C;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 32px;
-
-            display: flex;
-            justify-content: space-between;
-
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-
-        /* =========================
-           TABLET
-        ========================= */
-
-        @media (max-width: 1100px) {
-
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .category-image-title {
-                font-size: clamp(24px, 4vw, 40px);
-            }
-
-            .hero-showreel {
-                padding-left: 9.8%;
-                padding-right: 9.8%;
-            }
-
-            .discipline-object {
-                right: 10%;
-            }
-
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            header {
-                padding: 22px 20px;
-            }
-
-            nav {
-                gap: 14px;
-            }
-
-            nav a {
-                font-size: 8px;
-            }
-
-            .hero {
-                padding-top: 82px;
-            }
-
-            .hero-showreel {
-                padding: 24px 20px 22px;
-            }
-
-            .hero-showreel::before {
-                font-size: 10px;
-                margin-bottom: 10px;
-            }
-
-            .section {
-                padding: 80px 20px;
-            }
-
-            .section-top {
-                display: block;
-            }
-
-            .section-description {
-                margin-top: 20px;
-            }
-
-            .discipline-intro {
-                margin-bottom: 55px;
-            }
-
-            .discipline-intro h2 {
-                font-size: clamp(48px, 14vw, 90px);
-            }
-
-            .discipline-object {
-                position: relative;
-
-                right: auto;
-                bottom: auto;
-
-                margin: 35px 0 0 auto;
-
-                width: 48px;
-                height: 48px;
-            }
-
-            .discipline-object-main {
-                width: 48px;
-                height: 48px;
-            }
-
-            .discipline-object-center {
-                width: 17px;
-                height: 17px;
-
-                left: 16px;
-                top: 16px;
-            }
-
-            .discipline-object-accent {
-                width: 30px;
-                height: 22px;
-
-                right: -18px;
-                bottom: -7px;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-
-                gap: 0;
-            }
-
-            .category-image {
-                aspect-ratio: 4 / 3;
-
-                padding: 18px;
-            }
-
-            .category-info {
-                padding: 13px 0 35px;
-            }
-
-            .category-image-title {
-                font-size: clamp(26px, 9vw, 46px);
-            }
-
-            .category-page-header {
-                padding: 22px 20px;
-            }
-
-            .category-page-content {
-                padding: 60px 20px 90px;
-            }
-
-            .category-page h2 {
-                margin-bottom: 20px;
-            }
-
-            .category-project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-detail-header {
-                padding: 22px 20px;
-            }
-
-            .project-detail {
-                padding: 60px 20px 90px;
-            }
-
-            .project-detail h2 {
-                margin-bottom: 45px;
-            }
-
-            .project-meta {
-                grid-template-columns: 1fr 1fr;
-
-                gap: 30px 20px;
-
-                margin-bottom: 60px;
-            }
-
-            .project-about {
-                grid-template-columns: 1fr;
-
-                gap: 25px;
-
-                margin-bottom: 60px;
-            }
-
-            .detail-text {
-                font-size: 14px;
-            }
-
-            .project-detail-gallery {
-                grid-template-columns: 1fr;
-
-                margin-bottom: 60px;
-            }
-
-            .detail-gallery-item.wide {
-                grid-column: span 1;
-            }
-
-            .project-navigation {
-                gap: 20px;
-            }
-
-            .project-nav-name {
-                font-size: 15px;
-            }
-
-            .about-top {
-                margin-bottom: 45px;
-            }
-
-            .about-identity {
-                grid-template-columns: 1fr;
-            }
-
-            .about-heading {
-                margin-bottom: 35px;
-            }
-
-            .about-text {
-                font-size: 14px;
-            }
-
-            footer {
-                padding: 24px 20px;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
      HEADER
-========================= -->
+======================================================= -->
 
 <header>
 
-    <div class="logo">
+    <a href="#top" class="logo">
         006.STUDIO
-    </div>
+    </a>
 
-    <nav>
-
-        <a href="#motion">
-            2D/3D MOTION
-        </a>
-
-        <a href="#lab">
-            3D LAB
-        </a>
-
-        <a href="#about">
-            ABOUT
-        </a>
-
+    <nav class="nav">
+        <a href="#motion">2D/3D MOTION</a>
+        <a href="#lab">3D LAB</a>
+        <a href="#about">ABOUT</a>
     </nav>
 
 </header>
 
 
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-<main>
+<main id="top">
 
+    <section class="hero">
 
-<!-- =========================
-     HERO / SHOWREEL
-========================= -->
+        <div class="hero-showreel">
 
-<section class="hero">
-
-    <div class="hero-showreel">
-
-        <div class="hero-showreel-frame">
-
-            <iframe
-                src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=0&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
-                title="006.STUDIO Showreel"
-                allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                allowfullscreen
-            ></iframe>
+            <div class="hero-showreel-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=0&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
+                    title="006.STUDIO Showreel"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
         </div>
 
-    </div>
+        <div class="hero-copy">
 
-</section>
-
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section
-    id="about"
-    class="section about-section"
->
-
-    <div class="about-top">
-
-        <div class="section-title">
-            03 — About
-        </div>
-
-
-        <div class="language-switch">
-
-            <button
-                class="language-button active"
-                data-language="en"
-            >
-                EN
-            </button>
-
-            <span class="language-divider">
-                /
-            </span>
-
-            <button
-                class="language-button"
-                data-language="vi"
-            >
-                VI
-            </button>
+            <h1 class="reveal">
+                Creative studio<br>
+                by <span>Colorblind</span> × 006
+            </h1>
 
         </div>
 
-    </div>
+    </section>
 
 
+    <!-- ===================================================
+         ABOUT
+    =================================================== -->
 
-    <div
-        class="about-content language-content"
-        id="about-en"
-    >
+    <section class="about" id="about">
 
-        <div class="about-heading">
-            FROM<br>
-            VISION<br>
-            TO VISUAL
-        </div>
+        <div class="about-top">
 
-
-        <div class="about-text">
-
-            <p>
-                006studio started as a young creative driven by curiosity,
-                passion, and a desire to create.
-            </p>
-
-            <br>
-
-            <p>
-                With 7+ years of experience in the creative industry,
-                we specialize in 2D & 3D Motion Design, turning ideas
-                and visions into clear, distinctive visual experiences.
-            </p>
-
-            <br>
-
-            <p>
-                From Vision to Visual
-            </p>
-
-            <br>
-
-            <p>
-                006studio brings together two creative disciplines:
-                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
-                <strong>006LAB</strong> — 3D Printing & Object Design.
-            </p>
-
-            <br>
-
-            <p>
-                From digital motion to physical objects,
-                we turn ideas into visuals with character and purpose.
-            </p>
-
-        </div>
-
-
-        <div class="about-identity">
-
-            <div class="identity-card">
-
-                <div class="identity-name">
-                    COLORBLIND
-                </div>
-
-                <div class="identity-description">
-                    Personal creative identity for 2D & 3D Motion Design.
-                </div>
-
+            <div class="section-label reveal">
+                ABOUT 006STUDIO
             </div>
 
 
-            <div class="identity-card">
+            <div class="about-copy">
 
-                <div class="identity-name">
-                    006LAB
+                <!-- EN -->
+
+                <div class="about-version active" id="about-en">
+
+                    <p class="reveal reveal-delay-1">
+                        006studio started as a young creative driven by curiosity,
+                        passion, and a desire to create.
+                    </p>
+
+                    <p class="reveal reveal-delay-2">
+                        With 7+ years of experience in the creative industry,
+                        we specialize in
+                        <span class="highlight">2D & 3D Motion Design</span>,
+                        turning ideas and visions into clear, distinctive visual experiences.
+                    </p>
+
+                    <p class="reveal reveal-delay-3">
+                        From Vision to Visual
+                    </p>
+
+                    <p class="reveal reveal-delay-4">
+                        006studio brings together two creative disciplines:
+                        <span class="orange">COLORBLIND</span> —
+                        2D & 3D Motion Design;
+                        <span class="highlight">006LAB</span> —
+                        3D Printing & Object Design.
+                    </p>
+
+                    <p class="reveal reveal-delay-5">
+                        From digital motion to physical objects,
+                        we turn ideas into visuals with character and purpose.
+                    </p>
+
                 </div>
 
-                <div class="identity-description">
-                    3D Printing & Object Design.
+
+                <!-- VI -->
+
+                <div class="about-version" id="about-vi">
+
+                    <p>
+                        006studio bắt đầu từ một creative trẻ với niềm đam mê,
+                        sự tò mò và mong muốn không ngừng sáng tạo.
+                    </p>
+
+                    <p>
+                        Với hơn 7 năm kinh nghiệm trong ngành sáng tạo,
+                        chúng tôi tập trung vào
+                        <span class="highlight">2D & 3D Motion Design</span>,
+                        biến ý tưởng và vision thành những trải nghiệm hình ảnh
+                        rõ ràng và có cá tính.
+                    </p>
+
+                    <p>
+                        From Vision to Visual
+                    </p>
+
+                    <p>
+                        006studio kết hợp hai hướng sáng tạo:
+                        <span class="orange">COLORBLIND</span> —
+                        2D & 3D Motion Design;
+                        <span class="highlight">006LAB</span> —
+                        3D Printing & Object Design.
+                    </p>
+
+                    <p>
+                        Từ chuyển động kỹ thuật số đến những vật thể trong
+                        thế giới thực, chúng tôi biến ý tưởng thành những visual
+                        có cá tính và mục đích.
+                    </p>
+
+                </div>
+
+
+                <div class="about-language">
+
+                    <button
+                        class="lang-button active"
+                        id="lang-en"
+                        onclick="setLanguage('en')">
+                        EN
+                    </button>
+
+                    <button
+                        class="lang-button"
+                        id="lang-vi"
+                        onclick="setLanguage('vi')">
+                        VI
+                    </button>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
 
+        <div class="about-bottom">
 
+            <div class="identity-card reveal reveal-delay-1">
 
-    <div
-        class="about-content language-content"
-        id="about-vi"
-        style="display: none;"
-    >
+                <h3>COLORBLIND</h3>
 
-        <div class="about-heading">
-            FROM<br>
-            VISION<br>
-            TO VISUAL
-        </div>
-
-
-        <div class="about-text">
-
-            <p>
-                006studio bắt đầu từ một creative trẻ với niềm đam mê,
-                sự tò mò và mong muốn không ngừng sáng tạo.
-            </p>
-
-            <br>
-
-            <p>
-                Với hơn 7 năm kinh nghiệm trong ngành sáng tạo,
-                chúng tôi tập trung vào 2D & 3D Motion Design,
-                biến ý tưởng và vision thành những trải nghiệm
-                hình ảnh rõ ràng và có cá tính.
-            </p>
-
-            <br>
-
-            <p>
-                From Vision to Visual
-            </p>
-
-            <br>
-
-            <p>
-                006studio kết hợp hai hướng sáng tạo:
-                <strong>COLORBLIND</strong> — 2D & 3D Motion Design;
-                <strong>006LAB</strong> — 3D Printing & Object Design.
-            </p>
-
-            <br>
-
-            <p>
-                Từ chuyển động kỹ thuật số đến những vật thể trong
-                thế giới thực, chúng tôi biến ý tưởng thành những
-                visual có cá tính và mục đích.
-            </p>
-
-        </div>
-
-
-        <div class="about-identity">
-
-            <div class="identity-card">
-
-                <div class="identity-name">
-                    COLORBLIND
-                </div>
-
-                <div class="identity-description">
-                    Nhận diện sáng tạo cá nhân trong lĩnh vực
+                <p>
+                    Personal creative identity for
                     2D & 3D Motion Design.
-                </div>
+                </p>
 
             </div>
 
 
-            <div class="identity-card">
+            <div class="identity-card reveal reveal-delay-2">
 
-                <div class="identity-name">
-                    006LAB
-                </div>
+                <h3>006LAB</h3>
 
-                <div class="identity-description">
+                <p>
                     3D Printing & Object Design.
-                </div>
+                </p>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
 
+    <!-- ===================================================
+         2D / 3D MOTION
+    =================================================== -->
 
-    <div class="contact">
+    <section class="discipline" id="motion">
 
-        <div class="contact-title">
-            CONTACT
-        </div>
+        <div class="discipline-header">
 
-        <a
-            class="contact-email"
-            href="mailto:hello@006studio.com"
-        >
-            LET'S WORK TOGETHER →
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     2D / 3D MOTION
-========================= -->
-
-<section
-    id="motion"
-    class="section"
->
-
-    <div class="section-top">
-
-        <div class="section-title">
-            01 — 2D/3D Motion
-        </div>
-
-        <div class="section-description">
-            Motion, animation, visual design and digital image-making.
-        </div>
-
-    </div>
-
-
-    <div class="discipline-intro">
-
-        <h2>
-            FROM IDEA<br>
-            <span>TO MOTION</span>
-        </h2>
-
-        <div class="discipline-object">
-
-            <div class="discipline-object-main"></div>
-
-            <div class="discipline-object-center"></div>
-
-            <div class="discipline-object-accent"></div>
-
-        </div>
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-        <div
-            class="category-card"
-            data-category="visual-led"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    01
-                </div>
-
-                <div class="category-image-title">
-                    VISUAL<br>
-                    LED
-                </div>
-
+            <div class="section-title reveal">
+                01 / 2D & 3D MOTION
             </div>
 
-            <div class="category-info">
+            <div class="section-description reveal reveal-delay-1">
+                Motion design, visual storytelling and 3D experiences
+                built to transform ideas into distinctive moving images.
+            </div>
 
-                <div class="category-name">
-                    Visual LED
-                </div>
+        </div>
 
-                <div class="category-count">
-                    PROJECTS
-                </div>
+
+        <div class="discipline-intro">
+
+            <h2 class="reveal">
+                FROM IDEA
+                <span>TO MOTION</span>
+            </h2>
+
+            <div class="discipline-object reveal reveal-delay-2">
+
+                <div class="discipline-object-main"></div>
+
+                <div class="discipline-object-center"></div>
+
+                <div class="discipline-object-accent"></div>
 
             </div>
 
         </div>
 
 
+        <div class="category-grid">
 
-        <div
-            class="category-card"
-            data-category="frame-by-frame"
-        >
+            <div
+                class="category-card reveal reveal-delay-1"
+                onclick="openCategory('visual-led')">
 
-            <div class="category-image">
+                <div class="category-number">01</div>
 
-                <div class="category-number">
-                    02
-                </div>
+                <h3>VISUAL<br>LED</h3>
 
-                <div class="category-image-title">
-                    FRAME<br>
-                    BY FRAME
-                </div>
+                <p>
+                    Large-scale visual content, motion graphics and
+                    digital experiences created for LED screens
+                    and spatial environments.
+                </p>
+
+                <div class="category-arrow">↗</div>
 
             </div>
 
-            <div class="category-info">
 
-                <div class="category-name">
-                    Frame by Frame Animation
-                </div>
+            <div
+                class="category-card reveal reveal-delay-2"
+                onclick="openCategory('frame-by-frame')">
 
-                <div class="category-count">
-                    PROJECTS
-                </div>
+                <div class="category-number">02</div>
+
+                <h3>FRAME BY<br>FRAME</h3>
+
+                <p>
+                    Frame-by-frame animation, hand-crafted movement
+                    and illustrated motion experiments.
+                </p>
+
+                <div class="category-arrow">↗</div>
+
+            </div>
+
+
+            <div
+                class="category-card reveal reveal-delay-3"
+                onclick="openCategory('infographic')">
+
+                <div class="category-number">03</div>
+
+                <h3>INFOGRAPHIC<br>& BRAND FILM</h3>
+
+                <p>
+                    Visual storytelling, information design and brand
+                    films built to communicate ideas through motion.
+                </p>
+
+                <div class="category-arrow">↗</div>
+
+            </div>
+
+
+            <div
+                class="category-card reveal reveal-delay-1"
+                onclick="openCategory('cgi')">
+
+                <div class="category-number">04</div>
+
+                <h3>CGI</h3>
+
+                <p>
+                    3D imagery, product visuals, environments
+                    and CGI experiments.
+                </p>
+
+                <div class="category-arrow">↗</div>
+
+            </div>
+
+
+            <div
+                class="category-card reveal reveal-delay-2"
+                onclick="openCategory('sculpting')">
+
+                <div class="category-number">05</div>
+
+                <h3>SCULPTING</h3>
+
+                <p>
+                    Digital sculpting, character development
+                    and 3D form exploration.
+                </p>
+
+                <div class="category-arrow">↗</div>
+
+            </div>
+
+
+            <div
+                class="category-card reveal reveal-delay-3"
+                onclick="openCategory('ai-video')">
+
+                <div class="category-number">06</div>
+
+                <h3>AI VIDEO<br>SOLUTION</h3>
+
+                <p>
+                    AI-assisted video production, visual development
+                    and creative solutions for faster content creation.
+                </p>
+
+                <div class="category-arrow">↗</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         3D LAB
+    =================================================== -->
+
+    <section class="discipline" id="lab">
+
+        <div class="discipline-header">
+
+            <div class="section-title reveal">
+                02 / 3D LAB
+            </div>
+
+            <div class="section-description reveal reveal-delay-1">
+                Physical objects, characters and small-scale products
+                developed through 3D design, printing and fabrication.
+            </div>
+
+        </div>
+
+
+        <div class="discipline-intro">
+
+            <h2 class="reveal">
+                FROM DIGITAL
+                <span>TO OBJECT</span>
+            </h2>
+
+            <div class="discipline-object reveal reveal-delay-2">
+
+                <div class="discipline-object-main"></div>
+
+                <div class="discipline-object-center"></div>
+
+                <div class="discipline-object-accent"></div>
 
             </div>
 
         </div>
 
 
+        <div class="category-grid">
 
-        <div
-            class="category-card"
-            data-category="infographic"
-        >
+            <div
+                class="category-card reveal reveal-delay-1"
+                onclick="openCategory('brand-merchandise')">
 
-            <div class="category-image">
+                <div class="category-number">01</div>
 
-                <div class="category-number">
-                    03
-                </div>
+                <h3>BRAND<br>MERCHANDISE</h3>
 
-                <div class="category-image-title">
-                    INFOGRAPHIC<br>
-                    & BRAND FILM
-                </div>
+                <p>
+                    Physical objects, merchandise and branded products
+                    developed through 3D design and fabrication.
+                </p>
 
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    Infographic & Brand Film
-                </div>
-
-                <div class="category-count">
-                    PROJECTS
-                </div>
+                <div class="category-arrow">↗</div>
 
             </div>
 
-        </div>
 
+            <div
+                class="category-card reveal reveal-delay-2"
+                onclick="openCategory('mascot')">
 
+                <div class="category-number">02</div>
 
-        <div
-            class="category-card"
-            data-category="cgi"
-        >
+                <h3>MASCOT</h3>
 
-            <div class="category-image">
+                <p>
+                    Character and mascot design translated from
+                    digital concepts into physical objects.
+                </p>
 
-                <div class="category-number">
-                    04
-                </div>
-
-                <div class="category-image-title">
-                    CGI
-                </div>
+                <div class="category-arrow">↗</div>
 
             </div>
 
-            <div class="category-info">
 
-                <div class="category-name">
-                    CGI
-                </div>
+            <div
+                class="category-card reveal reveal-delay-3"
+                onclick="openCategory('small-decor')">
 
-                <div class="category-count">
-                    PROJECTS
-                </div>
+                <div class="category-number">03</div>
+
+                <h3>SMALL<br>DECOR</h3>
+
+                <p>
+                    Small-scale objects, functional pieces and
+                    decorative experiments made for the physical world.
+                </p>
+
+                <div class="category-arrow">↗</div>
 
             </div>
 
         </div>
 
-
-
-        <div
-            class="category-card"
-            data-category="sculpting"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    05
-                </div>
-
-                <div class="category-image-title">
-                    SCULPTING
-                </div>
-
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    Sculpting
-                </div>
-
-                <div class="category-count">
-                    PROJECTS
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div
-            class="category-card"
-            data-category="ai-video"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    06
-                </div>
-
-                <div class="category-image-title">
-                    AI VIDEO<br>
-                    SOLUTION
-                </div>
-
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    AI Video Solution
-                </div>
-
-                <div class="category-count">
-                    PROJECTS
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     3D LAB
-========================= -->
-
-<section
-    id="lab"
-    class="section"
->
-
-    <div class="section-top">
-
-        <div class="section-title">
-            02 — 3D Lab
-        </div>
-
-        <div class="section-description">
-            Objects, experiments and things made in the physical world.
-        </div>
-
-    </div>
-
-
-    <div class="discipline-intro">
-
-        <h2>
-            FROM DIGITAL<br>
-            <span>TO OBJECT</span>
-        </h2>
-
-        <div class="discipline-object">
-
-            <div class="discipline-object-main"></div>
-
-            <div class="discipline-object-center"></div>
-
-            <div class="discipline-object-accent"></div>
-
-        </div>
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-        <div
-            class="category-card"
-            data-category="brand-merchandise"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    01
-                </div>
-
-                <div class="category-image-title">
-                    BRAND<br>
-                    MERCHANDISE
-                </div>
-
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    Brand Merchandise
-                </div>
-
-                <div class="category-count">
-                    PRODUCTS
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div
-            class="category-card"
-            data-category="mascot"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    02
-                </div>
-
-                <div class="category-image-title">
-                    MASCOT
-                </div>
-
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    Mascot
-                </div>
-
-                <div class="category-count">
-                    PRODUCTS
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div
-            class="category-card"
-            data-category="small-decor"
-        >
-
-            <div class="category-image">
-
-                <div class="category-number">
-                    03
-                </div>
-
-                <div class="category-image-title">
-                    SMALL<br>
-                    DECOR
-                </div>
-
-            </div>
-
-            <div class="category-info">
-
-                <div class="category-name">
-                    Small Decor
-                </div>
-
-                <div class="category-count">
-                    PRODUCTS
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
+    </section>
 
 </main>
 
 
-
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
 <footer>
 
-    <span>
-        © 006.STUDIO
-    </span>
+    <div class="footer-top">
 
-    <span>
-        COLORBLIND × 006
-    </span>
+        <div class="footer-logo">
+            006.STUDIO
+        </div>
+
+        <div class="footer-contact">
+
+            <p>
+                CREATIVE STUDIO
+            </p>
+
+            <p>
+                <a href="mailto:hello@006studio.com">
+                    hello@006studio.com
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div>
+            © 2026 006.STUDIO
+        </div>
+
+        <div>
+            FROM VISION TO VISUAL
+        </div>
+
+    </div>
 
 </footer>
 
 
+<!-- =======================================================
+     CATEGORY OVERLAY
+======================================================= -->
 
-<!-- =========================
-     CATEGORY PAGE
-========================= -->
+<div class="overlay" id="categoryOverlay">
 
-<div
-    class="category-page"
-    id="categoryPage"
->
+    <div class="overlay-header">
 
-    <div class="category-page-header">
-
-        <div class="category-page-logo">
+        <div class="logo">
             006.STUDIO
         </div>
 
         <button
-            class="close-category"
-            id="closeCategory"
-        >
+            class="overlay-close"
+            onclick="closeCategory()">
             CLOSE ×
         </button>
 
     </div>
 
 
-    <div class="category-page-content">
+    <div class="overlay-content">
 
-        <div
-            class="category-page-label"
-            id="categoryPageLabel"
-        >
-            CATEGORY
-        </div>
+        <div id="categoryMain">
 
+            <h2 id="categoryTitle">
+                CATEGORY
+            </h2>
 
-        <h2 id="categoryPageTitle">
-            CATEGORY NAME
-        </h2>
+            <div
+                class="overlay-description"
+                id="categoryDescription">
+            </div>
 
+            <div
+                class="project-grid"
+                id="projectGrid">
+            </div>
 
-        <div
-            class="category-page-description"
-            id="categoryPageDescription"
-        >
-            Category description will live here.
         </div>
 
 
         <div
-            class="category-project-grid"
-            id="categoryProjectGrid"
-        ></div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     PROJECT DETAIL
-========================= -->
-
-<div
-    class="project-overlay"
-    id="projectOverlay"
->
-
-    <div class="project-detail-header">
-
-        <div class="project-detail-logo">
-            006.STUDIO
-        </div>
-
-        <button
-            class="close-project"
-            id="closeProject"
-        >
-            CLOSE ×
-        </button>
-
-    </div>
-
-
-    <div class="project-detail">
-
-        <div
-            class="project-detail-category"
-            id="detailCategory"
-        >
-            CATEGORY
-        </div>
-
-
-        <h2 id="detailTitle">
-            Project Name
-        </h2>
-
-
-        <div class="project-detail-main-image">
-
-            <span>
-                MAIN PROJECT MEDIA PLACEHOLDER
-            </span>
-
-        </div>
-
-
-        <div class="project-meta">
-
-            <div>
-
-                <div class="detail-label">
-                    YEAR
-                </div>
-
-                <div
-                    class="meta-value"
-                    id="detailYear"
-                >
-                    2026
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div class="detail-label">
-                    TYPE
-                </div>
-
-                <div
-                    class="meta-value"
-                    id="detailType"
-                >
-                    2D / 3D MOTION
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div class="detail-label">
-                    ROLE
-                </div>
-
-                <div
-                    class="meta-value"
-                    id="detailRole"
-                >
-                    Motion Design
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div class="detail-label">
-                    TOOLS
-                </div>
-
-                <div
-                    class="meta-value"
-                    id="detailTools"
-                >
-                    Blender / C4D / AE
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="project-about">
-
-            <div>
-
-                <div class="detail-label">
-                    ABOUT
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div
-                    class="detail-text"
-                    id="detailDescription"
-                >
-                    Project description will live here.
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="project-detail-gallery">
-
-            <div class="detail-gallery-item wide">
-                <span>
-                    VIDEO / IMAGE PLACEHOLDER
-                </span>
-            </div>
-
-            <div class="detail-gallery-item">
-                <span>
-                    IMAGE PLACEHOLDER
-                </span>
-            </div>
-
-            <div class="detail-gallery-item">
-                <span>
-                    IMAGE PLACEHOLDER
-                </span>
-            </div>
-
-            <div class="detail-gallery-item wide">
-                <span>
-                    VIDEO / IMAGE PLACEHOLDER
-                </span>
-            </div>
-
-        </div>
-
-
-
-        <div class="project-navigation">
+            class="project-detail"
+            id="projectDetail">
 
             <button
-                class="project-nav-button"
-                id="previousProject"
-                type="button"
-            >
-
-                <span class="project-nav-label">
-                    ← PREVIOUS
-                </span>
-
-                <span
-                    class="project-nav-name"
-                    id="previousProjectName"
-                >
-                    Project Name
-                </span>
-
+                class="overlay-close"
+                onclick="backToProjects()">
+                ← BACK
             </button>
 
+            <h2 id="projectTitle"></h2>
 
-            <button
-                class="project-nav-button project-nav-next"
-                id="nextProject"
-                type="button"
-            >
+            <div class="project-detail-meta">
 
-                <span class="project-nav-label">
-                    NEXT →
-                </span>
+                <span id="projectType"></span>
 
-                <span
-                    class="project-nav-name"
-                    id="nextProjectName"
-                >
-                    Project Name
-                </span>
+            </div>
 
-            </button>
+            <div
+                class="project-detail-description"
+                id="projectDescription">
+            </div>
 
         </div>
 
     </div>
 
 </div>
-
 
 
 <script>
 
+/* =========================================================
+   ABOUT LANGUAGE
+========================================================= */
 
-    /* =========================
-       CATEGORY DATA
-    ========================= */
+function setLanguage(language) {
 
-    const categories = {
+    const en = document.getElementById("about-en");
+    const vi = document.getElementById("about-vi");
 
-        "visual-led": {
-            label: "2D / 3D MOTION — 01",
-            title: "VISUAL LED",
-            description:
-                "Large-scale visual content, motion graphics and digital experiences created for LED screens and spatial environments."
-        },
+    const enButton = document.getElementById("lang-en");
+    const viButton = document.getElementById("lang-vi");
 
-        "frame-by-frame": {
-            label: "2D / 3D MOTION — 02",
-            title: "FRAME BY FRAME",
-            description:
-                "Frame-by-frame animation, hand-crafted movement and illustrated motion experiments."
-        },
+    if (language === "en") {
 
-        "infographic": {
-            label: "2D / 3D MOTION — 03",
-            title: "INFOGRAPHIC & BRAND FILM",
-            description:
-                "Visual storytelling, information design and brand films built to communicate ideas through motion."
-        },
+        en.classList.add("active");
+        vi.classList.remove("active");
 
-        "cgi": {
-            label: "2D / 3D MOTION — 04",
-            title: "CGI",
-            description:
-                "3D imagery, product visuals, environments and CGI experiments."
-        },
+        enButton.classList.add("active");
+        viButton.classList.remove("active");
 
-        "sculpting": {
-            label: "2D / 3D MOTION — 05",
-            title: "SCULPTING",
-            description:
-                "Digital sculpting, character development and 3D form exploration."
-        },
+    } else {
 
-        "ai-video": {
-            label: "2D / 3D MOTION — 06",
-            title: "AI VIDEO SOLUTION",
-            description:
-                "AI-assisted video production, visual development and creative solutions for faster content creation."
-        },
+        vi.classList.add("active");
+        en.classList.remove("active");
 
-        "brand-merchandise": {
-            label: "3D LAB — 01",
-            title: "BRAND MERCHANDISE",
-            description:
-                "Physical objects, merchandise and branded products developed through 3D design and fabrication."
-        },
+        viButton.classList.add("active");
+        enButton.classList.remove("active");
 
-        "mascot": {
-            label: "3D LAB — 02",
-            title: "MASCOT",
-            description:
-                "Character and mascot design translated from digital concepts into physical objects."
-        },
-
-        "small-decor": {
-            label: "3D LAB — 03",
-            title: "SMALL DECOR",
-            description:
-                "Small-scale objects, functional pieces and decorative experiments made for the physical world."
-        }
-
-    };
+    }
+}
 
 
+/* =========================================================
+   CATEGORY DATA
+========================================================= */
 
-    /* =========================
-       PROJECT DATA
-    ========================= */
+const categories = {
 
-    const projects = {
-
-        "visual-led": [
+    "visual-led": {
+        title: "VISUAL LED",
+        description:
+            "Large-scale visual content, motion graphics and digital experiences created for LED screens and spatial environments.",
+        projects: [
             {
-                title: "Visual LED Project 01",
-                type: "VISUAL LED"
+                title: "LED PROJECT 01",
+                type: "Motion Design"
             },
             {
-                title: "Visual LED Project 02",
-                type: "VISUAL LED"
-            },
-            {
-                title: "Visual LED Project 03",
-                type: "VISUAL LED"
-            },
-            {
-                title: "Visual LED Project 04",
-                type: "VISUAL LED"
-            }
-        ],
-
-        "frame-by-frame": [
-            {
-                title: "Frame by Frame Project 01",
-                type: "FRAME BY FRAME"
-            },
-            {
-                title: "Frame by Frame Project 02",
-                type: "FRAME BY FRAME"
-            },
-            {
-                title: "Frame by Frame Project 03",
-                type: "FRAME BY FRAME"
-            }
-        ],
-
-        "infographic": [
-            {
-                title: "Brand Film Project 01",
-                type: "INFOGRAPHIC & BRAND FILM"
-            },
-            {
-                title: "Infographic Project 02",
-                type: "INFOGRAPHIC & BRAND FILM"
-            },
-            {
-                title: "Brand Film Project 03",
-                type: "INFOGRAPHIC & BRAND FILM"
-            }
-        ],
-
-        "cgi": [
-            {
-                title: "CGI Project 01",
-                type: "CGI"
-            },
-            {
-                title: "CGI Project 02",
-                type: "CGI"
-            },
-            {
-                title: "CGI Project 03",
-                type: "CGI"
-            },
-            {
-                title: "CGI Project 04",
-                type: "CGI"
-            }
-        ],
-
-        "sculpting": [
-            {
-                title: "Sculpting Project 01",
-                type: "SCULPTING"
-            },
-            {
-                title: "Sculpting Project 02",
-                type: "SCULPTING"
-            }
-        ],
-
-        "ai-video": [
-            {
-                title: "AI Video Project 01",
-                type: "AI VIDEO SOLUTION"
-            },
-            {
-                title: "AI Video Project 02",
-                type: "AI VIDEO SOLUTION"
-            },
-            {
-                title: "AI Video Project 03",
-                type: "AI VIDEO SOLUTION"
-            }
-        ],
-
-        "brand-merchandise": [
-            {
-                title: "Brand Merchandise 01",
-                type: "BRAND MERCHANDISE"
-            },
-            {
-                title: "Brand Merchandise 02",
-                type: "BRAND MERCHANDISE"
-            },
-            {
-                title: "Brand Merchandise 03",
-                type: "BRAND MERCHANDISE"
-            }
-        ],
-
-        "mascot": [
-            {
-                title: "Mascot Project 01",
-                type: "MASCOT"
-            },
-            {
-                title: "Mascot Project 02",
-                type: "MASCOT"
-            },
-            {
-                title: "Mascot Project 03",
-                type: "MASCOT"
-            }
-        ],
-
-        "small-decor": [
-            {
-                title: "Small Decor 01",
-                type: "SMALL DECOR"
-            },
-            {
-                title: "Small Decor 02",
-                type: "SMALL DECOR"
-            },
-            {
-                title: "Small Decor 03",
-                type: "SMALL DECOR"
+                title: "LED PROJECT 02",
+                type: "Visual Experience"
             }
         ]
-
-    };
-
+    },
 
 
-    /* =========================
-       CATEGORY PAGE
-    ========================= */
-
-    const categoryPage =
-        document.getElementById("categoryPage");
-
-    const closeCategory =
-        document.getElementById("closeCategory");
-
-    const categoryPageLabel =
-        document.getElementById("categoryPageLabel");
-
-    const categoryPageTitle =
-        document.getElementById("categoryPageTitle");
-
-    const categoryPageDescription =
-        document.getElementById("categoryPageDescription");
-
-    const categoryProjectGrid =
-        document.getElementById("categoryProjectGrid");
-
-
-    let currentCategory = "";
-
-    let currentProjectIndex = 0;
-
-
-
-    /* =========================
-       OPEN CATEGORY
-    ========================= */
-
-    function openCategory(categoryId) {
-
-        const category =
-            categories[categoryId];
-
-        if (!category) return;
-
-
-        currentCategory =
-            categoryId;
-
-
-        categoryPageLabel.textContent =
-            category.label;
-
-        categoryPageTitle.textContent =
-            category.title;
-
-        categoryPageDescription.textContent =
-            category.description;
-
-
-        categoryProjectGrid.innerHTML = "";
-
-
-        const categoryProjects =
-            projects[categoryId] || [];
-
-
-        categoryProjects.forEach(
-            (project, index) => {
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "category-project";
-
-
-                card.innerHTML = `
-
-                    <div class="category-project-image">
-
-                        <span>
-                            PROJECT ${String(index + 1).padStart(2, "0")}
-                            — MEDIA PLACEHOLDER
-                        </span>
-
-                    </div>
-
-                    <div class="category-project-info">
-
-                        <div class="category-project-name">
-                            ${project.title}
-                        </div>
-
-                        <div class="category-project-type">
-                            ${project.type}
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                card.addEventListener(
-                    "click",
-                    () => {
-
-                        openProject(
-                            categoryId,
-                            index
-                        );
-
-                    }
-                );
-
-
-                categoryProjectGrid.appendChild(card);
-
+    "frame-by-frame": {
+        title: "FRAME BY FRAME",
+        description:
+            "Frame-by-frame animation, hand-crafted movement and illustrated motion experiments.",
+        projects: [
+            {
+                title: "FRAME PROJECT 01",
+                type: "Animation"
+            },
+            {
+                title: "FRAME PROJECT 02",
+                type: "Animation"
             }
-        );
+        ]
+    },
 
 
-        categoryPage.classList.add("open");
+    "infographic": {
+        title: "INFOGRAPHIC & BRAND FILM",
+        description:
+            "Visual storytelling, information design and brand films built to communicate ideas through motion.",
+        projects: [
+            {
+                title: "BRAND FILM 01",
+                type: "Brand Film"
+            },
+            {
+                title: "INFOGRAPHIC 01",
+                type: "Information Design"
+            }
+        ]
+    },
 
-        document.body.classList.add("no-scroll");
 
-        categoryPage.scrollTop = 0;
+    "cgi": {
+        title: "CGI",
+        description:
+            "3D imagery, product visuals, environments and CGI experiments.",
+        projects: [
+            {
+                title: "CGI PROJECT 01",
+                type: "3D / CGI"
+            },
+            {
+                title: "CGI PROJECT 02",
+                type: "3D / CGI"
+            }
+        ]
+    },
 
+
+    "sculpting": {
+        title: "SCULPTING",
+        description:
+            "Digital sculpting, character development and 3D form exploration.",
+        projects: [
+            {
+                title: "SCULPT 01",
+                type: "Digital Sculpting"
+            },
+            {
+                title: "SCULPT 02",
+                type: "Character"
+            }
+        ]
+    },
+
+
+    "ai-video": {
+        title: "AI VIDEO SOLUTION",
+        description:
+            "AI-assisted video production, visual development and creative solutions for faster content creation.",
+        projects: [
+            {
+                title: "AI VIDEO 01",
+                type: "AI Video"
+            },
+            {
+                title: "AI VIDEO 02",
+                type: "AI Solution"
+            }
+        ]
+    },
+
+
+    "brand-merchandise": {
+        title: "BRAND MERCHANDISE",
+        description:
+            "Physical objects, merchandise and branded products developed through 3D design and fabrication.",
+        projects: [
+            {
+                title: "MERCH 01",
+                type: "3D Printing"
+            },
+            {
+                title: "MERCH 02",
+                type: "Object Design"
+            }
+        ]
+    },
+
+
+    "mascot": {
+        title: "MASCOT",
+        description:
+            "Character and mascot design translated from digital concepts into physical objects.",
+        projects: [
+            {
+                title: "MASCOT 01",
+                type: "Character Design"
+            },
+            {
+                title: "MASCOT 02",
+                type: "3D Object"
+            }
+        ]
+    },
+
+
+    "small-decor": {
+        title: "SMALL DECOR",
+        description:
+            "Small-scale objects, functional pieces and decorative experiments made for the physical world.",
+        projects: [
+            {
+                title: "DECOR 01",
+                type: "Object Design"
+            },
+            {
+                title: "DECOR 02",
+                type: "3D Printing"
+            }
+        ]
     }
 
+};
 
 
-    /* =========================
-       CATEGORY CARDS
-    ========================= */
+/* =========================================================
+   CATEGORY OPEN
+========================================================= */
 
-    document
-        .querySelectorAll(".category-card")
-        .forEach(card => {
+function openCategory(categoryId) {
 
-            card.addEventListener(
-                "click",
-                () => {
+    const category = categories[categoryId];
 
-                    const category =
-                        card.dataset.category;
+    if (!category) return;
 
-                    openCategory(category);
+    const overlay = document.getElementById("categoryOverlay");
+    const title = document.getElementById("categoryTitle");
+    const description = document.getElementById("categoryDescription");
+    const projectGrid = document.getElementById("projectGrid");
 
-                }
-            );
+    const categoryMain = document.getElementById("categoryMain");
+    const projectDetail = document.getElementById("projectDetail");
 
+    title.textContent = category.title;
+    description.textContent = category.description;
+
+    projectGrid.innerHTML = "";
+
+    category.projects.forEach((project, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "project-card";
+
+        card.innerHTML = `
+            <span>${String(index + 1).padStart(2, "0")} / ${project.type}</span>
+            <h3>${project.title}</h3>
+        `;
+
+        card.addEventListener("click", () => {
+            openProject(project);
         });
 
-
-
-    /* =========================
-       CLOSE CATEGORY
-    ========================= */
-
-    closeCategory.addEventListener(
-        "click",
-        () => {
-
-            categoryPage.classList.remove("open");
-
-            document.body.classList.remove("no-scroll");
-
-        }
-    );
-
-
-
-    /* =========================
-       PROJECT DETAIL
-    ========================= */
-
-    const overlay =
-        document.getElementById("projectOverlay");
-
-    const closeProject =
-        document.getElementById("closeProject");
-
-    const detailCategory =
-        document.getElementById("detailCategory");
-
-    const detailTitle =
-        document.getElementById("detailTitle");
-
-    const detailYear =
-        document.getElementById("detailYear");
-
-    const detailType =
-        document.getElementById("detailType");
-
-    const detailRole =
-        document.getElementById("detailRole");
-
-    const detailTools =
-        document.getElementById("detailTools");
-
-    const detailDescription =
-        document.getElementById("detailDescription");
-
-    const previousProject =
-        document.getElementById("previousProject");
-
-    const nextProject =
-        document.getElementById("nextProject");
-
-    const previousProjectName =
-        document.getElementById("previousProjectName");
-
-    const nextProjectName =
-        document.getElementById("nextProjectName");
-
-
-
-    /* =========================
-       OPEN PROJECT
-    ========================= */
-
-    function openProject(
-        categoryId,
-        projectIndex
-    ) {
-
-        const category =
-            categories[categoryId];
-
-        const categoryProjects =
-            projects[categoryId];
-
-        const project =
-            categoryProjects[projectIndex];
-
-
-        if (
-            !category ||
-            !project
-        ) return;
-
-
-        currentCategory =
-            categoryId;
-
-        currentProjectIndex =
-            projectIndex;
-
-
-        updateProjectDetail();
-
-
-        overlay.classList.add("open");
-
-        categoryPage.classList.remove("open");
-
-        document.body.classList.add("no-scroll");
-
-        overlay.scrollTop = 0;
-
-    }
-
-
-
-    /* =========================
-       UPDATE PROJECT
-    ========================= */
-
-    function updateProjectDetail() {
-
-        const category =
-            categories[currentCategory];
-
-        const categoryProjects =
-            projects[currentCategory];
-
-        const project =
-            categoryProjects[currentProjectIndex];
-
-
-        if (!project) return;
-
-
-        detailCategory.textContent =
-            category.title;
-
-        detailTitle.textContent =
-            project.title;
-
-        detailYear.textContent =
-            "2026";
-
-        detailType.textContent =
-            project.type;
-
-        detailRole.textContent =
-            "Motion Design / Creative";
-
-        detailTools.textContent =
-            "Placeholder Tools";
-
-        detailDescription.textContent =
-            "Project description will live here. This area will later contain the story, creative direction, process and context behind the project.";
-
-
-        const previousIndex =
-            (
-                currentProjectIndex
-                - 1
-                + categoryProjects.length
-            )
-            % categoryProjects.length;
-
-
-        const nextIndex =
-            (
-                currentProjectIndex
-                + 1
-            )
-            % categoryProjects.length;
-
-
-        previousProjectName.textContent =
-            categoryProjects[
-                previousIndex
-            ].title;
-
-        nextProjectName.textContent =
-            categoryProjects[
-                nextIndex
-            ].title;
-
-    }
-
-
-
-    /* =========================
-       PREVIOUS
-    ========================= */
-
-    previousProject.addEventListener(
-        "click",
-        () => {
-
-            const categoryProjects =
-                projects[currentCategory];
-
-
-            currentProjectIndex =
-                (
-                    currentProjectIndex
-                    - 1
-                    + categoryProjects.length
-                )
-                % categoryProjects.length;
-
-
-            updateProjectDetail();
-
-            overlay.scrollTop = 0;
-
-        }
-    );
-
-
-
-    /* =========================
-       NEXT
-    ========================= */
-
-    nextProject.addEventListener(
-        "click",
-        () => {
-
-            const categoryProjects =
-                projects[currentCategory];
-
-
-            currentProjectIndex =
-                (
-                    currentProjectIndex
-                    + 1
-                )
-                % categoryProjects.length;
-
-
-            updateProjectDetail();
-
-            overlay.scrollTop = 0;
-
-        }
-    );
-
-
-
-    /* =========================
-       CLOSE PROJECT
-    ========================= */
-
-    closeProject.addEventListener(
-        "click",
-        () => {
-
-            overlay.classList.remove("open");
-
-            document.body.classList.remove("no-scroll");
-
-        }
-    );
-
-
-
-    /* =========================
-       KEYBOARD
-    ========================= */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                if (
-                    overlay.classList.contains("open")
-                ) {
-
-                    overlay.classList.remove("open");
-
-                } else if (
-                    categoryPage.classList.contains("open")
-                ) {
-
-                    categoryPage.classList.remove("open");
-
-                }
-
-                document.body.classList.remove(
-                    "no-scroll"
-                );
-
-            }
-
-
-            if (
-                overlay.classList.contains("open")
-            ) {
-
-                if (
-                    event.key === "ArrowRight"
-                ) {
-
-                    nextProject.click();
-
-                }
-
-                if (
-                    event.key === "ArrowLeft"
-                ) {
-
-                    previousProject.click();
-
-                }
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================
-       LANGUAGE SWITCH
-    ========================= */
-
-    const languageButtons =
-        document.querySelectorAll(".language-button");
-
-    const englishContent =
-        document.getElementById("about-en");
-
-    const vietnameseContent =
-        document.getElementById("about-vi");
-
-
-    languageButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const language =
-                    button.dataset.language;
-
-
-                languageButtons.forEach(item => {
-
-                    item.classList.remove(
-                        "active"
-                    );
-
-                });
-
-
-                button.classList.add(
-                    "active"
-                );
-
-
-                if (
-                    language === "en"
-                ) {
-
-                    englishContent.style.display =
-                        "block";
-
-                    vietnameseContent.style.display =
-                        "none";
-
-                } else {
-
-                    englishContent.style.display =
-                        "none";
-
-                    vietnameseContent.style.display =
-                        "block";
-
-                }
-
-            }
-        );
+        projectGrid.appendChild(card);
 
     });
 
-</script>
+    categoryMain.style.display = "block";
+    projectDetail.classList.remove("active");
 
+    overlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================================
+   CATEGORY CLOSE
+========================================================= */
+
+function closeCategory() {
+
+    const overlay = document.getElementById("categoryOverlay");
+
+    overlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+
+        document.getElementById("categoryMain").style.display = "block";
+        document.getElementById("projectDetail").classList.remove("active");
+
+    }, 350);
+}
+
+
+/* =========================================================
+   PROJECT OPEN
+========================================================= */
+
+function openProject(project) {
+
+    const categoryMain = document.getElementById("categoryMain");
+    const projectDetail = document.getElementById("projectDetail");
+
+    document.getElementById("projectTitle").textContent = project.title;
+    document.getElementById("projectType").textContent = project.type;
+
+    document.getElementById("projectDescription").textContent =
+        "Project description and visual content will be added here.";
+
+    categoryMain.style.display = "none";
+    projectDetail.classList.add("active");
+}
+
+
+/* =========================================================
+   BACK TO PROJECTS
+========================================================= */
+
+function backToProjects() {
+
+    document.getElementById("categoryMain").style.display = "block";
+    document.getElementById("projectDetail").classList.remove("active");
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeCategory();
+    }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) {
+                return;
+            }
+
+            entry.target.classList.add("is-visible");
+
+            /*
+             * Chỉ animate một lần.
+             * Sau khi xuất hiện thì observer không cần
+             * theo dõi element này nữa.
+             */
+
+            observer.unobserve(entry.target);
+
+        });
+
+    },
+    {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+    }
+);
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+</script>
 
 </body>
 </html>
