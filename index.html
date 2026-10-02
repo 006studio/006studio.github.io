@@ -12,10 +12,6 @@
 
     <style>
 
-        /* =========================
-           BASIC
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -33,9 +29,7 @@
         }
 
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* HEADER */
 
         header {
             width: 100%;
@@ -65,7 +59,6 @@
             text-decoration: none;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.3px;
             transition: opacity 0.2s ease;
         }
 
@@ -74,9 +67,7 @@
         }
 
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 100vh;
@@ -94,7 +85,6 @@
             font-weight: 600;
             color: #008C8C;
             margin-bottom: 28px;
-            letter-spacing: 0.5px;
         }
 
         .hero h1 {
@@ -116,12 +106,17 @@
         }
 
 
-        /* =========================
-           SECTIONS
-        ========================= */
+        /* SECTIONS */
 
         .section {
             padding: 140px 32px;
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
         }
 
         .section-title {
@@ -129,34 +124,171 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 40px;
         }
 
-        .placeholder {
-            min-height: 500px;
+        .section-description {
+            max-width: 360px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+
+        /* FILTER */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            border: 1px solid #111111;
+            background: transparent;
+            padding: 9px 14px;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter:hover,
+        .filter.active {
+            background: #111111;
+            color: #F3F0E8;
+        }
+
+
+        /* PROJECT GRID */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .project {
+            text-decoration: none;
+            color: #111111;
+            display: block;
+        }
+
+        .project-image {
+            aspect-ratio: 16 / 10;
             background: #D9D4C9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s ease;
+        }
+
+        .project:hover .project-image {
+            transform: scale(0.985);
+        }
+
+        .project-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: #77736B;
+        }
+
+        .project:nth-child(2) .project-image,
+        .project:nth-child(5) .project-image {
+            background: #008C8C;
+        }
+
+        .project:nth-child(3) .project-image,
+        .project:nth-child(6) .project-image {
+            background: #F26B38;
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 0 38px;
+        }
+
+        .project-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .project-tags {
+            font-size: 10px;
             font-weight: 600;
+            text-align: right;
+            color: #666666;
         }
 
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* LAB */
+
+        .lab-section {
+            background: #111111;
+            color: #F3F0E8;
+        }
+
+        .lab-section .section-title {
+            color: #F26B38;
+        }
+
+        .lab-section .section-description {
+            color: #D0CCC3;
+        }
+
+        .lab-box {
+            min-height: 520px;
+            border: 1px solid #3A3A3A;
+            display: flex;
+            align-items: flex-end;
+            padding: 32px;
+        }
+
+        .lab-box h2 {
+            font-size: clamp(48px, 9vw, 120px);
+            line-height: 0.85;
+            letter-spacing: -0.06em;
+        }
+
+
+        /* ABOUT */
+
+        .about-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-heading {
+            font-size: clamp(42px, 6vw, 80px);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+
+        /* FOOTER */
 
         footer {
             padding: 32px;
+            display: flex;
+            justify-content: space-between;
             font-size: 11px;
             font-weight: 600;
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 700px) {
 
@@ -180,21 +312,30 @@
                 font-size: clamp(58px, 17vw, 110px);
             }
 
-            .hero-small {
-                margin-bottom: 22px;
-            }
-
-            .hero-text p {
-                margin-top: 30px;
-                font-size: 12px;
-            }
-
             .section {
                 padding: 90px 20px;
             }
 
-            .placeholder {
-                min-height: 300px;
+            .section-top {
+                display: block;
+            }
+
+            .section-description {
+                margin-top: 20px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .lab-box {
+                min-height: 360px;
+                padding: 22px;
             }
 
             footer {
@@ -209,110 +350,281 @@
 <body>
 
 
-    <!-- HEADER -->
+<header>
 
-    <header>
+    <div class="logo">
+        006.STUDIO
+    </div>
 
-        <div class="logo">
-            006.STUDIO
-        </div>
+    <nav>
+        <a href="#work">2D/3D MOTION</a>
+        <a href="#lab">3D LAB</a>
+        <a href="#about">ABOUT</a>
+    </nav>
 
-        <nav>
-            <a href="#work">2D/3D MOTION</a>
-            <a href="#lab">3D LAB</a>
-            <a href="#about">ABOUT</a>
-        </nav>
-
-    </header>
+</header>
 
 
-    <!-- MAIN -->
-
-    <main>
+<main>
 
 
-        <!-- HERO -->
+    <!-- HERO -->
 
-        <section class="hero">
+    <section class="hero">
 
-            <div class="hero-text">
+        <div class="hero-text">
 
-                <div class="hero-small">
-                    006.STUDIO
-                </div>
-
-                <h1>
-                    2D / 3D<br>
-                    <span>MOTION</span>
-                </h1>
-
-                <p>
-                    Creative studio by 006
-                </p>
-
+            <div class="hero-small">
+                006.STUDIO
             </div>
 
-        </section>
+            <h1>
+                2D / 3D<br>
+                <span>MOTION</span>
+            </h1>
+
+            <p>
+                Creative studio by 006
+            </p>
+
+        </div>
+
+    </section>
 
 
+    <!-- WORK -->
 
-        <!-- WORK -->
+    <section id="work" class="section">
 
-        <section id="work" class="section">
+        <div class="section-top">
 
             <div class="section-title">
                 01 — 2D/3D Motion
             </div>
 
-            <div class="placeholder">
-                PROJECTS
+            <div class="section-description">
+                Selected motion, animation and 3D work.
             </div>
 
-        </section>
+        </div>
 
 
+        <div class="filters">
 
-        <!-- 3D LAB -->
+            <button class="filter active">ALL</button>
+            <button class="filter">2D</button>
+            <button class="filter">3D</button>
+            <button class="filter">CLIENT</button>
+            <button class="filter">PERSONAL</button>
 
-        <section id="lab" class="section">
+        </div>
+
+
+        <div class="project-grid">
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 01</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        3D / CLIENT
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 02</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        2D / CLIENT
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 03</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        3D / PERSONAL
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 04</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        MOTION / CLIENT
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 05</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        3D / PERSONAL
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="#" class="project">
+
+                <div class="project-image">
+                    <span class="project-number">PROJECT 06</span>
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-name">
+                        Project Name
+                    </div>
+
+                    <div class="project-tags">
+                        2D / CLIENT
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- 3D LAB -->
+
+    <section id="lab" class="section lab-section">
+
+        <div class="section-top">
 
             <div class="section-title">
                 02 — 3D Lab
             </div>
 
-            <div class="placeholder">
-                3D PRINTING / OBJECTS / EXPERIMENTS
+            <div class="section-description">
+                Objects, experiments and things made in the physical world.
             </div>
 
-        </section>
+        </div>
 
 
+        <div class="lab-box">
 
-        <!-- ABOUT -->
+            <h2>
+                3D<br>
+                LAB
+            </h2>
 
-        <section id="about" class="section">
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section">
+
+        <div class="section-top">
 
             <div class="section-title">
                 03 — About
             </div>
 
-            <div class="placeholder">
-                ABOUT / CONTACT
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-heading">
+                MAKING<br>
+                THINGS<br>
+                MOVE.
             </div>
 
-        </section>
+            <div class="about-text">
+                About and contact information will live here.
+                <br><br>
+                Motion design, 3D, creative direction and selected experiments by 006.
+            </div>
+
+        </div>
+
+    </section>
 
 
-    </main>
+</main>
 
 
-    <!-- FOOTER -->
+<footer>
 
-    <footer>
+    <span>© 006.STUDIO</span>
 
-        © 006.STUDIO
+    <span>HANOI / VIETNAM</span>
 
-    </footer>
+</footer>
 
 
 </body>
