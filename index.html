@@ -12,10 +12,6 @@
 
 <style>
 
-/* =========================================================
-   BASE
-========================================================= */
-
 :root {
     --teal: #008C8C;
     --orange: #F26B38;
@@ -148,9 +144,6 @@ header {
 .hero-copy {
     padding: 70px 9.8% 110px;
 }
-
-
-/* MAIN STATEMENT */
 
 .hero-copy h1 {
     max-width: 1100px;
@@ -692,6 +685,67 @@ footer {
     visibility: visible;
 }
 
+
+/* =========================================================
+   SWIPE EXIT ANIMATION
+========================================================= */
+
+.overlay-content {
+    padding: 80px 9.8% 120px;
+
+    transform-origin: right center;
+
+    will-change: transform, opacity;
+}
+
+
+/*
+ * Khi swipe sang phải:
+ * toàn bộ nội dung co lại về phía bên phải.
+ */
+
+.overlay-content.swipe-exit {
+    animation: swipeScaleOut 0.48s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+
+@keyframes swipeScaleOut {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    45% {
+        transform:
+            translate3d(25px, 0, 0)
+            scale(0.72);
+
+        opacity: 0.85;
+    }
+
+    75% {
+        transform:
+            translate3d(75px, 0, 0)
+            scale(0.35);
+
+        opacity: 0.45;
+    }
+
+    100% {
+        transform:
+            translate3d(140px, 0, 0)
+            scale(0.02);
+
+        opacity: 0;
+    }
+
+}
+
+
 .overlay-header {
     padding: 28px 32px;
 
@@ -716,9 +770,10 @@ footer {
     cursor: pointer;
 }
 
-.overlay-content {
-    padding: 80px 9.8% 120px;
-}
+
+/* =========================================================
+   OVERLAY CONTENT
+========================================================= */
 
 .overlay-content h2 {
     max-width: 900px;
@@ -974,6 +1029,10 @@ footer {
         min-height: 280px;
     }
 
+    .overlay-header {
+        padding: 20px;
+    }
+
     .overlay-content {
         padding: 60px 20px 90px;
     }
@@ -996,6 +1055,7 @@ footer {
         flex-direction: column;
         gap: 8px;
     }
+
 }
 
 
@@ -1015,11 +1075,16 @@ footer {
         transition: none;
     }
 
+    .overlay-content.swipe-exit {
+        animation: none;
+    }
+
     *,
     *::before,
     *::after {
         scroll-behavior: auto !important;
     }
+
 }
 
 </style>
@@ -1074,8 +1139,6 @@ footer {
 
         <div class="hero-copy">
 
-            <!-- MAIN STATEMENT -->
-
             <h1 class="reveal mouse-reactive main-headline">
 
                 <span class="playful-line vision-line">
@@ -1088,8 +1151,6 @@ footer {
 
             </h1>
 
-
-            <!-- SMALLER IDENTITY -->
 
             <div class="hero-identity reveal reveal-delay-1 mouse-reactive">
 
@@ -1130,8 +1191,6 @@ footer {
 
             <div class="about-copy">
 
-                <!-- EN -->
-
                 <div class="about-version active" id="about-en">
 
                     <p class="reveal reveal-delay-1">
@@ -1171,8 +1230,6 @@ footer {
 
                 </div>
 
-
-                <!-- VI -->
 
                 <div class="about-version" id="about-vi">
 
@@ -1308,9 +1365,7 @@ footer {
             <div class="discipline-object reveal reveal-delay-2">
 
                 <div class="discipline-object-main"></div>
-
                 <div class="discipline-object-center"></div>
-
                 <div class="discipline-object-accent"></div>
 
             </div>
@@ -1505,9 +1560,7 @@ footer {
             <div class="discipline-object reveal reveal-delay-2">
 
                 <div class="discipline-object-main"></div>
-
                 <div class="discipline-object-center"></div>
-
                 <div class="discipline-object-accent"></div>
 
             </div>
@@ -1660,7 +1713,7 @@ footer {
     </div>
 
 
-    <div class="overlay-content">
+    <div class="overlay-content" id="overlayContent">
 
         <div id="categoryMain">
 
@@ -1775,7 +1828,6 @@ const categories = {
         ]
     },
 
-
     "frame-by-frame": {
         title: "FRAME BY FRAME",
         description:
@@ -1791,7 +1843,6 @@ const categories = {
             }
         ]
     },
-
 
     "infographic": {
         title: "INFOGRAPHIC & BRAND FILM",
@@ -1809,7 +1860,6 @@ const categories = {
         ]
     },
 
-
     "cgi": {
         title: "CGI",
         description:
@@ -1825,7 +1875,6 @@ const categories = {
             }
         ]
     },
-
 
     "sculpting": {
         title: "SCULPTING",
@@ -1843,7 +1892,6 @@ const categories = {
         ]
     },
 
-
     "ai-video": {
         title: "AI VIDEO SOLUTION",
         description:
@@ -1859,7 +1907,6 @@ const categories = {
             }
         ]
     },
-
 
     "brand-merchandise": {
         title: "BRAND MERCHANDISE",
@@ -1877,7 +1924,6 @@ const categories = {
         ]
     },
 
-
     "mascot": {
         title: "MASCOT",
         description:
@@ -1893,7 +1939,6 @@ const categories = {
             }
         ]
     },
-
 
     "small-decor": {
         title: "SMALL DECOR",
@@ -1929,6 +1974,9 @@ function openCategory(categoryId) {
     const overlay =
         document.getElementById("categoryOverlay");
 
+    const overlayContent =
+        document.getElementById("overlayContent");
+
     const title =
         document.getElementById("categoryTitle");
 
@@ -1943,6 +1991,11 @@ function openCategory(categoryId) {
 
     const projectDetail =
         document.getElementById("projectDetail");
+
+
+    overlayContent.classList.remove(
+        "swipe-exit"
+    );
 
 
     title.textContent =
@@ -2014,7 +2067,19 @@ function openCategory(categoryId) {
 function closeCategory() {
 
     const overlay =
-        document.getElementById("categoryOverlay");
+        document.getElementById(
+            "categoryOverlay"
+        );
+
+    const overlayContent =
+        document.getElementById(
+            "overlayContent"
+        );
+
+
+    overlayContent.classList.remove(
+        "swipe-exit"
+    );
 
 
     overlay.classList.remove(
@@ -2030,12 +2095,15 @@ function closeCategory() {
 
         document.getElementById(
             "categoryMain"
-        ).style.display = "block";
+        ).style.display =
+            "block";
 
 
         document.getElementById(
             "projectDetail"
-        ).classList.remove("active");
+        ).classList.remove(
+            "active"
+        );
 
     }, 350);
 
@@ -2057,6 +2125,16 @@ function openProject(project) {
         document.getElementById(
             "projectDetail"
         );
+
+    const overlayContent =
+        document.getElementById(
+            "overlayContent"
+        );
+
+
+    overlayContent.classList.remove(
+        "swipe-exit"
+    );
 
 
     document.getElementById(
@@ -2092,6 +2170,17 @@ function openProject(project) {
 ========================================================= */
 
 function backToProjects() {
+
+    const overlayContent =
+        document.getElementById(
+            "overlayContent"
+        );
+
+
+    overlayContent.classList.remove(
+        "swipe-exit"
+    );
+
 
     document.getElementById(
         "categoryMain"
@@ -2468,7 +2557,7 @@ if (supportsMouse) {
 
 
 /* =========================================================
-   SWIPE BACK — MOBILE / IPAD
+   SWIPE BACK — SCALE TO RIGHT
 ========================================================= */
 
 let touchStartX = 0;
@@ -2480,12 +2569,26 @@ const SWIPE_EDGE_ZONE = 70;
 const SWIPE_MIN_DISTANCE = 90;
 const SWIPE_MAX_VERTICAL = 80;
 
+const SWIPE_ANIMATION_TIME = 480;
+
 
 const categoryOverlay =
     document.getElementById(
         "categoryOverlay"
     );
 
+const overlayContent =
+    document.getElementById(
+        "overlayContent"
+    );
+
+
+/*
+ * Bắt đầu gesture.
+ *
+ * Chỉ nhận gesture nếu ngón tay
+ * bắt đầu gần mép trái.
+ */
 
 categoryOverlay.addEventListener(
     "touchstart",
@@ -2503,11 +2606,6 @@ categoryOverlay.addEventListener(
         const touch =
             event.touches[0];
 
-
-        /*
-         * Chỉ bắt đầu gesture nếu ngón tay
-         * bắt đầu gần mép trái màn hình.
-         */
 
         if (
             touch.clientX <=
@@ -2535,6 +2633,10 @@ categoryOverlay.addEventListener(
 );
 
 
+/*
+ * Kết thúc gesture.
+ */
+
 categoryOverlay.addEventListener(
     "touchend",
     function(event) {
@@ -2561,19 +2663,10 @@ categoryOverlay.addEventListener(
         touchTracking = false;
 
 
-        /*
-         * Phải là swipe sang phải.
-         */
-
         const isRightSwipe =
             deltaX >=
             SWIPE_MIN_DISTANCE;
 
-
-        /*
-         * Không cho gesture hoạt động
-         * nếu người dùng đang kéo dọc.
-         */
 
         const isMostlyHorizontal =
             Math.abs(deltaY) <=
@@ -2581,53 +2674,95 @@ categoryOverlay.addEventListener(
 
 
         if (
-            isRightSwipe &&
-            isMostlyHorizontal
+            !isRightSwipe ||
+            !isMostlyHorizontal
         ) {
+            return;
+        }
 
-            const projectDetail =
-                document.getElementById(
-                    "projectDetail"
+
+        /*
+         * Xác định đang ở level nào.
+         */
+
+        const projectDetail =
+            document.getElementById(
+                "projectDetail"
+            );
+
+
+        const isProjectDetail =
+            projectDetail.classList.contains(
+                "active"
+            );
+
+
+        /*
+         * Bắt đầu animation.
+         */
+
+        overlayContent.classList.remove(
+            "swipe-exit"
+        );
+
+
+        /*
+         * Force browser render lại
+         * để animation luôn chạy lại
+         * kể cả khi swipe nhiều lần.
+         */
+
+        void overlayContent.offsetWidth;
+
+
+        overlayContent.classList.add(
+            "swipe-exit"
+        );
+
+
+        /*
+         * Chờ animation scale xuống
+         * gần như biến mất rồi mới
+         * chuyển navigation.
+         */
+
+        setTimeout(
+            function() {
+
+                overlayContent.classList.remove(
+                    "swipe-exit"
                 );
 
 
-            /*
-             * Nếu đang xem Project Detail:
-             *
-             * Project Detail
-             *       ↓
-             * Swipe Right
-             *       ↓
-             * Project List
-             */
+                if (isProjectDetail) {
 
-            if (
-                projectDetail.classList.contains(
-                    "active"
-                )
-            ) {
+                    /*
+                     * DETAIL
+                     * ↓
+                     * SCALE OUT
+                     * ↓
+                     * PROJECT LIST
+                     */
 
-                backToProjects();
+                    backToProjects();
 
-            }
+                } else {
 
-            /*
-             * Nếu đang ở Project List:
-             *
-             * Project List
-             *       ↓
-             * Swipe Right
-             *       ↓
-             * Website
-             */
+                    /*
+                     * PROJECT LIST
+                     * ↓
+                     * SCALE OUT
+                     * ↓
+                     * MAIN WEBSITE
+                     */
 
-            else {
+                    closeCategory();
 
-                closeCategory();
+                }
 
-            }
-
-        }
+            },
+            SWIPE_ANIMATION_TIME
+        );
 
     },
     {
