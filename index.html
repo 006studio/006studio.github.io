@@ -1,50 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>006.STUDIO — Creative Studio</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
+
     --teal: #008C8C;
     --orange: #F26B38;
     --beige: #F3F0E8;
     --black: #111111;
     --light-gray: #D0CCC3;
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
+
     box-sizing: border-box;
+
     margin: 0;
     padding: 0;
+
 }
+
 
 html {
+
     scroll-behavior: smooth;
+
     scroll-padding-top: 90px;
+
 }
+
 
 body {
+
     font-family: "Montserrat", sans-serif;
+
     background: var(--beige);
+
     color: var(--black);
+
     overflow-x: hidden;
+
 }
+
 
 a {
+
     color: inherit;
+
     text-decoration: none;
+
 }
 
+
 button {
+
     font-family: inherit;
+
 }
 
 
@@ -53,42 +102,68 @@ button {
 ========================================================= */
 
 header {
+
     width: 100%;
+
     padding: 28px 32px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     position: fixed;
+
     top: 0;
     left: 0;
+
     z-index: 2000;
 
     background: var(--beige);
+
 }
+
 
 .logo {
+
     font-size: 20px;
+
     font-weight: 900;
+
     letter-spacing: -0.8px;
+
 }
+
 
 .nav {
+
     display: flex;
+
     align-items: center;
+
     gap: 28px;
+
 }
+
 
 .nav a {
+
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 0.3px;
+
     transition: opacity 0.25s ease;
+
 }
 
+
 .nav a:hover {
+
     opacity: 0.45;
+
 }
 
 
@@ -97,43 +172,70 @@ header {
 ========================================================= */
 
 .hero {
+
     padding-top: 100px;
+
     position: relative;
+
 }
+
 
 .hero-showreel {
+
     width: 100%;
+
     padding: 35px 9.8% 34px;
+
     background: var(--black);
+
     position: relative;
+
     overflow: hidden;
+
 }
 
+
 .hero-showreel::before {
+
     content: "SHOWREEL / 2026";
+
     display: block;
+
     margin-bottom: 14px;
 
     color: var(--teal);
 
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 0.5px;
+
 }
 
+
 .hero-showreel-frame {
+
     width: 100%;
+
     aspect-ratio: 16 / 9;
 
     background: #000000;
+
     overflow: hidden;
+
 }
 
+
 .hero-showreel iframe {
+
     width: 100%;
     height: 100%;
+
     border: 0;
+
     display: block;
+
 }
 
 
@@ -142,28 +244,44 @@ header {
 ========================================================= */
 
 .hero-copy {
+
     padding: 70px 9.8% 110px;
+
 }
 
+
 .hero-copy h1 {
+
     max-width: 1100px;
 
     font-size: clamp(70px, 11vw, 165px);
+
     line-height: 0.82;
+
     font-weight: 900;
+
     letter-spacing: -7px;
 
     will-change: transform;
+
 }
+
 
 .hero-copy h1 .vision-line {
+
     display: block;
+
     color: var(--teal);
+
 }
 
+
 .hero-copy h1 .visual-line {
+
     display: block;
+
     color: var(--black);
+
 }
 
 
@@ -172,27 +290,39 @@ header {
 ========================================================= */
 
 .hero-identity {
+
     margin-top: 48px;
 
     font-size: clamp(22px, 2.4vw, 34px);
+
     line-height: 1.05;
 
     font-weight: 500;
+
     letter-spacing: -1px;
 
     max-width: 850px;
 
     will-change: transform;
+
 }
+
 
 .hero-identity .colorblind {
+
     color: var(--teal);
+
     font-weight: 500;
+
 }
 
+
 .hero-identity .headline-orange {
+
     color: var(--orange);
+
     font-weight: 500;
+
 }
 
 
@@ -201,16 +331,22 @@ header {
 ========================================================= */
 
 .mouse-reactive {
+
     cursor: default;
+
 }
 
+
 .playful-line {
+
     display: block;
+
     position: relative;
 
     will-change: transform;
 
     transform-origin: center center;
+
 }
 
 
@@ -219,57 +355,98 @@ header {
 ========================================================= */
 
 .about {
+
     padding: 100px 9.8% 120px;
+
     background: var(--beige);
+
 }
+
 
 .about-top {
+
     display: grid;
+
     grid-template-columns: 1fr 1.5fr;
+
     gap: 8%;
+
 }
+
 
 .section-label {
+
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 0.5px;
+
 }
+
 
 .about-copy {
+
     max-width: 780px;
+
 }
+
 
 .about-copy p {
+
     font-size: clamp(20px, 2.4vw, 34px);
+
     line-height: 1.28;
+
     font-weight: 600;
+
     letter-spacing: -1px;
+
 }
+
 
 .about-copy p + p {
+
     margin-top: 30px;
+
 }
+
 
 .about-copy .highlight {
+
     color: var(--teal);
+
 }
+
 
 .about-copy .orange {
+
     color: var(--orange);
+
 }
+
 
 .about-language {
+
     margin-top: 42px;
+
     display: flex;
+
     gap: 8px;
+
 }
 
+
 .lang-button {
+
     border: 1px solid var(--black);
+
     background: transparent;
+
     padding: 8px 13px;
 
     font-size: 10px;
+
     font-weight: 800;
 
     cursor: pointer;
@@ -277,30 +454,48 @@ header {
     transition:
         background 0.25s ease,
         color 0.25s ease;
+
 }
+
 
 .lang-button.active {
+
     background: var(--black);
+
     color: var(--beige);
+
 }
+
 
 .about-version {
+
     display: none;
+
 }
+
 
 .about-version.active {
+
     display: block;
+
 }
 
+
 .about-bottom {
+
     margin-top: 90px;
 
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 25px;
+
 }
 
+
 .identity-card {
+
     padding: 32px;
 
     border: 1px solid rgba(17, 17, 17, 0.2);
@@ -308,31 +503,48 @@ header {
     min-height: 180px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
 
     transition:
         transform 0.35s ease,
         background 0.35s ease;
+
 }
+
 
 .identity-card:hover {
+
     transform: translateY(-6px);
+
     background: #ebe7dd;
+
 }
+
 
 .identity-card h3 {
+
     font-size: 24px;
+
     font-weight: 900;
+
     color: var(--teal);
+
 }
 
+
 .identity-card p {
+
     max-width: 400px;
 
     font-size: 13px;
+
     line-height: 1.6;
+
     font-weight: 500;
+
 }
 
 
@@ -341,29 +553,48 @@ header {
 ========================================================= */
 
 .discipline {
+
     padding: 100px 9.8% 120px;
+
     position: relative;
+
     overflow: hidden;
+
 }
+
 
 .discipline-header {
+
     display: grid;
+
     grid-template-columns: 1fr 1.5fr;
+
     gap: 8%;
+
 }
+
 
 .section-title {
+
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 0.5px;
+
 }
 
+
 .section-description {
+
     max-width: 720px;
 
     font-size: 17px;
+
     line-height: 1.65;
+
     font-weight: 500;
+
 }
 
 
@@ -372,35 +603,43 @@ header {
 ========================================================= */
 
 .discipline-intro {
+
     margin-top: 100px;
+
     position: relative;
 
-    /*
-     * Extra breathing room for scroll choreography.
-     */
     min-height: 180px;
+
 }
 
+
 .discipline-intro h2 {
+
     max-width: 1100px;
 
     font-size: clamp(55px, 10vw, 150px);
+
     line-height: 0.82;
+
     font-weight: 900;
+
     letter-spacing: -6px;
 
     will-change: transform;
+
     transform-origin: center center;
 
-    /*
-     * Scroll interaction uses JS transforms.
-     */
     position: relative;
+
     z-index: 2;
+
 }
 
+
 .discipline-intro h2 span {
+
     display: block;
+
 }
 
 
@@ -409,14 +648,19 @@ header {
 ========================================================= */
 
 .discipline-object {
+
     position: absolute;
+
     right: 8%;
+
     bottom: 8px;
 
     width: 54px;
+
     height: 54px;
 
     will-change: transform;
+
 }
 
 
@@ -425,37 +669,51 @@ header {
 ========================================================= */
 
 .discipline-object-main {
+
     position: absolute;
+
     inset: 0;
 
     border-radius: 50%;
+
 }
 
+
 .discipline-object-center {
+
     position: absolute;
 
     width: 18px;
+
     height: 18px;
 
     left: 50%;
+
     top: 50%;
 
     transform: translate(-50%, -50%);
 
     background: var(--black);
+
     border-radius: 50%;
+
 }
 
+
 .discipline-object-accent {
+
     position: absolute;
 
     width: 12px;
+
     height: 12px;
 
     right: -4px;
+
     top: 3px;
 
     border-radius: 50%;
+
 }
 
 
@@ -464,14 +722,20 @@ header {
 ========================================================= */
 
 .category-grid {
+
     margin-top: 80px;
 
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
+
 }
 
+
 .category-card {
+
     aspect-ratio: 4 / 3;
 
     padding: 25px;
@@ -479,7 +743,9 @@ header {
     position: relative;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
 
     cursor: pointer;
@@ -490,45 +756,73 @@ header {
         transform 0.35s ease,
         background 0.35s ease,
         color 0.35s ease;
+
 }
+
 
 .category-number {
+
     font-size: 11px;
+
     font-weight: 800;
+
 }
+
 
 .category-card h3 {
+
     font-size: clamp(20px, 2vw, 30px);
+
     line-height: 0.98;
+
     font-weight: 900;
+
     letter-spacing: -1px;
+
 }
 
+
 .category-card p {
+
     max-width: 90%;
 
     font-size: 11px;
+
     line-height: 1.5;
+
     font-weight: 500;
+
 }
 
+
 .category-arrow {
+
     position: absolute;
+
     right: 24px;
+
     bottom: 22px;
 
     font-size: 20px;
+
     font-weight: 500;
 
     transition: transform 0.3s ease;
+
 }
+
 
 .category-card:hover {
+
     transform: translateY(-7px);
+
 }
 
+
 .category-card:hover .category-arrow {
+
     transform: translate(5px, -5px);
+
 }
 
 
@@ -537,44 +831,75 @@ header {
 ========================================================= */
 
 #motion {
+
     background: var(--black);
+
     color: var(--beige);
+
 }
+
 
 #motion .section-title {
+
     color: var(--orange);
+
 }
+
 
 #motion .section-description {
+
     color: var(--light-gray);
+
 }
+
 
 #motion .discipline-intro h2 {
+
     color: var(--teal);
+
 }
+
 
 #motion .discipline-intro h2 span {
+
     color: var(--beige);
+
 }
+
 
 #motion .discipline-object-main {
+
     background: var(--teal);
+
 }
+
 
 #motion .discipline-object-accent {
+
     background: var(--orange);
+
 }
+
 
 #motion .category-card {
+
     background: #1c1c1c;
+
     border: 1px solid #333333;
+
     color: var(--beige);
+
 }
 
+
 #motion .category-card:hover {
+
     background: var(--teal);
+
     border-color: var(--teal);
+
     color: var(--black);
+
 }
 
 
@@ -583,43 +908,73 @@ header {
 ========================================================= */
 
 #lab {
+
     background: var(--beige);
+
     color: var(--black);
+
 }
+
 
 #lab .section-title {
+
     color: var(--teal);
+
 }
+
 
 #lab .section-description {
+
     color: var(--black);
+
 }
+
 
 #lab .discipline-intro h2 {
+
     color: var(--orange);
+
 }
+
 
 #lab .discipline-intro h2 span {
+
     color: var(--black);
+
 }
+
 
 #lab .discipline-object-main {
+
     background: var(--orange);
+
 }
+
 
 #lab .discipline-object-accent {
+
     background: var(--teal);
+
 }
+
 
 #lab .category-card {
+
     background: #ebe7dd;
+
     border: 1px solid rgba(17, 17, 17, 0.16);
+
     color: var(--black);
+
 }
 
+
 #lab .category-card:hover {
+
     background: var(--orange);
+
     border-color: var(--orange);
+
 }
 
 
@@ -628,51 +983,81 @@ header {
 ========================================================= */
 
 footer {
+
     padding: 70px 9.8% 35px;
 
     background: var(--black);
+
     color: var(--beige);
+
 }
+
 
 .footer-top {
+
     display: flex;
+
     justify-content: space-between;
+
     gap: 30px;
+
 }
+
 
 .footer-logo {
+
     font-size: clamp(40px, 7vw, 100px);
+
     line-height: 0.9;
+
     font-weight: 900;
+
     letter-spacing: -5px;
+
 }
+
 
 .footer-contact {
+
     text-align: right;
+
 }
 
+
 .footer-contact p {
+
     margin-bottom: 8px;
 
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 0.3px;
+
 }
+
 
 .footer-contact a {
+
     color: var(--teal);
+
 }
 
+
 .footer-bottom {
+
     margin-top: 100px;
 
     display: flex;
+
     justify-content: space-between;
 
     font-size: 10px;
+
     font-weight: 600;
 
     color: #777;
+
 }
 
 
@@ -681,7 +1066,9 @@ footer {
 ========================================================= */
 
 .overlay {
+
     position: fixed;
+
     inset: 0;
 
     background: var(--beige);
@@ -689,6 +1076,7 @@ footer {
     z-index: 3000;
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
@@ -698,19 +1086,25 @@ footer {
     overflow-y: auto;
 
     overscroll-behavior-x: none;
+
 }
 
+
 .overlay.active {
+
     opacity: 1;
+
     visibility: visible;
+
 }
 
 
 /* =========================================================
-   INTERACTIVE SWIPE
+   OVERLAY CONTENT
 ========================================================= */
 
 .overlay-content {
+
     padding: 80px 9.8% 120px;
 
     transform-origin: right center;
@@ -726,121 +1120,218 @@ footer {
     transition:
         transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+
 }
 
+
 .overlay-content.swipe-complete {
+
     transform:
         translate3d(75px, 0, 0)
         scale(0.02);
 
     opacity: 0;
 
-    transition:
-        transform 0.24s cubic-bezier(0.65, 0, 0.35, 1),
-        opacity 0.24s ease;
 }
 
+
 .overlay-content.swipe-reset {
+
     transform:
         translate3d(0, 0, 0)
         scale(1);
 
     opacity: 1;
 
-    transition:
-        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.28s ease;
 }
 
+
 .overlay-header {
+
     padding: 28px 32px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     position: sticky;
+
     top: 0;
 
     background: var(--beige);
+
     z-index: 2;
+
 }
 
+
 .overlay-close {
+
     border: 0;
+
     background: transparent;
 
     font-size: 12px;
+
     font-weight: 800;
 
     cursor: pointer;
+
 }
 
 
 /* =========================================================
-   OVERLAY CONTENT
+   CATEGORY CONTENT
 ========================================================= */
 
 .overlay-content h2 {
+
     max-width: 900px;
 
     font-size: clamp(50px, 9vw, 130px);
+
     line-height: 0.84;
+
     letter-spacing: -5px;
+
     font-weight: 900;
 
     color: var(--teal);
+
 }
 
+
 .overlay-description {
+
     max-width: 650px;
+
     margin-top: 35px;
 
     font-size: 16px;
+
     line-height: 1.6;
+
 }
 
+
 .project-grid {
+
     margin-top: 80px;
 
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 18px;
+
 }
 
+
 .project-card {
+
     min-height: 350px;
+
+    position: relative;
 
     padding: 28px;
 
     background: #ebe7dd;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: flex-end;
 
     cursor: pointer;
 
+    overflow: hidden;
+
     transition:
         transform 0.35s ease,
         background 0.35s ease;
+
 }
+
 
 .project-card:hover {
+
     transform: translateY(-7px);
+
     background: var(--teal);
+
 }
+
+
+.project-card-thumbnail {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ded9cf;
+
+    color: #8c887f;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+
+    transition:
+        transform 0.45s ease,
+        background 0.35s ease;
+
+}
+
+
+.project-card:hover
+.project-card-thumbnail {
+
+    transform: scale(1.04);
+
+}
+
+
+.project-card-info {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 170px;
+
+}
+
 
 .project-card span {
+
     font-size: 10px;
+
     font-weight: 800;
+
     margin-bottom: 12px;
+
 }
 
+
 .project-card h3 {
+
     font-size: 30px;
+
     line-height: 0.95;
+
     font-weight: 900;
+
 }
 
 
@@ -849,36 +1340,625 @@ footer {
 ========================================================= */
 
 .project-detail {
+
     display: none;
+
 }
+
 
 .project-detail.active {
+
     display: block;
+
 }
 
-.project-detail h2 {
-    font-size: clamp(45px, 8vw, 110px);
-    line-height: 0.86;
-    font-weight: 900;
-    letter-spacing: -5px;
+
+/* ---------------------------------------------------------
+   PROJECT DETAIL TOP
+--------------------------------------------------------- */
+
+.project-detail-top {
+
+    padding-top: 20px;
+
 }
+
+
+.project-back {
+
+    border: 0;
+
+    background: transparent;
+
+    padding: 0;
+
+    margin-bottom: 55px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: opacity 0.25s ease;
+
+}
+
+
+.project-back:hover {
+
+    opacity: 0.45;
+
+}
+
+
+.project-detail-kicker {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.project-detail-kicker .dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    background: var(--orange);
+
+    border-radius: 50%;
+
+}
+
+
+.project-detail-title {
+
+    max-width: 1100px;
+
+    font-size: clamp(55px, 9vw, 145px);
+
+    line-height: 0.82;
+
+    font-weight: 900;
+
+    letter-spacing: -7px;
+
+    color: var(--black);
+
+}
+
+
+.project-detail-subtitle {
+
+    margin-top: 25px;
+
+    max-width: 850px;
+
+    font-size: clamp(22px, 3vw, 42px);
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: -1.5px;
+
+    color: var(--teal);
+
+}
+
 
 .project-detail-meta {
+
+    margin-top: 42px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.project-meta-item {
+
+    border-top: 1px solid rgba(17,17,17,0.25);
+
+    padding-top: 13px;
+
+}
+
+
+.project-meta-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    color: #777;
+
+}
+
+
+.project-meta-value {
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT HERO MEDIA
+--------------------------------------------------------- */
+
+.project-hero-media {
+
+    margin-top: 85px;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background: var(--black);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.media-placeholder {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #777;
+
+    background: #ded9cf;
+
+}
+
+
+.media-placeholder span {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+}
+
+
+.project-hero-media .media-placeholder {
+
+    background: var(--black);
+
+    color: #777;
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT INTRO
+--------------------------------------------------------- */
+
+.project-section {
+
+    margin-top: 110px;
+
+}
+
+
+.project-section-header {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.8fr;
+
+    gap: 8%;
+
+}
+
+
+.project-section-label {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.project-section-content {
+
+    max-width: 760px;
+
+}
+
+
+.project-description {
+
+    font-size: clamp(20px, 2.5vw, 34px);
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    letter-spacing: -1px;
+
+}
+
+
+.project-language {
+
     margin-top: 30px;
 
     display: flex;
-    gap: 30px;
 
-    font-size: 11px;
-    font-weight: 800;
+    gap: 8px;
+
 }
 
-.project-detail-description {
-    max-width: 650px;
-    margin-top: 35px;
+
+.project-language .lang-button {
+
+    padding: 7px 11px;
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT ROLE
+--------------------------------------------------------- */
+
+.project-role-grid {
+
+    margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.role-item {
+
+    padding: 24px;
+
+    min-height: 130px;
+
+    background: #ebe7dd;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+}
+
+
+.role-number {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    color: #777;
+
+}
+
+
+.role-name {
 
     font-size: 16px;
-    line-height: 1.6;
+
+    font-weight: 900;
+
+    letter-spacing: -0.4px;
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT PROCESS
+--------------------------------------------------------- */
+
+.process-list {
+
+    margin-top: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.process-item {
+
+    display: grid;
+
+    grid-template-columns: 90px 1fr;
+
+    border-top: 1px solid rgba(17,17,17,0.2);
+
+}
+
+
+.process-item:last-child {
+
+    border-bottom: 1px solid rgba(17,17,17,0.2);
+
+}
+
+
+.process-number {
+
+    padding: 28px 0;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: var(--orange);
+
+}
+
+
+.process-main {
+
+    padding: 28px 0 40px;
+
+}
+
+
+.process-title {
+
+    font-size: clamp(24px, 3vw, 42px);
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+}
+
+
+.process-media {
+
+    margin-top: 28px;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background: #ded9cf;
+
+}
+
+
+.process-media .media-placeholder {
+
+    background: #ded9cf;
+
+    color: #8c887f;
+
+}
+
+
+/* ---------------------------------------------------------
+   FINAL
+--------------------------------------------------------- */
+
+.project-final {
+
+    margin-top: 120px;
+
+}
+
+
+.project-final-title {
+
+    font-size: clamp(45px, 7vw, 100px);
+
+    line-height: 0.85;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+
+    color: var(--teal);
+
+}
+
+
+.project-final-media {
+
+    margin-top: 45px;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background: var(--black);
+
+}
+
+
+.project-final-media .media-placeholder {
+
+    background: var(--black);
+
+    color: #777;
+
+}
+
+
+/* ---------------------------------------------------------
+   DELIVERABLE
+--------------------------------------------------------- */
+
+.project-deliverable {
+
+    margin-top: 100px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(17,17,17,0.25);
+
+}
+
+
+.deliverable-grid {
+
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.deliverable-item {
+
+    min-height: 150px;
+
+    padding: 25px;
+
+    background: #ebe7dd;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+}
+
+
+.deliverable-item span {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    color: #777;
+
+}
+
+
+.deliverable-item strong {
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT FOOTER
+--------------------------------------------------------- */
+
+.project-end {
+
+    margin-top: 120px;
+
+    padding-top: 35px;
+
+    border-top: 1px solid rgba(17,17,17,0.25);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+}
+
+
+.project-end-client-label {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    color: #777;
+
+    margin-bottom: 8px;
+
+}
+
+
+.project-end-client {
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+}
+
+
+.project-end-back {
+
+    align-self: flex-end;
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
 }
 
 
@@ -887,37 +1967,59 @@ footer {
 ========================================================= */
 
 .reveal {
+
     opacity: 0;
+
     transform: translateY(40px);
 
     transition:
         opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
 }
+
 
 .reveal.is-visible {
+
     opacity: 1;
+
     transform: translateY(0);
+
 }
+
 
 .reveal-delay-1 {
+
     transition-delay: 0.08s;
+
 }
+
 
 .reveal-delay-2 {
+
     transition-delay: 0.16s;
+
 }
+
 
 .reveal-delay-3 {
+
     transition-delay: 0.24s;
+
 }
+
 
 .reveal-delay-4 {
+
     transition-delay: 0.32s;
+
 }
 
+
 .reveal-delay-5 {
+
     transition-delay: 0.40s;
+
 }
 
 
@@ -927,140 +2029,431 @@ footer {
 
 @media (max-width: 800px) {
 
+
     header {
+
         padding: 20px;
+
     }
+
 
     .logo {
+
         font-size: 17px;
+
     }
+
 
     .nav {
+
         gap: 13px;
+
     }
+
 
     .nav a {
+
         font-size: 8px;
+
     }
+
 
     .hero {
+
         padding-top: 76px;
+
     }
+
 
     .hero-showreel {
+
         padding: 25px 20px 24px;
+
     }
+
 
     .hero-copy {
+
         padding: 55px 20px 80px;
+
     }
+
 
     .hero-copy h1 {
+
         font-size: 68px;
+
         letter-spacing: -4px;
+
     }
 
+
     .hero-identity {
+
         margin-top: 32px;
 
         font-size: 21px;
+
         line-height: 1.05;
 
         font-weight: 500;
+
         letter-spacing: -0.7px;
+
     }
+
 
     .hero-identity .colorblind,
     .hero-identity .headline-orange {
+
         font-weight: 500;
+
     }
+
 
     .about,
     .discipline {
+
         padding: 75px 20px 85px;
+
     }
+
 
     .about-top,
     .discipline-header {
+
         grid-template-columns: 1fr;
+
         gap: 35px;
+
     }
+
 
     .about-copy p {
+
         font-size: 22px;
+
     }
+
 
     .about-bottom {
+
         margin-top: 65px;
+
         grid-template-columns: 1fr;
+
     }
+
 
     .discipline-intro {
+
         margin-top: 70px;
+
         min-height: 145px;
+
     }
+
 
     .discipline-intro h2 {
+
         font-size: 65px;
+
         letter-spacing: -3px;
+
     }
 
+
     .discipline-object {
+
         position: relative;
 
         right: auto;
+
         bottom: auto;
 
         margin-top: 35px;
 
         width: 42px;
+
         height: 42px;
+
     }
+
 
     .category-grid {
+
         margin-top: 55px;
+
         grid-template-columns: 1fr;
+
         gap: 14px;
+
     }
+
 
     .category-card {
+
         aspect-ratio: 4 / 3;
+
         padding: 22px;
+
     }
+
 
     .project-grid {
+
         grid-template-columns: 1fr;
+
     }
+
 
     .project-card {
+
         min-height: 280px;
+
     }
+
 
     .overlay-header {
+
         padding: 20px;
+
     }
+
 
     .overlay-content {
+
         padding: 60px 20px 90px;
+
     }
+
 
     .overlay-content h2 {
+
         font-size: 60px;
+
         letter-spacing: -3px;
+
     }
+
+
+    /* PROJECT MOBILE */
+
+    .project-detail-title {
+
+        font-size: 62px;
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .project-detail-subtitle {
+
+        font-size: 25px;
+
+        line-height: 1;
+
+    }
+
+
+    .project-detail-meta {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px 15px;
+
+    }
+
+
+    .project-detail-meta
+    .project-meta-item:last-child {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .project-hero-media {
+
+        margin-top: 60px;
+
+    }
+
+
+    .project-section {
+
+        margin-top: 80px;
+
+    }
+
+
+    .project-section-header {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .project-description {
+
+        font-size: 23px;
+
+    }
+
+
+    .project-role-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+        margin-top: 50px;
+
+    }
+
+
+    .role-item {
+
+        min-height: 110px;
+
+        padding: 20px;
+
+    }
+
+
+    .role-name {
+
+        font-size: 14px;
+
+    }
+
+
+    .process-list {
+
+        margin-top: 50px;
+
+    }
+
+
+    .process-item {
+
+        grid-template-columns: 50px 1fr;
+
+    }
+
+
+    .process-main {
+
+        padding: 25px 0 30px;
+
+    }
+
+
+    .process-number {
+
+        padding-top: 27px;
+
+    }
+
+
+    .process-title {
+
+        font-size: 25px;
+
+    }
+
+
+    .process-media {
+
+        margin-top: 22px;
+
+    }
+
+
+    .project-final {
+
+        margin-top: 85px;
+
+    }
+
+
+    .project-final-title {
+
+        font-size: 55px;
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .project-final-media {
+
+        margin-top: 30px;
+
+    }
+
+
+    .deliverable-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .project-end {
+
+        margin-top: 85px;
+
+        flex-direction: column;
+
+    }
+
+
+    .project-end-back {
+
+        align-self: flex-start;
+
+    }
+
 
     .footer-top {
+
         flex-direction: column;
+
     }
+
 
     .footer-contact {
+
         text-align: left;
+
     }
 
+
     .footer-bottom {
+
         margin-top: 70px;
+
         flex-direction: column;
+
         gap: 8px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 801px) and (max-width: 1100px) {
+
+    .project-role-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
     }
 
 }
@@ -1073,28 +2466,42 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     html {
+
         scroll-behavior: auto;
+
     }
+
 
     .reveal {
+
         opacity: 1;
+
         transform: none;
+
         transition: none;
+
     }
 
+
     .overlay-content {
+
         transition: none;
+
     }
+
 
     *,
     *::before,
     *::after {
+
         scroll-behavior: auto !important;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1111,554 +2518,717 @@ footer {
         006.STUDIO
     </a>
 
+
     <nav class="nav">
-        <a href="#motion">2D/3D MOTION</a>
-        <a href="#lab">3D LAB</a>
-        <a href="#about">ABOUT</a>
+
+        <a href="#motion">
+            2D/3D MOTION
+        </a>
+
+        <a href="#lab">
+            3D LAB
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
     </nav>
 
 </header>
 
 
 <!-- =======================================================
-     HERO
+     MAIN
 ======================================================= -->
 
 <main id="top">
 
-    <section class="hero">
 
-        <div class="hero-showreel">
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-            <div class="hero-showreel-frame">
+<section class="hero">
 
-                <iframe
-                    src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=0&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
-                    title="006.STUDIO Showreel"
-                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
 
-            </div>
+    <div class="hero-showreel">
+
+        <div class="hero-showreel-frame">
+
+            <iframe
+                src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=0&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
+                title="006.STUDIO Showreel"
+                allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-copy">
+
+
+        <h1
+            class="reveal mouse-reactive main-headline scroll-signature"
+        >
+
+            <span class="playful-line vision-line">
+                FROM VISION
+            </span>
+
+            <span class="playful-line visual-line">
+                TO VISUAL
+            </span>
+
+        </h1>
+
+
+        <div
+            class="hero-identity reveal reveal-delay-1 mouse-reactive"
+        >
+
+            <span class="playful-line">
+                Creative studio
+            </span>
+
+            <span class="playful-line">
+
+                by
+
+                <span class="colorblind">
+                    Colorblind
+                </span>
+
+                ×
+
+                <span class="headline-orange">
+                    006
+                </span>
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section
+    class="about"
+    id="about"
+>
+
+
+    <div class="about-top">
+
+
+        <div class="section-label reveal">
+
+            ABOUT 006STUDIO
 
         </div>
 
 
-        <div class="hero-copy">
-
-            <h1 class="reveal mouse-reactive main-headline scroll-signature">
-
-                <span class="playful-line vision-line">
-                    FROM VISION
-                </span>
-
-                <span class="playful-line visual-line">
-                    TO VISUAL
-                </span>
-
-            </h1>
+        <div class="about-copy">
 
 
-            <div class="hero-identity reveal reveal-delay-1 mouse-reactive">
+            <div
+                class="about-version active"
+                id="about-en"
+            >
 
-                <span class="playful-line">
-                    Creative studio
-                </span>
+                <p class="reveal reveal-delay-1">
 
-                <span class="playful-line">
-                    by
-                    <span class="colorblind">
-                        Colorblind
-                    </span>
-                    ×
-                    <span class="headline-orange">
-                        006
-                    </span>
-                </span>
+                    006studio started as a young creative
+                    driven by curiosity, passion,
+                    and a desire to create.
 
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         ABOUT
-    =================================================== -->
-
-    <section class="about" id="about">
-
-        <div class="about-top">
-
-            <div class="section-label reveal">
-                ABOUT 006STUDIO
-            </div>
-
-
-            <div class="about-copy">
-
-                <div class="about-version active" id="about-en">
-
-                    <p class="reveal reveal-delay-1">
-                        006studio started as a young creative driven by curiosity,
-                        passion, and a desire to create.
-                    </p>
-
-                    <p class="reveal reveal-delay-2">
-                        With 7+ years of experience in the creative industry,
-                        we specialize in
-                        <span class="highlight">
-                            2D & 3D Motion Design
-                        </span>,
-                        turning ideas and visions into clear, distinctive visual experiences.
-                    </p>
-
-                    <p class="reveal reveal-delay-3">
-                        From Vision to Visual
-                    </p>
-
-                    <p class="reveal reveal-delay-4">
-                        006studio brings together two creative disciplines:
-                        <span class="orange">
-                            COLORBLIND
-                        </span> —
-                        2D & 3D Motion Design;
-                        <span class="highlight">
-                            006LAB
-                        </span> —
-                        3D Printing & Object Design.
-                    </p>
-
-                    <p class="reveal reveal-delay-5">
-                        From digital motion to physical objects,
-                        we turn ideas into visuals with character and purpose.
-                    </p>
-
-                </div>
-
-
-                <div class="about-version" id="about-vi">
-
-                    <p>
-                        006studio bắt đầu từ một creative trẻ với niềm đam mê,
-                        sự tò mò và mong muốn không ngừng sáng tạo.
-                    </p>
-
-                    <p>
-                        Với hơn 7 năm kinh nghiệm trong ngành sáng tạo,
-                        chúng tôi tập trung vào
-                        <span class="highlight">
-                            2D & 3D Motion Design
-                        </span>,
-                        biến ý tưởng và vision thành những trải nghiệm hình ảnh
-                        rõ ràng và có cá tính.
-                    </p>
-
-                    <p>
-                        From Vision to Visual
-                    </p>
-
-                    <p>
-                        006studio kết hợp hai hướng sáng tạo:
-                        <span class="orange">
-                            COLORBLIND
-                        </span> —
-                        2D & 3D Motion Design;
-                        <span class="highlight">
-                            006LAB
-                        </span> —
-                        3D Printing & Object Design.
-                    </p>
-
-                    <p>
-                        Từ chuyển động kỹ thuật số đến những vật thể trong
-                        thế giới thực, chúng tôi biến ý tưởng thành những visual
-                        có cá tính và mục đích.
-                    </p>
-
-                </div>
-
-
-                <div class="about-language">
-
-                    <button
-                        class="lang-button active"
-                        id="lang-en"
-                        onclick="setLanguage('en')">
-                        EN
-                    </button>
-
-                    <button
-                        class="lang-button"
-                        id="lang-vi"
-                        onclick="setLanguage('vi')">
-                        VI
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="about-bottom">
-
-            <div class="identity-card reveal reveal-delay-1">
-
-                <h3>
-                    COLORBLIND
-                </h3>
-
-                <p>
-                    Personal creative identity for
-                    2D & 3D Motion Design.
                 </p>
 
-            </div>
+
+                <p class="reveal reveal-delay-2">
+
+                    With 7+ years of experience in the
+                    creative industry, we specialize in
+
+                    <span class="highlight">
+                        2D & 3D Motion Design
+                    </span>,
+
+                    turning ideas and visions into clear,
+                    distinctive visual experiences.
+
+                </p>
 
 
-            <div class="identity-card reveal reveal-delay-2">
+                <p class="reveal reveal-delay-3">
 
-                <h3>
-                    006LAB
-                </h3>
+                    From Vision to Visual
 
-                <p>
+                </p>
+
+
+                <p class="reveal reveal-delay-4">
+
+                    006studio brings together two
+                    creative disciplines:
+
+                    <span class="orange">
+                        COLORBLIND
+                    </span>
+
+                    —
+
+                    2D & 3D Motion Design;
+
+                    <span class="highlight">
+                        006LAB
+                    </span>
+
+                    —
+
                     3D Printing & Object Design.
+
                 </p>
 
-            </div>
 
-        </div>
+                <p class="reveal reveal-delay-5">
 
-    </section>
+                    From digital motion to physical objects,
+                    we turn ideas into visuals with
+                    character and purpose.
 
-
-    <!-- ===================================================
-         2D / 3D MOTION
-    =================================================== -->
-
-    <section class="discipline" id="motion">
-
-        <div class="discipline-header">
-
-            <div class="section-title reveal">
-                01 / 2D & 3D MOTION
-            </div>
-
-            <div class="section-description reveal reveal-delay-1">
-                Motion design, visual storytelling and 3D experiences
-                built to transform ideas into distinctive moving images.
-            </div>
-
-        </div>
-
-
-        <div class="discipline-intro">
-
-            <h2
-                class="reveal mouse-reactive scroll-signature"
-                data-scroll-strength="1">
-
-                <span class="scroll-line">
-                    FROM IDEA
-                </span>
-
-                <span class="scroll-line">
-                    TO MOTION
-                </span>
-
-            </h2>
-
-
-            <div class="discipline-object reveal reveal-delay-2">
-
-                <div class="discipline-object-main"></div>
-                <div class="discipline-object-center"></div>
-                <div class="discipline-object-accent"></div>
-
-            </div>
-
-        </div>
-
-
-        <div class="category-grid">
-
-            <div
-                class="category-card reveal reveal-delay-1"
-                onclick="openCategory('visual-led')">
-
-                <div class="category-number">
-                    01
-                </div>
-
-                <h3>
-                    VISUAL<br>LED
-                </h3>
-
-                <p>
-                    Large-scale visual content, motion graphics and
-                    digital experiences created for LED screens
-                    and spatial environments.
                 </p>
-
-                <div class="category-arrow">
-                    ↗
-                </div>
 
             </div>
 
 
             <div
-                class="category-card reveal reveal-delay-2"
-                onclick="openCategory('frame-by-frame')">
-
-                <div class="category-number">
-                    02
-                </div>
-
-                <h3>
-                    FRAME BY<br>FRAME
-                </h3>
+                class="about-version"
+                id="about-vi"
+            >
 
                 <p>
-                    Frame-by-frame animation, hand-crafted movement
-                    and illustrated motion experiments.
+
+                    006studio bắt đầu từ một creative trẻ
+                    với niềm đam mê, sự tò mò và mong muốn
+                    không ngừng sáng tạo.
+
                 </p>
 
-                <div class="category-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div
-                class="category-card reveal reveal-delay-3"
-                onclick="openCategory('infographic')">
-
-                <div class="category-number">
-                    03
-                </div>
-
-                <h3>
-                    INFOGRAPHIC<br>& BRAND FILM
-                </h3>
 
                 <p>
-                    Visual storytelling, information design and brand
-                    films built to communicate ideas through motion.
+
+                    Với hơn 7 năm kinh nghiệm trong ngành
+                    sáng tạo, chúng tôi tập trung vào
+
+                    <span class="highlight">
+                        2D & 3D Motion Design
+                    </span>,
+
+                    biến ý tưởng và vision thành những
+                    trải nghiệm hình ảnh rõ ràng
+                    và có cá tính.
+
                 </p>
 
-                <div class="category-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div
-                class="category-card reveal reveal-delay-1"
-                onclick="openCategory('cgi')">
-
-                <div class="category-number">
-                    04
-                </div>
-
-                <h3>
-                    CGI
-                </h3>
 
                 <p>
-                    3D imagery, product visuals, environments
-                    and CGI experiments.
+
+                    From Vision to Visual
+
                 </p>
 
-                <div class="category-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div
-                class="category-card reveal reveal-delay-2"
-                onclick="openCategory('sculpting')">
-
-                <div class="category-number">
-                    05
-                </div>
-
-                <h3>
-                    SCULPTING
-                </h3>
 
                 <p>
-                    Digital sculpting, character development
-                    and 3D form exploration.
+
+                    006studio kết hợp hai hướng sáng tạo:
+
+                    <span class="orange">
+                        COLORBLIND
+                    </span>
+
+                    —
+
+                    2D & 3D Motion Design;
+
+                    <span class="highlight">
+                        006LAB
+                    </span>
+
+                    —
+
+                    3D Printing & Object Design.
+
                 </p>
 
-                <div class="category-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div
-                class="category-card reveal reveal-delay-3"
-                onclick="openCategory('ai-video')">
-
-                <div class="category-number">
-                    06
-                </div>
-
-                <h3>
-                    AI VIDEO<br>SOLUTION
-                </h3>
 
                 <p>
-                    AI-assisted video production, visual development
-                    and creative solutions for faster content creation.
+
+                    Từ chuyển động kỹ thuật số đến những
+                    vật thể trong thế giới thực, chúng tôi
+                    biến ý tưởng thành những visual
+                    có cá tính và mục đích.
+
                 </p>
 
-                <div class="category-arrow">
-                    ↗
-                </div>
+            </div>
+
+
+            <div class="about-language">
+
+
+                <button
+                    class="lang-button active"
+                    id="lang-en"
+                    onclick="setLanguage('en')"
+                >
+                    EN
+                </button>
+
+
+                <button
+                    class="lang-button"
+                    id="lang-vi"
+                    onclick="setLanguage('vi')"
+                >
+                    VI
+                </button>
+
 
             </div>
 
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         3D LAB
-    =================================================== -->
-
-    <section class="discipline" id="lab">
-
-        <div class="discipline-header">
-
-            <div class="section-title reveal">
-                02 / 3D LAB
-            </div>
-
-            <div class="section-description reveal reveal-delay-1">
-                Physical objects, characters and small-scale products
-                developed through 3D design, printing and fabrication.
-            </div>
 
         </div>
 
 
-        <div class="discipline-intro">
-
-            <h2
-                class="reveal mouse-reactive scroll-signature"
-                data-scroll-strength="1">
-
-                <span class="scroll-line">
-                    FROM DIGITAL
-                </span>
-
-                <span class="scroll-line">
-                    TO OBJECT
-                </span>
-
-            </h2>
+    </div>
 
 
-            <div class="discipline-object reveal reveal-delay-2">
+    <div class="about-bottom">
 
-                <div class="discipline-object-main"></div>
-                <div class="discipline-object-center"></div>
-                <div class="discipline-object-accent"></div>
 
+        <div class="identity-card reveal reveal-delay-1">
+
+            <h3>
+                COLORBLIND
+            </h3>
+
+            <p>
+                Personal creative identity for
+                2D & 3D Motion Design.
+            </p>
+
+        </div>
+
+
+        <div class="identity-card reveal reveal-delay-2">
+
+            <h3>
+                006LAB
+            </h3>
+
+            <p>
+                3D Printing & Object Design.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     2D / 3D MOTION
+======================================================= -->
+
+<section
+    class="discipline"
+    id="motion"
+>
+
+
+    <div class="discipline-header">
+
+
+        <div class="section-title reveal">
+
+            01 / 2D & 3D MOTION
+
+        </div>
+
+
+        <div class="section-description reveal reveal-delay-1">
+
+            Motion design, visual storytelling and
+            3D experiences built to transform ideas
+            into distinctive moving images.
+
+        </div>
+
+
+    </div>
+
+
+    <div class="discipline-intro">
+
+
+        <h2
+            class="reveal mouse-reactive scroll-signature"
+            data-scroll-strength="1"
+        >
+
+            <span class="scroll-line">
+                FROM IDEA
+            </span>
+
+            <span class="scroll-line">
+                TO MOTION
+            </span>
+
+        </h2>
+
+
+        <div class="discipline-object reveal reveal-delay-2">
+
+            <div class="discipline-object-main"></div>
+
+            <div class="discipline-object-center"></div>
+
+            <div class="discipline-object-accent"></div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div
+            class="category-card reveal reveal-delay-1"
+            onclick="openCategory('visual-led')"
+        >
+
+            <div class="category-number">
+                01
+            </div>
+
+            <h3>
+                VISUAL<br>LED
+            </h3>
+
+            <p>
+                Large-scale visual content, motion
+                graphics and digital experiences
+                created for LED screens and
+                spatial environments.
+            </p>
+
+            <div class="category-arrow">
+                ↗
             </div>
 
         </div>
 
 
-        <div class="category-grid">
+        <div
+            class="category-card reveal reveal-delay-2"
+            onclick="openCategory('frame-by-frame')"
+        >
 
-            <div
-                class="category-card reveal reveal-delay-1"
-                onclick="openCategory('brand-merchandise')">
-
-                <div class="category-number">
-                    01
-                </div>
-
-                <h3>
-                    BRAND<br>MERCHANDISE
-                </h3>
-
-                <p>
-                    Physical objects, merchandise and branded products
-                    developed through 3D design and fabrication.
-                </p>
-
-                <div class="category-arrow">
-                    ↗
-                </div>
-
+            <div class="category-number">
+                02
             </div>
 
+            <h3>
+                FRAME BY<br>FRAME
+            </h3>
 
-            <div
-                class="category-card reveal reveal-delay-2"
-                onclick="openCategory('mascot')">
+            <p>
+                Frame-by-frame animation, hand-crafted
+                movement and illustrated motion
+                experiments.
+            </p>
 
-                <div class="category-number">
-                    02
-                </div>
-
-                <h3>
-                    MASCOT
-                </h3>
-
-                <p>
-                    Character and mascot design translated from
-                    digital concepts into physical objects.
-                </p>
-
-                <div class="category-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div
-                class="category-card reveal reveal-delay-3"
-                onclick="openCategory('small-decor')">
-
-                <div class="category-number">
-                    03
-                </div>
-
-                <h3>
-                    SMALL<br>DECOR
-                </h3>
-
-                <p>
-                    Small-scale objects, functional pieces and
-                    decorative experiments made for the physical world.
-                </p>
-
-                <div class="category-arrow">
-                    ↗
-                </div>
-
+            <div class="category-arrow">
+                ↗
             </div>
 
         </div>
 
-    </section>
+
+        <div
+            class="category-card reveal reveal-delay-3"
+            onclick="openCategory('infographic')"
+        >
+
+            <div class="category-number">
+                03
+            </div>
+
+            <h3>
+                INFOGRAPHIC<br>& BRAND FILM
+            </h3>
+
+            <p>
+                Visual storytelling, information design
+                and brand films built to communicate
+                ideas through motion.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+        <div
+            class="category-card reveal reveal-delay-1"
+            onclick="openCategory('cgi')"
+        >
+
+            <div class="category-number">
+                04
+            </div>
+
+            <h3>
+                CGI
+            </h3>
+
+            <p>
+                3D imagery, product visuals,
+                environments and CGI experiments.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+        <div
+            class="category-card reveal reveal-delay-2"
+            onclick="openCategory('sculpting')"
+        >
+
+            <div class="category-number">
+                05
+            </div>
+
+            <h3>
+                SCULPTING
+            </h3>
+
+            <p>
+                Digital sculpting, character development
+                and 3D form exploration.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+        <div
+            class="category-card reveal reveal-delay-3"
+            onclick="openCategory('ai-video')"
+        >
+
+            <div class="category-number">
+                06
+            </div>
+
+            <h3>
+                AI VIDEO<br>SOLUTION
+            </h3>
+
+            <p>
+                AI-assisted video production,
+                visual development and creative
+                solutions for faster content creation.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     3D LAB
+======================================================= -->
+
+<section
+    class="discipline"
+    id="lab"
+>
+
+
+    <div class="discipline-header">
+
+
+        <div class="section-title reveal">
+
+            02 / 3D LAB
+
+        </div>
+
+
+        <div class="section-description reveal reveal-delay-1">
+
+            Physical objects, characters and small-scale
+            products developed through 3D design,
+            printing and fabrication.
+
+        </div>
+
+
+    </div>
+
+
+    <div class="discipline-intro">
+
+
+        <h2
+            class="reveal mouse-reactive scroll-signature"
+            data-scroll-strength="1"
+        >
+
+            <span class="scroll-line">
+                FROM DIGITAL
+            </span>
+
+            <span class="scroll-line">
+                TO OBJECT
+            </span>
+
+        </h2>
+
+
+        <div class="discipline-object reveal reveal-delay-2">
+
+            <div class="discipline-object-main"></div>
+
+            <div class="discipline-object-center"></div>
+
+            <div class="discipline-object-accent"></div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div
+            class="category-card reveal reveal-delay-1"
+            onclick="openCategory('brand-merchandise')"
+        >
+
+            <div class="category-number">
+                01
+            </div>
+
+            <h3>
+                BRAND<br>MERCHANDISE
+            </h3>
+
+            <p>
+                Physical objects, merchandise and branded
+                products developed through 3D design
+                and fabrication.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+        <div
+            class="category-card reveal reveal-delay-2"
+            onclick="openCategory('mascot')"
+        >
+
+            <div class="category-number">
+                02
+            </div>
+
+            <h3>
+                MASCOT
+            </h3>
+
+            <p>
+                Character and mascot design translated
+                from digital concepts into physical objects.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+        <div
+            class="category-card reveal reveal-delay-3"
+            onclick="openCategory('small-decor')"
+        >
+
+            <div class="category-number">
+                03
+            </div>
+
+            <h3>
+                SMALL<br>DECOR
+            </h3>
+
+            <p>
+                Small-scale objects, functional pieces
+                and decorative experiments made for
+                the physical world.
+            </p>
+
+            <div class="category-arrow">
+                ↗
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
 
 </main>
 
@@ -1669,40 +3239,53 @@ footer {
 
 <footer>
 
+
     <div class="footer-top">
+
 
         <div class="footer-logo">
             006.STUDIO
         </div>
 
+
         <div class="footer-contact">
+
 
             <p>
                 CREATIVE STUDIO
             </p>
 
+
             <p>
+
                 <a href="mailto:hello@006studio.com">
                     hello@006studio.com
                 </a>
+
             </p>
 
+
         </div>
+
 
     </div>
 
 
     <div class="footer-bottom">
 
+
         <div>
             © 2026 006.STUDIO
         </div>
+
 
         <div>
             FROM VISION TO VISUAL
         </div>
 
+
     </div>
+
 
 </footer>
 
@@ -1711,70 +3294,358 @@ footer {
      CATEGORY OVERLAY
 ======================================================= -->
 
-<div class="overlay" id="categoryOverlay">
+<div
+    class="overlay"
+    id="categoryOverlay"
+>
+
 
     <div class="overlay-header">
+
 
         <div class="logo">
             006.STUDIO
         </div>
 
+
         <button
             class="overlay-close"
-            onclick="closeCategory()">
+            onclick="closeCategory()"
+        >
             CLOSE ×
         </button>
+
 
     </div>
 
 
-    <div class="overlay-content" id="overlayContent">
+    <div
+        class="overlay-content"
+        id="overlayContent"
+    >
+
+
+        <!-- =================================================
+             CATEGORY MAIN
+        ================================================= -->
 
         <div id="categoryMain">
+
 
             <h2 id="categoryTitle">
                 CATEGORY
             </h2>
 
+
             <div
                 class="overlay-description"
-                id="categoryDescription">
+                id="categoryDescription"
+            >
             </div>
+
 
             <div
                 class="project-grid"
-                id="projectGrid">
+                id="projectGrid"
+            >
             </div>
+
 
         </div>
 
+
+        <!-- =================================================
+             PROJECT DETAIL
+        ================================================= -->
 
         <div
             class="project-detail"
-            id="projectDetail">
+            id="projectDetail"
+        >
 
-            <button
-                class="overlay-close"
-                onclick="backToProjects()">
-                ← BACK
-            </button>
 
-            <h2 id="projectTitle"></h2>
+            <div class="project-detail-top">
 
-            <div class="project-detail-meta">
 
-                <span id="projectType"></span>
+                <button
+                    class="project-back"
+                    onclick="backToProjects()"
+                >
+                    ← BACK TO CATEGORY
+                </button>
+
+
+                <div
+                    class="project-detail-kicker"
+                >
+
+                    <span class="dot"></span>
+
+                    <span id="projectCategory">
+                        AI VIDEO SOLUTION
+                    </span>
+
+                </div>
+
+
+                <h2
+                    class="project-detail-title"
+                    id="projectTitle"
+                >
+                </h2>
+
+
+                <div
+                    class="project-detail-subtitle"
+                    id="projectSubtitle"
+                >
+                </div>
+
+
+                <div
+                    class="project-detail-meta"
+                    id="projectMeta"
+                >
+                </div>
+
 
             </div>
+
+
+            <!-- HERO PLACEHOLDER -->
 
             <div
-                class="project-detail-description"
-                id="projectDescription">
+                class="project-hero-media"
+                id="projectHeroMedia"
+            >
+
+                <div class="media-placeholder">
+
+                    <span>
+                        HERO VIDEO / IMAGE — PLACEHOLDER
+                    </span>
+
+                </div>
+
             </div>
+
+
+            <!-- ABOUT -->
+
+            <section class="project-section">
+
+
+                <div class="project-section-header">
+
+
+                    <div class="project-section-label">
+                        ABOUT
+                    </div>
+
+
+                    <div class="project-section-content">
+
+
+                        <div
+                            class="project-description"
+                            id="projectDescriptionEn"
+                        >
+                        </div>
+
+
+                        <div
+                            class="project-description"
+                            id="projectDescriptionVi"
+                            style="display:none;"
+                        >
+                        </div>
+
+
+                        <div class="project-language">
+
+
+                            <button
+                                class="lang-button active"
+                                id="projectLangEn"
+                                onclick="setProjectLanguage('en')"
+                            >
+                                EN
+                            </button>
+
+
+                            <button
+                                class="lang-button"
+                                id="projectLangVi"
+                                onclick="setProjectLanguage('vi')"
+                            >
+                                VI
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- ROLE -->
+
+            <section class="project-section">
+
+
+                <div class="project-section-header">
+
+
+                    <div class="project-section-label">
+                        ROLE
+                    </div>
+
+
+                    <div class="project-section-content">
+
+
+                        <div
+                            class="project-role-grid"
+                            id="projectRole"
+                        >
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- PROCESS -->
+
+            <section class="project-section">
+
+
+                <div class="project-section-header">
+
+
+                    <div class="project-section-label">
+                        PROCESS
+                    </div>
+
+
+                    <div class="project-section-content">
+
+
+                        <div
+                            class="process-list"
+                            id="projectProcess"
+                        >
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- FINAL -->
+
+            <section class="project-final">
+
+
+                <div class="project-final-title">
+                    FINAL
+                </div>
+
+
+                <div
+                    class="project-final-media"
+                    id="projectFinalMedia"
+                >
+
+                    <div class="media-placeholder">
+
+                        <span>
+                            FINAL VIDEO — PLACEHOLDER
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- DELIVERABLE -->
+
+            <section class="project-deliverable">
+
+
+                <div class="project-section-label">
+                    DELIVERABLE
+                </div>
+
+
+                <div
+                    class="deliverable-grid"
+                    id="projectDeliverable"
+                >
+                </div>
+
+
+            </section>
+
+
+            <!-- END -->
+
+            <div class="project-end">
+
+
+                <div>
+
+
+                    <div class="project-end-client-label">
+                        CLIENT
+                    </div>
+
+
+                    <div
+                        class="project-end-client"
+                        id="projectClient"
+                    >
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="project-end-back"
+                    onclick="backToProjects()"
+                >
+                    ← BACK TO CATEGORY
+                </button>
+
+
+            </div>
+
 
         </div>
 
+
     </div>
+
 
 </div>
 
@@ -1787,31 +3658,181 @@ footer {
 
 function setLanguage(language) {
 
-    const en = document.getElementById("about-en");
-    const vi = document.getElementById("about-vi");
 
-    const enButton = document.getElementById("lang-en");
-    const viButton = document.getElementById("lang-vi");
+    const en =
+        document.getElementById("about-en");
+
+
+    const vi =
+        document.getElementById("about-vi");
+
+
+    const enButton =
+        document.getElementById("lang-en");
+
+
+    const viButton =
+        document.getElementById("lang-vi");
+
 
     if (language === "en") {
 
+
         en.classList.add("active");
+
         vi.classList.remove("active");
 
+
         enButton.classList.add("active");
+
         viButton.classList.remove("active");
+
 
     } else {
 
+
         vi.classList.add("active");
+
         en.classList.remove("active");
 
+
         viButton.classList.add("active");
+
         enButton.classList.remove("active");
+
 
     }
 
 }
+
+
+/* =========================================================
+   PROJECT DATA
+========================================================= */
+
+const projectData = {
+
+
+    theSyncShow: {
+
+
+        id: "the-sync-show",
+
+
+        title:
+            "THE SYNC SHOW",
+
+
+        subtitle:
+            "EVENT OPENING FILM",
+
+
+        category:
+            "AI VIDEO SOLUTION",
+
+
+        year:
+            "2026",
+
+
+        client:
+            "Rạp xiếc Phú Thọ",
+
+
+        type:
+            "CGI · AI · Motion Design · Compositing",
+
+
+        role: [
+            "CGI",
+            "AI",
+            "Motion Design",
+            "Compositing"
+        ],
+
+
+        descriptionEn:
+            "A campaign film created for The Sync Show, built around the imagery of the dipterocarp fruit and familiar landmarks of Saigon. The visual direction combines AI-generated imagery with CGI, motion design, and compositing to transform these familiar elements into a cinematic event opening film.",
+
+
+        descriptionVi:
+            "Một video phục vụ campaign cho sự kiện The Sync Show, được xây dựng từ hình ảnh quả chò và những địa điểm quen thuộc của Sài Gòn. Visual được phát triển bằng AI, sau đó hoàn thiện với CGI, motion design và compositing để tạo nên một event opening film mang tính điện ảnh.",
+
+
+        process: [
+
+
+            {
+                number: "01",
+                title: "CONCEPT & ELEMENT DESIGN",
+                placeholder:
+                    "PROCESS 01 — CONCEPT & ELEMENT DESIGN"
+            },
+
+
+            {
+                number: "02",
+                title: "AI STILL FRAMES",
+                placeholder:
+                    "PROCESS 02 — AI STILL FRAMES"
+            },
+
+
+            {
+                number: "03",
+                title: "AI VIDEO GENERATION",
+                placeholder:
+                    "PROCESS 03 — AI VIDEO GENERATION"
+            },
+
+
+            {
+                number: "04",
+                title: "COMPOSITING",
+                placeholder:
+                    "PROCESS 04 — COMPOSITING"
+            },
+
+
+            {
+                number: "05",
+                title: "FINAL",
+                placeholder:
+                    "PROCESS 05 — FINAL"
+            }
+
+
+        ],
+
+
+        deliverables: [
+
+
+            {
+                label: "DURATION",
+                value: "30s CGI Video"
+            },
+
+
+            {
+                label: "FORMAT",
+                value: "16:9"
+            },
+
+
+            {
+                label: "APPLICATION",
+                value: "Social + Event Screen"
+            }
+
+
+        ]
+
+
+    }
+
+
+};
 
 
 /* =========================================================
@@ -1820,151 +3841,334 @@ function setLanguage(language) {
 
 const categories = {
 
+
     "visual-led": {
+
         title: "VISUAL LED",
+
         description:
             "Large-scale visual content, motion graphics and digital experiences created for LED screens and spatial environments.",
+
         projects: [
+
             {
                 title: "LED PROJECT 01",
                 type: "Motion Design"
             },
+
             {
                 title: "LED PROJECT 02",
                 type: "Visual Experience"
             }
+
         ]
+
     },
 
+
     "frame-by-frame": {
+
         title: "FRAME BY FRAME",
+
         description:
             "Frame-by-frame animation, hand-crafted movement and illustrated motion experiments.",
+
         projects: [
+
             {
                 title: "FRAME PROJECT 01",
                 type: "Animation"
             },
+
             {
                 title: "FRAME PROJECT 02",
                 type: "Animation"
             }
+
         ]
+
     },
 
+
     "infographic": {
+
         title: "INFOGRAPHIC & BRAND FILM",
+
         description:
             "Visual storytelling, information design and brand films built to communicate ideas through motion.",
+
         projects: [
+
             {
                 title: "BRAND FILM 01",
                 type: "Brand Film"
             },
+
             {
                 title: "INFOGRAPHIC 01",
                 type: "Information Design"
             }
+
         ]
+
     },
 
+
     "cgi": {
+
         title: "CGI",
+
         description:
             "3D imagery, product visuals, environments and CGI experiments.",
+
         projects: [
+
             {
                 title: "CGI PROJECT 01",
                 type: "3D / CGI"
             },
+
             {
                 title: "CGI PROJECT 02",
                 type: "3D / CGI"
             }
+
         ]
+
     },
 
+
     "sculpting": {
+
         title: "SCULPTING",
+
         description:
             "Digital sculpting, character development and 3D form exploration.",
+
         projects: [
+
             {
                 title: "SCULPT 01",
                 type: "Digital Sculpting"
             },
+
             {
                 title: "SCULPT 02",
                 type: "Character"
             }
+
         ]
+
     },
+
+
+    /* =====================================================
+       AI VIDEO SOLUTION
+    ===================================================== */
 
     "ai-video": {
+
         title: "AI VIDEO SOLUTION",
+
         description:
             "AI-assisted video production, visual development and creative solutions for faster content creation.",
+
         projects: [
+
+
             {
-                title: "AI VIDEO 01",
-                type: "AI Video"
+
+                title:
+                    "THE SYNC SHOW",
+
+                subtitle:
+                    "EVENT OPENING FILM",
+
+                type:
+                    "CGI · AI · Motion Design · Compositing",
+
+                projectId:
+                    "theSyncShow"
+
             },
+
+
             {
-                title: "AI VIDEO 02",
-                type: "AI Solution"
+
+                title:
+                    "AI VIDEO 02",
+
+                subtitle:
+                    "",
+
+                type:
+                    "AI Solution"
+
             }
+
+
         ]
+
     },
 
+
     "brand-merchandise": {
+
         title: "BRAND MERCHANDISE",
+
         description:
             "Physical objects, merchandise and branded products developed through 3D design and fabrication.",
+
         projects: [
+
             {
                 title: "MERCH 01",
                 type: "3D Printing"
             },
+
             {
                 title: "MERCH 02",
                 type: "Object Design"
             }
+
         ]
+
     },
 
+
     "mascot": {
+
         title: "MASCOT",
+
         description:
             "Character and mascot design translated from digital concepts into physical objects.",
+
         projects: [
+
             {
                 title: "MASCOT 01",
                 type: "Character Design"
             },
+
             {
                 title: "MASCOT 02",
                 type: "3D Object"
             }
+
         ]
+
     },
 
+
     "small-decor": {
+
         title: "SMALL DECOR",
+
         description:
             "Small-scale objects, functional pieces and decorative experiments made for the physical world.",
+
         projects: [
+
             {
                 title: "DECOR 01",
                 type: "Object Design"
             },
+
             {
                 title: "DECOR 02",
                 type: "3D Printing"
             }
+
         ]
+
     }
 
+
 };
+
+
+/* =========================================================
+   CURRENT PROJECT LANGUAGE
+========================================================= */
+
+let currentProjectLanguage = "en";
+
+
+/* =========================================================
+   PROJECT LANGUAGE
+========================================================= */
+
+function setProjectLanguage(language) {
+
+
+    currentProjectLanguage =
+        language;
+
+
+    const en =
+        document.getElementById(
+            "projectDescriptionEn"
+        );
+
+
+    const vi =
+        document.getElementById(
+            "projectDescriptionVi"
+        );
+
+
+    const enButton =
+        document.getElementById(
+            "projectLangEn"
+        );
+
+
+    const viButton =
+        document.getElementById(
+            "projectLangVi"
+        );
+
+
+    if (language === "en") {
+
+
+        en.style.display =
+            "block";
+
+        vi.style.display =
+            "none";
+
+
+        enButton.classList.add(
+            "active"
+        );
+
+        viButton.classList.remove(
+            "active"
+        );
+
+
+    } else {
+
+
+        vi.style.display =
+            "block";
+
+        en.style.display =
+            "none";
+
+
+        viButton.classList.add(
+            "active"
+        );
+
+        enButton.classList.remove(
+            "active"
+        );
+
+    }
+
+}
 
 
 /* =========================================================
@@ -1973,92 +4177,195 @@ const categories = {
 
 function openCategory(categoryId) {
 
-    const category = categories[categoryId];
+
+    const category =
+        categories[categoryId];
+
 
     if (!category) return;
 
+
     const overlay =
-        document.getElementById("categoryOverlay");
+        document.getElementById(
+            "categoryOverlay"
+        );
+
 
     const overlayContent =
-        document.getElementById("overlayContent");
+        document.getElementById(
+            "overlayContent"
+        );
+
 
     const title =
-        document.getElementById("categoryTitle");
+        document.getElementById(
+            "categoryTitle"
+        );
+
 
     const description =
-        document.getElementById("categoryDescription");
+        document.getElementById(
+            "categoryDescription"
+        );
+
 
     const projectGrid =
-        document.getElementById("projectGrid");
+        document.getElementById(
+            "projectGrid"
+        );
+
 
     const categoryMain =
-        document.getElementById("categoryMain");
+        document.getElementById(
+            "categoryMain"
+        );
+
 
     const projectDetail =
-        document.getElementById("projectDetail");
+        document.getElementById(
+            "projectDetail"
+        );
+
 
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
     );
 
+
     overlayContent.style.transform =
         "translate3d(0, 0, 0) scale(1)";
 
-    overlayContent.style.opacity = "1";
+
+    overlayContent.style.opacity =
+        "1";
+
 
     title.textContent =
         category.title;
 
+
     description.textContent =
         category.description;
 
-    projectGrid.innerHTML = "";
+
+    projectGrid.innerHTML =
+        "";
+
 
     category.projects.forEach(
         (project, index) => {
 
+
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             card.className =
                 "project-card";
 
-            card.innerHTML = `
-                <span>
-                    ${String(index + 1).padStart(2, "0")}
-                    / ${project.type}
-                </span>
 
-                <h3>
-                    ${project.title}
-                </h3>
+            const hasProjectDetail =
+                !!project.projectId;
+
+
+            card.innerHTML = `
+
+                <div class="project-card-thumbnail">
+
+                    <span>
+
+                        ${
+                            hasProjectDetail
+                                ? "PROJECT IMAGE / VIDEO"
+                                : "THUMBNAIL PLACEHOLDER"
+                        }
+
+                    </span>
+
+                </div>
+
+
+                <div class="project-card-info">
+
+                    <span>
+
+                        ${String(index + 1).padStart(2, "0")}
+
+                        /
+
+                        ${project.type}
+
+                    </span>
+
+
+                    <h3>
+
+                        ${project.title}
+
+                    </h3>
+
+                </div>
+
             `;
+
 
             card.addEventListener(
                 "click",
                 () => {
-                    openProject(project);
+
+                    if (
+                        project.projectId &&
+                        projectData[
+                            project.projectId
+                        ]
+                    ) {
+
+                        openProject(
+                            projectData[
+                                project.projectId
+                            ]
+                        );
+
+                    } else {
+
+                        openPlaceholderProject(
+                            project
+                        );
+
+                    }
+
                 }
             );
 
-            projectGrid.appendChild(card);
+
+            projectGrid.appendChild(
+                card
+            );
 
         }
     );
 
+
     categoryMain.style.display =
         "block";
+
 
     projectDetail.classList.remove(
         "active"
     );
 
-    overlay.classList.add("active");
+
+    overlay.classList.add(
+        "active"
+    );
+
 
     document.body.style.overflow =
         "hidden";
+
 }
 
 
@@ -2068,48 +4375,62 @@ function openCategory(categoryId) {
 
 function closeCategory() {
 
+
     const overlay =
         document.getElementById(
             "categoryOverlay"
         );
+
 
     const overlayContent =
         document.getElementById(
             "overlayContent"
         );
 
+
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
     );
 
+
     overlayContent.style.transform =
         "";
 
+
     overlayContent.style.opacity =
         "";
+
 
     overlay.classList.remove(
         "active"
     );
 
+
     document.body.style.overflow =
         "";
 
-    setTimeout(() => {
 
-        document.getElementById(
-            "categoryMain"
-        ).style.display =
-            "block";
+    setTimeout(
+        () => {
 
-        document.getElementById(
-            "projectDetail"
-        ).classList.remove(
-            "active"
-        );
 
-    }, 350);
+            document.getElementById(
+                "categoryMain"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "projectDetail"
+            ).classList.remove(
+                "active"
+            );
+
+
+        },
+        350
+    );
 
 }
 
@@ -2120,52 +4441,436 @@ function closeCategory() {
 
 function openProject(project) {
 
+
     const categoryMain =
         document.getElementById(
             "categoryMain"
         );
+
 
     const projectDetail =
         document.getElementById(
             "projectDetail"
         );
 
+
     const overlayContent =
         document.getElementById(
             "overlayContent"
         );
+
 
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
     );
 
+
     overlayContent.style.transform =
         "translate3d(0, 0, 0) scale(1)";
 
+
     overlayContent.style.opacity =
         "1";
+
+
+    document.getElementById(
+        "projectCategory"
+    ).textContent =
+        project.category;
+
 
     document.getElementById(
         "projectTitle"
     ).textContent =
         project.title;
 
-    document.getElementById(
-        "projectType"
-    ).textContent =
-        project.type;
 
     document.getElementById(
-        "projectDescription"
+        "projectSubtitle"
     ).textContent =
-        "Project description and visual content will be added here.";
+        project.subtitle;
+
+
+    document.getElementById(
+        "projectMeta"
+    ).innerHTML = `
+
+        <div class="project-meta-item">
+
+            <span class="project-meta-label">
+                YEAR
+            </span>
+
+            <div class="project-meta-value">
+                ${project.year}
+            </div>
+
+        </div>
+
+
+        <div class="project-meta-item">
+
+            <span class="project-meta-label">
+                CLIENT
+            </span>
+
+            <div class="project-meta-value">
+                ${project.client}
+            </div>
+
+        </div>
+
+
+        <div class="project-meta-item">
+
+            <span class="project-meta-label">
+                PROJECT TYPE
+            </span>
+
+            <div class="project-meta-value">
+                ${project.type}
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "projectDescriptionEn"
+    ).textContent =
+        project.descriptionEn;
+
+
+    document.getElementById(
+        "projectDescriptionVi"
+    ).textContent =
+        project.descriptionVi;
+
+
+    setProjectLanguage(
+        currentProjectLanguage
+    );
+
+
+    /* =====================================================
+       ROLE
+    ===================================================== */
+
+    const roleContainer =
+        document.getElementById(
+            "projectRole"
+        );
+
+
+    roleContainer.innerHTML =
+        "";
+
+
+    project.role.forEach(
+        (role, index) => {
+
+
+            const roleItem =
+                document.createElement(
+                    "div"
+                );
+
+
+            roleItem.className =
+                "role-item";
+
+
+            roleItem.innerHTML = `
+
+                <div class="role-number">
+
+                    ${String(index + 1).padStart(2, "0")}
+
+                </div>
+
+
+                <div class="role-name">
+
+                    ${role}
+
+                </div>
+
+            `;
+
+
+            roleContainer.appendChild(
+                roleItem
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       PROCESS
+    ===================================================== */
+
+    const processContainer =
+        document.getElementById(
+            "projectProcess"
+        );
+
+
+    processContainer.innerHTML =
+        "";
+
+
+    project.process.forEach(
+        item => {
+
+
+            const processItem =
+                document.createElement(
+                    "div"
+                );
+
+
+            processItem.className =
+                "process-item";
+
+
+            processItem.innerHTML = `
+
+                <div class="process-number">
+
+                    ${item.number}
+
+                </div>
+
+
+                <div class="process-main">
+
+                    <div class="process-title">
+
+                        ${item.title}
+
+                    </div>
+
+
+                    <div class="process-media">
+
+                        <div class="media-placeholder">
+
+                            <span>
+
+                                ${item.placeholder}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            processContainer.appendChild(
+                processItem
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       DELIVERABLE
+    ===================================================== */
+
+    const deliverableContainer =
+        document.getElementById(
+            "projectDeliverable"
+        );
+
+
+    deliverableContainer.innerHTML =
+        "";
+
+
+    project.deliverables.forEach(
+        item => {
+
+
+            const deliverable =
+                document.createElement(
+                    "div"
+                );
+
+
+            deliverable.className =
+                "deliverable-item";
+
+
+            deliverable.innerHTML = `
+
+                <span>
+                    ${item.label}
+                </span>
+
+                <strong>
+                    ${item.value}
+                </strong>
+
+            `;
+
+
+            deliverableContainer.appendChild(
+                deliverable
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CLIENT
+    ===================================================== */
+
+    document.getElementById(
+        "projectClient"
+    ).textContent =
+        project.client;
+
+
+    /* =====================================================
+       SHOW DETAIL
+    ===================================================== */
 
     categoryMain.style.display =
         "none";
 
+
     projectDetail.classList.add(
         "active"
+    );
+
+
+    /*
+     * Always start project detail
+     * from the top.
+     */
+
+    document.getElementById(
+        "categoryOverlay"
+    ).scrollTop = 0;
+
+}
+
+
+/* =========================================================
+   PLACEHOLDER PROJECT
+========================================================= */
+
+function openPlaceholderProject(project) {
+
+
+    const placeholderProject = {
+
+
+        title:
+            project.title,
+
+
+        subtitle:
+            project.subtitle || "",
+
+
+        category:
+            document.getElementById(
+                "categoryTitle"
+            ).textContent,
+
+
+        year:
+            "2026",
+
+
+        client:
+            "PROJECT CLIENT",
+
+
+        type:
+            project.type,
+
+
+        role: [
+            "Concept",
+            "Design",
+            "Motion",
+            "Production"
+        ],
+
+
+        descriptionEn:
+            "Project description and visual content will be added here.",
+
+
+        descriptionVi:
+            "Thông tin dự án và visual content sẽ được bổ sung tại đây.",
+
+
+        process: [
+
+
+            {
+                number: "01",
+                title: "CONCEPT",
+                placeholder: "PROCESS 01 — PLACEHOLDER"
+            },
+
+
+            {
+                number: "02",
+                title: "DESIGN",
+                placeholder: "PROCESS 02 — PLACEHOLDER"
+            },
+
+
+            {
+                number: "03",
+                title: "PRODUCTION",
+                placeholder: "PROCESS 03 — PLACEHOLDER"
+            }
+
+
+        ],
+
+
+        deliverables: [
+
+
+            {
+                label: "FORMAT",
+                value: "TBC"
+            },
+
+
+            {
+                label: "DURATION",
+                value: "TBC"
+            },
+
+
+            {
+                label: "APPLICATION",
+                value: "TBC"
+            }
+
+        ]
+
+    };
+
+
+    openProject(
+        placeholderProject
     );
 
 }
@@ -2177,32 +4882,43 @@ function openProject(project) {
 
 function backToProjects() {
 
+
     const overlayContent =
         document.getElementById(
             "overlayContent"
         );
+
 
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
     );
 
+
     overlayContent.style.transform =
         "translate3d(0, 0, 0) scale(1)";
 
+
     overlayContent.style.opacity =
         "1";
+
 
     document.getElementById(
         "categoryMain"
     ).style.display =
         "block";
 
+
     document.getElementById(
         "projectDetail"
     ).classList.remove(
         "active"
     );
+
+
+    document.getElementById(
+        "categoryOverlay"
+    ).scrollTop = 0;
 
 }
 
@@ -2215,8 +4931,31 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
-            closeCategory();
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            const projectDetail =
+                document.getElementById(
+                    "projectDetail"
+                );
+
+
+            if (
+                projectDetail.classList.contains(
+                    "active"
+                )
+            ) {
+
+                backToProjects();
+
+            } else {
+
+                closeCategory();
+
+            }
+
         }
 
     }
@@ -2232,33 +4971,48 @@ const revealElements =
         ".reveal"
     );
 
+
 const revealObserver =
     new IntersectionObserver(
 
         (entries, observer) => {
 
-            entries.forEach(entry => {
 
-                if (!entry.isIntersecting) {
-                    return;
+            entries.forEach(
+                entry => {
+
+
+                    if (
+                        !entry.isIntersecting
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
                 }
-
-                entry.target.classList.add(
-                    "is-visible"
-                );
-
-                observer.unobserve(
-                    entry.target
-                );
-
-            });
+            );
 
         },
 
+
         {
+
             threshold: 0.12,
+
             rootMargin:
                 "0px 0px -40px 0px"
+
         }
 
     );
@@ -2266,6 +5020,7 @@ const revealObserver =
 
 revealElements.forEach(
     element => {
+
 
         revealObserver.observe(
             element
@@ -2277,38 +5032,6 @@ revealElements.forEach(
 
 /* =========================================================
    SCROLL INTERACTION SYSTEM
-   006.STUDIO / DAY 2
-=========================================================
-
-   Main signature:
-
-   FROM VISION
-   TO VISUAL
-
-   FROM IDEA
-   TO MOTION
-
-   FROM DIGITAL
-   TO OBJECT
-
-   The movement is based on the element's position
-   inside the viewport.
-
-   Important:
-   We do NOT directly bind transform to scrollY.
-
-   Instead:
-
-   scroll position
-        ↓
-   target values
-        ↓
-   smooth interpolation
-        ↓
-   visual movement
-
-   This creates inertia and avoids a "stuck to scroll"
-   feeling.
 ========================================================= */
 
 const reducedMotion =
@@ -2329,15 +5052,12 @@ const scrollSignatureObjects =
     );
 
 
-/*
- * Current smooth values.
- */
-
 const scrollStates = [];
 
 
 scrollSignatureElements.forEach(
     (element, index) => {
+
 
         scrollStates.push({
 
@@ -2361,72 +5081,25 @@ scrollSignatureElements.forEach(
 );
 
 
-/*
- * Normalize viewport position.
-
-   0 = element center near bottom
-   0.5 = element center at viewport center
-   1 = element center near top
- */
-
-function getScrollProgress(element) {
-
-    const rect =
-        element.getBoundingClientRect();
-
-    const viewportHeight =
-        window.innerHeight;
-
-    const elementCenter =
-        rect.top +
-        rect.height / 2;
-
-    const raw =
-        1 -
-        (
-            elementCenter /
-            viewportHeight
-        );
-
-    return Math.max(
-        0,
-        Math.min(
-            1,
-            raw
-        )
-    );
-
-}
-
-
-/*
- * Ease value.
-
-   Gives the movement a softer,
-   more organic feeling.
- */
-
 function easeInOut(value) {
 
+
     return (
+
         value < 0.5
+
             ? 2 * value * value
+
             : 1 -
               Math.pow(
                   -2 * value + 2,
                   2
               ) / 2
+
     );
 
 }
 
-
-/*
- * Smooth lerp.
-
-   The lower the amount,
-   the softer/slower the movement.
- */
 
 function lerp(
     current,
@@ -2434,49 +5107,49 @@ function lerp(
     amount
 ) {
 
+
     return (
+
         current +
         (
             target -
             current
         ) *
         amount
+
     );
 
 }
 
 
-/*
- * Main scroll animation loop.
- */
-
 function animateScrollSystem() {
+
 
     if (
         !reducedMotion
     ) {
 
+
         scrollStates.forEach(
             state => {
+
 
                 const element =
                     state.element;
 
+
                 const rect =
                     element.getBoundingClientRect();
+
 
                 const viewportHeight =
                     window.innerHeight;
 
 
-                /*
-                 * Distance of the element center
-                 * from the viewport center.
-                 */
-
                 const elementCenter =
                     rect.top +
                     rect.height / 2;
+
 
                 const distanceFromCenter =
                     (
@@ -2488,14 +5161,6 @@ function animateScrollSystem() {
                     );
 
 
-                /*
-                 * Clamp:
-                 *
-                 * -1 = above center
-                 *  0 = center
-                 * +1 = below center
-                 */
-
                 const normalized =
                     Math.max(
                         -1,
@@ -2506,13 +5171,6 @@ function animateScrollSystem() {
                     );
 
 
-                /*
-                 * Convert to scroll progress.
-
-                 * 0 = bottom area
-                 * 1 = top area
-                 */
-
                 const progress =
                     1 -
                     (
@@ -2520,28 +5178,15 @@ function animateScrollSystem() {
                     ) / 2;
 
 
-                /*
-                 * Smooth curve.
-                 */
-
                 const eased =
                     easeInOut(
                         progress
                     );
 
 
-                /*
-                 * Responsive intensity.
-
-                 * Desktop:
-                 * stronger movement.
-
-                 * Mobile:
-                 * softer movement.
-                 */
-
                 const isMobile =
                     window.innerWidth <= 800;
+
 
                 const isTablet =
                     window.innerWidth > 800 &&
@@ -2550,28 +5195,27 @@ function animateScrollSystem() {
 
                 let intensity = 1;
 
-                if (isMobile) {
-                    intensity = 0.52;
-                } else if (isTablet) {
-                    intensity = 0.72;
+
+                if (
+                    isMobile
+                ) {
+
+                    intensity =
+                        0.52;
+
+                }
+                else if (
+                    isTablet
+                ) {
+
+                    intensity =
+                        0.72;
+
                 }
 
 
                 /*
-                 * Different lines move
-                 * in opposite directions.
-                 */
-
-                const lines =
-                    element.querySelectorAll(
-                        ".scroll-line, .playful-line"
-                    );
-
-
-                /*
                  * HERO
-
-                   FROM VISION / TO VISUAL
                  */
 
                 if (
@@ -2580,25 +5224,24 @@ function animateScrollSystem() {
                     )
                 ) {
 
-                    const movement =
-                        (
-                            normalized *
-                            -18 *
-                            intensity
-                        );
 
                     state.targetX =
-                        movement;
+                        normalized *
+                        -18 *
+                        intensity;
+
 
                     state.targetY =
                         normalized *
                         -8 *
                         intensity;
 
+
                     state.targetRotation =
                         normalized *
                         1.4 *
                         intensity;
+
 
                     state.targetScale =
                         0.97 +
@@ -2612,35 +5255,34 @@ function animateScrollSystem() {
                             0.035
                         );
 
+
                 }
 
 
                 /*
-                 * DISCIPLINE HEADLINES
-
-                   FROM IDEA / TO MOTION
-                   FROM DIGITAL / TO OBJECT
+                 * DISCIPLINE
                  */
 
                 else {
 
-                    const movement =
+
+                    state.targetX =
                         normalized *
                         28 *
                         intensity;
 
-                    state.targetX =
-                        movement;
 
                     state.targetY =
                         normalized *
                         -10 *
                         intensity;
 
+
                     state.targetRotation =
                         normalized *
                         -2.2 *
                         intensity;
+
 
                     state.targetScale =
                         0.94 +
@@ -2657,20 +5299,13 @@ function animateScrollSystem() {
                 }
 
 
-                /*
-                 * Smooth interpolation.
-
-                   This is what makes the movement
-                   feel like inertia rather than
-                   a rigid scroll animation.
-                 */
-
                 state.currentX =
                     lerp(
                         state.currentX,
                         state.targetX,
                         0.075
                     );
+
 
                 state.currentY =
                     lerp(
@@ -2679,12 +5314,14 @@ function animateScrollSystem() {
                         0.075
                     );
 
+
                 state.currentRotation =
                     lerp(
                         state.currentRotation,
                         state.targetRotation,
                         0.075
                     );
+
 
                 state.currentScale =
                     lerp(
@@ -2694,53 +5331,40 @@ function animateScrollSystem() {
                     );
 
 
-                /*
-                 * Apply transform to the whole
-                 * signature block.
-                 */
-
                 element.style.transform =
+
                     `
                     translate3d(
                         ${state.currentX}px,
                         ${state.currentY}px,
                         0
                     )
+
                     rotate(
                         ${state.currentRotation}deg
                     )
+
                     scale(
                         ${state.currentScale}
                     )
                     `;
 
 
-                /*
-                 * Additional independent movement
-                 * for each line.
+                const lines =
+                    element.querySelectorAll(
+                        ".scroll-line"
+                    );
 
-                   First line → left
-                   Second line → right
-
-                   This gives the "FROM → TO"
-                   relationship more life.
-                 */
 
                 lines.forEach(
                     (line, lineIndex) => {
 
-                        /*
-                         * Do not interfere too much
-                         * with existing mouse interaction.
-                         *
-                         * Scroll movement here is
-                         * deliberately subtle.
-                         */
 
                         const lineDirection =
                             lineIndex === 0
                                 ? -1
                                 : 1;
+
 
                         const lineOffset =
                             normalized *
@@ -2761,38 +5385,37 @@ function animateScrollSystem() {
                             `${lineOffset}px`
                         );
 
+
                         line.style.setProperty(
                             "--scroll-rotation",
                             `${lineRotation}deg`
                         );
 
+
                     }
                 );
+
 
             }
         );
 
 
-        /*
-         * Discipline objects follow the same
-         * scroll choreography.
-
-         * They move slightly slower and rotate
-         * more subtly than the typography.
-         */
-
         scrollSignatureObjects.forEach(
             object => {
+
 
                 const rect =
                     object.getBoundingClientRect();
 
+
                 const viewportHeight =
                     window.innerHeight;
+
 
                 const center =
                     rect.top +
                     rect.height / 2;
+
 
                 const normalized =
                     Math.max(
@@ -2809,8 +5432,10 @@ function animateScrollSystem() {
                         )
                     );
 
+
                 const isMobile =
                     window.innerWidth <= 800;
+
 
                 const intensity =
                     isMobile
@@ -2823,15 +5448,18 @@ function animateScrollSystem() {
                     -18 *
                     intensity;
 
+
                 const y =
                     normalized *
                     14 *
                     intensity;
 
+
                 const rotation =
                     normalized *
                     45 *
                     intensity;
+
 
                 const scale =
                     1 +
@@ -2846,17 +5474,12 @@ function animateScrollSystem() {
                     );
 
 
-                /*
-                 * Store current transform directly
-                 * on the object using its own
-                 * smooth CSS transition feel.
-                 */
-
                 const current =
                     parseFloat(
                         object.dataset.scrollCurrent ||
                         "0"
                     );
+
 
                 const next =
                     lerp(
@@ -2865,27 +5488,33 @@ function animateScrollSystem() {
                         0.08
                     );
 
+
                 object.dataset.scrollCurrent =
                     next;
 
 
                 object.style.transform =
+
                     `
                     translate3d(
                         ${next}px,
                         ${y}px,
                         0
                     )
+
                     rotate(
                         ${rotation}deg
                     )
+
                     scale(
                         ${scale}
                     )
                     `;
 
+
             }
         );
+
 
     }
 
@@ -2897,19 +5526,12 @@ function animateScrollSystem() {
 }
 
 
-/*
- * Start the system.
- */
-
 animateScrollSystem();
 
 
-/*
- * Add CSS variables to the signature lines.
-
- * This layer sits below the main block transform
- * and creates the subtle "FROM / TO" separation.
- */
+/* =========================================================
+   SCROLL LINE BASE TRANSFORM
+========================================================= */
 
 document
     .querySelectorAll(
@@ -2918,7 +5540,9 @@ document
     .forEach(
         line => {
 
+
             line.style.transform =
+
                 "translate3d(var(--scroll-x, 0px), 0, 0) rotate(var(--scroll-rotation, 0deg))";
 
         }
@@ -2934,16 +5558,21 @@ const reactiveElements =
         ".mouse-reactive"
     );
 
+
 const supportsMouse =
     window.matchMedia(
         "(hover: hover) and (pointer: fine)"
     ).matches;
 
 
-if (supportsMouse) {
+if (
+    supportsMouse
+) {
+
 
     reactiveElements.forEach(
         element => {
+
 
             const lines =
                 element.querySelectorAll(
@@ -2951,51 +5580,53 @@ if (supportsMouse) {
                 );
 
 
-            /*
-             * Scroll-signature elements use their own
-             * scroll-line system.
-
-             * The mouse interaction still works on
-             * the main hero and identity.
-             */
-
             if (
                 element.classList.contains(
                     "scroll-signature"
                 )
             ) {
+
                 return;
+
             }
 
-
-            let mouseInside = false;
 
             let targetX = 0;
             let targetY = 0;
             let targetRotation = 0;
 
+
             let currentX = 0;
             let currentY = 0;
             let currentRotation = 0;
 
+
             const targetLineX =
-                new Array(lines.length)
-                    .fill(0);
+                new Array(
+                    lines.length
+                ).fill(0);
+
 
             const targetLineY =
-                new Array(lines.length)
-                    .fill(0);
+                new Array(
+                    lines.length
+                ).fill(0);
+
 
             const currentLineX =
-                new Array(lines.length)
-                    .fill(0);
+                new Array(
+                    lines.length
+                ).fill(0);
+
 
             const currentLineY =
-                new Array(lines.length)
-                    .fill(0);
+                new Array(
+                    lines.length
+                ).fill(0);
 
 
             function animate() {
+
 
                 currentX +=
                     (
@@ -3003,11 +5634,13 @@ if (supportsMouse) {
                         currentX
                     ) * 0.12;
 
+
                 currentY +=
                     (
                         targetY -
                         currentY
                     ) * 0.12;
+
 
                 currentRotation +=
                     (
@@ -3019,11 +5652,13 @@ if (supportsMouse) {
                 lines.forEach(
                     (line, index) => {
 
+
                         currentLineX[index] +=
                             (
                                 targetLineX[index] -
                                 currentLineX[index]
                             ) * 0.15;
+
 
                         currentLineY[index] +=
                             (
@@ -3048,6 +5683,7 @@ if (supportsMouse) {
 
 
                         line.style.transform =
+
                             `
                             translate3d(
                                 ${
@@ -3070,6 +5706,7 @@ if (supportsMouse) {
                             )
                             `;
 
+
                     }
                 );
 
@@ -3085,22 +5722,8 @@ if (supportsMouse) {
 
 
             element.addEventListener(
-                "pointerenter",
-                () => {
-
-                    mouseInside = true;
-
-                }
-            );
-
-
-            element.addEventListener(
                 "pointermove",
                 event => {
-
-                    if (!mouseInside) {
-                        return;
-                    }
 
 
                     const rect =
@@ -3152,8 +5775,10 @@ if (supportsMouse) {
                     targetX =
                         normalizedX * -14;
 
+
                     targetY =
                         normalizedY * -9;
+
 
                     targetRotation =
                         normalizedX * 3;
@@ -3161,6 +5786,7 @@ if (supportsMouse) {
 
                     lines.forEach(
                         (line, index) => {
+
 
                             const direction =
                                 index === 0
@@ -3179,8 +5805,10 @@ if (supportsMouse) {
                                 7 *
                                 direction;
 
+
                         }
                     );
+
 
                 },
                 {
@@ -3193,24 +5821,30 @@ if (supportsMouse) {
                 "pointerleave",
                 () => {
 
-                    mouseInside = false;
 
                     targetX = 0;
+
                     targetY = 0;
+
                     targetRotation = 0;
 
 
                     lines.forEach(
                         (line, index) => {
 
-                            targetLineX[index] = 0;
-                            targetLineY[index] = 0;
+                            targetLineX[index] =
+                                0;
+
+                            targetLineY[index] =
+                                0;
 
                         }
                     );
 
+
                 }
             );
+
 
         }
     );
@@ -3223,16 +5857,20 @@ if (supportsMouse) {
 ========================================================= */
 
 let touchStartX = 0;
+
 let touchStartY = 0;
 
 let touchTracking = false;
+
 let touchHorizontalIntent = false;
 
-let currentSwipeX = 0;
 
 const SWIPE_EDGE_ZONE = 70;
+
 const SWIPE_MIN_DISTANCE = 90;
+
 const SWIPE_MAX_VERTICAL = 100;
+
 const SWIPE_COMPLETE_DISTANCE = 180;
 
 
@@ -3241,26 +5879,30 @@ const categoryOverlay =
         "categoryOverlay"
     );
 
+
 const overlayContent =
     document.getElementById(
         "overlayContent"
     );
 
 
-/*
- * Touch start.
- */
+/* ---------------------------------------------------------
+   TOUCH START
+--------------------------------------------------------- */
 
 categoryOverlay.addEventListener(
     "touchstart",
     function(event) {
+
 
         if (
             !categoryOverlay.classList.contains(
                 "active"
             )
         ) {
+
             return;
+
         }
 
 
@@ -3273,31 +5915,36 @@ categoryOverlay.addEventListener(
             SWIPE_EDGE_ZONE
         ) {
 
+
             touchStartX =
                 touch.clientX;
+
 
             touchStartY =
                 touch.clientY;
 
-            touchTracking = true;
-            touchHorizontalIntent = false;
 
-            currentSwipeX = 0;
+            touchTracking =
+                true;
 
 
-            overlayContent.classList.remove(
-                "swipe-complete",
-                "swipe-reset"
-            );
+            touchHorizontalIntent =
+                false;
 
 
             overlayContent.style.transition =
                 "none";
 
+
         } else {
 
-            touchTracking = false;
-            touchHorizontalIntent = false;
+
+            touchTracking =
+                false;
+
+
+            touchHorizontalIntent =
+                false;
 
         }
 
@@ -3308,16 +5955,21 @@ categoryOverlay.addEventListener(
 );
 
 
-/*
- * Touch move.
- */
+/* ---------------------------------------------------------
+   TOUCH MOVE
+--------------------------------------------------------- */
 
 categoryOverlay.addEventListener(
     "touchmove",
     function(event) {
 
-        if (!touchTracking) {
+
+        if (
+            !touchTracking
+        ) {
+
             return;
+
         }
 
 
@@ -3339,11 +5991,14 @@ categoryOverlay.addEventListener(
             !touchHorizontalIntent
         ) {
 
+
             if (
                 Math.abs(deltaX) < 8 &&
                 Math.abs(deltaY) < 8
             ) {
+
                 return;
+
             }
 
 
@@ -3353,17 +6008,22 @@ categoryOverlay.addEventListener(
                 Math.abs(deltaX) * 1.15
             ) {
 
-                touchTracking = false;
+
+                touchTracking =
+                    false;
+
 
                 overlayContent.style.transition =
                     "";
+
 
                 return;
 
             }
 
 
-            touchHorizontalIntent = true;
+            touchHorizontalIntent =
+                true;
 
         }
 
@@ -3372,11 +6032,13 @@ categoryOverlay.addEventListener(
             !touchHorizontalIntent ||
             deltaX <= 0
         ) {
+
             return;
+
         }
 
 
-        currentSwipeX =
+        const currentSwipeX =
             Math.min(
                 deltaX,
                 SWIPE_COMPLETE_DISTANCE
@@ -3413,12 +6075,14 @@ categoryOverlay.addEventListener(
 
 
         overlayContent.style.transform =
+
             `
             translate3d(
                 ${translateX}px,
                 0,
                 0
             )
+
             scale(
                 ${scale}
             )
@@ -3428,6 +6092,7 @@ categoryOverlay.addEventListener(
         overlayContent.style.opacity =
             opacity;
 
+
     },
     {
         passive: true
@@ -3435,16 +6100,21 @@ categoryOverlay.addEventListener(
 );
 
 
-/*
- * Touch end.
- */
+/* ---------------------------------------------------------
+   TOUCH END
+--------------------------------------------------------- */
 
 categoryOverlay.addEventListener(
     "touchend",
     function(event) {
 
-        if (!touchTracking) {
+
+        if (
+            !touchTracking
+        ) {
+
             return;
+
         }
 
 
@@ -3462,7 +6132,8 @@ categoryOverlay.addEventListener(
             touchStartY;
 
 
-        touchTracking = false;
+        touchTracking =
+            false;
 
 
         const isRightSwipe =
@@ -3480,14 +6151,18 @@ categoryOverlay.addEventListener(
             !isMostlyHorizontal
         ) {
 
+
             overlayContent.style.transition =
                 "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
+
 
             overlayContent.style.transform =
                 "translate3d(0, 0, 0) scale(1)";
 
+
             overlayContent.style.opacity =
                 "1";
+
 
             return;
 
@@ -3513,6 +6188,7 @@ categoryOverlay.addEventListener(
         overlayContent.style.transform =
             "translate3d(75px, 0, 0) scale(0.02)";
 
+
         overlayContent.style.opacity =
             "0";
 
@@ -3520,25 +6196,34 @@ categoryOverlay.addEventListener(
         setTimeout(
             function() {
 
+
                 overlayContent.style.transition =
                     "";
 
+
                 overlayContent.style.transform =
                     "";
+
 
                 overlayContent.style.opacity =
                     "";
 
 
-                if (isProjectDetail) {
+                if (
+                    isProjectDetail
+                ) {
+
 
                     backToProjects();
 
+
                 } else {
+
 
                     closeCategory();
 
                 }
+
 
             },
             250
@@ -3551,26 +6236,34 @@ categoryOverlay.addEventListener(
 );
 
 
-/*
- * Touch cancel.
- */
+/* ---------------------------------------------------------
+   TOUCH CANCEL
+--------------------------------------------------------- */
 
 categoryOverlay.addEventListener(
     "touchcancel",
     function() {
 
-        touchTracking = false;
-        touchHorizontalIntent = false;
+
+        touchTracking =
+            false;
+
+
+        touchHorizontalIntent =
+            false;
 
 
         overlayContent.style.transition =
             "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
 
+
         overlayContent.style.transform =
             "translate3d(0, 0, 0) scale(1)";
 
+
         overlayContent.style.opacity =
             "1";
+
 
     },
     {
@@ -3587,22 +6280,29 @@ if (
     reducedMotion
 ) {
 
+
     reactiveElements.forEach(
         element => {
 
+
             element.style.transform =
                 "none";
+
 
             element
                 .querySelectorAll(
                     ".playful-line"
                 )
-                .forEach(line => {
+                .forEach(
+                    line => {
 
-                    line.style.transform =
-                        "none";
 
-                });
+                        line.style.transform =
+                            "none";
+
+                    }
+                );
+
 
         }
     );
@@ -3611,19 +6311,25 @@ if (
     scrollSignatureElements.forEach(
         element => {
 
+
             element.style.transform =
                 "none";
+
 
             element
                 .querySelectorAll(
                     ".scroll-line"
                 )
-                .forEach(line => {
+                .forEach(
+                    line => {
 
-                    line.style.transform =
-                        "none";
 
-                });
+                        line.style.transform =
+                            "none";
+
+                    }
+                );
+
 
         }
     );
@@ -3632,15 +6338,18 @@ if (
     scrollSignatureObjects.forEach(
         object => {
 
+
             object.style.transform =
                 "none";
 
         }
     );
 
+
 }
 
 </script>
+
 
 </body>
 </html>
