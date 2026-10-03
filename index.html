@@ -1,99 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F3F0E8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<title>006.STUDIO — Motion Design & 3D Lab</title>
 
-<title>006.STUDIO — Creative Studio</title>
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root {
-
     --teal: #008C8C;
     --orange: #F26B38;
     --beige: #F3F0E8;
     --black: #111111;
-    --light-gray: #D0CCC3;
-
+    --gray: #D0CCC3;
+    --white: #FFFFFF;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
-
     box-sizing: border-box;
-
-    margin: 0;
-    padding: 0;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
     scroll-padding-top: 90px;
-
 }
-
 
 body {
-
-    font-family: "Montserrat", sans-serif;
-
+    margin: 0;
     background: var(--beige);
-
     color: var(--black);
-
+    font-family: "Montserrat", sans-serif;
     overflow-x: hidden;
-
 }
 
-
-a {
-
-    color: inherit;
-
-    text-decoration: none;
-
+body.overlay-open {
+    overflow: hidden;
 }
-
 
 button {
+    font: inherit;
+}
 
-    font-family: inherit;
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
+img,
+video {
+    display: block;
+    max-width: 100%;
 }
 
 
@@ -102,68 +63,88 @@ button {
 ========================================================= */
 
 header {
-
     width: 100%;
-
     padding: 28px 32px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     position: fixed;
-
     top: 0;
     left: 0;
-
     z-index: 2000;
-
     background: var(--beige);
-
 }
-
 
 .logo {
-
     font-size: 20px;
-
-    font-weight: 900;
-
-    letter-spacing: -0.8px;
-
-}
-
-
-.nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-}
-
-
-.nav a {
-
-    font-size: 11px;
-
     font-weight: 800;
+    letter-spacing: -1px;
+}
 
-    letter-spacing: 0.3px;
+nav {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
 
-    transition: opacity 0.25s ease;
+.nav-link {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--black);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    cursor: pointer;
+    transition: color .25s ease;
+}
 
+.nav-link:hover {
+    color: var(--teal);
 }
 
 
-.nav a:hover {
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-    opacity: 0.45;
+section {
+    position: relative;
+}
 
+.container {
+    width: calc(100% - 64px);
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: .12s;
+}
+
+.reveal-delay-2 {
+    transition-delay: .22s;
+}
+
+.reveal-delay-3 {
+    transition-delay: .32s;
+}
+
+.scroll-signature {
+    will-change: transform;
 }
 
 
@@ -172,495 +153,196 @@ header {
 ========================================================= */
 
 .hero {
-
-    padding-top: 100px;
-
-    position: relative;
-
+    min-height: 100vh;
+    padding: 150px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
-
-.hero-showreel {
-
-    width: 100%;
-
-    padding: 35px 9.8% 34px;
-
-    background: var(--black);
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-.hero-showreel::before {
-
-    content: "SHOWREEL / 2026";
-
-    display: block;
-
-    margin-bottom: 14px;
-
-    color: var(--teal);
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
-}
-
-
-.hero-showreel-frame {
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    background: #000000;
-
-    overflow: hidden;
-
-}
-
-
-.hero-showreel iframe {
-
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-
-    display: block;
-
-}
-
-
-/* =========================================================
-   HERO COPY
-========================================================= */
 
 .hero-copy {
-
-    padding: 70px 9.8% 110px;
-
+    max-width: 1200px;
 }
 
+.hero-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 28px;
+}
 
 .hero-copy h1 {
-
-    max-width: 1100px;
-
-    font-size: clamp(70px, 11vw, 165px);
-
-    line-height: 0.82;
-
-    font-weight: 900;
-
+    margin: 0;
+    font-size: clamp(64px, 10vw, 170px);
+    line-height: .84;
     letter-spacing: -7px;
-
-    will-change: transform;
-
+    font-weight: 800;
+    transform-origin: center center;
 }
-
 
 .hero-copy h1 .vision-line {
-
     display: block;
-
     color: var(--teal);
-
 }
-
 
 .hero-copy h1 .visual-line {
-
     display: block;
-
     color: var(--black);
-
 }
-
-
-/* =========================================================
-   HERO IDENTITY
-========================================================= */
 
 .hero-identity {
-
     margin-top: 48px;
-
     font-size: clamp(22px, 2.4vw, 34px);
-
     line-height: 1.05;
-
     font-weight: 500;
-
     letter-spacing: -1px;
-
     max-width: 850px;
-
     will-change: transform;
-
 }
-
 
 .hero-identity .colorblind {
-
     color: var(--teal);
-
     font-weight: 500;
-
 }
-
 
 .hero-identity .headline-orange {
-
     color: var(--orange);
-
     font-weight: 500;
-
 }
-
-
-/* =========================================================
-   PLAYFUL HEADLINE
-========================================================= */
-
-.mouse-reactive {
-
-    cursor: default;
-
-}
-
 
 .playful-line {
-
     display: block;
-
     position: relative;
-
     will-change: transform;
-
     transform-origin: center center;
+}
 
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 32px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .5px;
 }
 
 
 /* =========================================================
-   ABOUT
+   SHOWREEL
 ========================================================= */
 
-.about {
-
-    padding: 100px 9.8% 120px;
-
-    background: var(--beige);
-
+.showreel-section {
+    padding: 40px 0 120px;
 }
 
-
-.about-top {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.5fr;
-
-    gap: 8%;
-
+.showreel-label {
+    width: calc(100% - 64px);
+    margin: 0 auto 16px;
+    max-width: 1500px;
+    font-size: 11px;
+    font-weight: 700;
 }
 
-
-.section-label {
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
+.showreel-frame {
+    width: 100%;
+    background: #000;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
 }
 
-
-.about-copy {
-
-    max-width: 780px;
-
-}
-
-
-.about-copy p {
-
-    font-size: clamp(20px, 2.4vw, 34px);
-
-    line-height: 1.28;
-
-    font-weight: 600;
-
-    letter-spacing: -1px;
-
-}
-
-
-.about-copy p + p {
-
-    margin-top: 30px;
-
-}
-
-
-.about-copy .highlight {
-
-    color: var(--teal);
-
-}
-
-
-.about-copy .orange {
-
-    color: var(--orange);
-
-}
-
-
-.about-language {
-
-    margin-top: 42px;
-
-    display: flex;
-
-    gap: 8px;
-
-}
-
-
-.lang-button {
-
-    border: 1px solid var(--black);
-
-    background: transparent;
-
-    padding: 8px 13px;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease;
-
-}
-
-
-.lang-button.active {
-
-    background: var(--black);
-
-    color: var(--beige);
-
-}
-
-
-.about-version {
-
-    display: none;
-
-}
-
-
-.about-version.active {
-
+.showreel-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
     display: block;
-
-}
-
-
-.about-bottom {
-
-    margin-top: 90px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-
-}
-
-
-.identity-card {
-
-    padding: 32px;
-
-    border: 1px solid rgba(17, 17, 17, 0.2);
-
-    min-height: 180px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease;
-
-}
-
-
-.identity-card:hover {
-
-    transform: translateY(-6px);
-
-    background: #ebe7dd;
-
-}
-
-
-.identity-card h3 {
-
-    font-size: 24px;
-
-    font-weight: 900;
-
-    color: var(--teal);
-
-}
-
-
-.identity-card p {
-
-    max-width: 400px;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-    font-weight: 500;
-
 }
 
 
 /* =========================================================
-   DISCIPLINE SECTIONS
+   DISCIPLINE
 ========================================================= */
 
 .discipline {
-
-    padding: 100px 9.8% 120px;
-
-    position: relative;
-
+    padding: 150px 0;
     overflow: hidden;
-
 }
 
-
-.discipline-header {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.5fr;
-
-    gap: 8%;
-
+#motion {
+    background: var(--black);
+    color: var(--beige);
 }
 
-
-.section-title {
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
+#lab {
+    background: var(--beige);
+    color: var(--black);
 }
 
-
-.section-description {
-
-    max-width: 720px;
-
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    font-weight: 500;
-
+.discipline-inner {
+    width: calc(100% - 64px);
+    max-width: 1500px;
+    margin: 0 auto;
 }
-
-
-/* =========================================================
-   DISCIPLINE INTRO
-========================================================= */
 
 .discipline-intro {
-
-    margin-top: 100px;
-
-    position: relative;
-
-    min-height: 180px;
-
+    display: grid;
+    grid-template-columns: .65fr 1.35fr;
+    gap: 60px;
+    align-items: start;
 }
 
+.discipline-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
 
 .discipline-intro h2 {
-
-    max-width: 1100px;
-
-    font-size: clamp(55px, 10vw, 150px);
-
-    line-height: 0.82;
-
-    font-weight: 900;
-
-    letter-spacing: -6px;
-
+    margin: 0;
+    font-size: clamp(58px, 8vw, 130px);
+    line-height: .86;
+    letter-spacing: -5px;
+    font-weight: 800;
     will-change: transform;
-
-    transform-origin: center center;
-
-    position: relative;
-
-    z-index: 2;
-
 }
 
-
-.discipline-intro h2 span {
-
-    display: block;
-
+#motion .discipline-intro h2 {
+    color: var(--teal);
 }
 
+#motion .discipline-intro h2 span:first-child {
+    color: var(--teal);
+}
 
-/* =========================================================
-   SCROLL INTERACTION OBJECT
-========================================================= */
+#motion .discipline-intro h2 span:last-child {
+    color: var(--beige);
+}
 
-.discipline-object {
+#lab .discipline-intro h2 {
+    color: var(--orange);
+}
 
-    position: absolute;
+#lab .discipline-intro h2 span:first-child {
+    color: var(--orange);
+}
 
-    right: 8%;
+#lab .discipline-intro h2 span:last-child {
+    color: var(--black);
+}
 
-    bottom: 8px;
+.discipline-description {
+    margin-top: 40px;
+    max-width: 700px;
+    font-size: clamp(18px, 2vw, 28px);
+    line-height: 1.25;
+    letter-spacing: -.7px;
+}
 
-    width: 54px;
+#motion .discipline-description {
+    color: var(--gray);
+}
 
-    height: 54px;
-
-    will-change: transform;
-
+#lab .discipline-description {
+    color: var(--black);
 }
 
 
@@ -668,52 +350,61 @@ header {
    DISCIPLINE OBJECT
 ========================================================= */
 
-.discipline-object-main {
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 50%;
-
+.discipline-object-wrap {
+    min-height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 110px 0 120px;
 }
 
+.discipline-object {
+    width: clamp(180px, 25vw, 360px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    will-change: transform;
+}
 
-.discipline-object-center {
+#motion .discipline-object {
+    background: var(--teal);
+}
 
-    position: absolute;
+#lab .discipline-object {
+    background: var(--orange);
+}
 
-    width: 18px;
-
-    height: 18px;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
+.discipline-object::before {
+    content: "";
+    width: 42%;
+    aspect-ratio: 1;
     background: var(--black);
-
     border-radius: 50%;
-
+    position: absolute;
+    left: 29%;
+    top: 29%;
 }
 
+#lab .discipline-object::before {
+    background: var(--black);
+}
 
-.discipline-object-accent {
-
-    position: absolute;
-
-    width: 12px;
-
-    height: 12px;
-
-    right: -4px;
-
-    top: 3px;
-
+.discipline-object::after {
+    content: "";
+    width: 16%;
+    aspect-ratio: 1;
     border-radius: 50%;
+    position: absolute;
+    right: 10%;
+    top: 12%;
+}
 
+#motion .discipline-object::after {
+    background: var(--orange);
+}
+
+#lab .discipline-object::after {
+    background: var(--teal);
 }
 
 
@@ -722,285 +413,144 @@ header {
 ========================================================= */
 
 .category-grid {
-
-    margin-top: 80px;
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-
+    gap: 16px;
 }
-
 
 .category-card {
-
-    aspect-ratio: 4 / 3;
-
-    padding: 25px;
-
     position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
+    aspect-ratio: 4 / 3;
+    border: 0;
+    padding: 28px;
+    text-align: left;
     cursor: pointer;
-
-    will-change: transform;
-
+    overflow: hidden;
     transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        color 0.35s ease;
-
+        transform .5s cubic-bezier(.22,1,.36,1),
+        background .3s ease;
 }
-
-
-.category-number {
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-}
-
-
-.category-card h3 {
-
-    font-size: clamp(20px, 2vw, 30px);
-
-    line-height: 0.98;
-
-    font-weight: 900;
-
-    letter-spacing: -1px;
-
-}
-
-
-.category-card p {
-
-    max-width: 90%;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-    font-weight: 500;
-
-}
-
-
-.category-arrow {
-
-    position: absolute;
-
-    right: 24px;
-
-    bottom: 22px;
-
-    font-size: 20px;
-
-    font-weight: 500;
-
-    transition: transform 0.3s ease;
-
-}
-
-
-.category-card:hover {
-
-    transform: translateY(-7px);
-
-}
-
-
-.category-card:hover .category-arrow {
-
-    transform: translate(5px, -5px);
-
-}
-
-
-/* =========================================================
-   MOTION SECTION
-========================================================= */
-
-#motion {
-
-    background: var(--black);
-
-    color: var(--beige);
-
-}
-
-
-#motion .section-title {
-
-    color: var(--orange);
-
-}
-
-
-#motion .section-description {
-
-    color: var(--light-gray);
-
-}
-
-
-/* ---------------------------------------------------------
-   MOTION TYPOGRAPHY
-   FROM IDEA = TEAL
-   TO MOTION = BEIGE
---------------------------------------------------------- */
-
-#motion .discipline-intro h2 {
-
-    color: var(--teal);
-
-}
-
-
-#motion .discipline-intro h2 span:first-child {
-
-    color: var(--teal);
-
-}
-
-
-#motion .discipline-intro h2 span:last-child {
-
-    color: var(--beige);
-
-}
-
-
-#motion .discipline-object-main {
-
-    background: var(--teal);
-
-}
-
-
-#motion .discipline-object-accent {
-
-    background: var(--orange);
-
-}
-
 
 #motion .category-card {
-
     background: #1c1c1c;
-
-    border: 1px solid #333333;
-
     color: var(--beige);
-
 }
 
-
-#motion .category-card:hover {
-
-    background: var(--teal);
-
-    border-color: var(--teal);
-
+#lab .category-card {
+    background: #e9e5dc;
     color: var(--black);
+}
 
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.category-number {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: .5;
+}
+
+.category-name {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 28px;
+    font-size: clamp(20px, 2.1vw, 32px);
+    line-height: .95;
+    letter-spacing: -1.2px;
+    font-weight: 700;
+}
+
+.category-arrow {
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    font-size: 20px;
+    transition: transform .3s ease;
+}
+
+.category-card:hover .category-arrow {
+    transform: translate(5px, -5px);
 }
 
 
 /* =========================================================
-   LAB SECTION
+   ABOUT
 ========================================================= */
 
-#lab {
-
+.about {
+    padding: 160px 0;
     background: var(--beige);
-
-    color: var(--black);
-
 }
 
-
-#lab .section-title {
-
-    color: var(--teal);
-
+.about-grid {
+    display: grid;
+    grid-template-columns: .65fr 1.35fr;
+    gap: 60px;
 }
 
-
-#lab .section-description {
-
-    color: var(--black);
-
+.about-kicker {
+    font-size: 12px;
+    font-weight: 700;
 }
 
-
-/* ---------------------------------------------------------
-   LAB TYPOGRAPHY
-   FROM DIGITAL = ORANGE
-   TO OBJECT = BLACK
---------------------------------------------------------- */
-
-#lab .discipline-intro h2 {
-
-    color: var(--orange);
-
+.about-content {
+    max-width: 850px;
 }
 
-
-#lab .discipline-intro h2 span:first-child {
-
-    color: var(--orange);
-
+.language-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 36px;
 }
 
-
-#lab .discipline-intro h2 span:last-child {
-
-    color: var(--black);
-
+.lang-btn {
+    min-width: 48px;
+    height: 36px;
+    border: 1px solid var(--black);
+    background: transparent;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-
-#lab .discipline-object-main {
-
-    background: var(--orange);
-
+.lang-btn.active {
+    background: var(--black);
+    color: var(--beige);
 }
 
-
-#lab .discipline-object-accent {
-
-    background: var(--teal);
-
+.about-copy {
+    font-size: clamp(22px, 3vw, 42px);
+    line-height: 1.16;
+    letter-spacing: -1.5px;
 }
 
-
-#lab .category-card {
-
-    background: #ebe7dd;
-
-    border: 1px solid rgba(17, 17, 17, 0.16);
-
-    color: var(--black);
-
+.about-copy p {
+    margin: 0 0 38px;
 }
 
+.about-identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 80px;
+}
 
-#lab .category-card:hover {
+.identity-card {
+    padding: 30px;
+    background: var(--gray);
+}
 
-    background: var(--orange);
+.identity-card h3 {
+    margin: 0 0 20px;
+    font-size: 22px;
+}
 
-    border-color: var(--orange);
-
+.identity-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 
@@ -1009,81 +559,29 @@ header {
 ========================================================= */
 
 footer {
-
-    padding: 70px 9.8% 35px;
-
+    padding: 60px 32px 40px;
     background: var(--black);
-
     color: var(--beige);
-
 }
 
-
-.footer-top {
-
+.footer-inner {
     display: flex;
-
     justify-content: space-between;
-
+    align-items: flex-end;
     gap: 30px;
-
 }
-
 
 .footer-logo {
-
     font-size: clamp(40px, 7vw, 100px);
-
-    line-height: 0.9;
-
-    font-weight: 900;
-
-    letter-spacing: -5px;
-
-}
-
-
-.footer-contact {
-
-    text-align: right;
-
-}
-
-
-.footer-contact p {
-
-    margin-bottom: 8px;
-
-    font-size: 11px;
-
     font-weight: 800;
-
-    letter-spacing: 0.3px;
-
+    line-height: .8;
+    letter-spacing: -5px;
 }
 
-
-.footer-contact a {
-
-    color: var(--teal);
-
-}
-
-
-.footer-bottom {
-
-    margin-top: 100px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 10px;
-
-    font-weight: 600;
-
-    color: #777;
-
+.footer-info {
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: right;
 }
 
 
@@ -1092,272 +590,142 @@ footer {
 ========================================================= */
 
 .overlay {
-
     position: fixed;
-
     inset: 0;
-
+    z-index: 5000;
     background: var(--beige);
-
-    z-index: 3000;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
-
+    color: var(--black);
     overflow-y: auto;
-
-    overscroll-behavior-x: none;
-
-}
-
-
-.overlay.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-/* =========================================================
-   OVERLAY CONTENT
-========================================================= */
-
-.overlay-content {
-
-    padding: 80px 9.8% 120px;
-
-    transform-origin: right center;
-
-    will-change: transform, opacity;
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
-    opacity: 1;
-
-    transition:
-        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-
-}
-
-
-.overlay-content.swipe-complete {
-
-    transform:
-        translate3d(75px, 0, 0)
-        scale(0.02);
-
+    -webkit-overflow-scrolling: touch;
     opacity: 0;
-
+    visibility: hidden;
+    transform: translate3d(0,0,0);
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
 }
 
-
-.overlay-content.swipe-reset {
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
+.overlay.open {
     opacity: 1;
-
+    visibility: visible;
 }
-
 
 .overlay-header {
-
-    padding: 28px 32px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
     position: sticky;
-
     top: 0;
-
+    z-index: 10;
+    padding: 28px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: var(--beige);
-
-    z-index: 2;
-
 }
 
-
-.overlay-close {
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 12px;
-
+.overlay-logo {
+    font-size: 20px;
     font-weight: 800;
-
-    cursor: pointer;
-
 }
 
-
-/* =========================================================
-   CATEGORY CONTENT
-========================================================= */
-
-.overlay-content h2 {
-
-    max-width: 900px;
-
-    font-size: clamp(50px, 9vw, 130px);
-
-    line-height: 0.84;
-
-    letter-spacing: -5px;
-
-    font-weight: 900;
-
+.close-button {
+    border: 0;
+    background: transparent;
     color: var(--teal);
-
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-
-.overlay-description {
-
-    max-width: 650px;
-
-    margin-top: 35px;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
+.overlay-content {
+    width: calc(100% - 64px);
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 0 120px;
 }
 
+.overlay-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.overlay-title {
+    margin: 0;
+    font-size: clamp(55px, 9vw, 150px);
+    line-height: .85;
+    letter-spacing: -6px;
+    font-weight: 800;
+    max-width: 1100px;
+}
 
 .project-grid {
-
-    margin-top: 80px;
-
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
-    gap: 18px;
-
+    gap: 24px;
+    margin-top: 110px;
 }
-
 
 .project-card {
-
-    min-height: 350px;
-
-    position: relative;
-
-    padding: 28px;
-
-    background: #ebe7dd;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-end;
-
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-align: left;
     cursor: pointer;
+}
 
+.project-thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--gray);
     overflow: hidden;
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease;
-
-}
-
-
-.project-card:hover {
-
-    transform: translateY(-7px);
-
-    background: var(--teal);
-
-}
-
-
-.project-card-thumbnail {
-
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #ded9cf;
-
-    color: #8c887f;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.6px;
-
-    transition:
-        transform 0.45s ease,
-        background 0.35s ease;
-
-}
-
-
-.project-card:hover
-.project-card-thumbnail {
-
-    transform: scale(1.04);
-
-}
-
-
-.project-card-info {
-
     position: relative;
-
-    z-index: 2;
-
-    padding-top: 170px;
-
 }
 
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+}
 
-.project-card span {
+.project-card:hover .project-thumb img {
+    transform: scale(1.04);
+}
 
+.project-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.project-meta {
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.project-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+}
+
+.project-category {
+    margin-top: 7px;
     font-size: 10px;
-
-    font-weight: 800;
-
-    margin-bottom: 12px;
-
+    font-weight: 600;
+    opacity: .55;
 }
 
-
-.project-card h3 {
-
-    font-size: 30px;
-
-    line-height: 0.95;
-
-    font-weight: 900;
-
+.project-year {
+    font-size: 11px;
+    font-weight: 700;
 }
 
 
@@ -1366,686 +734,292 @@ footer {
 ========================================================= */
 
 .project-detail {
-
-    display: none;
-
+    position: fixed;
+    inset: 0;
+    z-index: 6000;
+    background: var(--beige);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0,0,0);
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
 }
 
-
-.project-detail.active {
-
-    display: block;
-
+.project-detail.open {
+    opacity: 1;
+    visibility: visible;
 }
 
-
-/* ---------------------------------------------------------
-   PROJECT DETAIL TOP
---------------------------------------------------------- */
-
-.project-detail-top {
-
-    padding-top: 20px;
-
-}
-
-
-.project-back {
-
-    border: 0;
-
-    background: transparent;
-
-    padding: 0;
-
-    margin-bottom: 55px;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: opacity 0.25s ease;
-
-}
-
-
-.project-back:hover {
-
-    opacity: 0.45;
-
-}
-
-
-.project-detail-kicker {
-
+.project-detail-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 28px 32px;
     display: flex;
-
+    justify-content: space-between;
     align-items: center;
+    background: var(--beige);
+}
 
-    gap: 12px;
+.project-detail-header .logo {
+    font-size: 20px;
+}
 
-    margin-bottom: 22px;
-
-    font-size: 10px;
-
+.project-detail-close {
+    border: 0;
+    background: transparent;
+    color: var(--teal);
+    font-size: 13px;
     font-weight: 800;
-
-    letter-spacing: 0.5px;
-
+    cursor: pointer;
 }
 
+.project-detail-content {
+    width: calc(100% - 64px);
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 0 140px;
+}
 
-.project-detail-kicker .dot {
+.project-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
 
-    width: 7px;
-
-    height: 7px;
-
-    background: var(--orange);
-
+.project-kicker-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-
+    background: var(--orange);
 }
-
 
 .project-detail-title {
-
-    max-width: 1100px;
-
-    font-size: clamp(55px, 9vw, 145px);
-
-    line-height: 0.82;
-
-    font-weight: 900;
-
-    letter-spacing: -7px;
-
-    color: var(--black);
-
+    margin: 0;
+    font-size: clamp(55px, 9vw, 150px);
+    line-height: .82;
+    letter-spacing: -6px;
+    font-weight: 800;
 }
-
 
 .project-detail-subtitle {
-
-    margin-top: 25px;
-
-    max-width: 850px;
-
-    font-size: clamp(22px, 3vw, 42px);
-
-    line-height: 1;
-
-    font-weight: 600;
-
-    letter-spacing: -1.5px;
-
+    margin-top: 20px;
     color: var(--teal);
-
+    font-size: clamp(20px, 3vw, 42px);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -1.5px;
 }
-
 
 .project-detail-meta {
-
-    margin-top: 42px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+    font-size: 11px;
 }
 
-
-.project-meta-item {
-
-    border-top: 1px solid rgba(17,17,17,0.25);
-
-    padding-top: 13px;
-
-}
-
-
-.project-meta-label {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
-    color: #777;
-
-}
-
-
-.project-meta-value {
-
-    font-size: 12px;
-
-    line-height: 1.45;
-
+.meta-item-label {
     font-weight: 700;
-
+    opacity: .45;
+    margin-bottom: 7px;
 }
 
-
-/* ---------------------------------------------------------
-   PROJECT HERO MEDIA
---------------------------------------------------------- */
+.meta-item-value {
+    font-weight: 600;
+}
 
 .project-hero-media {
-
-    margin-top: 85px;
-
     width: 100%;
-
     aspect-ratio: 16 / 9;
-
-    background: var(--black);
-
-    position: relative;
-
+    margin-top: 80px;
+    background: var(--gray);
     overflow: hidden;
-
 }
 
-
-.media-placeholder {
-
+.project-hero-media img {
     width: 100%;
-
     height: 100%;
+    object-fit: cover;
+}
 
+.project-hero-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
-
-    align-items: center;
-
     justify-content: center;
-
-    text-align: center;
-
-    padding: 30px;
-
-    color: #777;
-
-    background: #ded9cf;
-
-}
-
-
-.media-placeholder span {
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.8px;
-
-}
-
-
-.project-hero-media .media-placeholder {
-
-    background: var(--black);
-
-    color: #777;
-
-}
-
-
-/* ---------------------------------------------------------
-   PROJECT INTRO
---------------------------------------------------------- */
-
-.project-section {
-
-    margin-top: 110px;
-
-}
-
-
-.project-section-header {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.8fr;
-
-    gap: 8%;
-
-}
-
-
-.project-section-label {
-
+    align-items: center;
     font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
-}
-
-
-.project-section-content {
-
-    max-width: 760px;
-
-}
-
-
-.project-description {
-
-    font-size: clamp(20px, 2.5vw, 34px);
-
-    line-height: 1.3;
-
-    font-weight: 600;
-
-    letter-spacing: -1px;
-
-}
-
-
-.project-language {
-
-    margin-top: 30px;
-
-    display: flex;
-
-    gap: 8px;
-
-}
-
-
-.project-language .lang-button {
-
-    padding: 7px 11px;
-
-}
-
-
-/* ---------------------------------------------------------
-   PROJECT ROLE
---------------------------------------------------------- */
-
-.project-role-grid {
-
-    margin-top: 70px;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 12px;
-
-}
-
-
-.role-item {
-
-    padding: 24px;
-
-    min-height: 130px;
-
-    background: #ebe7dd;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-}
-
-
-.role-number {
-
-    font-size: 9px;
-
-    font-weight: 800;
-
+    font-weight: 700;
     color: #777;
-
-}
-
-
-.role-name {
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    letter-spacing: -0.4px;
-
-}
-
-
-/* ---------------------------------------------------------
-   PROJECT PROCESS
---------------------------------------------------------- */
-
-.process-list {
-
-    margin-top: 75px;
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.process-item {
-
-    display: grid;
-
-    grid-template-columns: 90px 1fr;
-
-    border-top: 1px solid rgba(17,17,17,0.2);
-
-}
-
-
-.process-item:last-child {
-
-    border-bottom: 1px solid rgba(17,17,17,0.2);
-
-}
-
-
-.process-number {
-
-    padding: 28px 0;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    color: var(--orange);
-
-}
-
-
-.process-main {
-
-    padding: 28px 0 40px;
-
-}
-
-
-.process-title {
-
-    font-size: clamp(24px, 3vw, 42px);
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    letter-spacing: -1px;
-
-}
-
-
-.process-media {
-
-    margin-top: 28px;
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    background: #ded9cf;
-
-}
-
-
-.process-media .media-placeholder {
-
-    background: #ded9cf;
-
-    color: #8c887f;
-
-}
-
-
-/* ---------------------------------------------------------
-   FINAL
---------------------------------------------------------- */
-
-.project-final {
-
-    margin-top: 120px;
-
-}
-
-
-.project-final-title {
-
-    font-size: clamp(45px, 7vw, 100px);
-
-    line-height: 0.85;
-
-    font-weight: 900;
-
-    letter-spacing: -5px;
-
-    color: var(--teal);
-
-}
-
-
-.project-final-media {
-
-    margin-top: 45px;
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    background: var(--black);
-
-}
-
-
-.project-final-media .media-placeholder {
-
-    background: var(--black);
-
-    color: #777;
-
-}
-
-
-/* ---------------------------------------------------------
-   DELIVERABLE
---------------------------------------------------------- */
-
-.project-deliverable {
-
-    margin-top: 100px;
-
-    padding-top: 30px;
-
-    border-top: 1px solid rgba(17,17,17,0.25);
-
-}
-
-
-.deliverable-grid {
-
-    margin-top: 35px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-
-}
-
-
-.deliverable-item {
-
-    min-height: 150px;
-
-    padding: 25px;
-
-    background: #ebe7dd;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-}
-
-
-.deliverable-item span {
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    color: #777;
-
-}
-
-
-.deliverable-item strong {
-
-    font-size: 18px;
-
-    font-weight: 900;
-
-}
-
-
-/* ---------------------------------------------------------
-   PROJECT FOOTER
---------------------------------------------------------- */
-
-.project-end {
-
-    margin-top: 120px;
-
-    padding-top: 35px;
-
-    border-top: 1px solid rgba(17,17,17,0.25);
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-}
-
-
-.project-end-client-label {
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    color: #777;
-
-    margin-bottom: 8px;
-
-}
-
-
-.project-end-client {
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-}
-
-
-.project-end-back {
-
-    align-self: flex-end;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
 }
 
 
 /* =========================================================
-   SCROLL REVEAL
+   PROJECT SECTIONS
 ========================================================= */
 
-.reveal {
+.project-section {
+    display: grid;
+    grid-template-columns: .65fr 1.35fr;
+    gap: 60px;
+    padding-top: 130px;
+}
 
-    opacity: 0;
+.project-section-label {
+    font-size: 12px;
+    font-weight: 700;
+}
 
-    transform: translateY(40px);
+.project-section-content {
+    max-width: 900px;
+}
 
+.project-description {
+    font-size: clamp(24px, 3.2vw, 48px);
+    line-height: 1.16;
+    letter-spacing: -1.7px;
+}
+
+.project-description p {
+    margin: 0;
+}
+
+.project-language {
+    display: flex;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.project-role-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.role-card {
+    min-height: 130px;
+    padding: 30px;
+    background: #ebe7de;
+}
+
+.role-number {
+    font-size: 10px;
+    font-weight: 700;
+    opacity: .5;
+}
+
+.role-name {
+    margin-top: 35px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.process-list {
+    display: grid;
+    gap: 70px;
+}
+
+.process-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 25px;
+}
+
+.process-number {
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.process-title {
+    margin: 0 0 25px;
+    font-size: clamp(24px, 3vw, 42px);
+    letter-spacing: -1.2px;
+}
+
+.process-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 10px;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.process-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.final-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--beige);
+    font-size: 11px;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.deliverable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.deliverable-card {
+    padding: 30px;
+    background: #ebe7de;
+}
+
+.deliverable-card strong {
+    display: block;
+    font-size: 18px;
+}
+
+.project-back {
+    margin-top: 130px;
+    padding-top: 30px;
+    border-top: 1px solid var(--gray);
+}
+
+.project-back button {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SWIPE
+========================================================= */
+
+.swipe-complete {
+    pointer-events: none;
+}
+
+.swipe-reset {
     transition:
-        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-
-}
-
-
-.reveal.is-visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.reveal-delay-1 {
-
-    transition-delay: 0.08s;
-
-}
-
-
-.reveal-delay-2 {
-
-    transition-delay: 0.16s;
-
-}
-
-
-.reveal-delay-3 {
-
-    transition-delay: 0.24s;
-
-}
-
-
-.reveal-delay-4 {
-
-    transition-delay: 0.32s;
-
-}
-
-
-.reveal-delay-5 {
-
-    transition-delay: 0.40s;
-
+        transform .45s cubic-bezier(.22,1,.36,1),
+        opacity .45s ease;
 }
 
 
@@ -2055,433 +1029,195 @@ footer {
 
 @media (max-width: 800px) {
 
-
     header {
-
-        padding: 20px;
-
+        padding: 22px 20px;
     }
 
-
-    .logo {
-
-        font-size: 17px;
-
+    nav {
+        gap: 16px;
     }
 
-
-    .nav {
-
-        gap: 13px;
-
+    .nav-link {
+        font-size: 10px;
     }
 
-
-    .nav a {
-
-        font-size: 8px;
-
+    .container,
+    .discipline-inner,
+    .overlay-content,
+    .project-detail-content {
+        width: calc(100% - 40px);
     }
-
 
     .hero {
-
-        padding-top: 76px;
-
+        padding: 120px 20px 70px;
+        min-height: 90vh;
     }
-
-
-    .hero-showreel {
-
-        padding: 25px 20px 24px;
-
-    }
-
-
-    .hero-copy {
-
-        padding: 55px 20px 80px;
-
-    }
-
 
     .hero-copy h1 {
-
-        font-size: 68px;
-
+        font-size: clamp(54px, 17vw, 100px);
         letter-spacing: -4px;
-
     }
-
 
     .hero-identity {
-
-        margin-top: 32px;
-
-        font-size: 21px;
-
-        line-height: 1.05;
-
-        font-weight: 500;
-
-        letter-spacing: -0.7px;
-
+        margin-top: 35px;
+        font-size: 20px;
     }
 
-
-    .hero-identity .colorblind,
-    .hero-identity .headline-orange {
-
-        font-weight: 500;
-
+    .hero-scroll {
+        left: 20px;
+        bottom: 20px;
     }
 
+    .showreel-label {
+        width: calc(100% - 40px);
+    }
 
-    .about,
+    .showreel-section {
+        padding-bottom: 70px;
+    }
+
     .discipline {
-
-        padding: 75px 20px 85px;
-
+        padding: 100px 0;
     }
 
-
-    .about-top,
-    .discipline-header {
-
+    .discipline-intro,
+    .about-grid,
+    .project-section {
         grid-template-columns: 1fr;
-
         gap: 35px;
-
     }
-
-
-    .about-copy p {
-
-        font-size: 22px;
-
-    }
-
-
-    .about-bottom {
-
-        margin-top: 65px;
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .discipline-intro {
-
-        margin-top: 70px;
-
-        min-height: 145px;
-
-    }
-
 
     .discipline-intro h2 {
-
-        font-size: 65px;
-
-        letter-spacing: -3px;
-
+        font-size: clamp(54px, 16vw, 95px);
+        letter-spacing: -4px;
     }
 
-
-    .discipline-object {
-
-        position: relative;
-
-        right: auto;
-
-        bottom: auto;
-
-        margin-top: 35px;
-
-        width: 42px;
-
-        height: 42px;
-
+    .discipline-description {
+        margin-top: 25px;
+        font-size: 20px;
     }
 
+    .discipline-object-wrap {
+        min-height: 260px;
+        margin: 70px 0 80px;
+    }
 
     .category-grid {
-
-        margin-top: 55px;
-
         grid-template-columns: 1fr;
-
         gap: 14px;
-
     }
-
 
     .category-card {
-
         aspect-ratio: 4 / 3;
-
         padding: 22px;
-
     }
 
+    .category-name {
+        left: 22px;
+        bottom: 22px;
+    }
+
+    .about {
+        padding: 100px 0;
+    }
+
+    .about-copy {
+        font-size: 24px;
+    }
+
+    .about-identity-grid {
+        grid-template-columns: 1fr;
+        margin-top: 55px;
+    }
+
+    footer {
+        padding: 50px 20px 30px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-info {
+        text-align: left;
+    }
+
+    .overlay-header,
+    .project-detail-header {
+        padding: 22px 20px;
+    }
+
+    .overlay-content,
+    .project-detail-content {
+        padding-top: 70px;
+    }
+
+    .overlay-title,
+    .project-detail-title {
+        font-size: clamp(50px, 15vw, 90px);
+        letter-spacing: -4px;
+    }
 
     .project-grid {
-
         grid-template-columns: 1fr;
-
+        margin-top: 70px;
+        gap: 45px;
     }
 
-
-    .project-card {
-
-        min-height: 280px;
-
+    .project-meta {
+        display: block;
     }
 
-
-    .overlay-header {
-
-        padding: 20px;
-
+    .project-year {
+        margin-top: 10px;
     }
-
-
-    .overlay-content {
-
-        padding: 60px 20px 90px;
-
-    }
-
-
-    .overlay-content h2 {
-
-        font-size: 60px;
-
-        letter-spacing: -3px;
-
-    }
-
-
-    /* PROJECT MOBILE */
-
-    .project-detail-title {
-
-        font-size: 62px;
-
-        letter-spacing: -4px;
-
-    }
-
 
     .project-detail-subtitle {
-
-        font-size: 25px;
-
-        line-height: 1;
-
+        font-size: 24px;
     }
-
 
     .project-detail-meta {
-
-        grid-template-columns: 1fr 1fr;
-
-        gap: 25px 15px;
-
+        gap: 25px;
     }
-
-
-    .project-detail-meta
-    .project-meta-item:last-child {
-
-        grid-column: 1 / -1;
-
-    }
-
 
     .project-hero-media {
-
-        margin-top: 60px;
-
+        margin-top: 55px;
     }
-
 
     .project-section {
-
-        margin-top: 80px;
-
+        padding-top: 90px;
     }
-
-
-    .project-section-header {
-
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-
-    }
-
 
     .project-description {
-
-        font-size: 23px;
-
+        font-size: 25px;
     }
-
 
     .project-role-grid {
-
         grid-template-columns: 1fr 1fr;
-
-        margin-top: 50px;
-
     }
 
-
-    .role-item {
-
-        min-height: 110px;
-
-        padding: 20px;
-
+    .role-card {
+        min-height: 115px;
+        padding: 22px;
     }
-
-
-    .role-name {
-
-        font-size: 14px;
-
-    }
-
-
-    .process-list {
-
-        margin-top: 50px;
-
-    }
-
 
     .process-item {
-
-        grid-template-columns: 50px 1fr;
-
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
     }
 
-
-    .process-main {
-
-        padding: 25px 0 30px;
-
+    .process-list {
+        gap: 55px;
     }
-
-
-    .process-number {
-
-        padding-top: 27px;
-
-    }
-
-
-    .process-title {
-
-        font-size: 25px;
-
-    }
-
-
-    .process-media {
-
-        margin-top: 22px;
-
-    }
-
-
-    .project-final {
-
-        margin-top: 85px;
-
-    }
-
-
-    .project-final-title {
-
-        font-size: 55px;
-
-        letter-spacing: -3px;
-
-    }
-
-
-    .project-final-media {
-
-        margin-top: 30px;
-
-    }
-
 
     .deliverable-grid {
-
         grid-template-columns: 1fr;
-
     }
 
-
-    .project-end {
-
-        margin-top: 85px;
-
-        flex-direction: column;
-
+    .project-back {
+        margin-top: 90px;
     }
-
-
-    .project-end-back {
-
-        align-self: flex-start;
-
-    }
-
-
-    .footer-top {
-
-        flex-direction: column;
-
-    }
-
-
-    .footer-contact {
-
-        text-align: left;
-
-    }
-
-
-    .footer-bottom {
-
-        margin-top: 70px;
-
-        flex-direction: column;
-
-        gap: 8px;
-
-    }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (min-width: 801px) and (max-width: 1100px) {
-
-    .project-role-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-    }
-
 }
 
 
@@ -2492,95 +1228,93 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     html {
-
         scroll-behavior: auto;
-
     }
-
-
-    .reveal {
-
-        opacity: 1;
-
-        transform: none;
-
-        transition: none;
-
-    }
-
-
-    .overlay-content {
-
-        transition: none;
-
-    }
-
 
     *,
     *::before,
     *::after {
-
-        scroll-behavior: auto !important;
-
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
-
 }
-
 </style>
-
 </head>
 
 
 <body>
 
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
-
 <header>
+    <a href="#home" class="logo">006.STUDIO</a>
 
-    <a href="#top" class="logo">
-        006.STUDIO
-    </a>
-
-
-    <nav class="nav">
-
-        <a href="#motion">
-            2D/3D MOTION
-        </a>
-
-        <a href="#lab">
-            3D LAB
-        </a>
-
-        <a href="#about">
-            ABOUT
-        </a>
-
+    <nav>
+        <button class="nav-link" data-scroll="#motion">2D/3D MOTION</button>
+        <button class="nav-link" data-scroll="#lab">3D LAB</button>
+        <button class="nav-link" data-scroll="#about">ABOUT</button>
     </nav>
-
 </header>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
+<main id="home">
 
-<main id="top">
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-copy">
+
+            <div class="hero-label reveal">
+                SHOWREEL / 2026
+            </div>
+
+            <h1 class="reveal mouse-reactive main-headline scroll-signature">
+                <span class="playful-line vision-line">
+                    FROM VISION
+                </span>
+
+                <span class="playful-line visual-line">
+                    TO VISUAL
+                </span>
+            </h1>
+
+            <div class="hero-identity reveal reveal-delay-1 mouse-reactive">
+
+                <span class="playful-line">
+                    Creative studio
+                </span>
+
+                <span class="playful-line">
+                    by
+                    <span class="colorblind">Colorblind</span>
+                    ×
+                    <span class="headline-orange">006</span>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="hero-scroll">
+            SCROLL TO EXPLORE ↓
+        </div>
+
+    </section>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+    <!-- =====================================================
+         SHOWREEL
+    ====================================================== -->
 
-<section class="hero">
+    <section class="showreel-section">
 
+        <div class="showreel-label">
+            SHOWREEL / 2026
+        </div>
 
-    <div class="hero-showreel">
-
-        <div class="hero-showreel-frame">
+        <div class="showreel-frame">
 
             <iframe
                 src="https://www.youtube.com/embed/uJIOsf-FMeE?autoplay=1&mute=1&controls=0&loop=1&playlist=uJIOsf-FMeE&playsinline=1&rel=0"
@@ -2591,1183 +1325,704 @@ footer {
 
         </div>
 
-    </div>
+    </section>
 
 
-    <div class="hero-copy">
+    <!-- =====================================================
+         2D / 3D MOTION
+    ====================================================== -->
 
+    <section class="discipline" id="motion">
 
-        <h1
-            class="reveal mouse-reactive main-headline scroll-signature"
-        >
+        <div class="discipline-inner">
 
-            <span class="playful-line vision-line">
-                FROM VISION
-            </span>
+            <div class="discipline-intro">
 
-            <span class="playful-line visual-line">
-                TO VISUAL
-            </span>
+                <div class="discipline-kicker">
+                    01 / DISCIPLINE
+                </div>
 
-        </h1>
+                <div>
 
+                    <h2 class="scroll-signature">
+                        <span>FROM IDEA</span>
+                        <br>
+                        <span>TO MOTION</span>
+                    </h2>
 
-        <div
-            class="hero-identity reveal reveal-delay-1 mouse-reactive"
-        >
+                    <div class="discipline-description">
+                        2D & 3D Motion Design — turning ideas,
+                        stories and visual systems into movement.
+                    </div>
 
-            <span class="playful-line">
-                Creative studio
-            </span>
-
-            <span class="playful-line">
-
-                by
-
-                <span class="colorblind">
-                    Colorblind
-                </span>
-
-                ×
-
-                <span class="headline-orange">
-                    006
-                </span>
-
-            </span>
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
-
-<section
-    class="about"
-    id="about"
->
-
-
-    <div class="about-top">
-
-
-        <div class="section-label reveal">
-
-            ABOUT 006STUDIO
-
-        </div>
-
-
-        <div class="about-copy">
-
-
-            <div
-                class="about-version active"
-                id="about-en"
-            >
-
-                <p class="reveal reveal-delay-1">
-
-                    006studio started as a young creative
-                    driven by curiosity, passion,
-                    and a desire to create.
-
-                </p>
-
-
-                <p class="reveal reveal-delay-2">
-
-                    With 7+ years of experience in the
-                    creative industry, we specialize in
-
-                    <span class="highlight">
-                        2D & 3D Motion Design
-                    </span>,
-
-                    turning ideas and visions into clear,
-                    distinctive visual experiences.
-
-                </p>
-
-
-                <p class="reveal reveal-delay-3">
-
-                    From Vision to Visual
-
-                </p>
-
-
-                <p class="reveal reveal-delay-4">
-
-                    006studio brings together two
-                    creative disciplines:
-
-                    <span class="orange">
-                        COLORBLIND
-                    </span>
-
-                    —
-
-                    2D & 3D Motion Design;
-
-                    <span class="highlight">
-                        006LAB
-                    </span>
-
-                    —
-
-                    3D Printing & Object Design.
-
-                </p>
-
-
-                <p class="reveal reveal-delay-5">
-
-                    From digital motion to physical objects,
-                    we turn ideas into visuals with
-                    character and purpose.
-
-                </p>
+                </div>
 
             </div>
 
 
-            <div
-                class="about-version"
-                id="about-vi"
-            >
+            <div class="discipline-object-wrap">
 
-                <p>
-
-                    006studio bắt đầu từ một creative trẻ
-                    với niềm đam mê, sự tò mò và mong muốn
-                    không ngừng sáng tạo.
-
-                </p>
-
-
-                <p>
-
-                    Với hơn 7 năm kinh nghiệm trong ngành
-                    sáng tạo, chúng tôi tập trung vào
-
-                    <span class="highlight">
-                        2D & 3D Motion Design
-                    </span>,
-
-                    biến ý tưởng và vision thành những
-                    trải nghiệm hình ảnh rõ ràng
-                    và có cá tính.
-
-                </p>
-
-
-                <p>
-
-                    From Vision to Visual
-
-                </p>
-
-
-                <p>
-
-                    006studio kết hợp hai hướng sáng tạo:
-
-                    <span class="orange">
-                        COLORBLIND
-                    </span>
-
-                    —
-
-                    2D & 3D Motion Design;
-
-                    <span class="highlight">
-                        006LAB
-                    </span>
-
-                    —
-
-                    3D Printing & Object Design.
-
-                </p>
-
-
-                <p>
-
-                    Từ chuyển động kỹ thuật số đến những
-                    vật thể trong thế giới thực, chúng tôi
-                    biến ý tưởng thành những visual
-                    có cá tính và mục đích.
-
-                </p>
+                <div class="discipline-object scroll-object"></div>
 
             </div>
 
 
-            <div class="about-language">
-
+            <div class="category-grid">
 
                 <button
-                    class="lang-button active"
-                    id="lang-en"
-                    onclick="setLanguage('en')"
-                >
-                    EN
+                    class="category-card reveal"
+                    data-category="visual-led">
+
+                    <span class="category-number">01</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        VISUAL LED
+                    </span>
+
                 </button>
 
 
                 <button
-                    class="lang-button"
-                    id="lang-vi"
-                    onclick="setLanguage('vi')"
-                >
-                    VI
+                    class="category-card reveal"
+                    data-category="frame-animation">
+
+                    <span class="category-number">02</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        FRAME BY FRAME<br>
+                        ANIMATION
+                    </span>
+
                 </button>
 
 
-            </div>
+                <button
+                    class="category-card reveal"
+                    data-category="infographic">
+
+                    <span class="category-number">03</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        INFOGRAPHIC &<br>
+                        BRAND FILM
+                    </span>
+
+                </button>
 
 
-        </div>
+                <button
+                    class="category-card reveal"
+                    data-category="cgi">
+
+                    <span class="category-number">04</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        CGI
+                    </span>
+
+                </button>
 
 
-    </div>
+                <button
+                    class="category-card reveal"
+                    data-category="sculpting">
+
+                    <span class="category-number">05</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        SCULPTING
+                    </span>
+
+                </button>
 
 
-    <div class="about-bottom">
+                <button
+                    class="category-card reveal"
+                    data-category="ai-video">
 
+                    <span class="category-number">06</span>
 
-        <div class="identity-card reveal reveal-delay-1">
+                    <span class="category-arrow">↗</span>
 
-            <h3>
-                COLORBLIND
-            </h3>
+                    <span class="category-name">
+                        AI VIDEO<br>
+                        SOLUTION
+                    </span>
 
-            <p>
-                Personal creative identity for
-                2D & 3D Motion Design.
-            </p>
+                </button>
 
-        </div>
-
-
-        <div class="identity-card reveal reveal-delay-2">
-
-            <h3>
-                006LAB
-            </h3>
-
-            <p>
-                3D Printing & Object Design.
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =======================================================
-     2D / 3D MOTION
-======================================================= -->
-
-<section
-    class="discipline"
-    id="motion"
->
-
-
-    <div class="discipline-header">
-
-
-        <div class="section-title reveal">
-
-            01 / 2D & 3D MOTION
-
-        </div>
-
-
-        <div class="section-description reveal reveal-delay-1">
-
-            Motion design, visual storytelling and
-            3D experiences built to transform ideas
-            into distinctive moving images.
-
-        </div>
-
-
-    </div>
-
-
-    <div class="discipline-intro">
-
-
-        <h2
-            class="reveal mouse-reactive scroll-signature"
-            data-scroll-strength="1"
-        >
-
-            <span class="scroll-line">
-                FROM IDEA
-            </span>
-
-            <span class="scroll-line">
-                TO MOTION
-            </span>
-
-        </h2>
-
-
-        <div class="discipline-object reveal reveal-delay-2">
-
-            <div class="discipline-object-main"></div>
-
-            <div class="discipline-object-center"></div>
-
-            <div class="discipline-object-accent"></div>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-        <div
-            class="category-card reveal reveal-delay-1"
-            onclick="openCategory('visual-led')"
-        >
-
-            <div class="category-number">
-                01
-            </div>
-
-            <h3>
-                VISUAL<br>LED
-            </h3>
-
-            <p>
-                Large-scale visual content, motion
-                graphics and digital experiences
-                created for LED screens and
-                spatial environments.
-            </p>
-
-            <div class="category-arrow">
-                ↗
             </div>
 
         </div>
 
+    </section>
 
-        <div
-            class="category-card reveal reveal-delay-2"
-            onclick="openCategory('frame-by-frame')"
-        >
 
-            <div class="category-number">
-                02
+    <!-- =====================================================
+         3D LAB
+    ====================================================== -->
+
+    <section class="discipline" id="lab">
+
+        <div class="discipline-inner">
+
+            <div class="discipline-intro">
+
+                <div class="discipline-kicker">
+                    02 / DISCIPLINE
+                </div>
+
+                <div>
+
+                    <h2 class="scroll-signature">
+                        <span>FROM DIGITAL</span>
+                        <br>
+                        <span>TO OBJECT</span>
+                    </h2>
+
+                    <div class="discipline-description">
+                        3D Printing & Object Design — bringing
+                        digital ideas into physical form.
+                    </div>
+
+                </div>
+
             </div>
 
-            <h3>
-                FRAME BY<br>FRAME
-            </h3>
 
-            <p>
-                Frame-by-frame animation, hand-crafted
-                movement and illustrated motion
-                experiments.
-            </p>
+            <div class="discipline-object-wrap">
 
-            <div class="category-arrow">
-                ↗
+                <div class="discipline-object scroll-object"></div>
+
             </div>
 
-        </div>
+
+            <div class="category-grid">
+
+                <button
+                    class="category-card reveal"
+                    data-category="brand-merchandise">
+
+                    <span class="category-number">01</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        BRAND<br>
+                        MERCHANDISE
+                    </span>
+
+                </button>
 
 
-        <div
-            class="category-card reveal reveal-delay-3"
-            onclick="openCategory('infographic')"
-        >
+                <button
+                    class="category-card reveal"
+                    data-category="mascot">
 
-            <div class="category-number">
-                03
-            </div>
+                    <span class="category-number">02</span>
 
-            <h3>
-                INFOGRAPHIC<br>& BRAND FILM
-            </h3>
+                    <span class="category-arrow">↗</span>
 
-            <p>
-                Visual storytelling, information design
-                and brand films built to communicate
-                ideas through motion.
-            </p>
+                    <span class="category-name">
+                        MASCOT
+                    </span>
 
-            <div class="category-arrow">
-                ↗
-            </div>
-
-        </div>
+                </button>
 
 
-        <div
-            class="category-card reveal reveal-delay-1"
-            onclick="openCategory('cgi')"
-        >
+                <button
+                    class="category-card reveal"
+                    data-category="small-decor">
 
-            <div class="category-number">
-                04
-            </div>
+                    <span class="category-number">03</span>
 
-            <h3>
-                CGI
-            </h3>
+                    <span class="category-arrow">↗</span>
 
-            <p>
-                3D imagery, product visuals,
-                environments and CGI experiments.
-            </p>
+                    <span class="category-name">
+                        SMALL DECOR
+                    </span>
 
-            <div class="category-arrow">
-                ↗
-            </div>
+                </button>
 
-        </div>
-
-
-        <div
-            class="category-card reveal reveal-delay-2"
-            onclick="openCategory('sculpting')"
-        >
-
-            <div class="category-number">
-                05
-            </div>
-
-            <h3>
-                SCULPTING
-            </h3>
-
-            <p>
-                Digital sculpting, character development
-                and 3D form exploration.
-            </p>
-
-            <div class="category-arrow">
-                ↗
             </div>
 
         </div>
 
-
-        <div
-            class="category-card reveal reveal-delay-3"
-            onclick="openCategory('ai-video')"
-        >
-
-            <div class="category-number">
-                06
-            </div>
-
-            <h3>
-                AI VIDEO<br>SOLUTION
-            </h3>
-
-            <p>
-                AI-assisted video production,
-                visual development and creative
-                solutions for faster content creation.
-            </p>
-
-            <div class="category-arrow">
-                ↗
-            </div>
-
-        </div>
+    </section>
 
 
-    </div>
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="about" id="about">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-kicker">
+                    ABOUT 006STUDIO
+                </div>
+
+                <div class="about-content">
+
+                    <div class="language-switch">
+
+                        <button
+                            class="lang-btn active"
+                            data-about-lang="en">
+                            EN
+                        </button>
+
+                        <button
+                            class="lang-btn"
+                            data-about-lang="vi">
+                            VI
+                        </button>
+
+                    </div>
 
 
-</section>
+                    <div
+                        class="about-copy"
+                        id="about-en">
+
+                        <p>
+                            006studio started as a young creative
+                            driven by curiosity, passion, and a
+                            desire to create.
+                        </p>
+
+                        <p>
+                            With 7+ years of experience in the
+                            creative industry, we specialize in
+                            2D & 3D Motion Design, turning ideas
+                            and visions into clear, distinctive
+                            visual experiences.
+                        </p>
+
+                        <p>
+                            From Vision to Visual
+                        </p>
+
+                        <p>
+                            006studio brings together two creative
+                            disciplines:
+                            <br><br>
+                            COLORBLIND — 2D & 3D Motion Design
+                            <br>
+                            006LAB — 3D Printing & Object Design
+                        </p>
+
+                        <p>
+                            From digital motion to physical objects,
+                            we turn ideas into visuals with character
+                            and purpose.
+                        </p>
+
+                    </div>
 
 
-<!-- =======================================================
-     3D LAB
-======================================================= -->
+                    <div
+                        class="about-copy"
+                        id="about-vi"
+                        style="display:none;">
 
-<section
-    class="discipline"
-    id="lab"
->
+                        <p>
+                            006studio bắt đầu từ một creative trẻ
+                            với niềm đam mê, sự tò mò và mong muốn
+                            không ngừng sáng tạo.
+                        </p>
 
+                        <p>
+                            Với hơn 7 năm kinh nghiệm trong ngành
+                            sáng tạo, chúng tôi tập trung vào
+                            2D & 3D Motion Design, biến ý tưởng
+                            và vision thành những trải nghiệm
+                            hình ảnh rõ ràng và có cá tính.
+                        </p>
 
-    <div class="discipline-header">
+                        <p>
+                            From Vision to Visual
+                        </p>
 
+                        <p>
+                            006studio kết hợp hai hướng sáng tạo:
+                            <br><br>
+                            COLORBLIND — 2D & 3D Motion Design
+                            <br>
+                            006LAB — 3D Printing & Object Design
+                        </p>
 
-        <div class="section-title reveal">
+                        <p>
+                            Từ chuyển động kỹ thuật số đến những
+                            vật thể trong thế giới thực, chúng tôi
+                            biến ý tưởng thành những visual có cá tính
+                            và mục đích.
+                        </p>
 
-            02 / 3D LAB
-
-        </div>
-
-
-        <div class="section-description reveal reveal-delay-1">
-
-            Physical objects, characters and small-scale
-            products developed through 3D design,
-            printing and fabrication.
-
-        </div>
-
-
-    </div>
-
-
-    <div class="discipline-intro">
-
-
-        <h2
-            class="reveal mouse-reactive scroll-signature"
-            data-scroll-strength="1"
-        >
-
-            <span class="scroll-line">
-                FROM DIGITAL
-            </span>
-
-            <span class="scroll-line">
-                TO OBJECT
-            </span>
-
-        </h2>
+                    </div>
 
 
-        <div class="discipline-object reveal reveal-delay-2">
+                    <div class="about-identity-grid">
 
-            <div class="discipline-object-main"></div>
+                        <div class="identity-card">
 
-            <div class="discipline-object-center"></div>
+                            <h3>
+                                COLORBLIND
+                            </h3>
 
-            <div class="discipline-object-accent"></div>
+                            <p>
+                                Personal creative identity for
+                                2D & 3D Motion Design.
+                            </p>
 
-        </div>
-
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-        <div
-            class="category-card reveal reveal-delay-1"
-            onclick="openCategory('brand-merchandise')"
-        >
-
-            <div class="category-number">
-                01
-            </div>
-
-            <h3>
-                BRAND<br>MERCHANDISE
-            </h3>
-
-            <p>
-                Physical objects, merchandise and branded
-                products developed through 3D design
-                and fabrication.
-            </p>
-
-            <div class="category-arrow">
-                ↗
-            </div>
-
-        </div>
+                        </div>
 
 
-        <div
-            class="category-card reveal reveal-delay-2"
-            onclick="openCategory('mascot')"
-        >
+                        <div class="identity-card">
 
-            <div class="category-number">
-                02
-            </div>
+                            <h3>
+                                006LAB
+                            </h3>
 
-            <h3>
-                MASCOT
-            </h3>
+                            <p>
+                                3D Printing & Object Design.
+                            </p>
 
-            <p>
-                Character and mascot design translated
-                from digital concepts into physical objects.
-            </p>
+                        </div>
 
-            <div class="category-arrow">
-                ↗
-            </div>
+                    </div>
 
-        </div>
+                </div>
 
-
-        <div
-            class="category-card reveal reveal-delay-3"
-            onclick="openCategory('small-decor')"
-        >
-
-            <div class="category-number">
-                03
-            </div>
-
-            <h3>
-                SMALL<br>DECOR
-            </h3>
-
-            <p>
-                Small-scale objects, functional pieces
-                and decorative experiments made for
-                the physical world.
-            </p>
-
-            <div class="category-arrow">
-                ↗
             </div>
 
         </div>
 
-
-    </div>
-
-
-</section>
-
+    </section>
 
 </main>
 
 
-<!-- =======================================================
+<!-- =========================================================
      FOOTER
-======================================================= -->
+========================================================= -->
 
 <footer>
 
-
-    <div class="footer-top">
-
+    <div class="footer-inner">
 
         <div class="footer-logo">
             006.STUDIO
         </div>
 
-
-        <div class="footer-contact">
-
-
-            <p>
-                CREATIVE STUDIO
-            </p>
-
-
-            <p>
-
-                <a href="mailto:hello@006studio.com">
-                    hello@006studio.com
-                </a>
-
-            </p>
-
-
-        </div>
-
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-
-        <div>
+        <div class="footer-info">
+            COLORBLIND × 006LAB<br>
+            2D / 3D MOTION · OBJECT DESIGN<br>
             © 2026 006.STUDIO
         </div>
 
-
-        <div>
-            FROM VISION TO VISUAL
-        </div>
-
-
     </div>
-
 
 </footer>
 
 
-<!-- =======================================================
+<!-- =========================================================
      CATEGORY OVERLAY
-======================================================= -->
+========================================================= -->
 
 <div
     class="overlay"
-    id="categoryOverlay"
->
-
+    id="categoryOverlay">
 
     <div class="overlay-header">
 
+        <div class="overlay-logo">
+            006.STUDIO
+        </div>
+
+        <button
+            class="close-button"
+            id="closeCategoryButton">
+            CLOSE ×
+        </button>
+
+    </div>
+
+
+    <div class="overlay-content">
+
+        <div
+            class="overlay-kicker"
+            id="overlayKicker">
+            CATEGORY
+        </div>
+
+        <h2
+            class="overlay-title"
+            id="overlayTitle">
+            PROJECTS
+        </h2>
+
+        <div
+            class="project-grid"
+            id="projectGrid">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     PROJECT DETAIL
+========================================================= -->
+
+<div
+    class="project-detail"
+    id="projectDetail">
+
+    <div class="project-detail-header">
 
         <div class="logo">
             006.STUDIO
         </div>
 
-
         <button
-            class="overlay-close"
-            onclick="closeCategory()"
-        >
+            class="project-detail-close"
+            id="closeProjectButton">
             CLOSE ×
         </button>
 
-
     </div>
 
 
-    <div
-        class="overlay-content"
-        id="overlayContent"
-    >
+    <div class="project-detail-content">
 
+        <div class="project-kicker">
 
-        <!-- =================================================
-             CATEGORY MAIN
-        ================================================= -->
+            <span class="project-kicker-dot"></span>
 
-        <div id="categoryMain">
-
-
-            <h2 id="categoryTitle">
-                CATEGORY
-            </h2>
-
-
-            <div
-                class="overlay-description"
-                id="categoryDescription"
-            >
-            </div>
-
-
-            <div
-                class="project-grid"
-                id="projectGrid"
-            >
-            </div>
-
+            <span id="detailCategory">
+                AI VIDEO SOLUTION
+            </span>
 
         </div>
 
 
-        <!-- =================================================
-             PROJECT DETAIL
-        ================================================= -->
+        <h1
+            class="project-detail-title"
+            id="detailTitle">
+            THE SYNC SHOW
+        </h1>
+
 
         <div
-            class="project-detail"
-            id="projectDetail"
-        >
+            class="project-detail-subtitle"
+            id="detailSubtitle">
+            EVENT OPENING FILM
+        </div>
 
 
-            <div class="project-detail-top">
+        <div
+            class="project-detail-meta"
+            id="detailMeta">
+        </div>
 
 
-                <button
-                    class="project-back"
-                    onclick="backToProjects()"
-                >
-                    ← BACK TO CATEGORY
-                </button>
-
-
-                <div
-                    class="project-detail-kicker"
-                >
-
-                    <span class="dot"></span>
-
-                    <span id="projectCategory">
-                        AI VIDEO SOLUTION
-                    </span>
-
-                </div>
-
-
-                <h2
-                    class="project-detail-title"
-                    id="projectTitle"
-                >
-                </h2>
-
-
-                <div
-                    class="project-detail-subtitle"
-                    id="projectSubtitle"
-                >
-                </div>
-
-
-                <div
-                    class="project-detail-meta"
-                    id="projectMeta"
-                >
-                </div>
-
-
+        <div
+            class="project-hero-media"
+            id="detailHero">
+            
+            <div class="project-hero-placeholder">
+                HERO MEDIA / 16:9
             </div>
-
-
-            <!-- HERO PLACEHOLDER -->
-
-            <div
-                class="project-hero-media"
-                id="projectHeroMedia"
-            >
-
-                <div class="media-placeholder">
-
-                    <span>
-                        HERO VIDEO / IMAGE — PLACEHOLDER
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- ABOUT -->
-
-            <section class="project-section">
-
-
-                <div class="project-section-header">
-
-
-                    <div class="project-section-label">
-                        ABOUT
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div
-                            class="project-description"
-                            id="projectDescriptionEn"
-                        >
-                        </div>
-
-
-                        <div
-                            class="project-description"
-                            id="projectDescriptionVi"
-                            style="display:none;"
-                        >
-                        </div>
-
-
-                        <div class="project-language">
-
-
-                            <button
-                                class="lang-button active"
-                                id="projectLangEn"
-                                onclick="setProjectLanguage('en')"
-                            >
-                                EN
-                            </button>
-
-
-                            <button
-                                class="lang-button"
-                                id="projectLangVi"
-                                onclick="setProjectLanguage('vi')"
-                            >
-                                VI
-                            </button>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-            <!-- ROLE -->
-
-            <section class="project-section">
-
-
-                <div class="project-section-header">
-
-
-                    <div class="project-section-label">
-                        ROLE
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div
-                            class="project-role-grid"
-                            id="projectRole"
-                        >
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-            <!-- PROCESS -->
-
-            <section class="project-section">
-
-
-                <div class="project-section-header">
-
-
-                    <div class="project-section-label">
-                        PROCESS
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div
-                            class="process-list"
-                            id="projectProcess"
-                        >
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-            <!-- FINAL -->
-
-            <section class="project-final">
-
-
-                <div class="project-final-title">
-                    FINAL
-                </div>
-
-
-                <div
-                    class="project-final-media"
-                    id="projectFinalMedia"
-                >
-
-                    <div class="media-placeholder">
-
-                        <span>
-                            FINAL VIDEO — PLACEHOLDER
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </section>
-
-
-            <!-- DELIVERABLE -->
-
-            <section class="project-deliverable">
-
-
-                <div class="project-section-label">
-                    DELIVERABLE
-                </div>
-
-
-                <div
-                    class="deliverable-grid"
-                    id="projectDeliverable"
-                >
-                </div>
-
-
-            </section>
-
-
-            <!-- END -->
-
-            <div class="project-end">
-
-
-                <div>
-
-
-                    <div class="project-end-client-label">
-                        CLIENT
-                    </div>
-
-
-                    <div
-                        class="project-end-client"
-                        id="projectClient"
-                    >
-                    </div>
-
-
-                </div>
-
-
-                <button
-                    class="project-end-back"
-                    onclick="backToProjects()"
-                >
-                    ← BACK TO CATEGORY
-                </button>
-
-
-            </div>
-
 
         </div>
 
 
-    </div>
+        <!-- ABOUT -->
 
+        <section class="project-section">
+
+            <div class="project-section-label">
+                ABOUT
+            </div>
+
+            <div class="project-section-content">
+
+                <div class="project-language">
+
+                    <button
+                        class="lang-btn active"
+                        id="projectEnButton">
+                        EN
+                    </button>
+
+                    <button
+                        class="lang-btn"
+                        id="projectViButton">
+                        VI
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="project-description"
+                    id="projectDescription">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROLE -->
+
+        <section class="project-section">
+
+            <div class="project-section-label">
+                ROLE
+            </div>
+
+            <div
+                class="project-role-grid"
+                id="projectRole">
+            </div>
+
+        </section>
+
+
+        <!-- PROCESS -->
+
+        <section class="project-section">
+
+            <div class="project-section-label">
+                PROCESS
+            </div>
+
+            <div
+                class="project-section-content">
+
+                <div
+                    class="process-list"
+                    id="projectProcess">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section class="project-section">
+
+            <div class="project-section-label">
+                FINAL
+            </div>
+
+            <div class="project-section-content">
+
+                <div
+                    class="final-media"
+                    id="projectFinal">
+                    FINAL VIDEO / 16:9
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DELIVERABLE -->
+
+        <section class="project-section">
+
+            <div class="project-section-label">
+                DELIVERABLE
+            </div>
+
+            <div
+                class="deliverable-grid"
+                id="projectDeliverables">
+            </div>
+
+        </section>
+
+
+        <!-- CLIENT -->
+
+        <section class="project-section">
+
+            <div class="project-section-label">
+                CLIENT
+            </div>
+
+            <div
+                class="project-section-content">
+
+                <div
+                    class="project-description"
+                    id="projectClient">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="project-back">
+
+            <button id="backToCategoryButton">
+                ← BACK TO CATEGORY
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
 
 <script>
-
-/* =========================================================
-   ABOUT LANGUAGE
-========================================================= */
-
-function setLanguage(language) {
-
-
-    const en =
-        document.getElementById("about-en");
-
-
-    const vi =
-        document.getElementById("about-vi");
-
-
-    const enButton =
-        document.getElementById("lang-en");
-
-
-    const viButton =
-        document.getElementById("lang-vi");
-
-
-    if (language === "en") {
-
-
-        en.classList.add("active");
-
-        vi.classList.remove("active");
-
-
-        enButton.classList.add("active");
-
-        viButton.classList.remove("active");
-
-
-    } else {
-
-
-        vi.classList.add("active");
-
-        en.classList.remove("active");
-
-
-        viButton.classList.add("active");
-
-        enButton.classList.remove("active");
-
-
-    }
-
-}
-
-
 /* =========================================================
    PROJECT DATA
 ========================================================= */
 
 const projectData = {
 
-
-    theSyncShow: {
-
+    "the-sync-show": {
 
         id: "the-sync-show",
 
+        title: "THE SYNC SHOW",
 
-        title:
-            "THE SYNC SHOW",
+        subtitle: "EVENT OPENING FILM",
 
+        category: "AI VIDEO SOLUTION",
 
-        subtitle:
-            "EVENT OPENING FILM",
+        year: "2026",
 
+        client: "Rạp xiếc Phú Thọ",
 
-        category:
-            "AI VIDEO SOLUTION",
+        type: "CGI · AI · Motion Design · Compositing",
 
-
-        year:
-            "2026",
-
-
-        client:
-            "Rạp xiếc Phú Thọ",
-
-
-        type:
-            "CGI · AI · Motion Design · Compositing",
-
+        thumbnail:
+            "assets/the-sync-show-thumbnail.jpg",
 
         role: [
             "CGI",
@@ -3776,87 +2031,54 @@ const projectData = {
             "Compositing"
         ],
 
+        description: {
 
-        descriptionEn:
-            "A campaign film created for The Sync Show, built around the imagery of the dipterocarp fruit and familiar landmarks of Saigon. The visual direction combines AI-generated imagery with CGI, motion design, and compositing to transform these familiar elements into a cinematic event opening film.",
+            en:
+                "A campaign film created for The Sync Show, built around the imagery of the dipterocarp fruit and familiar landmarks of Saigon. The visual direction combines AI-generated imagery with CGI, motion design, and compositing to transform these familiar elements into a cinematic event opening film.",
 
+            vi:
+                "Một video phục vụ campaign cho sự kiện The Sync Show, được xây dựng từ hình ảnh quả chò và những địa điểm quen thuộc của Sài Gòn. Visual được phát triển bằng AI, sau đó hoàn thiện với CGI, motion design và compositing để tạo nên một event opening film."
 
-        descriptionVi:
-            "Một video phục vụ campaign cho sự kiện The Sync Show, được xây dựng từ hình ảnh quả chò và những địa điểm quen thuộc của Sài Gòn. Visual được phát triển bằng AI, sau đó hoàn thiện với CGI, motion design và compositing để tạo nên một event opening film mang tính điện ảnh.",
-
+        },
 
         process: [
 
-
             {
                 number: "01",
-                title: "CONCEPT & ELEMENT DESIGN",
-                placeholder:
-                    "PROCESS 01 — CONCEPT & ELEMENT DESIGN"
+                title: "CONCEPT & ELEMENT DESIGN"
             },
-
 
             {
                 number: "02",
-                title: "AI STILL FRAMES",
-                placeholder:
-                    "PROCESS 02 — AI STILL FRAMES"
+                title: "AI STILL FRAMES"
             },
-
 
             {
                 number: "03",
-                title: "AI VIDEO GENERATION",
-                placeholder:
-                    "PROCESS 03 — AI VIDEO GENERATION"
+                title: "AI VIDEO GENERATION"
             },
-
 
             {
                 number: "04",
-                title: "COMPOSITING",
-                placeholder:
-                    "PROCESS 04 — COMPOSITING"
+                title: "COMPOSITING"
             },
-
 
             {
                 number: "05",
-                title: "FINAL",
-                placeholder:
-                    "PROCESS 05 — FINAL"
+                title: "FINAL"
             }
-
 
         ],
 
-
         deliverables: [
 
-
-            {
-                label: "DURATION",
-                value: "30s CGI Video"
-            },
-
-
-            {
-                label: "FORMAT",
-                value: "16:9"
-            },
-
-
-            {
-                label: "APPLICATION",
-                value: "Social + Event Screen"
-            }
-
+            "30s CGI Video",
+            "16:9",
+            "Social + Event Screen"
 
         ]
 
-
     }
-
 
 };
 
@@ -3867,898 +2089,386 @@ const projectData = {
 
 const categories = {
 
-
     "visual-led": {
-
         title: "VISUAL LED",
-
-        description:
-            "Large-scale visual content, motion graphics and digital experiences created for LED screens and spatial environments.",
-
-        projects: [
-
-            {
-                title: "LED PROJECT 01",
-                type: "Motion Design"
-            },
-
-            {
-                title: "LED PROJECT 02",
-                type: "Visual Experience"
-            }
-
-        ]
-
+        projects: []
     },
 
-
-    "frame-by-frame": {
-
-        title: "FRAME BY FRAME",
-
-        description:
-            "Frame-by-frame animation, hand-crafted movement and illustrated motion experiments.",
-
-        projects: [
-
-            {
-                title: "FRAME PROJECT 01",
-                type: "Animation"
-            },
-
-            {
-                title: "FRAME PROJECT 02",
-                type: "Animation"
-            }
-
-        ]
-
+    "frame-animation": {
+        title: "FRAME BY FRAME ANIMATION",
+        projects: []
     },
-
 
     "infographic": {
-
         title: "INFOGRAPHIC & BRAND FILM",
-
-        description:
-            "Visual storytelling, information design and brand films built to communicate ideas through motion.",
-
-        projects: [
-
-            {
-                title: "BRAND FILM 01",
-                type: "Brand Film"
-            },
-
-            {
-                title: "INFOGRAPHIC 01",
-                type: "Information Design"
-            }
-
-        ]
-
+        projects: []
     },
-
 
     "cgi": {
-
         title: "CGI",
-
-        description:
-            "3D imagery, product visuals, environments and CGI experiments.",
-
-        projects: [
-
-            {
-                title: "CGI PROJECT 01",
-                type: "3D / CGI"
-            },
-
-            {
-                title: "CGI PROJECT 02",
-                type: "3D / CGI"
-            }
-
-        ]
-
+        projects: []
     },
-
 
     "sculpting": {
-
         title: "SCULPTING",
-
-        description:
-            "Digital sculpting, character development and 3D form exploration.",
-
-        projects: [
-
-            {
-                title: "SCULPT 01",
-                type: "Digital Sculpting"
-            },
-
-            {
-                title: "SCULPT 02",
-                type: "Character"
-            }
-
-        ]
-
+        projects: []
     },
-
-
-    /* =====================================================
-       AI VIDEO SOLUTION
-    ===================================================== */
 
     "ai-video": {
-
         title: "AI VIDEO SOLUTION",
-
-        description:
-            "AI-assisted video production, visual development and creative solutions for faster content creation.",
-
         projects: [
-
-
-            {
-
-                title:
-                    "THE SYNC SHOW",
-
-                subtitle:
-                    "EVENT OPENING FILM",
-
-                type:
-                    "CGI · AI · Motion Design · Compositing",
-
-                projectId:
-                    "theSyncShow"
-
-            },
-
-
-            {
-
-                title:
-                    "AI VIDEO 02",
-
-                subtitle:
-                    "",
-
-                type:
-                    "AI Solution"
-
-            }
-
-
+            "the-sync-show"
         ]
-
     },
-
 
     "brand-merchandise": {
-
         title: "BRAND MERCHANDISE",
-
-        description:
-            "Physical objects, merchandise and branded products developed through 3D design and fabrication.",
-
-        projects: [
-
-            {
-                title: "MERCH 01",
-                type: "3D Printing"
-            },
-
-            {
-                title: "MERCH 02",
-                type: "Object Design"
-            }
-
-        ]
-
+        projects: []
     },
-
 
     "mascot": {
-
         title: "MASCOT",
-
-        description:
-            "Character and mascot design translated from digital concepts into physical objects.",
-
-        projects: [
-
-            {
-                title: "MASCOT 01",
-                type: "Character Design"
-            },
-
-            {
-                title: "MASCOT 02",
-                type: "3D Object"
-            }
-
-        ]
-
+        projects: []
     },
 
-
     "small-decor": {
-
         title: "SMALL DECOR",
-
-        description:
-            "Small-scale objects, functional pieces and decorative experiments made for the physical world.",
-
-        projects: [
-
-            {
-                title: "DECOR 01",
-                type: "Object Design"
-            },
-
-            {
-                title: "DECOR 02",
-                type: "3D Printing"
-            }
-
-        ]
-
+        projects: []
     }
-
 
 };
 
 
 /* =========================================================
-   CURRENT PROJECT LANGUAGE
+   DOM
 ========================================================= */
 
-let currentProjectLanguage = "en";
+const categoryOverlay =
+    document.getElementById("categoryOverlay");
+
+const projectDetail =
+    document.getElementById("projectDetail");
+
+const projectGrid =
+    document.getElementById("projectGrid");
+
+const overlayTitle =
+    document.getElementById("overlayTitle");
+
+const overlayKicker =
+    document.getElementById("overlayKicker");
+
+const closeCategoryButton =
+    document.getElementById("closeCategoryButton");
+
+const closeProjectButton =
+    document.getElementById("closeProjectButton");
+
+const backToCategoryButton =
+    document.getElementById("backToCategoryButton");
+
+let currentCategory = null;
+let currentProject = null;
+
+let overlayTouchStartX = 0;
+let overlayTouchStartY = 0;
+let overlayTouching = false;
+
+let projectTouchStartX = 0;
+let projectTouchStartY = 0;
+let projectTouching = false;
 
 
 /* =========================================================
-   PROJECT LANGUAGE
-========================================================= */
-
-function setProjectLanguage(language) {
-
-
-    currentProjectLanguage =
-        language;
-
-
-    const en =
-        document.getElementById(
-            "projectDescriptionEn"
-        );
-
-
-    const vi =
-        document.getElementById(
-            "projectDescriptionVi"
-        );
-
-
-    const enButton =
-        document.getElementById(
-            "projectLangEn"
-        );
-
-
-    const viButton =
-        document.getElementById(
-            "projectLangVi"
-        );
-
-
-    if (language === "en") {
-
-
-        en.style.display =
-            "block";
-
-        vi.style.display =
-            "none";
-
-
-        enButton.classList.add(
-            "active"
-        );
-
-        viButton.classList.remove(
-            "active"
-        );
-
-
-    } else {
-
-
-        vi.style.display =
-            "block";
-
-        en.style.display =
-            "none";
-
-
-        viButton.classList.add(
-            "active"
-        );
-
-        enButton.classList.remove(
-            "active"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CATEGORY OPEN
+   CATEGORY
 ========================================================= */
 
 function openCategory(categoryId) {
 
-
     const category =
         categories[categoryId];
 
-
     if (!category) return;
 
+    currentCategory = categoryId;
 
-    const overlay =
-        document.getElementById(
-            "categoryOverlay"
-        );
-
-
-    const overlayContent =
-        document.getElementById(
-            "overlayContent"
-        );
-
-
-    const title =
-        document.getElementById(
-            "categoryTitle"
-        );
-
-
-    const description =
-        document.getElementById(
-            "categoryDescription"
-        );
-
-
-    const projectGrid =
-        document.getElementById(
-            "projectGrid"
-        );
-
-
-    const categoryMain =
-        document.getElementById(
-            "categoryMain"
-        );
-
-
-    const projectDetail =
-        document.getElementById(
-            "projectDetail"
-        );
-
-
-    overlayContent.classList.remove(
-        "swipe-complete",
-        "swipe-reset"
-    );
-
-
-    overlayContent.style.transform =
-        "translate3d(0, 0, 0) scale(1)";
-
-
-    overlayContent.style.opacity =
-        "1";
-
-
-    title.textContent =
+    overlayTitle.textContent =
         category.title;
 
+    overlayKicker.textContent =
+        "CATEGORY / " + categoryId.toUpperCase();
 
-    description.textContent =
-        category.description;
+    renderProjects(category);
 
+    categoryOverlay.classList.add("open");
 
-    projectGrid.innerHTML =
-        "";
+    document.body.classList.add("overlay-open");
 
+    categoryOverlay.scrollTop = 0;
 
-    category.projects.forEach(
-        (project, index) => {
-
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "project-card";
-
-
-            const hasProjectDetail =
-                !!project.projectId;
-
-
-            card.innerHTML = `
-
-                <div class="project-card-thumbnail">
-
-                    <span>
-
-                        ${
-                            hasProjectDetail
-                                ? "PROJECT IMAGE / VIDEO"
-                                : "THUMBNAIL PLACEHOLDER"
-                        }
-
-                    </span>
-
-                </div>
-
-
-                <div class="project-card-info">
-
-                    <span>
-
-                        ${String(index + 1).padStart(2, "0")}
-
-                        /
-
-                        ${project.type}
-
-                    </span>
-
-
-                    <h3>
-
-                        ${project.title}
-
-                    </h3>
-
-                </div>
-
-            `;
-
-
-            card.addEventListener(
-                "click",
-                () => {
-
-                    if (
-                        project.projectId &&
-                        projectData[
-                            project.projectId
-                        ]
-                    ) {
-
-                        openProject(
-                            projectData[
-                                project.projectId
-                            ]
-                        );
-
-                    } else {
-
-                        openPlaceholderProject(
-                            project
-                        );
-
-                    }
-
-                }
-            );
-
-
-            projectGrid.appendChild(
-                card
-            );
-
-        }
-    );
-
-
-    categoryMain.style.display =
-        "block";
-
-
-    projectDetail.classList.remove(
-        "active"
-    );
-
-
-    overlay.classList.add(
-        "active"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
+    resetSwipeState(categoryOverlay);
 }
 
-
-/* =========================================================
-   CATEGORY CLOSE
-========================================================= */
 
 function closeCategory() {
 
+    categoryOverlay.classList.remove("open");
 
-    const overlay =
-        document.getElementById(
-            "categoryOverlay"
-        );
+    document.body.classList.remove("overlay-open");
 
-
-    const overlayContent =
-        document.getElementById(
-            "overlayContent"
-        );
+    resetSwipeState(categoryOverlay);
+}
 
 
-    overlayContent.classList.remove(
-        "swipe-complete",
-        "swipe-reset"
-    );
+function renderProjects(category) {
+
+    projectGrid.innerHTML = "";
+
+    if (!category.projects.length) {
+
+        const empty = document.createElement("div");
+
+        empty.style.fontSize = "13px";
+        empty.style.fontWeight = "600";
+        empty.style.opacity = ".45";
+        empty.textContent =
+            "PROJECTS COMING SOON";
+
+        projectGrid.appendChild(empty);
+
+        return;
+    }
 
 
-    overlayContent.style.transform =
-        "";
+    category.projects.forEach(projectId => {
+
+        const project =
+            projectData[projectId];
+
+        if (!project) return;
+
+        const card =
+            document.createElement("button");
+
+        card.className = "project-card";
+
+        card.dataset.project =
+            project.id;
 
 
-    overlayContent.style.opacity =
-        "";
+        const thumb =
+            document.createElement("div");
+
+        thumb.className =
+            "project-thumb";
 
 
-    overlay.classList.remove(
-        "active"
-    );
+        if (project.thumbnail) {
 
+            const image =
+                document.createElement("img");
 
-    document.body.style.overflow =
-        "";
+            image.src =
+                project.thumbnail;
 
+            image.alt =
+                project.title;
 
-    setTimeout(
-        () => {
+            image.loading =
+                "lazy";
 
+            thumb.appendChild(image);
 
-            document.getElementById(
-                "categoryMain"
-            ).style.display =
-                "block";
+        } else {
 
+            const placeholder =
+                document.createElement("div");
 
-            document.getElementById(
-                "projectDetail"
-            ).classList.remove(
-                "active"
+            placeholder.className =
+                "project-thumb-placeholder";
+
+            placeholder.textContent =
+                "PROJECT THUMBNAIL";
+
+            thumb.appendChild(
+                placeholder
             );
+        }
 
 
-        },
-        350
-    );
+        const meta =
+            document.createElement("div");
+
+        meta.className =
+            "project-meta";
+
+
+        const left =
+            document.createElement("div");
+
+
+        const name =
+            document.createElement("div");
+
+        name.className =
+            "project-name";
+
+        name.textContent =
+            project.title;
+
+
+        const cat =
+            document.createElement("div");
+
+        cat.className =
+            "project-category";
+
+        cat.textContent =
+            project.category;
+
+
+        left.appendChild(name);
+        left.appendChild(cat);
+
+
+        const year =
+            document.createElement("div");
+
+        year.className =
+            "project-year";
+
+        year.textContent =
+            project.year;
+
+
+        meta.appendChild(left);
+        meta.appendChild(year);
+
+
+        card.appendChild(thumb);
+        card.appendChild(meta);
+
+
+        card.addEventListener(
+            "click",
+            () => openProject(project.id)
+        );
+
+
+        projectGrid.appendChild(card);
+
+    });
 
 }
 
 
 /* =========================================================
-   PROJECT OPEN
+   PROJECT DETAIL
 ========================================================= */
 
-function openProject(project) {
+function openProject(projectId) {
 
+    const project =
+        projectData[projectId];
 
-    const categoryMain =
-        document.getElementById(
-            "categoryMain"
-        );
+    if (!project) return;
 
-
-    const projectDetail =
-        document.getElementById(
-            "projectDetail"
-        );
-
-
-    const overlayContent =
-        document.getElementById(
-            "overlayContent"
-        );
-
-
-    overlayContent.classList.remove(
-        "swipe-complete",
-        "swipe-reset"
-    );
-
-
-    overlayContent.style.transform =
-        "translate3d(0, 0, 0) scale(1)";
-
-
-    overlayContent.style.opacity =
-        "1";
-
+    currentProject = projectId;
 
     document.getElementById(
-        "projectCategory"
+        "detailCategory"
     ).textContent =
         project.category;
 
-
     document.getElementById(
-        "projectTitle"
+        "detailTitle"
     ).textContent =
         project.title;
 
-
     document.getElementById(
-        "projectSubtitle"
+        "detailSubtitle"
     ).textContent =
         project.subtitle;
 
 
+    const meta =
+        document.getElementById("detailMeta");
+
+    meta.innerHTML = "";
+
+    const metaItems = [
+        ["YEAR", project.year],
+        ["CLIENT", project.client],
+        ["TYPE", project.type]
+    ];
+
+
+    metaItems.forEach(item => {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "meta-item";
+
+
+        const label =
+            document.createElement("div");
+
+        label.className =
+            "meta-item-label";
+
+        label.textContent =
+            item[0];
+
+
+        const value =
+            document.createElement("div");
+
+        value.className =
+            "meta-item-value";
+
+        value.textContent =
+            item[1];
+
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(value);
+
+        meta.appendChild(wrapper);
+
+    });
+
+
+    const hero =
+        document.getElementById("detailHero");
+
+    hero.innerHTML =
+        `<div class="project-hero-placeholder">
+            HERO MEDIA / 16:9
+        </div>`;
+
+
+    renderProjectDescription(
+        "en"
+    );
+
+
     document.getElementById(
-        "projectMeta"
-    ).innerHTML = `
-
-        <div class="project-meta-item">
-
-            <span class="project-meta-label">
-                YEAR
-            </span>
-
-            <div class="project-meta-value">
-                ${project.year}
-            </div>
-
-        </div>
-
-
-        <div class="project-meta-item">
-
-            <span class="project-meta-label">
-                CLIENT
-            </span>
-
-            <div class="project-meta-value">
-                ${project.client}
-            </div>
-
-        </div>
-
-
-        <div class="project-meta-item">
-
-            <span class="project-meta-label">
-                PROJECT TYPE
-            </span>
-
-            <div class="project-meta-value">
-                ${project.type}
-            </div>
-
-        </div>
-
-    `;
-
+        "projectEnButton"
+    ).classList.add("active");
 
     document.getElementById(
-        "projectDescriptionEn"
-    ).textContent =
-        project.descriptionEn;
+        "projectViButton"
+    ).classList.remove("active");
 
 
-    document.getElementById(
-        "projectDescriptionVi"
-    ).textContent =
-        project.descriptionVi;
+    renderProjectRole(project);
 
+    renderProjectProcess(project);
 
-    setProjectLanguage(
-        currentProjectLanguage
-    );
+    renderProjectDeliverables(project);
 
-
-    /* =====================================================
-       ROLE
-    ===================================================== */
-
-    const roleContainer =
-        document.getElementById(
-            "projectRole"
-        );
-
-
-    roleContainer.innerHTML =
-        "";
-
-
-    project.role.forEach(
-        (role, index) => {
-
-
-            const roleItem =
-                document.createElement(
-                    "div"
-                );
-
-
-            roleItem.className =
-                "role-item";
-
-
-            roleItem.innerHTML = `
-
-                <div class="role-number">
-
-                    ${String(index + 1).padStart(2, "0")}
-
-                </div>
-
-
-                <div class="role-name">
-
-                    ${role}
-
-                </div>
-
-            `;
-
-
-            roleContainer.appendChild(
-                roleItem
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       PROCESS
-    ===================================================== */
-
-    const processContainer =
-        document.getElementById(
-            "projectProcess"
-        );
-
-
-    processContainer.innerHTML =
-        "";
-
-
-    project.process.forEach(
-        item => {
-
-
-            const processItem =
-                document.createElement(
-                    "div"
-                );
-
-
-            processItem.className =
-                "process-item";
-
-
-            processItem.innerHTML = `
-
-                <div class="process-number">
-
-                    ${item.number}
-
-                </div>
-
-
-                <div class="process-main">
-
-                    <div class="process-title">
-
-                        ${item.title}
-
-                    </div>
-
-
-                    <div class="process-media">
-
-                        <div class="media-placeholder">
-
-                            <span>
-
-                                ${item.placeholder}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            processContainer.appendChild(
-                processItem
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       DELIVERABLE
-    ===================================================== */
-
-    const deliverableContainer =
-        document.getElementById(
-            "projectDeliverable"
-        );
-
-
-    deliverableContainer.innerHTML =
-        "";
-
-
-    project.deliverables.forEach(
-        item => {
-
-
-            const deliverable =
-                document.createElement(
-                    "div"
-                );
-
-
-            deliverable.className =
-                "deliverable-item";
-
-
-            deliverable.innerHTML = `
-
-                <span>
-                    ${item.label}
-                </span>
-
-                <strong>
-                    ${item.value}
-                </strong>
-
-            `;
-
-
-            deliverableContainer.appendChild(
-                deliverable
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       CLIENT
-    ===================================================== */
 
     document.getElementById(
         "projectClient"
@@ -4766,207 +2476,917 @@ function openProject(project) {
         project.client;
 
 
-    /* =====================================================
-       SHOW DETAIL
-    ===================================================== */
+    projectDetail.classList.add("open");
 
-    categoryMain.style.display =
-        "none";
-
-
-    projectDetail.classList.add(
-        "active"
+    document.body.classList.add(
+        "overlay-open"
     );
 
+    projectDetail.scrollTop = 0;
 
-    document.getElementById(
-        "categoryOverlay"
-    ).scrollTop = 0;
+    resetSwipeState(projectDetail);
 
 }
 
 
-/* =========================================================
-   PLACEHOLDER PROJECT
-========================================================= */
+function renderProjectDescription(language) {
 
-function openPlaceholderProject(project) {
+    const project =
+        projectData[currentProject];
 
+    const description =
+        document.getElementById(
+            "projectDescription"
+        );
 
-    const placeholderProject = {
+    description.innerHTML =
+        `<p>${project.description[language]}</p>`;
 
-
-        title:
-            project.title,
-
-
-        subtitle:
-            project.subtitle || "",
+}
 
 
-        category:
-            document.getElementById(
-                "categoryTitle"
-            ).textContent,
+function renderProjectRole(project) {
+
+    const container =
+        document.getElementById(
+            "projectRole"
+        );
+
+    container.innerHTML = "";
 
 
-        year:
-            "2026",
+    project.role.forEach(
+        (role, index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "role-card";
 
 
-        client:
-            "PROJECT CLIENT",
+            card.innerHTML = `
+                <div class="role-number">
+                    ${String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div class="role-name">
+                    ${role}
+                </div>
+            `;
 
 
-        type:
-            project.type,
+            container.appendChild(card);
 
-
-        role: [
-            "Concept",
-            "Design",
-            "Motion",
-            "Production"
-        ],
-
-
-        descriptionEn:
-            "Project description and visual content will be added here.",
-
-
-        descriptionVi:
-            "Thông tin dự án và visual content sẽ được bổ sung tại đây.",
-
-
-        process: [
-
-
-            {
-                number: "01",
-                title: "CONCEPT",
-                placeholder: "PROCESS 01 — PLACEHOLDER"
-            },
-
-
-            {
-                number: "02",
-                title: "DESIGN",
-                placeholder: "PROCESS 02 — PLACEHOLDER"
-            },
-
-
-            {
-                number: "03",
-                title: "PRODUCTION",
-                placeholder: "PROCESS 03 — PLACEHOLDER"
-            }
-
-
-        ],
-
-
-        deliverables: [
-
-
-            {
-                label: "FORMAT",
-                value: "TBC"
-            },
-
-
-            {
-                label: "DURATION",
-                value: "TBC"
-            },
-
-
-            {
-                label: "APPLICATION",
-                value: "TBC"
-            }
-
-        ]
-
-    };
-
-
-    openProject(
-        placeholderProject
+        }
     );
 
 }
 
 
-/* =========================================================
-   BACK TO PROJECTS
-========================================================= */
+function renderProjectProcess(project) {
+
+    const container =
+        document.getElementById(
+            "projectProcess"
+        );
+
+    container.innerHTML = "";
+
+
+    project.process.forEach(item => {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "process-item";
+
+
+        wrapper.innerHTML = `
+            <div class="process-number">
+                ${item.number}
+            </div>
+
+            <div>
+                <h3 class="process-title">
+                    ${item.title}
+                </h3>
+
+                <div class="process-media">
+                    PROCESS IMAGE / VIDEO
+                </div>
+            </div>
+        `;
+
+
+        container.appendChild(wrapper);
+
+    });
+
+}
+
+
+function renderProjectDeliverables(project) {
+
+    const container =
+        document.getElementById(
+            "projectDeliverables"
+        );
+
+    container.innerHTML = "";
+
+
+    project.deliverables.forEach(
+        item => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "deliverable-card";
+
+            card.innerHTML =
+                `<strong>${item}</strong>`;
+
+            container.appendChild(card);
+
+        }
+    );
+
+}
+
+
+function closeProject() {
+
+    projectDetail.classList.remove("open");
+
+    document.body.classList.remove(
+        "overlay-open"
+    );
+
+    resetSwipeState(projectDetail);
+}
+
 
 function backToProjects() {
 
+    closeProject();
 
-    const overlayContent =
-        document.getElementById(
-            "overlayContent"
-        );
+    setTimeout(() => {
 
+        if (currentCategory) {
 
-    overlayContent.classList.remove(
-        "swipe-complete",
-        "swipe-reset"
-    );
+            categoryOverlay.classList.add(
+                "open"
+            );
 
+            document.body.classList.add(
+                "overlay-open"
+            );
 
-    overlayContent.style.transform =
-        "translate3d(0, 0, 0) scale(1)";
+        }
 
-
-    overlayContent.style.opacity =
-        "1";
-
-
-    document.getElementById(
-        "categoryMain"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "projectDetail"
-    ).classList.remove(
-        "active"
-    );
-
-
-    document.getElementById(
-        "categoryOverlay"
-    ).scrollTop = 0;
+    }, 80);
 
 }
 
 
 /* =========================================================
-   ESC KEY
+   CATEGORY EVENTS
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+document.querySelectorAll(
+    ".category-card"
+).forEach(card => {
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            openCategory(
+                card.dataset.category
+            );
+
+        }
+    );
+
+});
 
 
-        if (
-            event.key === "Escape"
-        ) {
+closeCategoryButton.addEventListener(
+    "click",
+    closeCategory
+);
 
-            const projectDetail =
-                document.getElementById(
-                    "projectDetail"
+
+closeProjectButton.addEventListener(
+    "click",
+    closeProject
+);
+
+
+backToCategoryButton.addEventListener(
+    "click",
+    backToProjects
+);
+
+
+/* =========================================================
+   ABOUT LANGUAGE
+========================================================= */
+
+document.querySelectorAll(
+    "[data-about-lang]"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const lang =
+                button.dataset.aboutLang;
+
+            document.querySelectorAll(
+                "[data-about-lang]"
+            ).forEach(btn => {
+
+                btn.classList.toggle(
+                    "active",
+                    btn.dataset.aboutLang === lang
+                );
+
+            });
+
+
+            document.getElementById(
+                "about-en"
+            ).style.display =
+                lang === "en"
+                    ? "block"
+                    : "none";
+
+
+            document.getElementById(
+                "about-vi"
+            ).style.display =
+                lang === "vi"
+                    ? "block"
+                    : "none";
+
+        }
+    );
+
+});
+
+
+document.getElementById(
+    "projectEnButton"
+).addEventListener(
+    "click",
+    () => {
+
+        renderProjectDescription("en");
+
+        document.getElementById(
+            "projectEnButton"
+        ).classList.add("active");
+
+        document.getElementById(
+            "projectViButton"
+        ).classList.remove("active");
+
+    }
+);
+
+
+document.getElementById(
+    "projectViButton"
+).addEventListener(
+    "click",
+    () => {
+
+        renderProjectDescription("vi");
+
+        document.getElementById(
+            "projectViButton"
+        ).classList.add("active");
+
+        document.getElementById(
+            "projectEnButton"
+        ).classList.remove("active");
+
+    }
+);
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document.querySelectorAll(
+    "[data-scroll]"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const target =
+                document.querySelector(
+                    button.dataset.scroll
+                );
+
+            if (!target) return;
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+});
+
+
+document.querySelector(
+    ".logo"
+).addEventListener(
+    "click",
+    event => {
+
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL OBSERVER
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+document.querySelectorAll(
+    ".reveal"
+).forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   SCROLL INTERACTION
+========================================================= */
+
+const scrollSignatures =
+    document.querySelectorAll(
+        ".scroll-signature"
+    );
+
+const scrollObjects =
+    document.querySelectorAll(
+        ".scroll-object"
+    );
+
+let targetScroll =
+    window.scrollY;
+
+let smoothScroll =
+    window.scrollY;
+
+
+function getMotionScale() {
+
+    if (
+        window.matchMedia(
+            "(max-width: 600px)"
+        ).matches
+    ) {
+        return .42;
+    }
+
+    if (
+        window.matchMedia(
+            "(max-width: 1024px)"
+        ).matches
+    ) {
+        return .65;
+    }
+
+    return 1;
+
+}
+
+
+function updateScrollMotion() {
+
+    targetScroll =
+        window.scrollY;
+
+    smoothScroll +=
+        (targetScroll - smoothScroll)
+        * .075;
+
+
+    const intensity =
+        getMotionScale();
+
+
+    scrollSignatures.forEach(
+        (element, index) => {
+
+            const rect =
+                element.getBoundingClientRect();
+
+            const viewportCenter =
+                window.innerHeight / 2;
+
+            const elementCenter =
+                rect.top + rect.height / 2;
+
+            const distance =
+                elementCenter - viewportCenter;
+
+            const normalized =
+                Math.max(
+                    -1,
+                    Math.min(
+                        1,
+                        distance /
+                        window.innerHeight
+                    )
                 );
 
 
+            const direction =
+                index % 2 === 0
+                    ? 1
+                    : -1;
+
+
+            const translateX =
+                normalized
+                * 38
+                * direction
+                * intensity;
+
+
+            const rotate =
+                normalized
+                * 2.5
+                * direction
+                * intensity;
+
+
+            const scale =
+                1 -
+                Math.abs(normalized)
+                * .035
+                * intensity;
+
+
+            element.style.transform =
+                `translate3d(${translateX}px,0,0)
+                 rotate(${rotate}deg)
+                 scale(${scale})`;
+
+        }
+    );
+
+
+    scrollObjects.forEach(
+        (element, index) => {
+
+            const rect =
+                element.getBoundingClientRect();
+
+            const viewportCenter =
+                window.innerHeight / 2;
+
+            const elementCenter =
+                rect.top + rect.height / 2;
+
+            const distance =
+                elementCenter - viewportCenter;
+
+            const normalized =
+                Math.max(
+                    -1,
+                    Math.min(
+                        1,
+                        distance /
+                        window.innerHeight
+                    )
+                );
+
+
+            const translateY =
+                normalized
+                * -55
+                * intensity;
+
+
+            const rotate =
+                normalized
+                * 10
+                * (index % 2 === 0 ? 1 : -1)
+                * intensity;
+
+
+            const scale =
+                1 +
+                (1 -
+                    Math.abs(normalized))
+                * .08
+                * intensity;
+
+
+            element.style.transform =
+                `translate3d(0,${translateY}px,0)
+                 rotate(${rotate}deg)
+                 scale(${scale})`;
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        updateScrollMotion
+    );
+
+}
+
+
+if (
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    requestAnimationFrame(
+        updateScrollMotion
+    );
+
+}
+
+
+/* =========================================================
+   MOUSE REACTIVE HEADLINE
+========================================================= */
+
+const mouseReactive =
+    document.querySelectorAll(
+        ".mouse-reactive"
+    );
+
+
+let mouseX = 0;
+let mouseY = 0;
+
+let smoothMouseX = 0;
+let smoothMouseY = 0;
+
+
+function updateMouse() {
+
+    smoothMouseX +=
+        (mouseX - smoothMouseX)
+        * .08;
+
+    smoothMouseY +=
+        (mouseY - smoothMouseY)
+        * .08;
+
+
+    mouseReactive.forEach(
+        element => {
+
+            const rect =
+                element.getBoundingClientRect();
+
+            const centerX =
+                rect.left + rect.width / 2;
+
+            const centerY =
+                rect.top + rect.height / 2;
+
+
+            const dx =
+                (smoothMouseX - centerX)
+                / window.innerWidth;
+
+            const dy =
+                (smoothMouseY - centerY)
+                / window.innerHeight;
+
+
+            const x =
+                dx * 18;
+
+            const y =
+                dy * 12;
+
+            const rotation =
+                dx * 2;
+
+
+            const lines =
+                element.querySelectorAll(
+                    ".playful-line"
+                );
+
+
+            if (!lines.length) {
+
+                element.style.transform =
+                    `translate3d(${x}px,${y}px,0)
+                     rotate(${rotation}deg)`;
+
+                return;
+
+            }
+
+
+            lines.forEach(
+                (line, index) => {
+
+                    const multiplier =
+                        index === 0
+                            ? .7
+                            : -.5;
+
+                    line.style.transform =
+                        `translate3d(
+                            ${x * multiplier}px,
+                            ${y * multiplier}px,
+                            0
+                        )
+                        rotate(
+                            ${rotation * multiplier}deg
+                        )`;
+
+                }
+            );
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        updateMouse
+    );
+
+}
+
+
+if (
+    !window.matchMedia(
+        "(pointer: coarse)"
+    ).matches &&
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    window.addEventListener(
+        "mousemove",
+        event => {
+
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        updateMouse
+    );
+
+}
+
+
+/* =========================================================
+   SWIPE BACK
+========================================================= */
+
+function beginSwipe(
+    element,
+    event
+) {
+
+    if (
+        !event.touches ||
+        event.touches.length !== 1
+    ) {
+        return;
+    }
+
+
+    const touch =
+        event.touches[0];
+
+
+    if (
+        touch.clientX > 70
+    ) {
+        return;
+    }
+
+
+    if (
+        !element.classList.contains("open")
+    ) {
+        return;
+    }
+
+
+    element.dataset.swipeActive =
+        "true";
+
+    element.dataset.swipeStartX =
+        touch.clientX;
+
+    element.dataset.swipeStartY =
+        touch.clientY;
+
+    element.dataset.swipeCurrentX =
+        touch.clientX;
+
+    element.classList.remove(
+        "swipe-reset"
+    );
+
+}
+
+
+function moveSwipe(
+    element,
+    event
+) {
+
+    if (
+        element.dataset.swipeActive !==
+        "true"
+    ) {
+        return;
+    }
+
+
+    const touch =
+        event.touches[0];
+
+
+    const startX =
+        parseFloat(
+            element.dataset.swipeStartX
+        );
+
+    const startY =
+        parseFloat(
+            element.dataset.swipeStartY
+        );
+
+
+    const deltaX =
+        touch.clientX - startX;
+
+    const deltaY =
+        touch.clientY - startY;
+
+
+    if (
+        deltaX < 0 ||
+        Math.abs(deltaY) >
+        Math.abs(deltaX)
+    ) {
+        return;
+    }
+
+
+    event.preventDefault();
+
+
+    const progress =
+        Math.min(
+            Math.max(
+                deltaX / 180,
+                0
+            ),
+            1
+        );
+
+
+    const scale =
+        1 - progress * .92;
+
+    const translateX =
+        progress * 75;
+
+    const opacity =
+        1 - progress * .9;
+
+
+    element.style.transform =
+        `translate3d(
+            ${translateX}px,
+            0,
+            0
+        )
+        scale(${scale})`;
+
+    element.style.opacity =
+        opacity;
+
+
+    element.dataset.swipeCurrentX =
+        touch.clientX;
+
+}
+
+
+function endSwipe(
+    element
+) {
+
+    if (
+        element.dataset.swipeActive !==
+        "true"
+    ) {
+        return;
+    }
+
+
+    const startX =
+        parseFloat(
+            element.dataset.swipeStartX
+        );
+
+    const currentX =
+        parseFloat(
+            element.dataset.swipeCurrentX ||
+            startX
+        );
+
+
+    const deltaX =
+        currentX - startX;
+
+
+    element.dataset.swipeActive =
+        "false";
+
+
+    if (deltaX >= 90) {
+
+        element.classList.add(
+            "swipe-complete"
+        );
+
+        element.style.transition =
+            "transform .38s cubic-bezier(.22,1,.36,1), opacity .38s ease";
+
+        element.style.transform =
+            "translate3d(75px,0,0) scale(.02)";
+
+        element.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
             if (
-                projectDetail.classList.contains(
-                    "active"
-                )
+                element === projectDetail
             ) {
 
                 backToProjects();
@@ -4977,1396 +3397,175 @@ document.addEventListener(
 
             }
 
-        }
+        }, 380);
 
+
+        return;
     }
-);
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+    resetSwipeState(element);
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
+}
+
+
+function resetSwipeState(element) {
+
+    element.dataset.swipeActive =
+        "false";
+
+    element.classList.remove(
+        "swipe-complete"
     );
 
-
-const revealObserver =
-    new IntersectionObserver(
-
-        (entries, observer) => {
-
-
-            entries.forEach(
-                entry => {
-
-
-                    if (
-                        !entry.isIntersecting
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    entry.target.classList.add(
-                        "is-visible"
-                    );
-
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                }
-            );
-
-        },
-
-
-        {
-
-            threshold: 0.12,
-
-            rootMargin:
-                "0px 0px -40px 0px"
-
-        }
-
+    element.classList.add(
+        "swipe-reset"
     );
 
+    element.style.transform =
+        "translate3d(0,0,0) scale(1)";
 
-revealElements.forEach(
-    element => {
+    element.style.opacity =
+        "1";
 
+    setTimeout(() => {
 
-        revealObserver.observe(
-            element
+        element.classList.remove(
+            "swipe-reset"
         );
 
+    }, 500);
+
+}
+
+
+categoryOverlay.addEventListener(
+    "touchstart",
+    event => beginSwipe(
+        categoryOverlay,
+        event
+    ),
+    { passive: true }
+);
+
+
+categoryOverlay.addEventListener(
+    "touchmove",
+    event => moveSwipe(
+        categoryOverlay,
+        event
+    ),
+    { passive: false }
+);
+
+
+categoryOverlay.addEventListener(
+    "touchend",
+    () => endSwipe(
+        categoryOverlay
+    )
+);
+
+
+projectDetail.addEventListener(
+    "touchstart",
+    event => beginSwipe(
+        projectDetail,
+        event
+    ),
+    { passive: true }
+);
+
+
+projectDetail.addEventListener(
+    "touchmove",
+    event => moveSwipe(
+        projectDetail,
+        event
+    ),
+    { passive: false }
+);
+
+
+projectDetail.addEventListener(
+    "touchend",
+    () => endSwipe(
+        projectDetail
+    )
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key !== "Escape"
+        ) {
+            return;
+        }
+
+
+        if (
+            projectDetail.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeProject();
+
+        } else if (
+            categoryOverlay.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeCategory();
+
+        }
+
     }
 );
 
 
 /* =========================================================
-   SCROLL INTERACTION SYSTEM
+   INITIAL STATE
 ========================================================= */
 
-const reducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+window.addEventListener(
+    "load",
+    () => {
 
-
-const scrollSignatureElements =
-    document.querySelectorAll(
-        ".scroll-signature"
-    );
-
-
-const scrollSignatureObjects =
-    document.querySelectorAll(
-        ".discipline-object"
-    );
-
-
-const scrollStates = [];
-
-
-scrollSignatureElements.forEach(
-    (element, index) => {
-
-
-        scrollStates.push({
-
-            element,
-
-            currentX: 0,
-            currentY: 0,
-            currentRotation: 0,
-            currentScale: 1,
-
-            targetX: 0,
-            targetY: 0,
-            targetRotation: 0,
-            targetScale: 1,
-
-            index
-
-        });
-
-    }
-);
-
-
-function easeInOut(value) {
-
-
-    return (
-
-        value < 0.5
-
-            ? 2 * value * value
-
-            : 1 -
-              Math.pow(
-                  -2 * value + 2,
-                  2
-              ) / 2
-
-    );
-
-}
-
-
-function lerp(
-    current,
-    target,
-    amount
-) {
-
-
-    return (
-
-        current +
-        (
-            target -
-            current
-        ) *
-        amount
-
-    );
-
-}
-
-
-function animateScrollSystem() {
-
-
-    if (
-        !reducedMotion
-    ) {
-
-
-        scrollStates.forEach(
-            state => {
-
-
-                const element =
-                    state.element;
-
+        document.querySelectorAll(
+            ".reveal"
+        ).forEach(
+            element => {
 
                 const rect =
                     element.getBoundingClientRect();
 
-
-                const viewportHeight =
-                    window.innerHeight;
-
-
-                const elementCenter =
-                    rect.top +
-                    rect.height / 2;
-
-
-                const distanceFromCenter =
-                    (
-                        elementCenter -
-                        viewportHeight / 2
-                    ) /
-                    (
-                        viewportHeight / 2
-                    );
-
-
-                const normalized =
-                    Math.max(
-                        -1,
-                        Math.min(
-                            1,
-                            distanceFromCenter
-                        )
-                    );
-
-
-                const progress =
-                    1 -
-                    (
-                        normalized + 1
-                    ) / 2;
-
-
-                const eased =
-                    easeInOut(
-                        progress
-                    );
-
-
-                const isMobile =
-                    window.innerWidth <= 800;
-
-
-                const isTablet =
-                    window.innerWidth > 800 &&
-                    window.innerWidth <= 1100;
-
-
-                let intensity = 1;
-
-
                 if (
-                    isMobile
+                    rect.top <
+                    window.innerHeight * .9
                 ) {
 
-                    intensity =
-                        0.52;
+                    element.classList.add(
+                        "is-visible"
+                    );
 
                 }
-                else if (
-                    isTablet
-                ) {
-
-                    intensity =
-                        0.72;
-
-                }
-
-
-                /* HERO */
-
-                if (
-                    element.classList.contains(
-                        "main-headline"
-                    )
-                ) {
-
-
-                    state.targetX =
-                        normalized *
-                        -18 *
-                        intensity;
-
-
-                    state.targetY =
-                        normalized *
-                        -8 *
-                        intensity;
-
-
-                    state.targetRotation =
-                        normalized *
-                        1.4 *
-                        intensity;
-
-
-                    state.targetScale =
-                        0.97 +
-                        (
-                            (
-                                1 -
-                                Math.abs(
-                                    normalized
-                                )
-                            ) *
-                            0.035
-                        );
-
-
-                }
-
-
-                /* DISCIPLINE */
-
-                else {
-
-
-                    state.targetX =
-                        normalized *
-                        28 *
-                        intensity;
-
-
-                    state.targetY =
-                        normalized *
-                        -10 *
-                        intensity;
-
-
-                    state.targetRotation =
-                        normalized *
-                        -2.2 *
-                        intensity;
-
-
-                    state.targetScale =
-                        0.94 +
-                        (
-                            (
-                                1 -
-                                Math.abs(
-                                    normalized
-                                )
-                            ) *
-                            0.06
-                        );
-
-                }
-
-
-                state.currentX =
-                    lerp(
-                        state.currentX,
-                        state.targetX,
-                        0.075
-                    );
-
-
-                state.currentY =
-                    lerp(
-                        state.currentY,
-                        state.targetY,
-                        0.075
-                    );
-
-
-                state.currentRotation =
-                    lerp(
-                        state.currentRotation,
-                        state.targetRotation,
-                        0.075
-                    );
-
-
-                state.currentScale =
-                    lerp(
-                        state.currentScale,
-                        state.targetScale,
-                        0.075
-                    );
-
-
-                element.style.transform =
-
-                    `
-                    translate3d(
-                        ${state.currentX}px,
-                        ${state.currentY}px,
-                        0
-                    )
-
-                    rotate(
-                        ${state.currentRotation}deg
-                    )
-
-                    scale(
-                        ${state.currentScale}
-                    )
-                    `;
-
-
-                const lines =
-                    element.querySelectorAll(
-                        ".scroll-line"
-                    );
-
-
-                lines.forEach(
-                    (line, lineIndex) => {
-
-
-                        const lineDirection =
-                            lineIndex === 0
-                                ? -1
-                                : 1;
-
-
-                        const lineOffset =
-                            normalized *
-                            10 *
-                            intensity *
-                            lineDirection;
-
-
-                        const lineRotation =
-                            normalized *
-                            0.8 *
-                            intensity *
-                            lineDirection;
-
-
-                        line.style.setProperty(
-                            "--scroll-x",
-                            `${lineOffset}px`
-                        );
-
-
-                        line.style.setProperty(
-                            "--scroll-rotation",
-                            `${lineRotation}deg`
-                        );
-
-
-                    }
-                );
-
 
             }
         );
 
-
-        scrollSignatureObjects.forEach(
-            object => {
-
-
-                const rect =
-                    object.getBoundingClientRect();
-
-
-                const viewportHeight =
-                    window.innerHeight;
-
-
-                const center =
-                    rect.top +
-                    rect.height / 2;
-
-
-                const normalized =
-                    Math.max(
-                        -1,
-                        Math.min(
-                            1,
-                            (
-                                center -
-                                viewportHeight / 2
-                            ) /
-                            (
-                                viewportHeight / 2
-                            )
-                        )
-                    );
-
-
-                const isMobile =
-                    window.innerWidth <= 800;
-
-
-                const intensity =
-                    isMobile
-                        ? 0.5
-                        : 1;
-
-
-                const x =
-                    normalized *
-                    -18 *
-                    intensity;
-
-
-                const y =
-                    normalized *
-                    14 *
-                    intensity;
-
-
-                const rotation =
-                    normalized *
-                    45 *
-                    intensity;
-
-
-                const scale =
-                    1 +
-                    (
-                        (
-                            1 -
-                            Math.abs(
-                                normalized
-                            )
-                        ) *
-                        0.22
-                    );
-
-
-                const current =
-                    parseFloat(
-                        object.dataset.scrollCurrent ||
-                        "0"
-                    );
-
-
-                const next =
-                    lerp(
-                        current,
-                        x,
-                        0.08
-                    );
-
-
-                object.dataset.scrollCurrent =
-                    next;
-
-
-                object.style.transform =
-
-                    `
-                    translate3d(
-                        ${next}px,
-                        ${y}px,
-                        0
-                    )
-
-                    rotate(
-                        ${rotation}deg
-                    )
-
-                    scale(
-                        ${scale}
-                    )
-                    `;
-
-
-            }
-        );
-
-
-    }
-
-
-    requestAnimationFrame(
-        animateScrollSystem
-    );
-
-}
-
-
-animateScrollSystem();
-
-
-/* =========================================================
-   SCROLL LINE BASE TRANSFORM
-========================================================= */
-
-document
-    .querySelectorAll(
-        ".scroll-signature .scroll-line"
-    )
-    .forEach(
-        line => {
-
-
-            line.style.transform =
-
-                "translate3d(var(--scroll-x, 0px), 0, 0) rotate(var(--scroll-rotation, 0deg))";
-
-        }
-    );
-
-
-/* =========================================================
-   PLAYFUL MOUSE INTERACTION
-========================================================= */
-
-const reactiveElements =
-    document.querySelectorAll(
-        ".mouse-reactive"
-    );
-
-
-const supportsMouse =
-    window.matchMedia(
-        "(hover: hover) and (pointer: fine)"
-    ).matches;
-
-
-if (
-    supportsMouse
-) {
-
-
-    reactiveElements.forEach(
-        element => {
-
-
-            const lines =
-                element.querySelectorAll(
-                    ".playful-line"
-                );
-
-
-            if (
-                element.classList.contains(
-                    "scroll-signature"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            let targetX = 0;
-            let targetY = 0;
-            let targetRotation = 0;
-
-
-            let currentX = 0;
-            let currentY = 0;
-            let currentRotation = 0;
-
-
-            const targetLineX =
-                new Array(
-                    lines.length
-                ).fill(0);
-
-
-            const targetLineY =
-                new Array(
-                    lines.length
-                ).fill(0);
-
-
-            const currentLineX =
-                new Array(
-                    lines.length
-                ).fill(0);
-
-
-            const currentLineY =
-                new Array(
-                    lines.length
-                ).fill(0);
-
-
-            function animate() {
-
-
-                currentX +=
-                    (
-                        targetX -
-                        currentX
-                    ) * 0.12;
-
-
-                currentY +=
-                    (
-                        targetY -
-                        currentY
-                    ) * 0.12;
-
-
-                currentRotation +=
-                    (
-                        targetRotation -
-                        currentRotation
-                    ) * 0.12;
-
-
-                lines.forEach(
-                    (line, index) => {
-
-
-                        currentLineX[index] +=
-                            (
-                                targetLineX[index] -
-                                currentLineX[index]
-                            ) * 0.15;
-
-
-                        currentLineY[index] +=
-                            (
-                                targetLineY[index] -
-                                currentLineY[index]
-                            ) * 0.15;
-
-
-                        const lineFactor =
-                            index === 0
-                                ? 1
-                                : 0.82;
-
-
-                        const rotation =
-                            currentRotation *
-                            (
-                                index === 0
-                                    ? 1
-                                    : -0.75
-                            );
-
-
-                        line.style.transform =
-
-                            `
-                            translate3d(
-                                ${
-                                    currentX *
-                                    lineFactor +
-                                    currentLineX[index]
-                                }px,
-
-                                ${
-                                    currentY *
-                                    lineFactor +
-                                    currentLineY[index]
-                                }px,
-
-                                0
-                            )
-
-                            rotate(
-                                ${rotation}deg
-                            )
-                            `;
-
-
-                    }
-                );
-
-
-                requestAnimationFrame(
-                    animate
-                );
-
-            }
-
-
-            animate();
-
-
-            element.addEventListener(
-                "pointermove",
-                event => {
-
-
-                    const rect =
-                        element.getBoundingClientRect();
-
-
-                    const x =
-                        event.clientX -
-                        (
-                            rect.left +
-                            rect.width / 2
-                        );
-
-
-                    const y =
-                        event.clientY -
-                        (
-                            rect.top +
-                            rect.height / 2
-                        );
-
-
-                    const normalizedX =
-                        Math.max(
-                            -1,
-                            Math.min(
-                                1,
-                                x /
-                                (
-                                    rect.width / 2
-                                )
-                            )
-                        );
-
-
-                    const normalizedY =
-                        Math.max(
-                            -1,
-                            Math.min(
-                                1,
-                                y /
-                                (
-                                    rect.height / 2
-                                )
-                            )
-                        );
-
-
-                    targetX =
-                        normalizedX * -14;
-
-
-                    targetY =
-                        normalizedY * -9;
-
-
-                    targetRotation =
-                        normalizedX * 3;
-
-
-                    lines.forEach(
-                        (line, index) => {
-
-
-                            const direction =
-                                index === 0
-                                    ? -1
-                                    : 1;
-
-
-                            targetLineX[index] =
-                                normalizedX *
-                                5 *
-                                direction;
-
-
-                            targetLineY[index] =
-                                normalizedY *
-                                7 *
-                                direction;
-
-
-                        }
-                    );
-
-
-                },
-                {
-                    passive: true
-                }
-            );
-
-
-            element.addEventListener(
-                "pointerleave",
-                () => {
-
-
-                    targetX = 0;
-
-                    targetY = 0;
-
-                    targetRotation = 0;
-
-
-                    lines.forEach(
-                        (line, index) => {
-
-                            targetLineX[index] =
-                                0;
-
-                            targetLineY[index] =
-                                0;
-
-                        }
-                    );
-
-
-                }
-            );
-
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   INTERACTIVE SWIPE BACK
-========================================================= */
-
-let touchStartX = 0;
-
-let touchStartY = 0;
-
-let touchTracking = false;
-
-let touchHorizontalIntent = false;
-
-
-const SWIPE_EDGE_ZONE = 70;
-
-const SWIPE_MIN_DISTANCE = 90;
-
-const SWIPE_MAX_VERTICAL = 100;
-
-const SWIPE_COMPLETE_DISTANCE = 180;
-
-
-const categoryOverlay =
-    document.getElementById(
-        "categoryOverlay"
-    );
-
-
-const overlayContent =
-    document.getElementById(
-        "overlayContent"
-    );
-
-
-/* ---------------------------------------------------------
-   TOUCH START
---------------------------------------------------------- */
-
-categoryOverlay.addEventListener(
-    "touchstart",
-    function(event) {
-
-
-        if (
-            !categoryOverlay.classList.contains(
-                "active"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        const touch =
-            event.touches[0];
-
-
-        if (
-            touch.clientX <=
-            SWIPE_EDGE_ZONE
-        ) {
-
-
-            touchStartX =
-                touch.clientX;
-
-
-            touchStartY =
-                touch.clientY;
-
-
-            touchTracking =
-                true;
-
-
-            touchHorizontalIntent =
-                false;
-
-
-            overlayContent.style.transition =
-                "none";
-
-
-        } else {
-
-
-            touchTracking =
-                false;
-
-
-            touchHorizontalIntent =
-                false;
-
-        }
-
-    },
-    {
-        passive: true
     }
 );
-
-
-/* ---------------------------------------------------------
-   TOUCH MOVE
---------------------------------------------------------- */
-
-categoryOverlay.addEventListener(
-    "touchmove",
-    function(event) {
-
-
-        if (
-            !touchTracking
-        ) {
-
-            return;
-
-        }
-
-
-        const touch =
-            event.touches[0];
-
-
-        const deltaX =
-            touch.clientX -
-            touchStartX;
-
-
-        const deltaY =
-            touch.clientY -
-            touchStartY;
-
-
-        if (
-            !touchHorizontalIntent
-        ) {
-
-
-            if (
-                Math.abs(deltaX) < 8 &&
-                Math.abs(deltaY) < 8
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                deltaX <= 0 ||
-                Math.abs(deltaY) >
-                Math.abs(deltaX) * 1.15
-            ) {
-
-
-                touchTracking =
-                    false;
-
-
-                overlayContent.style.transition =
-                    "";
-
-
-                return;
-
-            }
-
-
-            touchHorizontalIntent =
-                true;
-
-        }
-
-
-        if (
-            !touchHorizontalIntent ||
-            deltaX <= 0
-        ) {
-
-            return;
-
-        }
-
-
-        const currentSwipeX =
-            Math.min(
-                deltaX,
-                SWIPE_COMPLETE_DISTANCE
-            );
-
-
-        const progress =
-            Math.min(
-                currentSwipeX /
-                SWIPE_COMPLETE_DISTANCE,
-                1
-            );
-
-
-        const scale =
-            1 -
-            (
-                progress *
-                0.92
-            );
-
-
-        const translateX =
-            progress *
-            75;
-
-
-        const opacity =
-            1 -
-            (
-                progress *
-                0.9
-            );
-
-
-        overlayContent.style.transform =
-
-            `
-            translate3d(
-                ${translateX}px,
-                0,
-                0
-            )
-
-            scale(
-                ${scale}
-            )
-            `;
-
-
-        overlayContent.style.opacity =
-            opacity;
-
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* ---------------------------------------------------------
-   TOUCH END
---------------------------------------------------------- */
-
-categoryOverlay.addEventListener(
-    "touchend",
-    function(event) {
-
-
-        if (
-            !touchTracking
-        ) {
-
-            return;
-
-        }
-
-
-        const touch =
-            event.changedTouches[0];
-
-
-        const deltaX =
-            touch.clientX -
-            touchStartX;
-
-
-        const deltaY =
-            touch.clientY -
-            touchStartY;
-
-
-        touchTracking =
-            false;
-
-
-        const isRightSwipe =
-            deltaX >=
-            SWIPE_MIN_DISTANCE;
-
-
-        const isMostlyHorizontal =
-            Math.abs(deltaY) <=
-            SWIPE_MAX_VERTICAL;
-
-
-        if (
-            !isRightSwipe ||
-            !isMostlyHorizontal
-        ) {
-
-
-            overlayContent.style.transition =
-                "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
-
-
-            overlayContent.style.transform =
-                "translate3d(0, 0, 0) scale(1)";
-
-
-            overlayContent.style.opacity =
-                "1";
-
-
-            return;
-
-        }
-
-
-        const projectDetail =
-            document.getElementById(
-                "projectDetail"
-            );
-
-
-        const isProjectDetail =
-            projectDetail.classList.contains(
-                "active"
-            );
-
-
-        overlayContent.style.transition =
-            "transform 0.24s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.24s ease";
-
-
-        overlayContent.style.transform =
-            "translate3d(75px, 0, 0) scale(0.02)";
-
-
-        overlayContent.style.opacity =
-            "0";
-
-
-        setTimeout(
-            function() {
-
-
-                overlayContent.style.transition =
-                    "";
-
-
-                overlayContent.style.transform =
-                    "";
-
-
-                overlayContent.style.opacity =
-                    "";
-
-
-                if (
-                    isProjectDetail
-                ) {
-
-
-                    backToProjects();
-
-
-                } else {
-
-
-                    closeCategory();
-
-                }
-
-
-            },
-            250
-        );
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* ---------------------------------------------------------
-   TOUCH CANCEL
---------------------------------------------------------- */
-
-categoryOverlay.addEventListener(
-    "touchcancel",
-    function() {
-
-
-        touchTracking =
-            false;
-
-
-        touchHorizontalIntent =
-            false;
-
-
-        overlayContent.style.transition =
-            "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
-
-
-        overlayContent.style.transform =
-            "translate3d(0, 0, 0) scale(1)";
-
-
-        overlayContent.style.opacity =
-            "1";
-
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-if (
-    reducedMotion
-) {
-
-
-    reactiveElements.forEach(
-        element => {
-
-
-            element.style.transform =
-                "none";
-
-
-            element
-                .querySelectorAll(
-                    ".playful-line"
-                )
-                .forEach(
-                    line => {
-
-
-                        line.style.transform =
-                            "none";
-
-                    }
-                );
-
-
-        }
-    );
-
-
-    scrollSignatureElements.forEach(
-        element => {
-
-
-            element.style.transform =
-                "none";
-
-
-            element
-                .querySelectorAll(
-                    ".scroll-line"
-                )
-                .forEach(
-                    line => {
-
-
-                        line.style.transform =
-                            "none";
-
-                    }
-                );
-
-
-        }
-    );
-
-
-    scrollSignatureObjects.forEach(
-        object => {
-
-
-            object.style.transform =
-                "none";
-
-        }
-    );
-
-
-}
 
 </script>
-
 
 </body>
 </html>
