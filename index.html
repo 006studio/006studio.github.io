@@ -374,6 +374,11 @@ header {
 .discipline-intro {
     margin-top: 100px;
     position: relative;
+
+    /*
+     * Extra breathing room for scroll choreography.
+     */
+    min-height: 180px;
 }
 
 .discipline-intro h2 {
@@ -386,6 +391,12 @@ header {
 
     will-change: transform;
     transform-origin: center center;
+
+    /*
+     * Scroll interaction uses JS transforms.
+     */
+    position: relative;
+    z-index: 2;
 }
 
 .discipline-intro h2 span {
@@ -394,7 +405,7 @@ header {
 
 
 /* =========================================================
-   DISCIPLINE OBJECT
+   SCROLL INTERACTION OBJECT
 ========================================================= */
 
 .discipline-object {
@@ -404,7 +415,14 @@ header {
 
     width: 54px;
     height: 54px;
+
+    will-change: transform;
 }
+
+
+/* =========================================================
+   DISCIPLINE OBJECT
+========================================================= */
 
 .discipline-object-main {
     position: absolute;
@@ -465,6 +483,8 @@ header {
     justify-content: space-between;
 
     cursor: pointer;
+
+    will-change: transform;
 
     transition:
         transform 0.35s ease,
@@ -708,12 +728,6 @@ footer {
         opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-
-/*
- * Được thêm khi user đã swipe đủ xa.
- * Nội dung tiếp tục biến mất về phía phải.
- */
-
 .overlay-content.swipe-complete {
     transform:
         translate3d(75px, 0, 0)
@@ -726,12 +740,6 @@ footer {
         opacity 0.24s ease;
 }
 
-
-/*
- * Dùng khi gesture bị huỷ
- * và content cần quay lại vị trí ban đầu.
- */
-
 .overlay-content.swipe-reset {
     transform:
         translate3d(0, 0, 0)
@@ -743,7 +751,6 @@ footer {
         transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.28s ease;
 }
-
 
 .overlay-header {
     padding: 28px 32px;
@@ -990,6 +997,7 @@ footer {
 
     .discipline-intro {
         margin-top: 70px;
+        min-height: 145px;
     }
 
     .discipline-intro h2 {
@@ -1138,7 +1146,7 @@ footer {
 
         <div class="hero-copy">
 
-            <h1 class="reveal mouse-reactive main-headline">
+            <h1 class="reveal mouse-reactive main-headline scroll-signature">
 
                 <span class="playful-line vision-line">
                     FROM VISION
@@ -1350,11 +1358,15 @@ footer {
 
         <div class="discipline-intro">
 
-            <h2 class="reveal mouse-reactive">
+            <h2
+                class="reveal mouse-reactive scroll-signature"
+                data-scroll-strength="1">
 
-                FROM IDEA
+                <span class="scroll-line">
+                    FROM IDEA
+                </span>
 
-                <span>
+                <span class="scroll-line">
                     TO MOTION
                 </span>
 
@@ -1545,11 +1557,15 @@ footer {
 
         <div class="discipline-intro">
 
-            <h2 class="reveal mouse-reactive">
+            <h2
+                class="reveal mouse-reactive scroll-signature"
+                data-scroll-strength="1">
 
-                FROM DIGITAL
+                <span class="scroll-line">
+                    FROM DIGITAL
+                </span>
 
-                <span>
+                <span class="scroll-line">
                     TO OBJECT
                 </span>
 
@@ -1771,18 +1787,11 @@ footer {
 
 function setLanguage(language) {
 
-    const en =
-        document.getElementById("about-en");
+    const en = document.getElementById("about-en");
+    const vi = document.getElementById("about-vi");
 
-    const vi =
-        document.getElementById("about-vi");
-
-    const enButton =
-        document.getElementById("lang-en");
-
-    const viButton =
-        document.getElementById("lang-vi");
-
+    const enButton = document.getElementById("lang-en");
+    const viButton = document.getElementById("lang-vi");
 
     if (language === "en") {
 
@@ -1964,11 +1973,9 @@ const categories = {
 
 function openCategory(categoryId) {
 
-    const category =
-        categories[categoryId];
+    const category = categories[categoryId];
 
     if (!category) return;
-
 
     const overlay =
         document.getElementById("categoryOverlay");
@@ -1991,7 +1998,6 @@ function openCategory(categoryId) {
     const projectDetail =
         document.getElementById("projectDetail");
 
-
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
@@ -2002,16 +2008,13 @@ function openCategory(categoryId) {
 
     overlayContent.style.opacity = "1";
 
-
     title.textContent =
         category.title;
 
     description.textContent =
         category.description;
 
-
     projectGrid.innerHTML = "";
-
 
     category.projects.forEach(
         (project, index) => {
@@ -2021,7 +2024,6 @@ function openCategory(categoryId) {
 
             card.className =
                 "project-card";
-
 
             card.innerHTML = `
                 <span>
@@ -2034,7 +2036,6 @@ function openCategory(categoryId) {
                 </h3>
             `;
 
-
             card.addEventListener(
                 "click",
                 () => {
@@ -2042,12 +2043,10 @@ function openCategory(categoryId) {
                 }
             );
 
-
             projectGrid.appendChild(card);
 
         }
     );
-
 
     categoryMain.style.display =
         "block";
@@ -2056,12 +2055,10 @@ function openCategory(categoryId) {
         "active"
     );
 
-
     overlay.classList.add("active");
 
     document.body.style.overflow =
         "hidden";
-
 }
 
 
@@ -2081,7 +2078,6 @@ function closeCategory() {
             "overlayContent"
         );
 
-
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
@@ -2093,15 +2089,12 @@ function closeCategory() {
     overlayContent.style.opacity =
         "";
 
-
     overlay.classList.remove(
         "active"
     );
 
-
     document.body.style.overflow =
         "";
-
 
     setTimeout(() => {
 
@@ -2109,7 +2102,6 @@ function closeCategory() {
             "categoryMain"
         ).style.display =
             "block";
-
 
         document.getElementById(
             "projectDetail"
@@ -2143,7 +2135,6 @@ function openProject(project) {
             "overlayContent"
         );
 
-
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
@@ -2155,24 +2146,20 @@ function openProject(project) {
     overlayContent.style.opacity =
         "1";
 
-
     document.getElementById(
         "projectTitle"
     ).textContent =
         project.title;
-
 
     document.getElementById(
         "projectType"
     ).textContent =
         project.type;
 
-
     document.getElementById(
         "projectDescription"
     ).textContent =
         "Project description and visual content will be added here.";
-
 
     categoryMain.style.display =
         "none";
@@ -2195,7 +2182,6 @@ function backToProjects() {
             "overlayContent"
         );
 
-
     overlayContent.classList.remove(
         "swipe-complete",
         "swipe-reset"
@@ -2207,12 +2193,10 @@ function backToProjects() {
     overlayContent.style.opacity =
         "1";
 
-
     document.getElementById(
         "categoryMain"
     ).style.display =
         "block";
-
 
     document.getElementById(
         "projectDetail"
@@ -2232,9 +2216,7 @@ document.addEventListener(
     function(event) {
 
         if (event.key === "Escape") {
-
             closeCategory();
-
         }
 
     }
@@ -2250,7 +2232,6 @@ const revealElements =
         ".reveal"
     );
 
-
 const revealObserver =
     new IntersectionObserver(
 
@@ -2262,11 +2243,9 @@ const revealObserver =
                     return;
                 }
 
-
                 entry.target.classList.add(
                     "is-visible"
                 );
-
 
                 observer.unobserve(
                     entry.target
@@ -2297,6 +2276,656 @@ revealElements.forEach(
 
 
 /* =========================================================
+   SCROLL INTERACTION SYSTEM
+   006.STUDIO / DAY 2
+=========================================================
+
+   Main signature:
+
+   FROM VISION
+   TO VISUAL
+
+   FROM IDEA
+   TO MOTION
+
+   FROM DIGITAL
+   TO OBJECT
+
+   The movement is based on the element's position
+   inside the viewport.
+
+   Important:
+   We do NOT directly bind transform to scrollY.
+
+   Instead:
+
+   scroll position
+        ↓
+   target values
+        ↓
+   smooth interpolation
+        ↓
+   visual movement
+
+   This creates inertia and avoids a "stuck to scroll"
+   feeling.
+========================================================= */
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+const scrollSignatureElements =
+    document.querySelectorAll(
+        ".scroll-signature"
+    );
+
+
+const scrollSignatureObjects =
+    document.querySelectorAll(
+        ".discipline-object"
+    );
+
+
+/*
+ * Current smooth values.
+ */
+
+const scrollStates = [];
+
+
+scrollSignatureElements.forEach(
+    (element, index) => {
+
+        scrollStates.push({
+
+            element,
+
+            currentX: 0,
+            currentY: 0,
+            currentRotation: 0,
+            currentScale: 1,
+
+            targetX: 0,
+            targetY: 0,
+            targetRotation: 0,
+            targetScale: 1,
+
+            index
+
+        });
+
+    }
+);
+
+
+/*
+ * Normalize viewport position.
+
+   0 = element center near bottom
+   0.5 = element center at viewport center
+   1 = element center near top
+ */
+
+function getScrollProgress(element) {
+
+    const rect =
+        element.getBoundingClientRect();
+
+    const viewportHeight =
+        window.innerHeight;
+
+    const elementCenter =
+        rect.top +
+        rect.height / 2;
+
+    const raw =
+        1 -
+        (
+            elementCenter /
+            viewportHeight
+        );
+
+    return Math.max(
+        0,
+        Math.min(
+            1,
+            raw
+        )
+    );
+
+}
+
+
+/*
+ * Ease value.
+
+   Gives the movement a softer,
+   more organic feeling.
+ */
+
+function easeInOut(value) {
+
+    return (
+        value < 0.5
+            ? 2 * value * value
+            : 1 -
+              Math.pow(
+                  -2 * value + 2,
+                  2
+              ) / 2
+    );
+
+}
+
+
+/*
+ * Smooth lerp.
+
+   The lower the amount,
+   the softer/slower the movement.
+ */
+
+function lerp(
+    current,
+    target,
+    amount
+) {
+
+    return (
+        current +
+        (
+            target -
+            current
+        ) *
+        amount
+    );
+
+}
+
+
+/*
+ * Main scroll animation loop.
+ */
+
+function animateScrollSystem() {
+
+    if (
+        !reducedMotion
+    ) {
+
+        scrollStates.forEach(
+            state => {
+
+                const element =
+                    state.element;
+
+                const rect =
+                    element.getBoundingClientRect();
+
+                const viewportHeight =
+                    window.innerHeight;
+
+
+                /*
+                 * Distance of the element center
+                 * from the viewport center.
+                 */
+
+                const elementCenter =
+                    rect.top +
+                    rect.height / 2;
+
+                const distanceFromCenter =
+                    (
+                        elementCenter -
+                        viewportHeight / 2
+                    ) /
+                    (
+                        viewportHeight / 2
+                    );
+
+
+                /*
+                 * Clamp:
+                 *
+                 * -1 = above center
+                 *  0 = center
+                 * +1 = below center
+                 */
+
+                const normalized =
+                    Math.max(
+                        -1,
+                        Math.min(
+                            1,
+                            distanceFromCenter
+                        )
+                    );
+
+
+                /*
+                 * Convert to scroll progress.
+
+                 * 0 = bottom area
+                 * 1 = top area
+                 */
+
+                const progress =
+                    1 -
+                    (
+                        normalized + 1
+                    ) / 2;
+
+
+                /*
+                 * Smooth curve.
+                 */
+
+                const eased =
+                    easeInOut(
+                        progress
+                    );
+
+
+                /*
+                 * Responsive intensity.
+
+                 * Desktop:
+                 * stronger movement.
+
+                 * Mobile:
+                 * softer movement.
+                 */
+
+                const isMobile =
+                    window.innerWidth <= 800;
+
+                const isTablet =
+                    window.innerWidth > 800 &&
+                    window.innerWidth <= 1100;
+
+
+                let intensity = 1;
+
+                if (isMobile) {
+                    intensity = 0.52;
+                } else if (isTablet) {
+                    intensity = 0.72;
+                }
+
+
+                /*
+                 * Different lines move
+                 * in opposite directions.
+                 */
+
+                const lines =
+                    element.querySelectorAll(
+                        ".scroll-line, .playful-line"
+                    );
+
+
+                /*
+                 * HERO
+
+                   FROM VISION / TO VISUAL
+                 */
+
+                if (
+                    element.classList.contains(
+                        "main-headline"
+                    )
+                ) {
+
+                    const movement =
+                        (
+                            normalized *
+                            -18 *
+                            intensity
+                        );
+
+                    state.targetX =
+                        movement;
+
+                    state.targetY =
+                        normalized *
+                        -8 *
+                        intensity;
+
+                    state.targetRotation =
+                        normalized *
+                        1.4 *
+                        intensity;
+
+                    state.targetScale =
+                        0.97 +
+                        (
+                            (
+                                1 -
+                                Math.abs(
+                                    normalized
+                                )
+                            ) *
+                            0.035
+                        );
+
+                }
+
+
+                /*
+                 * DISCIPLINE HEADLINES
+
+                   FROM IDEA / TO MOTION
+                   FROM DIGITAL / TO OBJECT
+                 */
+
+                else {
+
+                    const movement =
+                        normalized *
+                        28 *
+                        intensity;
+
+                    state.targetX =
+                        movement;
+
+                    state.targetY =
+                        normalized *
+                        -10 *
+                        intensity;
+
+                    state.targetRotation =
+                        normalized *
+                        -2.2 *
+                        intensity;
+
+                    state.targetScale =
+                        0.94 +
+                        (
+                            (
+                                1 -
+                                Math.abs(
+                                    normalized
+                                )
+                            ) *
+                            0.06
+                        );
+
+                }
+
+
+                /*
+                 * Smooth interpolation.
+
+                   This is what makes the movement
+                   feel like inertia rather than
+                   a rigid scroll animation.
+                 */
+
+                state.currentX =
+                    lerp(
+                        state.currentX,
+                        state.targetX,
+                        0.075
+                    );
+
+                state.currentY =
+                    lerp(
+                        state.currentY,
+                        state.targetY,
+                        0.075
+                    );
+
+                state.currentRotation =
+                    lerp(
+                        state.currentRotation,
+                        state.targetRotation,
+                        0.075
+                    );
+
+                state.currentScale =
+                    lerp(
+                        state.currentScale,
+                        state.targetScale,
+                        0.075
+                    );
+
+
+                /*
+                 * Apply transform to the whole
+                 * signature block.
+                 */
+
+                element.style.transform =
+                    `
+                    translate3d(
+                        ${state.currentX}px,
+                        ${state.currentY}px,
+                        0
+                    )
+                    rotate(
+                        ${state.currentRotation}deg
+                    )
+                    scale(
+                        ${state.currentScale}
+                    )
+                    `;
+
+
+                /*
+                 * Additional independent movement
+                 * for each line.
+
+                   First line → left
+                   Second line → right
+
+                   This gives the "FROM → TO"
+                   relationship more life.
+                 */
+
+                lines.forEach(
+                    (line, lineIndex) => {
+
+                        /*
+                         * Do not interfere too much
+                         * with existing mouse interaction.
+                         *
+                         * Scroll movement here is
+                         * deliberately subtle.
+                         */
+
+                        const lineDirection =
+                            lineIndex === 0
+                                ? -1
+                                : 1;
+
+                        const lineOffset =
+                            normalized *
+                            10 *
+                            intensity *
+                            lineDirection;
+
+
+                        const lineRotation =
+                            normalized *
+                            0.8 *
+                            intensity *
+                            lineDirection;
+
+
+                        line.style.setProperty(
+                            "--scroll-x",
+                            `${lineOffset}px`
+                        );
+
+                        line.style.setProperty(
+                            "--scroll-rotation",
+                            `${lineRotation}deg`
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+         * Discipline objects follow the same
+         * scroll choreography.
+
+         * They move slightly slower and rotate
+         * more subtly than the typography.
+         */
+
+        scrollSignatureObjects.forEach(
+            object => {
+
+                const rect =
+                    object.getBoundingClientRect();
+
+                const viewportHeight =
+                    window.innerHeight;
+
+                const center =
+                    rect.top +
+                    rect.height / 2;
+
+                const normalized =
+                    Math.max(
+                        -1,
+                        Math.min(
+                            1,
+                            (
+                                center -
+                                viewportHeight / 2
+                            ) /
+                            (
+                                viewportHeight / 2
+                            )
+                        )
+                    );
+
+                const isMobile =
+                    window.innerWidth <= 800;
+
+                const intensity =
+                    isMobile
+                        ? 0.5
+                        : 1;
+
+
+                const x =
+                    normalized *
+                    -18 *
+                    intensity;
+
+                const y =
+                    normalized *
+                    14 *
+                    intensity;
+
+                const rotation =
+                    normalized *
+                    45 *
+                    intensity;
+
+                const scale =
+                    1 +
+                    (
+                        (
+                            1 -
+                            Math.abs(
+                                normalized
+                            )
+                        ) *
+                        0.22
+                    );
+
+
+                /*
+                 * Store current transform directly
+                 * on the object using its own
+                 * smooth CSS transition feel.
+                 */
+
+                const current =
+                    parseFloat(
+                        object.dataset.scrollCurrent ||
+                        "0"
+                    );
+
+                const next =
+                    lerp(
+                        current,
+                        x,
+                        0.08
+                    );
+
+                object.dataset.scrollCurrent =
+                    next;
+
+
+                object.style.transform =
+                    `
+                    translate3d(
+                        ${next}px,
+                        ${y}px,
+                        0
+                    )
+                    rotate(
+                        ${rotation}deg
+                    )
+                    scale(
+                        ${scale}
+                    )
+                    `;
+
+            }
+        );
+
+    }
+
+
+    requestAnimationFrame(
+        animateScrollSystem
+    );
+
+}
+
+
+/*
+ * Start the system.
+ */
+
+animateScrollSystem();
+
+
+/*
+ * Add CSS variables to the signature lines.
+
+ * This layer sits below the main block transform
+ * and creates the subtle "FROM / TO" separation.
+ */
+
+document
+    .querySelectorAll(
+        ".scroll-signature .scroll-line"
+    )
+    .forEach(
+        line => {
+
+            line.style.transform =
+                "translate3d(var(--scroll-x, 0px), 0, 0) rotate(var(--scroll-rotation, 0deg))";
+
+        }
+    );
+
+
+/* =========================================================
    PLAYFUL MOUSE INTERACTION
 ========================================================= */
 
@@ -2304,7 +2933,6 @@ const reactiveElements =
     document.querySelectorAll(
         ".mouse-reactive"
     );
-
 
 const supportsMouse =
     window.matchMedia(
@@ -2323,18 +2951,32 @@ if (supportsMouse) {
                 );
 
 
-            let mouseInside = false;
+            /*
+             * Scroll-signature elements use their own
+             * scroll-line system.
 
+             * The mouse interaction still works on
+             * the main hero and identity.
+             */
+
+            if (
+                element.classList.contains(
+                    "scroll-signature"
+                )
+            ) {
+                return;
+            }
+
+
+            let mouseInside = false;
 
             let targetX = 0;
             let targetY = 0;
             let targetRotation = 0;
 
-
             let currentX = 0;
             let currentY = 0;
             let currentRotation = 0;
-
 
             const targetLineX =
                 new Array(lines.length)
@@ -2361,13 +3003,11 @@ if (supportsMouse) {
                         currentX
                     ) * 0.12;
 
-
                 currentY +=
                     (
                         targetY -
                         currentY
                     ) * 0.12;
-
 
                 currentRotation +=
                     (
@@ -2384,7 +3024,6 @@ if (supportsMouse) {
                                 targetLineX[index] -
                                 currentLineX[index]
                             ) * 0.15;
-
 
                         currentLineY[index] +=
                             (
@@ -2513,10 +3152,8 @@ if (supportsMouse) {
                     targetX =
                         normalizedX * -14;
 
-
                     targetY =
                         normalizedY * -9;
-
 
                     targetRotation =
                         normalizedX * 3;
@@ -2557,7 +3194,6 @@ if (supportsMouse) {
                 () => {
 
                     mouseInside = false;
-
 
                     targetX = 0;
                     targetY = 0;
@@ -2612,9 +3248,7 @@ const overlayContent =
 
 
 /*
- * Khi bắt đầu touch:
- * chỉ kích hoạt nếu ngón tay bắt đầu
- * trong vùng 70px bên trái màn hình.
+ * Touch start.
  */
 
 categoryOverlay.addEventListener(
@@ -2675,8 +3309,7 @@ categoryOverlay.addEventListener(
 
 
 /*
- * Trong lúc kéo:
- * content thực sự follow ngón tay.
+ * Touch move.
  */
 
 categoryOverlay.addEventListener(
@@ -2702,11 +3335,6 @@ categoryOverlay.addEventListener(
             touchStartY;
 
 
-        /*
-         * Chỉ bắt gesture khi người dùng
-         * đang kéo sang phải rõ ràng.
-         */
-
         if (
             !touchHorizontalIntent
         ) {
@@ -2721,7 +3349,8 @@ categoryOverlay.addEventListener(
 
             if (
                 deltaX <= 0 ||
-                Math.abs(deltaY) > Math.abs(deltaX) * 1.15
+                Math.abs(deltaY) >
+                Math.abs(deltaX) * 1.15
             ) {
 
                 touchTracking = false;
@@ -2747,20 +3376,12 @@ categoryOverlay.addEventListener(
         }
 
 
-        /*
-         * Giới hạn khoảng kéo.
-         */
-
         currentSwipeX =
             Math.min(
                 deltaX,
                 SWIPE_COMPLETE_DISTANCE
             );
 
-
-        /*
-         * Progress 0 → 1.
-         */
 
         const progress =
             Math.min(
@@ -2770,10 +3391,6 @@ categoryOverlay.addEventListener(
             );
 
 
-        /*
-         * Scale giảm dần theo khoảng kéo.
-         */
-
         const scale =
             1 -
             (
@@ -2782,20 +3399,10 @@ categoryOverlay.addEventListener(
             );
 
 
-        /*
-         * Content trượt sang phải
-         * nhưng ít hơn khoảng kéo của tay,
-         * tạo cảm giác "co về góc".
-         */
-
         const translateX =
             progress *
             75;
 
-
-        /*
-         * Fade nhẹ khi thu nhỏ.
-         */
 
         const opacity =
             1 -
@@ -2829,9 +3436,7 @@ categoryOverlay.addEventListener(
 
 
 /*
- * Khi thả tay:
- * - đủ xa → complete
- * - chưa đủ → spring back
+ * Touch end.
  */
 
 categoryOverlay.addEventListener(
@@ -2870,11 +3475,6 @@ categoryOverlay.addEventListener(
             SWIPE_MAX_VERTICAL;
 
 
-        /*
-         * Nếu không phải gesture hợp lệ:
-         * reset nhẹ nhàng.
-         */
-
         if (
             !isRightSwipe ||
             !isMostlyHorizontal
@@ -2894,10 +3494,6 @@ categoryOverlay.addEventListener(
         }
 
 
-        /*
-         * Xác định đang ở level nào.
-         */
-
         const projectDetail =
             document.getElementById(
                 "projectDetail"
@@ -2909,10 +3505,6 @@ categoryOverlay.addEventListener(
                 "active"
             );
 
-
-        /*
-         * Hoàn tất animation.
-         */
 
         overlayContent.style.transition =
             "transform 0.24s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.24s ease";
@@ -2940,25 +3532,9 @@ categoryOverlay.addEventListener(
 
                 if (isProjectDetail) {
 
-                    /*
-                     * DETAIL
-                     * ↓
-                     * SWIPE OUT
-                     * ↓
-                     * PROJECT LIST
-                     */
-
                     backToProjects();
 
                 } else {
-
-                    /*
-                     * PROJECT LIST
-                     * ↓
-                     * SWIPE OUT
-                     * ↓
-                     * MAIN WEBSITE
-                     */
 
                     closeCategory();
 
@@ -2976,8 +3552,7 @@ categoryOverlay.addEventListener(
 
 
 /*
- * Nếu touch bị cancel:
- * đưa content về trạng thái bình thường.
+ * Touch cancel.
  */
 
 categoryOverlay.addEventListener(
@@ -3009,9 +3584,7 @@ categoryOverlay.addEventListener(
 ========================================================= */
 
 if (
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
+    reducedMotion
 ) {
 
     reactiveElements.forEach(
@@ -3019,7 +3592,6 @@ if (
 
             element.style.transform =
                 "none";
-
 
             element
                 .querySelectorAll(
@@ -3031,6 +3603,37 @@ if (
                         "none";
 
                 });
+
+        }
+    );
+
+
+    scrollSignatureElements.forEach(
+        element => {
+
+            element.style.transform =
+                "none";
+
+            element
+                .querySelectorAll(
+                    ".scroll-line"
+                )
+                .forEach(line => {
+
+                    line.style.transform =
+                        "none";
+
+                });
+
+        }
+    );
+
+
+    scrollSignatureObjects.forEach(
+        object => {
+
+            object.style.transform =
+                "none";
 
         }
     );
