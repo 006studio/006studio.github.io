@@ -18,7 +18,7 @@
 
 <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
 >
 
@@ -853,6 +853,12 @@ header {
 }
 
 
+/* ---------------------------------------------------------
+   MOTION TYPOGRAPHY
+   FROM IDEA = TEAL
+   TO MOTION = BEIGE
+--------------------------------------------------------- */
+
 #motion .discipline-intro h2 {
 
     color: var(--teal);
@@ -860,7 +866,14 @@ header {
 }
 
 
-#motion .discipline-intro h2 span {
+#motion .discipline-intro h2 span:first-child {
+
+    color: var(--teal);
+
+}
+
+
+#motion .discipline-intro h2 span:last-child {
 
     color: var(--beige);
 
@@ -930,6 +943,12 @@ header {
 }
 
 
+/* ---------------------------------------------------------
+   LAB TYPOGRAPHY
+   FROM DIGITAL = ORANGE
+   TO OBJECT = BLACK
+--------------------------------------------------------- */
+
 #lab .discipline-intro h2 {
 
     color: var(--orange);
@@ -937,7 +956,14 @@ header {
 }
 
 
-#lab .discipline-intro h2 span {
+#lab .discipline-intro h2 span:first-child {
+
+    color: var(--orange);
+
+}
+
+
+#lab .discipline-intro h2 span:last-child {
 
     color: var(--black);
 
@@ -4753,11 +4779,6 @@ function openProject(project) {
     );
 
 
-    /*
-     * Always start project detail
-     * from the top.
-     */
-
     document.getElementById(
         "categoryOverlay"
     ).scrollTop = 0;
@@ -5214,9 +5235,7 @@ function animateScrollSystem() {
                 }
 
 
-                /*
-                 * HERO
-                 */
+                /* HERO */
 
                 if (
                     element.classList.contains(
@@ -5259,9 +5278,7 @@ function animateScrollSystem() {
                 }
 
 
-                /*
-                 * DISCIPLINE
-                 */
+                /* DISCIPLINE */
 
                 else {
 
