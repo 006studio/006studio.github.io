@@ -259,6 +259,90 @@ section {
 
 
 /* =========================================================
+   ABOUT
+   Moved directly after SHOWREEL
+========================================================= */
+
+.about {
+    padding: 110px 0 120px;
+    background: var(--beige);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .65fr 1.35fr;
+    gap: 60px;
+}
+
+.about-kicker {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.about-content {
+    max-width: 850px;
+}
+
+.language-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.lang-btn {
+    min-width: 48px;
+    height: 36px;
+    border: 1px solid var(--black);
+    background: transparent;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.lang-btn.active {
+    background: var(--black);
+    color: var(--beige);
+}
+
+/*
+   About typography reduced by roughly 50%
+   from the previous clamp(22px, 3vw, 42px).
+*/
+.about-copy {
+    font-size: clamp(16px, 1.5vw, 21px);
+    line-height: 1.42;
+    letter-spacing: -.35px;
+}
+
+.about-copy p {
+    margin: 0 0 24px;
+}
+
+.about-identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 55px;
+}
+
+.identity-card {
+    padding: 26px;
+    background: var(--gray);
+}
+
+.identity-card h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+}
+
+.identity-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
    DISCIPLINE
 ========================================================= */
 
@@ -347,68 +431,6 @@ section {
 
 
 /* =========================================================
-   DISCIPLINE OBJECT
-========================================================= */
-
-.discipline-object-wrap {
-    min-height: 380px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 110px 0 120px;
-}
-
-.discipline-object {
-    width: clamp(180px, 25vw, 360px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    position: relative;
-    will-change: transform;
-}
-
-#motion .discipline-object {
-    background: var(--teal);
-}
-
-#lab .discipline-object {
-    background: var(--orange);
-}
-
-.discipline-object::before {
-    content: "";
-    width: 42%;
-    aspect-ratio: 1;
-    background: var(--black);
-    border-radius: 50%;
-    position: absolute;
-    left: 29%;
-    top: 29%;
-}
-
-#lab .discipline-object::before {
-    background: var(--black);
-}
-
-.discipline-object::after {
-    content: "";
-    width: 16%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    position: absolute;
-    right: 10%;
-    top: 12%;
-}
-
-#motion .discipline-object::after {
-    background: var(--orange);
-}
-
-#lab .discipline-object::after {
-    background: var(--teal);
-}
-
-
-/* =========================================================
    CATEGORY GRID
 ========================================================= */
 
@@ -472,85 +494,6 @@ section {
 
 .category-card:hover .category-arrow {
     transform: translate(5px, -5px);
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about {
-    padding: 160px 0;
-    background: var(--beige);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: .65fr 1.35fr;
-    gap: 60px;
-}
-
-.about-kicker {
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.about-content {
-    max-width: 850px;
-}
-
-.language-switch {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 36px;
-}
-
-.lang-btn {
-    min-width: 48px;
-    height: 36px;
-    border: 1px solid var(--black);
-    background: transparent;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.lang-btn.active {
-    background: var(--black);
-    color: var(--beige);
-}
-
-.about-copy {
-    font-size: clamp(22px, 3vw, 42px);
-    line-height: 1.16;
-    letter-spacing: -1.5px;
-}
-
-.about-copy p {
-    margin: 0 0 38px;
-}
-
-.about-identity-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 80px;
-}
-
-.identity-card {
-    padding: 30px;
-    background: var(--gray);
-}
-
-.identity-card h3 {
-    margin: 0 0 20px;
-    font-size: 22px;
-}
-
-.identity-card p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
 }
 
 
@@ -639,9 +582,6 @@ footer {
     width: calc(100% - 64px);
     max-width: 1500px;
     margin: 0 auto;
-
-    /* Increased top breathing room so the large category
-       title never sits underneath the sticky header. */
     padding: 120px 0 120px;
 }
 
@@ -1051,6 +991,11 @@ footer {
         margin-top: 80px;
     }
 
+    .about-copy {
+        font-size: 18px;
+        line-height: 1.45;
+    }
+
 }
 
 
@@ -1107,13 +1052,46 @@ footer {
         padding-bottom: 70px;
     }
 
+
+    /* ABOUT */
+
+    .about {
+        padding: 80px 0 90px;
+    }
+
+    .about-grid,
+    .project-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-copy {
+        font-size: 16px;
+        line-height: 1.45;
+        letter-spacing: -.2px;
+    }
+
+    .about-copy p {
+        margin-bottom: 22px;
+    }
+
+    .about-identity-grid {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+    }
+
+    .identity-card {
+        padding: 22px;
+    }
+
+
+    /* DISCIPLINES */
+
     .discipline {
         padding: 100px 0;
     }
 
-    .discipline-intro,
-    .about-grid,
-    .project-section {
+    .discipline-intro {
         grid-template-columns: 1fr;
         gap: 35px;
     }
@@ -1126,11 +1104,6 @@ footer {
     .discipline-description {
         margin-top: 25px;
         font-size: 20px;
-    }
-
-    .discipline-object-wrap {
-        min-height: 260px;
-        margin: 70px 0 80px;
     }
 
     .category-grid {
@@ -1148,18 +1121,8 @@ footer {
         bottom: 22px;
     }
 
-    .about {
-        padding: 100px 0;
-    }
 
-    .about-copy {
-        font-size: 24px;
-    }
-
-    .about-identity-grid {
-        grid-template-columns: 1fr;
-        margin-top: 55px;
-    }
+    /* FOOTER */
 
     footer {
         padding: 50px 20px 30px;
@@ -1173,6 +1136,9 @@ footer {
     .footer-info {
         text-align: left;
     }
+
+
+    /* OVERLAY */
 
     .overlay-header,
     .project-detail-header {
@@ -1209,6 +1175,9 @@ footer {
     .project-year {
         margin-top: 10px;
     }
+
+
+    /* PROJECT DETAIL */
 
     .project-detail-subtitle {
         font-size: 24px;
@@ -1255,6 +1224,7 @@ footer {
     .project-back {
         margin-top: 90px;
     }
+
 }
 
 
@@ -1366,240 +1336,8 @@ footer {
 
 
     <!-- =====================================================
-         2D / 3D MOTION
-    ====================================================== -->
-
-    <section class="discipline" id="motion">
-
-        <div class="discipline-inner">
-
-            <div class="discipline-intro">
-
-                <div class="discipline-kicker">
-                    01 / DISCIPLINE
-                </div>
-
-                <div>
-
-                    <h2 class="scroll-signature">
-                        <span>FROM IDEA</span>
-                        <br>
-                        <span>TO MOTION</span>
-                    </h2>
-
-                    <div class="discipline-description">
-                        2D & 3D Motion Design — turning ideas,
-                        stories and visual systems into movement.
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="discipline-object-wrap">
-
-                <div class="discipline-object scroll-object"></div>
-
-            </div>
-
-
-            <div class="category-grid">
-
-                <button
-                    class="category-card reveal"
-                    data-category="visual-led">
-
-                    <span class="category-number">01</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        VISUAL LED
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="frame-animation">
-
-                    <span class="category-number">02</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        FRAME BY FRAME<br>
-                        ANIMATION
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="infographic">
-
-                    <span class="category-number">03</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        INFOGRAPHIC &<br>
-                        BRAND FILM
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="cgi">
-
-                    <span class="category-number">04</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        CGI
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="sculpting">
-
-                    <span class="category-number">05</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        SCULPTING
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="ai-video">
-
-                    <span class="category-number">06</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        AI VIDEO<br>
-                        SOLUTION
-                    </span>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         3D LAB
-    ====================================================== -->
-
-    <section class="discipline" id="lab">
-
-        <div class="discipline-inner">
-
-            <div class="discipline-intro">
-
-                <div class="discipline-kicker">
-                    02 / DISCIPLINE
-                </div>
-
-                <div>
-
-                    <h2 class="scroll-signature">
-                        <span>FROM DIGITAL</span>
-                        <br>
-                        <span>TO OBJECT</span>
-                    </h2>
-
-                    <div class="discipline-description">
-                        3D Printing & Object Design — bringing
-                        digital ideas into physical form.
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="discipline-object-wrap">
-
-                <div class="discipline-object scroll-object"></div>
-
-            </div>
-
-
-            <div class="category-grid">
-
-                <button
-                    class="category-card reveal"
-                    data-category="brand-merchandise">
-
-                    <span class="category-number">01</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        BRAND<br>
-                        MERCHANDISE
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="mascot">
-
-                    <span class="category-number">02</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        MASCOT
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="category-card reveal"
-                    data-category="small-decor">
-
-                    <span class="category-number">03</span>
-
-                    <span class="category-arrow">↗</span>
-
-                    <span class="category-name">
-                        SMALL DECOR
-                    </span>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
          ABOUT
+         Moved directly after SHOWREEL
     ====================================================== -->
 
     <section class="about" id="about">
@@ -1750,6 +1488,225 @@ footer {
 
     </section>
 
+
+    <!-- =====================================================
+         2D / 3D MOTION
+    ====================================================== -->
+
+    <section class="discipline" id="motion">
+
+        <div class="discipline-inner">
+
+            <div class="discipline-intro">
+
+                <div class="discipline-kicker">
+                    01 / DISCIPLINE
+                </div>
+
+                <div>
+
+                    <h2 class="scroll-signature">
+                        <span>FROM IDEA</span>
+                        <br>
+                        <span>TO MOTION</span>
+                    </h2>
+
+                    <div class="discipline-description">
+                        2D & 3D Motion Design — turning ideas,
+                        stories and visual systems into movement.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <button
+                    class="category-card reveal"
+                    data-category="visual-led">
+
+                    <span class="category-number">01</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        VISUAL LED
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="frame-animation">
+
+                    <span class="category-number">02</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        FRAME BY FRAME<br>
+                        ANIMATION
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="infographic">
+
+                    <span class="category-number">03</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        INFOGRAPHIC &<br>
+                        BRAND FILM
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="cgi">
+
+                    <span class="category-number">04</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        CGI
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="sculpting">
+
+                    <span class="category-number">05</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        SCULPTING
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="ai-video">
+
+                    <span class="category-number">06</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        AI VIDEO<br>
+                        SOLUTION
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         3D LAB
+    ====================================================== -->
+
+    <section class="discipline" id="lab">
+
+        <div class="discipline-inner">
+
+            <div class="discipline-intro">
+
+                <div class="discipline-kicker">
+                    02 / DISCIPLINE
+                </div>
+
+                <div>
+
+                    <h2 class="scroll-signature">
+                        <span>FROM DIGITAL</span>
+                        <br>
+                        <span>TO OBJECT</span>
+                    </h2>
+
+                    <div class="discipline-description">
+                        3D Printing & Object Design — bringing
+                        digital ideas into physical form.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <button
+                    class="category-card reveal"
+                    data-category="brand-merchandise">
+
+                    <span class="category-number">01</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        BRAND<br>
+                        MERCHANDISE
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="mascot">
+
+                    <span class="category-number">02</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        MASCOT
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="category-card reveal"
+                    data-category="small-decor">
+
+                    <span class="category-number">03</span>
+
+                    <span class="category-arrow">↗</span>
+
+                    <span class="category-name">
+                        SMALL DECOR
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
 
 
@@ -1882,7 +1839,7 @@ footer {
         <div
             class="project-hero-media"
             id="detailHero">
-            
+
             <div class="project-hero-placeholder">
                 HERO MEDIA / 16:9
             </div>
@@ -2058,7 +2015,6 @@ const projectData = {
 
         type: "CGI · AI · Motion Design · Compositing",
 
-        /* Image is stored in the ROOT of the GitHub repository */
         thumbnail:
             "0FA6C83E-5633-4972-A81E-BFE9D3A5CFDE.png",
 
@@ -2911,11 +2867,6 @@ const scrollSignatures =
         ".scroll-signature"
     );
 
-const scrollObjects =
-    document.querySelectorAll(
-        ".scroll-object"
-    );
-
 let targetScroll =
     window.scrollY;
 
@@ -3015,62 +2966,6 @@ function updateScrollMotion() {
 
             element.style.transform =
                 `translate3d(${translateX}px,0,0)
-                 rotate(${rotate}deg)
-                 scale(${scale})`;
-
-        }
-    );
-
-
-    scrollObjects.forEach(
-        (element, index) => {
-
-            const rect =
-                element.getBoundingClientRect();
-
-            const viewportCenter =
-                window.innerHeight / 2;
-
-            const elementCenter =
-                rect.top + rect.height / 2;
-
-            const distance =
-                elementCenter - viewportCenter;
-
-            const normalized =
-                Math.max(
-                    -1,
-                    Math.min(
-                        1,
-                        distance /
-                        window.innerHeight
-                    )
-                );
-
-
-            const translateY =
-                normalized
-                * -55
-                * intensity;
-
-
-            const rotate =
-                normalized
-                * 10
-                * (index % 2 === 0 ? 1 : -1)
-                * intensity;
-
-
-            const scale =
-                1 +
-                (1 -
-                    Math.abs(normalized))
-                * .08
-                * intensity;
-
-
-            element.style.transform =
-                `translate3d(0,${translateY}px,0)
                  rotate(${rotate}deg)
                  scale(${scale})`;
 
