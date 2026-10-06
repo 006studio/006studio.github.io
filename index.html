@@ -19,6 +19,28 @@
     --black: #111111;
     --gray: #D0CCC3;
     --white: #FFFFFF;
+
+    /* =====================================================
+       GLOBAL SPACING SYSTEM
+    ===================================================== */
+
+    --space-xs: 12px;
+    --space-sm: 20px;
+    --space-md: 32px;
+    --space-lg: 48px;
+    --space-xl: 64px;
+    --space-2xl: 90px;
+    --space-3xl: 120px;
+    --space-section: 150px;
+
+    /* Discipline rhythm */
+    --discipline-intro-gap: 32px;
+    --discipline-content-gap: 80px;
+    --discipline-grid-gap: 16px;
+
+    /* Project rhythm */
+    --project-block-gap: 80px;
+    --project-section-gap: 120px;
 }
 
 * {
@@ -237,7 +259,7 @@ section {
 
 .showreel-label {
     width: calc(100% - 64px);
-    margin: 0 auto 16px;
+    margin: 0 auto 18px;
     max-width: 1500px;
     font-size: 11px;
     font-weight: 700;
@@ -260,7 +282,6 @@ section {
 
 /* =========================================================
    ABOUT
-   Moved directly after SHOWREEL
 ========================================================= */
 
 .about {
@@ -272,6 +293,7 @@ section {
     display: grid;
     grid-template-columns: .65fr 1.35fr;
     gap: 60px;
+    align-items: start;
 }
 
 .about-kicker {
@@ -286,7 +308,7 @@ section {
 .language-switch {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .lang-btn {
@@ -304,10 +326,6 @@ section {
     color: var(--beige);
 }
 
-/*
-   About typography reduced by roughly 50%
-   from the previous clamp(22px, 3vw, 42px).
-*/
 .about-copy {
     font-size: clamp(16px, 1.5vw, 21px);
     line-height: 1.42;
@@ -315,14 +333,18 @@ section {
 }
 
 .about-copy p {
-    margin: 0 0 24px;
+    margin: 0 0 26px;
+}
+
+.about-copy p:last-child {
+    margin-bottom: 0;
 }
 
 .about-identity-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-top: 55px;
+    margin-top: 60px;
 }
 
 .identity-card {
@@ -347,7 +369,7 @@ section {
 ========================================================= */
 
 .discipline {
-    padding: 150px 0;
+    padding: var(--space-section) 0;
     overflow: hidden;
 }
 
@@ -367,6 +389,11 @@ section {
     margin: 0 auto;
 }
 
+
+/* =========================================================
+   DISCIPLINE INTRO
+========================================================= */
+
 .discipline-intro {
     display: grid;
     grid-template-columns: .65fr 1.35fr;
@@ -378,6 +405,13 @@ section {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .5px;
+    padding-top: 6px;
+}
+
+.discipline-intro > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .discipline-intro h2 {
@@ -413,8 +447,13 @@ section {
     color: var(--black);
 }
 
+
+/* =========================================================
+   DISCIPLINE DESCRIPTION
+========================================================= */
+
 .discipline-description {
-    margin-top: 40px;
+    margin-top: var(--discipline-intro-gap);
     max-width: 700px;
     font-size: clamp(18px, 2vw, 28px);
     line-height: 1.25;
@@ -437,7 +476,8 @@ section {
 .category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: var(--discipline-grid-gap);
+    margin-top: var(--discipline-content-gap);
 }
 
 .category-card {
@@ -582,7 +622,7 @@ footer {
     width: calc(100% - 64px);
     max-width: 1500px;
     margin: 0 auto;
-    padding: 120px 0 120px;
+    padding: 110px 0 120px;
 }
 
 .overlay-kicker {
@@ -595,7 +635,6 @@ footer {
     margin: 0;
     padding-top: .08em;
     padding-bottom: .04em;
-
     font-size: clamp(55px, 9vw, 150px);
     line-height: .9;
     letter-spacing: -6px;
@@ -608,7 +647,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    margin-top: 110px;
+    margin-top: 90px;
 }
 
 .project-card {
@@ -756,7 +795,7 @@ footer {
 }
 
 .project-detail-subtitle {
-    margin-top: 20px;
+    margin-top: 24px;
     color: var(--teal);
     font-size: clamp(20px, 3vw, 42px);
     line-height: 1;
@@ -768,7 +807,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    margin-top: 50px;
+    margin-top: 48px;
     font-size: 11px;
 }
 
@@ -816,12 +855,13 @@ footer {
     display: grid;
     grid-template-columns: .65fr 1.35fr;
     gap: 60px;
-    padding-top: 130px;
+    padding-top: var(--project-section-gap);
 }
 
 .project-section-label {
     font-size: 12px;
     font-weight: 700;
+    padding-top: 5px;
 }
 
 .project-section-content {
@@ -841,7 +881,8 @@ footer {
 .project-language {
     display: flex;
     gap: 10px;
-    margin-top: 40px;
+    margin-top: 0;
+    margin-bottom: 32px;
 }
 
 .project-role-grid {
@@ -940,7 +981,7 @@ footer {
 }
 
 .project-back {
-    margin-top: 130px;
+    margin-top: 120px;
     padding-top: 30px;
     border-top: 1px solid var(--gray);
 }
@@ -976,8 +1017,14 @@ footer {
 
 @media (min-width: 801px) and (max-width: 1100px) {
 
+    :root {
+        --space-section: 120px;
+        --discipline-content-gap: 70px;
+        --project-section-gap: 100px;
+    }
+
     .overlay-content {
-        padding-top: 115px;
+        padding-top: 105px;
     }
 
     .overlay-title {
@@ -988,12 +1035,20 @@ footer {
     }
 
     .project-grid {
-        margin-top: 80px;
+        margin-top: 75px;
     }
 
     .about-copy {
         font-size: 18px;
         line-height: 1.45;
+    }
+
+    .discipline-intro {
+        gap: 45px;
+    }
+
+    .discipline-description {
+        margin-top: 28px;
     }
 
 }
@@ -1004,6 +1059,13 @@ footer {
 ========================================================= */
 
 @media (max-width: 800px) {
+
+    :root {
+        --space-section: 100px;
+        --discipline-intro-gap: 26px;
+        --discipline-content-gap: 60px;
+        --project-section-gap: 80px;
+    }
 
     header {
         padding: 22px 20px;
@@ -1024,6 +1086,11 @@ footer {
         width: calc(100% - 40px);
     }
 
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
     .hero {
         padding: 120px 20px 70px;
         min-height: 90vh;
@@ -1032,6 +1099,10 @@ footer {
     .hero-copy h1 {
         font-size: clamp(54px, 17vw, 100px);
         letter-spacing: -4px;
+    }
+
+    .hero-label {
+        margin-bottom: 24px;
     }
 
     .hero-identity {
@@ -1044,16 +1115,25 @@ footer {
         bottom: 20px;
     }
 
+
+    /* =====================================================
+       SHOWREEL
+    ===================================================== */
+
     .showreel-label {
         width: calc(100% - 40px);
+        margin-bottom: 14px;
     }
 
     .showreel-section {
+        padding-top: 30px;
         padding-bottom: 70px;
     }
 
 
-    /* ABOUT */
+    /* =====================================================
+       ABOUT
+    ===================================================== */
 
     .about {
         padding: 80px 0 90px;
@@ -1062,7 +1142,7 @@ footer {
     .about-grid,
     .project-section {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 30px;
     }
 
     .about-copy {
@@ -1075,9 +1155,13 @@ footer {
         margin-bottom: 22px;
     }
 
+    .language-switch {
+        margin-bottom: 28px;
+    }
+
     .about-identity-grid {
         grid-template-columns: 1fr;
-        margin-top: 45px;
+        margin-top: 48px;
     }
 
     .identity-card {
@@ -1085,15 +1169,21 @@ footer {
     }
 
 
-    /* DISCIPLINES */
+    /* =====================================================
+       DISCIPLINES
+    ===================================================== */
 
     .discipline {
-        padding: 100px 0;
+        padding: var(--space-section) 0;
     }
 
     .discipline-intro {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 28px;
+    }
+
+    .discipline-kicker {
+        padding-top: 0;
     }
 
     .discipline-intro h2 {
@@ -1102,13 +1192,15 @@ footer {
     }
 
     .discipline-description {
-        margin-top: 25px;
+        margin-top: var(--discipline-intro-gap);
         font-size: 20px;
+        line-height: 1.28;
     }
 
     .category-grid {
         grid-template-columns: 1fr;
         gap: 14px;
+        margin-top: var(--discipline-content-gap);
     }
 
     .category-card {
@@ -1121,8 +1213,15 @@ footer {
         bottom: 22px;
     }
 
+    .category-arrow {
+        top: 20px;
+        right: 22px;
+    }
 
-    /* FOOTER */
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     footer {
         padding: 50px 20px 30px;
@@ -1138,7 +1237,9 @@ footer {
     }
 
 
-    /* OVERLAY */
+    /* =====================================================
+       CATEGORY OVERLAY
+    ===================================================== */
 
     .overlay-header,
     .project-detail-header {
@@ -1147,7 +1248,7 @@ footer {
 
     .overlay-content,
     .project-detail-content {
-        padding-top: 90px;
+        padding-top: 85px;
     }
 
     .overlay-title,
@@ -1162,10 +1263,14 @@ footer {
         padding-bottom: .04em;
     }
 
+    .overlay-kicker {
+        margin-bottom: 20px;
+    }
+
     .project-grid {
         grid-template-columns: 1fr;
-        margin-top: 70px;
-        gap: 45px;
+        margin-top: 65px;
+        gap: 42px;
     }
 
     .project-meta {
@@ -1177,14 +1282,18 @@ footer {
     }
 
 
-    /* PROJECT DETAIL */
+    /* =====================================================
+       PROJECT DETAIL
+    ===================================================== */
 
     .project-detail-subtitle {
         font-size: 24px;
+        margin-top: 20px;
     }
 
     .project-detail-meta {
         gap: 25px;
+        margin-top: 40px;
     }
 
     .project-hero-media {
@@ -1192,11 +1301,15 @@ footer {
     }
 
     .project-section {
-        padding-top: 90px;
+        padding-top: var(--project-section-gap);
     }
 
     .project-description {
         font-size: 25px;
+    }
+
+    .project-language {
+        margin-bottom: 28px;
     }
 
     .project-role-grid {
@@ -1337,7 +1450,6 @@ footer {
 
     <!-- =====================================================
          ABOUT
-         Moved directly after SHOWREEL
     ====================================================== -->
 
     <section class="about" id="about">
@@ -2244,7 +2356,8 @@ function renderProjects(category) {
         const card =
             document.createElement("button");
 
-        card.className = "project-card";
+        card.className =
+            "project-card";
 
         card.dataset.project =
             project.id;
