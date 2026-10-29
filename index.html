@@ -18,23 +18,23 @@
   --black:#111;
   --gray:#D0CCC3;
   --space-section:150px;
-  --project-gap:110px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--beige);color:var(--black);font-family:Montserrat,sans-serif;overflow-x:hidden}
 body.overlay-open{overflow:hidden}
-button{font:inherit}
+button{font:inherit;cursor:pointer}
 a{color:inherit;text-decoration:none}
 img,video{display:block;max-width:100%}
-button{cursor:pointer}
 section{position:relative}
 .container,.discipline-inner,.overlay-content,.project-detail-content{width:calc(100% - 64px);max-width:1500px;margin:auto}
+
 header{width:100%;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;z-index:2000;background:var(--beige)}
 .logo,.overlay-logo{font-size:20px;font-weight:800;letter-spacing:-1px}
 nav{display:flex;align-items:center;gap:34px}
 .nav-link{border:0;background:none;padding:0;font-size:13px;font-weight:700;transition:color .25s}
 .nav-link:hover{color:var(--teal)}
+
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.22,1,.36,1)}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.12s}
@@ -62,8 +62,8 @@ nav{display:flex;align-items:center;gap:34px}
 
 /* ABOUT */
 .about{padding:110px 0 120px}
-.about-grid,.discipline-intro,.project-section{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;align-items:start}
-.about-kicker,.discipline-kicker,.project-section-label{font-size:12px;font-weight:700}
+.about-grid,.discipline-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;align-items:start}
+.about-kicker,.discipline-kicker{font-size:12px;font-weight:700}
 .about-content{max-width:850px}
 .language-switch,.project-language{display:flex;gap:10px;margin-bottom:32px}
 .lang-btn{min-width:48px;height:36px;border:1px solid var(--black);background:transparent;font-size:11px;font-weight:700}
@@ -126,55 +126,55 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .project-thumb-placeholder{height:100%;display:grid;place-items:center;font-size:11px;font-weight:700;color:#777}
 
 /* PROJECT DETAIL */
-.project-detail-content{padding:100px 0 140px}
-.project-kicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;margin-bottom:22px}
+.project-detail-content{padding:70px 0 120px}
+.project-kicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;margin-bottom:18px}
 .project-kicker-dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
 .project-detail-title{margin:0;font-size:clamp(55px,9vw,150px);line-height:.86;letter-spacing:-6px;font-weight:800;overflow-wrap:anywhere}
-.project-detail-subtitle{margin-top:24px;color:var(--teal);font-size:clamp(20px,3vw,42px);line-height:1.05;font-weight:600;letter-spacing:-1.5px}
-.project-detail-meta{display:flex;flex-wrap:wrap;gap:40px;margin-top:48px;font-size:11px}
+.project-detail-subtitle{margin-top:20px;color:var(--teal);font-size:clamp(20px,3vw,42px);line-height:1.05;font-weight:600;letter-spacing:-1.5px}
+.project-detail-meta{display:flex;flex-wrap:wrap;gap:36px;margin-top:32px;font-size:11px}
 .meta-item-label{font-weight:700;opacity:.45;margin-bottom:7px}
 .meta-item-value{font-weight:600}
-.project-hero-media{width:100%;aspect-ratio:16/9;margin-top:80px;background:var(--gray);overflow:hidden}
-.project-hero-media img{width:100%;height:100%;object-fit:cover}
-.project-section{padding-top:var(--project-gap)}
-.project-section-label{padding-top:5px}
+
+/* LARGE FINAL VIDEO SECTION */
+.project-final-section{padding-top:44px}
+.final-media{width:100%;background:#111;overflow:hidden}
+.final-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%;align-items:start}
+.final-video-grid iframe{display:block;width:100%;aspect-ratio:9/16;border:0;background:#111}
+.final-single-video{display:block;width:100%;aspect-ratio:16/9;border:0;background:#111}
+
+/* BANNER DESIGN STATIC GALLERY */
+.banner-section{padding-top:90px}
+.project-section-heading{font-size:12px;font-weight:800;letter-spacing:.3px;margin:0 0 26px}
+.banner-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.banner-image{width:100%;background:#e4dfd5;overflow:hidden}
+.banner-image img{width:100%;height:auto;display:block}
+.banner-image-placeholder{aspect-ratio:4/3;display:grid;place-items:center;color:#777;font-size:11px;font-weight:700;text-align:center;padding:20px}
+
+/* DETAILS AT BOTTOM */
+.project-details-bottom{padding-top:100px}
+.project-section{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;align-items:start;padding-top:52px}
+.project-section-label{font-size:11px;font-weight:800;padding-top:5px}
 .project-section-content{max-width:900px;min-width:0}
-.project-description{font-size:clamp(22px,3vw,42px);line-height:1.22;letter-spacing:-1.1px}
+.project-description{font-size:clamp(15px,1.25vw,18px);line-height:1.65;letter-spacing:0}
 .project-description p{margin:0}
-.project-language{margin-bottom:28px}
-.project-role-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.role-card{min-height:130px;padding:24px;background:#ebe7de}
+.project-language{margin-bottom:20px}
+.project-role-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.role-card{min-height:105px;padding:18px;background:#ebe7de}
 .role-number{font-size:10px;font-weight:700;opacity:.5}
-.role-name{margin-top:35px;font-size:15px;font-weight:700}
-.process-list{display:grid;gap:70px}
-.process-item{display:grid;grid-template-columns:70px minmax(0,1fr);gap:25px}
+.role-name{margin-top:24px;font-size:12px;font-weight:700;line-height:1.4}
+.deliverable-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.deliverable-card{padding:20px;background:#ebe7de}
+.deliverable-card strong{font-size:12px;line-height:1.5}
+.project-back{margin-top:100px;padding-top:26px;border-top:1px solid var(--gray)}
+.project-back button{border:0;background:transparent;padding:0;font-size:12px;font-weight:800}
+
+/* OTHER PROJECT PROCESS */
+.process-list{display:grid;gap:56px}
+.process-item{display:grid;grid-template-columns:60px minmax(0,1fr);gap:20px}
 .process-number{color:var(--orange);font-size:13px;font-weight:800}
-.process-title{margin:0 0 22px;font-size:clamp(22px,3vw,38px);letter-spacing:-1px}
+.process-title{margin:0 0 18px;font-size:clamp(22px,3vw,36px);letter-spacing:-1px}
 .process-media{width:100%;aspect-ratio:16/9;background:#e4dfd5;overflow:hidden;display:grid;place-items:center;color:#777;font-size:10px;font-weight:700}
 .process-media img{width:100%;height:100%;object-fit:cover}
-.final-media{width:100%;background:#111;overflow:hidden}
-.final-media img,.final-media video{width:100%;height:100%;object-fit:cover}
-
-/* FINAL YOUTUBE VIDEOS */
-.final-video-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  align-items:start;
-  gap:16px;
-  width:100%;
-}
-.final-video-grid iframe{
-  display:block;
-  width:100%;
-  aspect-ratio:9/16;
-  border:0;
-  background:#111;
-}
-.deliverable-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.deliverable-card{padding:26px;background:#ebe7de}
-.deliverable-card strong{font-size:16px}
-.project-back{margin-top:120px;padding-top:30px;border-top:1px solid var(--gray)}
-.project-back button{border:0;background:transparent;padding:0;font-size:12px;font-weight:800}
 
 /* SWIPE */
 .swipe-complete{pointer-events:none}
@@ -182,15 +182,18 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 
 /* TABLET */
 @media(min-width:801px) and (max-width:1100px){
- :root{--space-section:120px;--project-gap:100px}
+ :root{--space-section:120px}
  .discipline-intro{gap:45px}
  .overlay-title{font-size:clamp(52px,7vw,82px);letter-spacing:-4px}
  .project-grid{margin-top:75px}
+ .project-detail-content{width:calc(100% - 48px)}
+ .final-video-grid{gap:14px}
+ .project-section{gap:36px}
 }
 
 /* MOBILE */
 @media(max-width:800px){
- :root{--space-section:100px;--project-gap:80px}
+ :root{--space-section:100px}
  header{padding:22px 20px}
  nav{gap:14px}
  .nav-link{font-size:9px}
@@ -203,7 +206,7 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
  .showreel-section{padding:30px 0 70px}
  .showreel-label{width:calc(100% - 40px);margin-bottom:14px}
  .about{padding:80px 0 90px}
- .about-grid,.discipline-intro,.project-section{grid-template-columns:1fr;gap:28px}
+ .about-grid,.discipline-intro{grid-template-columns:1fr;gap:28px}
  .about-copy{font-size:16px;line-height:1.45}
  .about-copy p{margin-bottom:22px}
  .about-identity-grid{grid-template-columns:1fr;margin-top:48px}
@@ -219,24 +222,29 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
  .footer-inner{flex-direction:column;align-items:flex-start}
  .footer-info{text-align:left}
  .overlay-header,.project-detail-header{padding:22px 20px}
- .overlay-content,.project-detail-content{padding-top:85px}
+ .overlay-content,.project-detail-content{padding-top:75px}
  .overlay-title,.project-detail-title{font-size:clamp(46px,13vw,90px);letter-spacing:-3.5px;line-height:.94}
  .overlay-kicker{margin-bottom:20px}
  .project-grid{grid-template-columns:1fr;margin-top:60px;gap:42px}
  .project-meta{display:block}
  .project-year{margin-top:10px}
- .project-detail-subtitle{font-size:23px;margin-top:20px}
- .project-detail-meta{gap:24px;margin-top:36px}
- .project-hero-media{margin-top:50px}
- .project-description{font-size:24px;letter-spacing:-.6px}
+ .project-detail-subtitle{font-size:22px;margin-top:18px}
+ .project-detail-meta{gap:22px;margin-top:28px}
+ .project-final-section{padding-top:32px}
+ .final-video-grid{grid-template-columns:1fr;gap:18px}
+ .final-video-grid iframe{width:100%;max-width:100%;margin:0 auto}
+ .banner-section{padding-top:64px}
+ .banner-gallery{grid-template-columns:1fr;gap:18px}
+ .project-details-bottom{padding-top:60px}
+ .project-section{grid-template-columns:1fr;gap:18px;padding-top:38px}
+ .project-description{font-size:15px;line-height:1.65}
  .project-role-grid{grid-template-columns:1fr 1fr}
- .role-card{min-height:110px;padding:20px}
- .process-item{grid-template-columns:38px minmax(0,1fr);gap:12px}
- .process-list{gap:52px}
+ .role-card{min-height:100px;padding:16px}
+ .role-name{margin-top:20px}
  .deliverable-grid{grid-template-columns:1fr}
- .final-video-grid{grid-template-columns:1fr;gap:20px}
- .final-video-grid iframe{width:100%;max-width:460px;margin:0 auto}
- .project-back{margin-top:90px}
+ .process-item{grid-template-columns:38px minmax(0,1fr);gap:12px}
+ .process-list{gap:42px}
+ .project-back{margin-top:70px}
 }
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
@@ -372,58 +380,80 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
     <div class="logo">006.STUDIO</div>
     <button class="project-detail-close" id="closeProjectButton">CLOSE ×</button>
   </div>
+
   <div class="project-detail-content">
     <div class="project-kicker"><span class="project-kicker-dot"></span><span id="detailCategory"></span></div>
     <h1 class="project-detail-title" id="detailTitle"></h1>
     <div class="project-detail-subtitle" id="detailSubtitle"></div>
     <div class="project-detail-meta" id="detailMeta"></div>
-    <div class="project-hero-media" id="detailHero"></div>
 
-    <section class="project-section">
-      <div class="project-section-label">ABOUT</div>
-      <div class="project-section-content">
-        <div class="project-language">
-          <button class="lang-btn active" id="projectEnButton">EN</button>
-          <button class="lang-btn" id="projectViButton">VI</button>
+    <!-- FINAL: Videos appear immediately after project heading and metadata -->
+    <section class="project-final-section" id="projectFinalSection">
+      <div class="final-media" id="projectFinal"></div>
+    </section>
+
+    <!-- All still images for BanhMyTaay live in this one section -->
+    <section class="banner-section" id="bannerSection">
+      <h2 class="project-section-heading">BANNER DESIGN</h2>
+      <div class="banner-gallery" id="bannerGallery"></div>
+    </section>
+
+    <!-- Smaller project details at the bottom -->
+    <div class="project-details-bottom">
+      <section class="project-section">
+        <div class="project-section-label">ABOUT</div>
+        <div class="project-section-content">
+          <div class="project-language">
+            <button class="lang-btn active" id="projectEnButton">EN</button>
+            <button class="lang-btn" id="projectViButton">VI</button>
+          </div>
+          <div class="project-description" id="projectDescription"></div>
         </div>
-        <div class="project-description" id="projectDescription"></div>
-      </div>
-    </section>
+      </section>
 
-    <section class="project-section">
-      <div class="project-section-label">ROLE</div>
-      <div class="project-role-grid" id="projectRole"></div>
-    </section>
+      <section class="project-section">
+        <div class="project-section-label">ROLE</div>
+        <div class="project-section-content">
+          <div class="project-role-grid" id="projectRole"></div>
+        </div>
+      </section>
 
-    <section class="project-section">
-      <div class="project-section-label">VISUAL GALLERY</div>
-      <div class="project-section-content"><div class="process-list" id="projectProcess"></div></div>
-    </section>
+      <section class="project-section" id="processSection">
+        <div class="project-section-label">PROCESS</div>
+        <div class="project-section-content">
+          <div class="process-list" id="projectProcess"></div>
+        </div>
+      </section>
 
-    <section class="project-section">
-      <div class="project-section-label">FINAL</div>
-      <div class="project-section-content"><div class="final-media" id="projectFinal"></div></div>
-    </section>
+      <section class="project-section">
+        <div class="project-section-label">DELIVERABLE</div>
+        <div class="project-section-content">
+          <div class="deliverable-grid" id="projectDeliverables"></div>
+        </div>
+      </section>
 
-    <section class="project-section">
-      <div class="project-section-label">DELIVERABLE</div>
-      <div class="deliverable-grid" id="projectDeliverables"></div>
-    </section>
+      <section class="project-section">
+        <div class="project-section-label">CLIENT</div>
+        <div class="project-section-content">
+          <div class="project-description" id="projectClient"></div>
+        </div>
+      </section>
+    </div>
 
-    <section class="project-section">
-      <div class="project-section-label">CLIENT</div>
-      <div class="project-section-content"><div class="project-description" id="projectClient"></div></div>
-    </section>
-
-    <div class="project-back"><button id="backToCategoryButton">← BACK TO CATEGORY</button></div>
+    <div class="project-back">
+      <button id="backToCategoryButton">← BACK TO CATEGORY</button>
+    </div>
   </div>
 </div>
 
 <script>
-/* PROJECT DATA
-   Upload BANHMYTAAY-thumbnail.jpg to the repository root.
-   Replace gallery paths with real uploaded images when available.
+/*
+  MEDIA SETUP:
+  - Upload BANHMYTAAY-thumbnail.jpg to the repository root.
+  - Add static image filenames to bannerImages when they are uploaded.
+  - YouTube videos are hosted externally, not stored in GitHub.
 */
+
 const projectData = {
   "banhmytaay": {
     id:"banhmytaay",
@@ -435,19 +465,34 @@ const projectData = {
     type:"AI · Art Direction · Motion Design",
     thumbnail:"BANHMYTAAY-thumbnail.jpg",
     hero:"BANHMYTAAY-thumbnail.jpg",
+
+    videos:[
+      "Ty6r45Mu7AA",
+      "isTKxvT3LeQ"
+    ],
+
+    /*
+      Add the exact filenames of your static images here.
+      Example:
+      "bannerImages":[
+        "banhmytaay-banner-01.jpg",
+        "banhmytaay-banner-02.jpg"
+      ]
+    */
+    bannerImages:[],
+
     role:["AI Visuals","Art Direction","Motion Design","Visual Refinement"],
+
     description:{
       en:"A playful visual campaign for BanhMyTaay, bringing a fresh, youthful attitude to Western-style Vietnamese sandwiches. The project explores bold art direction, vibrant color compositions, expressive typography, and dynamic product photography to create a distinctive and appetizing brand identity across promotional visuals. Combining AI-assisted image generation with creative direction and iterative visual refinement, the campaign focuses on two visual approaches: energetic lifestyle imagery featuring models and product-focused compositions that highlight the texture, ingredients, and appeal of each sandwich. The visuals are designed to feel contemporary, expressive, and full of personality while maintaining a consistent brand language.",
       vi:"Dự án phát triển hệ thống hình ảnh quảng cáo cho BanhMyTaay, mang tinh thần trẻ trung, vui nhộn và hiện đại đến thương hiệu bánh mì kiểu Tây. Với định hướng art direction táo bạo, màu sắc tương phản nổi bật, typography giàu biểu cảm và product photography sống động, dự án tạo nên một ngôn ngữ hình ảnh riêng biệt cho thương hiệu. Ứng dụng AI trong quá trình phát triển hình ảnh, kết hợp với định hướng sáng tạo và tinh chỉnh chi tiết qua nhiều vòng, dự án khai thác hai hướng thể hiện chính: lifestyle visual với nhân vật tương tác cùng sản phẩm và product-focused visual tập trung vào kết cấu bánh, nguyên liệu và cảm giác ngon miệng. Tất cả được xây dựng nhằm tạo nên một hệ thống hình ảnh nhất quán, giàu năng lượng và dễ nhận diện."
     },
-    process:[
-      {number:"01",title:"ART DIRECTION",caption:"Visual direction, color palette and campaign mood."},
-      {number:"02",title:"LIFESTYLE VISUALS",caption:"Character-led imagery built around the product.",image:""},
-      {number:"03",title:"PRODUCT-FOCUSED VISUALS",caption:"Texture, ingredients and appetizing product details.",image:""},
-      {number:"04",title:"VISUAL REFINEMENT",caption:"AI-assisted generation, selection and finishing."}
-    ],
+
+    process:[],
+
     deliverables:["AI Visual Campaign","Lifestyle + Product Visuals","Motion Design"]
   },
+
   "the-sync-show": {
     id:"the-sync-show",
     title:"THE SYNC SHOW",
@@ -458,11 +503,17 @@ const projectData = {
     type:"CGI · AI · Motion Design · Compositing",
     thumbnail:"0FA6C83E-5633-4972-A81E-BFE9D3A5CFDE.png",
     hero:"0FA6C83E-5633-4972-A81E-BFE9D3A5CFDE.png",
+
+    videos:[],
+    bannerImages:[],
+
     role:["CGI","AI","Motion Design","Compositing"],
+
     description:{
       en:"A campaign film created for The Sync Show, built around the imagery of the dipterocarp fruit and familiar landmarks of Saigon. The visual direction combines AI-generated imagery with CGI, motion design, and compositing to transform these familiar elements into a cinematic event opening film.",
       vi:"Một video phục vụ campaign cho sự kiện The Sync Show, được xây dựng từ hình ảnh quả chò và những địa điểm quen thuộc của Sài Gòn. Visual được phát triển bằng AI, sau đó hoàn thiện với CGI, motion design và compositing để tạo nên một event opening film."
     },
+
     process:[
       {number:"01",title:"CONCEPT & ELEMENT DESIGN",caption:"Concept development and visual element design."},
       {number:"02",title:"AI STILL FRAMES",caption:"Developing keyframes and visual direction."},
@@ -470,6 +521,7 @@ const projectData = {
       {number:"04",title:"COMPOSITING",caption:"CGI, compositing and finishing."},
       {number:"05",title:"FINAL",caption:"Final event opening film."}
     ],
+
     deliverables:["30s CGI Video","16:9","Social + Event Screen"]
   }
 };
@@ -490,6 +542,7 @@ const $ = id => document.getElementById(id);
 const categoryOverlay=$("categoryOverlay");
 const projectDetail=$("projectDetail");
 const projectGrid=$("projectGrid");
+
 let currentCategory=null;
 let currentProject=null;
 
@@ -502,9 +555,11 @@ function setBodyLock(){
 function openCategory(id){
   const category=categories[id];
   if(!category)return;
+
   currentCategory=id;
   $("overlayTitle").textContent=category.title;
   $("overlayKicker").textContent="CATEGORY / "+id.toUpperCase();
+
   renderProjects(category);
   categoryOverlay.classList.add("open");
   categoryOverlay.scrollTop=0;
@@ -520,6 +575,7 @@ function closeCategory(){
 
 function renderProjects(category){
   projectGrid.innerHTML="";
+
   if(!category.projects.length){
     const empty=document.createElement("div");
     empty.style.cssText="font-size:13px;font-weight:600;opacity:.45";
@@ -531,6 +587,7 @@ function renderProjects(category){
   category.projects.forEach(id=>{
     const p=projectData[id];
     if(!p)return;
+
     const card=document.createElement("button");
     card.className="project-card";
 
@@ -541,6 +598,7 @@ function renderProjects(category){
     img.src=p.thumbnail;
     img.alt=p.title;
     img.loading="lazy";
+
     img.onerror=()=>{
       thumb.innerHTML="";
       const placeholder=document.createElement("div");
@@ -548,6 +606,7 @@ function renderProjects(category){
       placeholder.textContent="UPLOAD PROJECT THUMBNAIL";
       thumb.appendChild(placeholder);
     };
+
     thumb.appendChild(img);
 
     const meta=document.createElement("div");
@@ -576,17 +635,84 @@ function renderProjects(category){
 
 function addImage(container,src,alt){
   if(!src)return;
+
   const img=document.createElement("img");
   img.src=src;
   img.alt=alt||"Project visual";
   img.loading="lazy";
   img.onerror=()=>img.remove();
+
   container.appendChild(img);
+}
+
+function renderProjectFinal(p){
+  const box=$("projectFinal");
+  box.innerHTML="";
+
+  if(p.videos && p.videos.length){
+    const grid=document.createElement("div");
+    grid.className="final-video-grid";
+
+    p.videos.forEach((id,index)=>{
+      const iframe=document.createElement("iframe");
+
+      iframe.src=
+        "https://www.youtube.com/embed/"+encodeURIComponent(id)+
+        "?autoplay=1&mute=1&controls=0&loop=1&playlist="+encodeURIComponent(id)+
+        "&playsinline=1&rel=0";
+
+      iframe.title=p.title+" Final Video "+(index+1);
+      iframe.allow="autoplay; encrypted-media; picture-in-picture; web-share";
+      iframe.setAttribute("allowfullscreen","");
+      iframe.setAttribute("loading","eager");
+
+      grid.appendChild(iframe);
+    });
+
+    box.appendChild(grid);
+  }else{
+    const iframe=document.createElement("iframe");
+    iframe.className="final-single-video";
+    iframe.src="https://www.youtube.com/embed/uJIOsf-FMeE?playsinline=1&rel=0";
+    iframe.title=p.title+" Final Video";
+    iframe.allow="encrypted-media; picture-in-picture; web-share";
+    iframe.setAttribute("allowfullscreen","");
+    box.appendChild(iframe);
+  }
+}
+
+function renderBannerGallery(p){
+  const section=$("bannerSection");
+  const gallery=$("bannerGallery");
+  gallery.innerHTML="";
+
+  if(!p.bannerImages || !p.bannerImages.length){
+    section.style.display="none";
+    return;
+  }
+
+  section.style.display="block";
+
+  p.bannerImages.forEach((src,index)=>{
+    const figure=document.createElement("figure");
+    figure.className="banner-image";
+    figure.style.margin="0";
+
+    const img=document.createElement("img");
+    img.src=src;
+    img.alt=p.title+" banner design "+(index+1);
+    img.loading="lazy";
+    img.onerror=()=>figure.remove();
+
+    figure.appendChild(img);
+    gallery.appendChild(figure);
+  });
 }
 
 function openProject(id){
   const p=projectData[id];
   if(!p)return;
+
   currentProject=id;
 
   $("detailCategory").textContent=p.category;
@@ -612,9 +738,13 @@ function openProject(id){
     meta.appendChild(wrap);
   });
 
+  renderProjectFinal(p);
+  renderBannerGallery(p);
+
   const hero=$("detailHero");
+  // The former large hero image is not needed above the videos.
+  // The existing hero image remains available as the project thumbnail.
   hero.innerHTML="";
-  addImage(hero,p.hero||p.thumbnail,p.title+" campaign visual");
 
   renderProjectDescription("en");
   $("projectEnButton").classList.add("active");
@@ -623,9 +753,10 @@ function openProject(id){
   renderProjectRole(p);
   renderProjectProcess(p);
   renderProjectDeliverables(p);
-  renderProjectFinal(p);
-
   $("projectClient").textContent=p.client;
+
+  const hasProcess=p.process && p.process.length>0;
+  $("processSection").style.display=hasProcess?"grid":"none";
 
   projectDetail.classList.add("open");
   projectDetail.scrollTop=0;
@@ -687,7 +818,7 @@ function renderProjectProcess(p){
 
     if(item.caption){
       const caption=document.createElement("p");
-      caption.style.cssText="font-size:13px;line-height:1.6;margin:0 0 20px;opacity:.65";
+      caption.style.cssText="font-size:12px;line-height:1.6;margin:0 0 18px;opacity:.65";
       caption.textContent=item.caption;
       content.appendChild(caption);
     }
@@ -723,47 +854,8 @@ function renderProjectDeliverables(p){
   });
 }
 
-/* FINAL VIDEOS
-   BANHMYTAAY: autoplay + muted + loop.
-   Other projects retain the original FINAL placeholder.
-*/
-function renderProjectFinal(p){
-  const box=$("projectFinal");
-  box.innerHTML="";
-
-  if(p.id==="banhmytaay"){
-    const grid=document.createElement("div");
-    grid.className="final-video-grid";
-
-    const videoIds=[
-      "Ty6r45Mu7AA",
-      "isTKxvT3LeQ"
-    ];
-
-    videoIds.forEach((id,index)=>{
-      const iframe=document.createElement("iframe");
-
-      iframe.src=
-        "https://www.youtube.com/embed/"+id+
-        "?autoplay=1&mute=1&controls=0&loop=1&playlist="+id+
-        "&playsinline=1&rel=0";
-
-      iframe.title="BANHMYTAAY Campaign Video "+(index+1);
-      iframe.allow="autoplay; encrypted-media; picture-in-picture; web-share";
-      iframe.setAttribute("allowfullscreen","");
-      iframe.setAttribute("loading","eager");
-
-      grid.appendChild(iframe);
-    });
-
-    box.appendChild(grid);
-  }else{
-    box.textContent="FINAL VIDEO / 16:9";
-  }
-}
-
 function closeProject(){
-  // Removing the YouTube iframes stops playback.
+  // Remove the YouTube iframes so playback stops after closing.
   $("projectFinal").innerHTML="";
 
   projectDetail.classList.remove("open");
