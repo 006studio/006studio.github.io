@@ -11,14 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --teal:#008C8C;
-  --orange:#F26B38;
-  --beige:#F3F0E8;
-  --black:#111;
-  --gray:#D0CCC3;
-  --space-section:150px;
-}
+:root{--teal:#008C8C;--orange:#F26B38;--beige:#F3F0E8;--black:#111;--gray:#D0CCC3;--space-section:150px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--beige);color:var(--black);font-family:Montserrat,sans-serif;overflow-x:hidden}
@@ -34,7 +27,6 @@ header{width:100%;padding:28px 32px;display:flex;justify-content:space-between;a
 nav{display:flex;align-items:center;gap:34px}
 .nav-link{border:0;background:none;padding:0;font-size:13px;font-weight:700;transition:color .25s}
 .nav-link:hover{color:var(--teal)}
-
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.22,1,.36,1)}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.12s}
@@ -104,7 +96,7 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .footer-logo{font-size:clamp(40px,7vw,100px);font-weight:800;line-height:.8;letter-spacing:-5px}
 .footer-info{font-size:11px;line-height:1.7;text-align:right}
 
-/* CATEGORY OVERLAY */
+/* OVERLAYS */
 .overlay,.project-detail{position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--beige);color:var(--black);opacity:0;visibility:hidden;transform:translate3d(0,0,0);transition:opacity .4s,visibility .4s}
 .overlay{z-index:5000}
 .project-detail{z-index:6000}
@@ -114,12 +106,14 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .overlay-content{padding:110px 0 120px}
 .overlay-kicker{font-size:12px;font-weight:700;margin-bottom:24px}
 .overlay-title{margin:0;padding:.08em 0 .04em;font-size:clamp(55px,9vw,150px);line-height:.9;letter-spacing:-6px;font-weight:800;max-width:1100px}
+
+/* PROJECT CARDS */
 .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 24px;margin-top:90px}
-.project-card{border:0;background:transparent;padding:0;text-align:left;min-width:0}
-.project-thumb{width:100%;aspect-ratio:4/3;background:var(--gray);overflow:hidden}
-.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.project-card{display:block;width:100%;border:0;background:transparent;padding:0;text-align:left;min-width:0;color:var(--black);appearance:none;-webkit-appearance:none;position:relative;z-index:1;cursor:pointer;pointer-events:auto}
+.project-thumb{width:100%;aspect-ratio:4/3;background:var(--gray);overflow:hidden;pointer-events:none}
+.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s;pointer-events:none}
 .project-card:hover .project-thumb img{transform:scale(1.04)}
-.project-meta{padding-top:18px;display:flex;justify-content:space-between;gap:20px}
+.project-meta{padding-top:18px;display:flex;justify-content:space-between;gap:20px;pointer-events:none}
 .project-name{font-size:18px;font-weight:700;letter-spacing:-.5px}
 .project-category{margin-top:7px;font-size:10px;font-weight:600;opacity:.55}
 .project-year{font-size:11px;font-weight:700}
@@ -135,22 +129,21 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .meta-item-label{font-weight:700;opacity:.45;margin-bottom:7px}
 .meta-item-value{font-weight:600}
 
-/* LARGE FINAL VIDEO SECTION */
+/* FINAL MEDIA */
 .project-final-section{padding-top:44px}
 .final-media{width:100%;background:#111;overflow:hidden}
 .final-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%;align-items:start}
 .final-video-grid iframe{display:block;width:100%;aspect-ratio:9/16;border:0;background:#111}
 .final-single-video{display:block;width:100%;aspect-ratio:16/9;border:0;background:#111}
 
-/* BANNER DESIGN STATIC GALLERY */
+/* BANNER GALLERY */
 .banner-section{padding-top:90px}
 .project-section-heading{font-size:12px;font-weight:800;letter-spacing:.3px;margin:0 0 26px}
 .banner-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .banner-image{width:100%;background:#e4dfd5;overflow:hidden}
 .banner-image img{width:100%;height:auto;display:block}
-.banner-image-placeholder{aspect-ratio:4/3;display:grid;place-items:center;color:#777;font-size:11px;font-weight:700;text-align:center;padding:20px}
 
-/* DETAILS AT BOTTOM */
+/* DETAILS */
 .project-details-bottom{padding-top:100px}
 .project-section{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;align-items:start;padding-top:52px}
 .project-section-label{font-size:11px;font-weight:800;padding-top:5px}
@@ -168,15 +161,13 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .project-back{margin-top:100px;padding-top:26px;border-top:1px solid var(--gray)}
 .project-back button{border:0;background:transparent;padding:0;font-size:12px;font-weight:800}
 
-/* OTHER PROJECT PROCESS */
+/* PROCESS */
 .process-list{display:grid;gap:56px}
 .process-item{display:grid;grid-template-columns:60px minmax(0,1fr);gap:20px}
 .process-number{color:var(--orange);font-size:13px;font-weight:800}
 .process-title{margin:0 0 18px;font-size:clamp(22px,3vw,36px);letter-spacing:-1px}
 .process-media{width:100%;aspect-ratio:16/9;background:#e4dfd5;overflow:hidden;display:grid;place-items:center;color:#777;font-size:10px;font-weight:700}
 .process-media img{width:100%;height:100%;object-fit:cover}
-
-/* SWIPE */
 .swipe-complete{pointer-events:none}
 .swipe-reset{transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s cubic-bezier(.22,1,.36,1)}
 
@@ -363,10 +354,10 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
   </div>
 </footer>
 
-<div class="overlay" id="categoryOverlay">
+<div class="overlay" id="categoryOverlay" aria-hidden="true">
   <div class="overlay-header">
     <div class="overlay-logo">006.STUDIO</div>
-    <button class="close-button" id="closeCategoryButton">CLOSE ×</button>
+    <button class="close-button" id="closeCategoryButton" type="button">CLOSE ×</button>
   </div>
   <div class="overlay-content">
     <div class="overlay-kicker" id="overlayKicker">CATEGORY</div>
@@ -375,10 +366,10 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
   </div>
 </div>
 
-<div class="project-detail" id="projectDetail">
+<div class="project-detail" id="projectDetail" aria-hidden="true">
   <div class="project-detail-header">
     <div class="logo">006.STUDIO</div>
-    <button class="project-detail-close" id="closeProjectButton">CLOSE ×</button>
+    <button class="project-detail-close" id="closeProjectButton" type="button">CLOSE ×</button>
   </div>
 
   <div class="project-detail-content">
@@ -387,25 +378,22 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
     <div class="project-detail-subtitle" id="detailSubtitle"></div>
     <div class="project-detail-meta" id="detailMeta"></div>
 
-    <!-- FINAL: Videos appear immediately after project heading and metadata -->
     <section class="project-final-section" id="projectFinalSection">
       <div class="final-media" id="projectFinal"></div>
     </section>
 
-    <!-- All still images for BanhMyTaay live in this one section -->
     <section class="banner-section" id="bannerSection">
       <h2 class="project-section-heading">BANNER DESIGN</h2>
       <div class="banner-gallery" id="bannerGallery"></div>
     </section>
 
-    <!-- Smaller project details at the bottom -->
     <div class="project-details-bottom">
       <section class="project-section">
         <div class="project-section-label">ABOUT</div>
         <div class="project-section-content">
           <div class="project-language">
-            <button class="lang-btn active" id="projectEnButton">EN</button>
-            <button class="lang-btn" id="projectViButton">VI</button>
+            <button class="lang-btn active" id="projectEnButton" type="button">EN</button>
+            <button class="lang-btn" id="projectViButton" type="button">VI</button>
           </div>
           <div class="project-description" id="projectDescription"></div>
         </div>
@@ -413,47 +401,30 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 
       <section class="project-section">
         <div class="project-section-label">ROLE</div>
-        <div class="project-section-content">
-          <div class="project-role-grid" id="projectRole"></div>
-        </div>
+        <div class="project-section-content"><div class="project-role-grid" id="projectRole"></div></div>
       </section>
 
       <section class="project-section" id="processSection">
         <div class="project-section-label">PROCESS</div>
-        <div class="project-section-content">
-          <div class="process-list" id="projectProcess"></div>
-        </div>
+        <div class="project-section-content"><div class="process-list" id="projectProcess"></div></div>
       </section>
 
       <section class="project-section">
         <div class="project-section-label">DELIVERABLE</div>
-        <div class="project-section-content">
-          <div class="deliverable-grid" id="projectDeliverables"></div>
-        </div>
+        <div class="project-section-content"><div class="deliverable-grid" id="projectDeliverables"></div></div>
       </section>
 
       <section class="project-section">
         <div class="project-section-label">CLIENT</div>
-        <div class="project-section-content">
-          <div class="project-description" id="projectClient"></div>
-        </div>
+        <div class="project-section-content"><div class="project-description" id="projectClient"></div></div>
       </section>
     </div>
 
-    <div class="project-back">
-      <button id="backToCategoryButton">← BACK TO CATEGORY</button>
-    </div>
+    <div class="project-back"><button id="backToCategoryButton" type="button">← BACK TO CATEGORY</button></div>
   </div>
 </div>
 
 <script>
-/*
-  MEDIA SETUP:
-  - Upload BANHMYTAAY-thumbnail.jpg to the repository root.
-  - Add static image filenames to bannerImages when they are uploaded.
-  - YouTube videos are hosted externally, not stored in GitHub.
-*/
-
 const projectData = {
   "banhmytaay": {
     id:"banhmytaay",
@@ -465,34 +436,16 @@ const projectData = {
     type:"AI · Art Direction · Motion Design",
     thumbnail:"BANHMYTAAY-thumbnail.jpg",
     hero:"BANHMYTAAY-thumbnail.jpg",
-
-    videos:[
-      "Ty6r45Mu7AA",
-      "isTKxvT3LeQ"
-    ],
-
-    /*
-      Add the exact filenames of your static images here.
-      Example:
-      "bannerImages":[
-        "banhmytaay-banner-01.jpg",
-        "banhmytaay-banner-02.jpg"
-      ]
-    */
+    videos:["Ty6r45Mu7AA","isTKxvT3LeQ"],
     bannerImages:[],
-
     role:["AI Visuals","Art Direction","Motion Design","Visual Refinement"],
-
     description:{
       en:"A playful visual campaign for BanhMyTaay, bringing a fresh, youthful attitude to Western-style Vietnamese sandwiches. The project explores bold art direction, vibrant color compositions, expressive typography, and dynamic product photography to create a distinctive and appetizing brand identity across promotional visuals. Combining AI-assisted image generation with creative direction and iterative visual refinement, the campaign focuses on two visual approaches: energetic lifestyle imagery featuring models and product-focused compositions that highlight the texture, ingredients, and appeal of each sandwich. The visuals are designed to feel contemporary, expressive, and full of personality while maintaining a consistent brand language.",
       vi:"Dự án phát triển hệ thống hình ảnh quảng cáo cho BanhMyTaay, mang tinh thần trẻ trung, vui nhộn và hiện đại đến thương hiệu bánh mì kiểu Tây. Với định hướng art direction táo bạo, màu sắc tương phản nổi bật, typography giàu biểu cảm và product photography sống động, dự án tạo nên một ngôn ngữ hình ảnh riêng biệt cho thương hiệu. Ứng dụng AI trong quá trình phát triển hình ảnh, kết hợp với định hướng sáng tạo và tinh chỉnh chi tiết qua nhiều vòng, dự án khai thác hai hướng thể hiện chính: lifestyle visual với nhân vật tương tác cùng sản phẩm và product-focused visual tập trung vào kết cấu bánh, nguyên liệu và cảm giác ngon miệng. Tất cả được xây dựng nhằm tạo nên một hệ thống hình ảnh nhất quán, giàu năng lượng và dễ nhận diện."
     },
-
     process:[],
-
     deliverables:["AI Visual Campaign","Lifestyle + Product Visuals","Motion Design"]
   },
-
   "the-sync-show": {
     id:"the-sync-show",
     title:"THE SYNC SHOW",
@@ -503,17 +456,13 @@ const projectData = {
     type:"CGI · AI · Motion Design · Compositing",
     thumbnail:"0FA6C83E-5633-4972-A81E-BFE9D3A5CFDE.png",
     hero:"0FA6C83E-5633-4972-A81E-BFE9D3A5CFDE.png",
-
     videos:[],
     bannerImages:[],
-
     role:["CGI","AI","Motion Design","Compositing"],
-
     description:{
       en:"A campaign film created for The Sync Show, built around the imagery of the dipterocarp fruit and familiar landmarks of Saigon. The visual direction combines AI-generated imagery with CGI, motion design, and compositing to transform these familiar elements into a cinematic event opening film.",
       vi:"Một video phục vụ campaign cho sự kiện The Sync Show, được xây dựng từ hình ảnh quả chò và những địa điểm quen thuộc của Sài Gòn. Visual được phát triển bằng AI, sau đó hoàn thiện với CGI, motion design và compositing để tạo nên một event opening film."
     },
-
     process:[
       {number:"01",title:"CONCEPT & ELEMENT DESIGN",caption:"Concept development and visual element design."},
       {number:"02",title:"AI STILL FRAMES",caption:"Developing keyframes and visual direction."},
@@ -521,7 +470,6 @@ const projectData = {
       {number:"04",title:"COMPOSITING",caption:"CGI, compositing and finishing."},
       {number:"05",title:"FINAL",caption:"Final event opening film."}
     ],
-
     deliverables:["30s CGI Video","16:9","Social + Event Screen"]
   }
 };
@@ -539,12 +487,12 @@ const categories = {
 };
 
 const $ = id => document.getElementById(id);
-const categoryOverlay=$("categoryOverlay");
-const projectDetail=$("projectDetail");
-const projectGrid=$("projectGrid");
+const categoryOverlay = $("categoryOverlay");
+const projectDetail = $("projectDetail");
+const projectGrid = $("projectGrid");
 
-let currentCategory=null;
-let currentProject=null;
+let currentCategory = null;
+let currentProject = null;
 
 function setBodyLock(){
   document.body.classList.toggle("overlay-open",
@@ -552,157 +500,173 @@ function setBodyLock(){
     projectDetail.classList.contains("open"));
 }
 
-function openCategory(id){
-  const category=categories[id];
-  if(!category)return;
+function resetSwipeState(el){
+  el.dataset.swipeActive = "false";
+  el.classList.remove("swipe-complete");
+  el.classList.add("swipe-reset");
+  el.style.transform = "translate3d(0,0,0) scale(1)";
+  el.style.opacity = "1";
+  el.style.transition = "";
+  setTimeout(()=>el.classList.remove("swipe-reset"),500);
+}
 
-  currentCategory=id;
-  $("overlayTitle").textContent=category.title;
-  $("overlayKicker").textContent="CATEGORY / "+id.toUpperCase();
+function openCategory(id){
+  const category = categories[id];
+  if(!category) return;
+
+  currentCategory = id;
+  $("overlayTitle").textContent = category.title;
+  $("overlayKicker").textContent = "CATEGORY / " + id.toUpperCase();
 
   renderProjects(category);
   categoryOverlay.classList.add("open");
-  categoryOverlay.scrollTop=0;
+  categoryOverlay.setAttribute("aria-hidden","false");
+  categoryOverlay.scrollTop = 0;
   resetSwipeState(categoryOverlay);
   setBodyLock();
 }
 
 function closeCategory(){
   categoryOverlay.classList.remove("open");
+  categoryOverlay.setAttribute("aria-hidden","true");
   resetSwipeState(categoryOverlay);
   setBodyLock();
 }
 
 function renderProjects(category){
-  projectGrid.innerHTML="";
+  projectGrid.innerHTML = "";
 
   if(!category.projects.length){
-    const empty=document.createElement("div");
-    empty.style.cssText="font-size:13px;font-weight:600;opacity:.45";
-    empty.textContent="PROJECTS COMING SOON";
+    const empty = document.createElement("div");
+    empty.style.cssText = "font-size:13px;font-weight:600;opacity:.45";
+    empty.textContent = "PROJECTS COMING SOON";
     projectGrid.appendChild(empty);
     return;
   }
 
   category.projects.forEach(id=>{
-    const p=projectData[id];
-    if(!p)return;
+    const p = projectData[id];
+    if(!p) return;
 
-    const card=document.createElement("button");
-    card.className="project-card";
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "project-card";
+    card.setAttribute("aria-label","Open project " + p.title);
 
-    const thumb=document.createElement("div");
-    thumb.className="project-thumb";
+    const thumb = document.createElement("div");
+    thumb.className = "project-thumb";
 
-    const img=document.createElement("img");
-    img.src=p.thumbnail;
-    img.alt=p.title;
-    img.loading="lazy";
-
-    img.onerror=()=>{
-      thumb.innerHTML="";
-      const placeholder=document.createElement("div");
-      placeholder.className="project-thumb-placeholder";
-      placeholder.textContent="UPLOAD PROJECT THUMBNAIL";
+    const img = document.createElement("img");
+    img.src = p.thumbnail;
+    img.alt = p.title;
+    img.loading = "lazy";
+    img.onerror = ()=>{
+      thumb.innerHTML = "";
+      const placeholder = document.createElement("div");
+      placeholder.className = "project-thumb-placeholder";
+      placeholder.textContent = "PROJECT: " + p.title;
       thumb.appendChild(placeholder);
     };
-
     thumb.appendChild(img);
 
-    const meta=document.createElement("div");
-    meta.className="project-meta";
+    const meta = document.createElement("div");
+    meta.className = "project-meta";
 
-    const left=document.createElement("div");
-    const name=document.createElement("div");
-    name.className="project-name";
-    name.textContent=p.title;
+    const left = document.createElement("div");
+    const name = document.createElement("div");
+    name.className = "project-name";
+    name.textContent = p.title;
 
-    const cat=document.createElement("div");
-    cat.className="project-category";
-    cat.textContent=p.category;
+    const cat = document.createElement("div");
+    cat.className = "project-category";
+    cat.textContent = p.category;
     left.append(name,cat);
 
-    const year=document.createElement("div");
-    year.className="project-year";
-    year.textContent=p.year;
+    const year = document.createElement("div");
+    year.className = "project-year";
+    year.textContent = p.year;
 
     meta.append(left,year);
     card.append(thumb,meta);
-    card.addEventListener("click",()=>openProject(id));
+
+    // Use a direct click handler on the whole card.
+    card.addEventListener("click",event=>{
+      event.preventDefault();
+      event.stopPropagation();
+      openProject(id);
+    });
+
     projectGrid.appendChild(card);
   });
 }
 
-function addImage(container,src,alt){
-  if(!src)return;
-
-  const img=document.createElement("img");
-  img.src=src;
-  img.alt=alt||"Project visual";
-  img.loading="lazy";
-  img.onerror=()=>img.remove();
-
-  container.appendChild(img);
-}
-
 function renderProjectFinal(p){
-  const box=$("projectFinal");
-  box.innerHTML="";
+  const box = $("projectFinal");
+  box.innerHTML = "";
+  box.style.display = "block";
+  box.style.minHeight = "";
 
   if(p.videos && p.videos.length){
-    const grid=document.createElement("div");
-    grid.className="final-video-grid";
+    const grid = document.createElement("div");
+    grid.className = "final-video-grid";
 
-    p.videos.forEach((id,index)=>{
-      const iframe=document.createElement("iframe");
-
-      iframe.src=
-        "https://www.youtube.com/embed/"+encodeURIComponent(id)+
-        "?autoplay=1&mute=1&controls=0&loop=1&playlist="+encodeURIComponent(id)+
+    p.videos.forEach((videoId,index)=>{
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube.com/embed/" +
+        encodeURIComponent(videoId) +
+        "?autoplay=1&mute=1&controls=0&loop=1&playlist=" +
+        encodeURIComponent(videoId) +
         "&playsinline=1&rel=0";
 
-      iframe.title=p.title+" Final Video "+(index+1);
-      iframe.allow="autoplay; encrypted-media; picture-in-picture; web-share";
+      iframe.title = p.title + " Final Video " + (index+1);
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
       iframe.setAttribute("allowfullscreen","");
       iframe.setAttribute("loading","eager");
-
       grid.appendChild(iframe);
     });
 
     box.appendChild(grid);
-  }else{
-    const iframe=document.createElement("iframe");
-    iframe.className="final-single-video";
-    iframe.src="https://www.youtube.com/embed/uJIOsf-FMeE?playsinline=1&rel=0";
-    iframe.title=p.title+" Final Video";
-    iframe.allow="encrypted-media; picture-in-picture; web-share";
-    iframe.setAttribute("allowfullscreen","");
-    box.appendChild(iframe);
+  } else {
+    const img = document.createElement("img");
+    img.src = p.hero || p.thumbnail;
+    img.alt = p.title;
+    img.style.width = "100%";
+    img.style.height = "auto";
+    img.style.display = "block";
+    img.onerror = ()=>{
+      img.remove();
+      box.style.minHeight = "180px";
+      box.style.display = "grid";
+      box.style.placeItems = "center";
+      box.style.color = "#F3F0E8";
+      box.textContent = "PROJECT VISUAL";
+    };
+    box.appendChild(img);
   }
 }
 
 function renderBannerGallery(p){
-  const section=$("bannerSection");
-  const gallery=$("bannerGallery");
-  gallery.innerHTML="";
+  const section = $("bannerSection");
+  const gallery = $("bannerGallery");
+  gallery.innerHTML = "";
 
   if(!p.bannerImages || !p.bannerImages.length){
-    section.style.display="none";
+    section.style.display = "none";
     return;
   }
 
-  section.style.display="block";
+  section.style.display = "block";
 
   p.bannerImages.forEach((src,index)=>{
-    const figure=document.createElement("figure");
-    figure.className="banner-image";
-    figure.style.margin="0";
+    const figure = document.createElement("figure");
+    figure.className = "banner-image";
+    figure.style.margin = "0";
 
-    const img=document.createElement("img");
-    img.src=src;
-    img.alt=p.title+" banner design "+(index+1);
-    img.loading="lazy";
-    img.onerror=()=>figure.remove();
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = p.title + " banner design " + (index+1);
+    img.loading = "lazy";
+    img.onerror = ()=>figure.remove();
 
     figure.appendChild(img);
     gallery.appendChild(figure);
@@ -710,29 +674,29 @@ function renderBannerGallery(p){
 }
 
 function openProject(id){
-  const p=projectData[id];
-  if(!p)return;
+  const p = projectData[id];
+  if(!p) return;
 
-  currentProject=id;
+  currentProject = id;
 
-  $("detailCategory").textContent=p.category;
-  $("detailTitle").textContent=p.title;
-  $("detailSubtitle").textContent=p.subtitle;
+  $("detailCategory").textContent = p.category;
+  $("detailTitle").textContent = p.title;
+  $("detailSubtitle").textContent = p.subtitle;
 
-  const meta=$("detailMeta");
-  meta.innerHTML="";
+  const meta = $("detailMeta");
+  meta.innerHTML = "";
 
   [["YEAR",p.year],["CLIENT",p.client],["TYPE",p.type]].forEach(([label,value])=>{
-    const wrap=document.createElement("div");
-    wrap.className="meta-item";
+    const wrap = document.createElement("div");
+    wrap.className = "meta-item";
 
-    const l=document.createElement("div");
-    l.className="meta-item-label";
-    l.textContent=label;
+    const l = document.createElement("div");
+    l.className = "meta-item-label";
+    l.textContent = label;
 
-    const v=document.createElement("div");
-    v.className="meta-item-value";
-    v.textContent=value;
+    const v = document.createElement("div");
+    v.className = "meta-item-value";
+    v.textContent = value;
 
     wrap.append(l,v);
     meta.appendChild(wrap);
@@ -741,10 +705,7 @@ function openProject(id){
   renderProjectFinal(p);
   renderBannerGallery(p);
 
-  const hero=$("detailHero");
-  // The former large hero image is not needed above the videos.
-  // The existing hero image remains available as the project thumbnail.
-  hero.innerHTML="";
+  // Fixed: detailHero was removed from the HTML, so do not access it.
 
   renderProjectDescription("en");
   $("projectEnButton").classList.add("active");
@@ -753,44 +714,50 @@ function openProject(id){
   renderProjectRole(p);
   renderProjectProcess(p);
   renderProjectDeliverables(p);
-  $("projectClient").textContent=p.client;
+  $("projectClient").textContent = p.client;
 
-  const hasProcess=p.process && p.process.length>0;
-  $("processSection").style.display=hasProcess?"grid":"none";
+  $("processSection").style.display =
+    p.process && p.process.length ? "grid" : "none";
 
   projectDetail.classList.add("open");
-  projectDetail.scrollTop=0;
+  projectDetail.setAttribute("aria-hidden","false");
+  projectDetail.scrollTop = 0;
   resetSwipeState(projectDetail);
+
+  // Ensure project detail appears above the category overlay.
+  categoryOverlay.classList.remove("open");
+  categoryOverlay.setAttribute("aria-hidden","true");
+
   setBodyLock();
 }
 
 function renderProjectDescription(lang){
-  const p=projectData[currentProject];
-  if(!p)return;
+  const p = projectData[currentProject];
+  if(!p) return;
 
-  const box=$("projectDescription");
-  box.innerHTML="";
+  const box = $("projectDescription");
+  box.innerHTML = "";
 
-  const paragraph=document.createElement("p");
-  paragraph.textContent=p.description[lang];
+  const paragraph = document.createElement("p");
+  paragraph.textContent = p.description[lang] || p.description.en;
   box.appendChild(paragraph);
 }
 
 function renderProjectRole(p){
-  const box=$("projectRole");
-  box.innerHTML="";
+  const box = $("projectRole");
+  box.innerHTML = "";
 
-  p.role.forEach((role,i)=>{
-    const card=document.createElement("div");
-    card.className="role-card";
+  p.role.forEach((role,index)=>{
+    const card = document.createElement("div");
+    card.className = "role-card";
 
-    const num=document.createElement("div");
-    num.className="role-number";
-    num.textContent=String(i+1).padStart(2,"0");
+    const num = document.createElement("div");
+    num.className = "role-number";
+    num.textContent = String(index+1).padStart(2,"0");
 
-    const name=document.createElement("div");
-    name.className="role-name";
-    name.textContent=role;
+    const name = document.createElement("div");
+    name.className = "role-name";
+    name.textContent = role;
 
     card.append(num,name);
     box.appendChild(card);
@@ -798,38 +765,42 @@ function renderProjectRole(p){
 }
 
 function renderProjectProcess(p){
-  const box=$("projectProcess");
-  box.innerHTML="";
+  const box = $("projectProcess");
+  box.innerHTML = "";
 
   p.process.forEach(item=>{
-    const wrapper=document.createElement("div");
-    wrapper.className="process-item";
+    const wrapper = document.createElement("div");
+    wrapper.className = "process-item";
 
-    const number=document.createElement("div");
-    number.className="process-number";
-    number.textContent=item.number;
+    const number = document.createElement("div");
+    number.className = "process-number";
+    number.textContent = item.number;
 
-    const content=document.createElement("div");
+    const content = document.createElement("div");
 
-    const title=document.createElement("h3");
-    title.className="process-title";
-    title.textContent=item.title;
+    const title = document.createElement("h3");
+    title.className = "process-title";
+    title.textContent = item.title;
     content.appendChild(title);
 
     if(item.caption){
-      const caption=document.createElement("p");
-      caption.style.cssText="font-size:12px;line-height:1.6;margin:0 0 18px;opacity:.65";
-      caption.textContent=item.caption;
+      const caption = document.createElement("p");
+      caption.style.cssText = "font-size:12px;line-height:1.6;margin:0 0 18px;opacity:.65";
+      caption.textContent = item.caption;
       content.appendChild(caption);
     }
 
-    const media=document.createElement("div");
-    media.className="process-media";
+    const media = document.createElement("div");
+    media.className = "process-media";
 
     if(item.image){
-      addImage(media,item.image,item.title);
-    }else{
-      media.textContent="VISUAL / IMAGE";
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.title;
+      img.onerror = ()=>img.remove();
+      media.appendChild(img);
+    } else {
+      media.textContent = "VISUAL / IMAGE";
     }
 
     content.appendChild(media);
@@ -839,26 +810,24 @@ function renderProjectProcess(p){
 }
 
 function renderProjectDeliverables(p){
-  const box=$("projectDeliverables");
-  box.innerHTML="";
+  const box = $("projectDeliverables");
+  box.innerHTML = "";
 
   p.deliverables.forEach(item=>{
-    const card=document.createElement("div");
-    card.className="deliverable-card";
+    const card = document.createElement("div");
+    card.className = "deliverable-card";
 
-    const strong=document.createElement("strong");
-    strong.textContent=item;
-
+    const strong = document.createElement("strong");
+    strong.textContent = item;
     card.appendChild(strong);
     box.appendChild(card);
   });
 }
 
 function closeProject(){
-  // Remove the YouTube iframes so playback stops after closing.
-  $("projectFinal").innerHTML="";
-
+  $("projectFinal").innerHTML = "";
   projectDetail.classList.remove("open");
+  projectDetail.setAttribute("aria-hidden","true");
   resetSwipeState(projectDetail);
   setBodyLock();
 }
@@ -868,7 +837,8 @@ function backToProjects(){
 
   if(currentCategory){
     categoryOverlay.classList.add("open");
-    categoryOverlay.scrollTop=0;
+    categoryOverlay.setAttribute("aria-hidden","false");
+    categoryOverlay.scrollTop = 0;
     setBodyLock();
   }
 }
@@ -885,13 +855,13 @@ $("backToCategoryButton").addEventListener("click",backToProjects);
 /* LANGUAGE SWITCHES */
 document.querySelectorAll("[data-about-lang]").forEach(button=>{
   button.addEventListener("click",()=>{
-    const lang=button.dataset.aboutLang;
+    const lang = button.dataset.aboutLang;
 
     document.querySelectorAll("[data-about-lang]").forEach(b=>
       b.classList.toggle("active",b.dataset.aboutLang===lang));
 
-    $("about-en").style.display=lang==="en"?"block":"none";
-    $("about-vi").style.display=lang==="vi"?"block":"none";
+    $("about-en").style.display = lang==="en" ? "block" : "none";
+    $("about-vi").style.display = lang==="vi" ? "block" : "none";
   });
 });
 
@@ -910,8 +880,8 @@ $("projectViButton").addEventListener("click",()=>{
 /* NAVIGATION */
 document.querySelectorAll("[data-scroll]").forEach(button=>{
   button.addEventListener("click",()=>{
-    const target=document.querySelector(button.dataset.scroll);
-    if(target)target.scrollIntoView({behavior:"smooth"});
+    const target = document.querySelector(button.dataset.scroll);
+    if(target) target.scrollIntoView({behavior:"smooth"});
   });
 });
 
@@ -922,7 +892,7 @@ $("homeLogo").addEventListener("click",event=>{
 
 /* REVEAL */
 if("IntersectionObserver" in window){
-  const observer=new IntersectionObserver(entries=>{
+  const observer = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         entry.target.classList.add("is-visible");
@@ -932,37 +902,37 @@ if("IntersectionObserver" in window){
   },{threshold:.12});
 
   document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-}else{
+} else {
   document.querySelectorAll(".reveal").forEach(el=>el.classList.add("is-visible"));
 }
 
 /* SCROLL INTERACTION */
-const scrollSignatures=document.querySelectorAll(".scroll-signature");
-let scrollFramePending=false;
+const scrollSignatures = document.querySelectorAll(".scroll-signature");
+let scrollFramePending = false;
 
 function scrollMotion(){
-  if(scrollFramePending)return;
-  scrollFramePending=true;
+  if(scrollFramePending) return;
+  scrollFramePending = true;
 
   requestAnimationFrame(()=>{
-    const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if(!reduced){
-      const intensity=matchMedia("(max-width:600px)").matches?.42:
-        matchMedia("(max-width:1024px)").matches?.65:1;
+      const intensity = window.matchMedia("(max-width:600px)").matches ? .42 :
+        window.matchMedia("(max-width:1024px)").matches ? .65 : 1;
 
       scrollSignatures.forEach((el,index)=>{
-        const r=el.getBoundingClientRect();
-        const distance=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight;
-        const n=Math.max(-1,Math.min(1,distance));
-        const d=index%2===0?1:-1;
+        const r = el.getBoundingClientRect();
+        const distance = (r.top+r.height/2-window.innerHeight/2)/window.innerHeight;
+        const n = Math.max(-1,Math.min(1,distance));
+        const d = index%2===0 ? 1 : -1;
 
-        el.style.transform=
+        el.style.transform =
           `translate3d(${n*38*d*intensity}px,0,0) rotate(${n*2.5*d*intensity}deg) scale(${1-Math.abs(n)*.035*intensity})`;
       });
     }
 
-    scrollFramePending=false;
+    scrollFramePending = false;
   });
 }
 
@@ -970,34 +940,35 @@ window.addEventListener("scroll",scrollMotion,{passive:true});
 scrollMotion();
 
 /* MOUSE REACTIVE TYPE */
-if(!matchMedia("(pointer:coarse)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
-  let mx=0,my=0,sx=0,sy=0;
+if(!window.matchMedia("(pointer:coarse)").matches &&
+   !window.matchMedia("(prefers-reduced-motion:reduce)").matches){
+  let mx = 0, my = 0, sx = 0, sy = 0;
 
-  window.addEventListener("mousemove",e=>{
-    mx=e.clientX;
-    my=e.clientY;
+  window.addEventListener("mousemove",event=>{
+    mx = event.clientX;
+    my = event.clientY;
   },{passive:true});
 
   function mouseMotion(){
-    sx+=(mx-sx)*.08;
-    sy+=(my-sy)*.08;
+    sx += (mx-sx)*.08;
+    sy += (my-sy)*.08;
 
     document.querySelectorAll(".mouse-reactive").forEach(el=>{
-      const r=el.getBoundingClientRect();
-      const dx=(sx-(r.left+r.width/2))/innerWidth;
-      const dy=(sy-(r.top+r.height/2))/innerHeight;
-      const lines=el.querySelectorAll(".playful-line");
+      const r = el.getBoundingClientRect();
+      const dx = (sx-(r.left+r.width/2))/window.innerWidth;
+      const dy = (sy-(r.top+r.height/2))/window.innerHeight;
+      const lines = el.querySelectorAll(".playful-line");
 
       if(!lines.length){
         if(!el.classList.contains("main-headline")){
-          el.style.transform=`translate3d(${dx*18}px,${dy*12}px,0) rotate(${dx*2}deg)`;
+          el.style.transform = `translate3d(${dx*18}px,${dy*12}px,0) rotate(${dx*2}deg)`;
         }
         return;
       }
 
-      lines.forEach((line,i)=>{
-        const m=i===0?.7:-.5;
-        line.style.transform=`translate3d(${dx*18*m}px,${dy*12*m}px,0) rotate(${dx*2*m}deg)`;
+      lines.forEach((line,index)=>{
+        const m = index===0 ? .7 : -.5;
+        line.style.transform = `translate3d(${dx*18*m}px,${dy*12*m}px,0) rotate(${dx*2*m}deg)`;
       });
     });
 
@@ -1008,84 +979,75 @@ if(!matchMedia("(pointer:coarse)").matches&&!matchMedia("(prefers-reduced-motion
 }
 
 /* EDGE SWIPE TO GO BACK */
-function resetSwipeState(el){
-  el.dataset.swipeActive="false";
-  el.classList.remove("swipe-complete");
-  el.classList.add("swipe-reset");
-  el.style.transform="translate3d(0,0,0) scale(1)";
-  el.style.opacity="1";
-  el.style.transition="";
+function beginSwipe(el,event){
+  if(event.touches.length!==1 ||
+     event.touches[0].clientX>70 ||
+     !el.classList.contains("open")) return;
 
-  setTimeout(()=>el.classList.remove("swipe-reset"),500);
-}
-
-function beginSwipe(el,e){
-  if(e.touches.length!==1||e.touches[0].clientX>70||!el.classList.contains("open"))return;
-
-  const t=e.touches[0];
-  el.dataset.swipeActive="true";
-  el.dataset.swipeStartX=t.clientX;
-  el.dataset.swipeStartY=t.clientY;
-  el.dataset.swipeCurrentX=t.clientX;
+  const touch = event.touches[0];
+  el.dataset.swipeActive = "true";
+  el.dataset.swipeStartX = touch.clientX;
+  el.dataset.swipeStartY = touch.clientY;
+  el.dataset.swipeCurrentX = touch.clientX;
   el.classList.remove("swipe-reset");
 }
 
-function moveSwipe(el,e){
-  if(el.dataset.swipeActive!=="true")return;
+function moveSwipe(el,event){
+  if(el.dataset.swipeActive!=="true") return;
 
-  const t=e.touches[0];
-  const dx=t.clientX-Number(el.dataset.swipeStartX);
-  const dy=t.clientY-Number(el.dataset.swipeStartY);
+  const touch = event.touches[0];
+  const dx = touch.clientX-Number(el.dataset.swipeStartX);
+  const dy = touch.clientY-Number(el.dataset.swipeStartY);
 
-  if(dx<0||Math.abs(dy)>Math.abs(dx))return;
+  if(dx<0 || Math.abs(dy)>Math.abs(dx)) return;
 
-  e.preventDefault();
+  event.preventDefault();
 
-  const progress=Math.min(Math.max(dx/180,0),1);
-  el.style.transform=`translate3d(${progress*75}px,0,0) scale(${1-progress*.92})`;
-  el.style.opacity=String(1-progress*.9);
-  el.dataset.swipeCurrentX=t.clientX;
+  const progress = Math.min(Math.max(dx/180,0),1);
+  el.style.transform = `translate3d(${progress*75}px,0,0) scale(${1-progress*.92})`;
+  el.style.opacity = String(1-progress*.9);
+  el.dataset.swipeCurrentX = touch.clientX;
 }
 
 function endSwipe(el){
-  if(el.dataset.swipeActive!=="true")return;
+  if(el.dataset.swipeActive!=="true") return;
 
-  const dx=Number(el.dataset.swipeCurrentX)-Number(el.dataset.swipeStartX);
-  el.dataset.swipeActive="false";
+  const dx = Number(el.dataset.swipeCurrentX)-Number(el.dataset.swipeStartX);
+  el.dataset.swipeActive = "false";
 
   if(dx>=90){
     el.classList.add("swipe-complete");
-    el.style.transition="transform .38s cubic-bezier(.22,1,.36,1),opacity .38s ease";
-    el.style.transform="translate3d(75px,0,0) scale(.02)";
-    el.style.opacity="0";
+    el.style.transition = "transform .38s cubic-bezier(.22,1,.36,1),opacity .38s ease";
+    el.style.transform = "translate3d(75px,0,0) scale(.02)";
+    el.style.opacity = "0";
 
     setTimeout(()=>{
       if(el===projectDetail){
-        if(currentCategory)backToProjects();
+        if(currentCategory) backToProjects();
         else closeProject();
-      }else{
+      } else {
         closeCategory();
       }
     },380);
-  }else{
+  } else {
     resetSwipeState(el);
   }
 }
 
 [categoryOverlay,projectDetail].forEach(el=>{
-  el.addEventListener("touchstart",e=>beginSwipe(el,e),{passive:true});
-  el.addEventListener("touchmove",e=>moveSwipe(el,e),{passive:false});
+  el.addEventListener("touchstart",event=>beginSwipe(el,event),{passive:true});
+  el.addEventListener("touchmove",event=>moveSwipe(el,event),{passive:false});
   el.addEventListener("touchend",()=>endSwipe(el));
   el.addEventListener("touchcancel",()=>resetSwipeState(el));
 });
 
 /* ESCAPE KEY */
-document.addEventListener("keydown",e=>{
-  if(e.key!=="Escape")return;
+document.addEventListener("keydown",event=>{
+  if(event.key!=="Escape") return;
 
   if(projectDetail.classList.contains("open")){
     closeProject();
-  }else if(categoryOverlay.classList.contains("open")){
+  } else if(categoryOverlay.classList.contains("open")){
     closeCategory();
   }
 });
@@ -1093,7 +1055,7 @@ document.addEventListener("keydown",e=>{
 /* INITIAL VIEW */
 window.addEventListener("load",()=>{
   document.querySelectorAll(".reveal").forEach(el=>{
-    if(el.getBoundingClientRect().top<innerHeight*.9){
+    if(el.getBoundingClientRect().top<window.innerHeight*.9){
       el.classList.add("is-visible");
     }
   });
