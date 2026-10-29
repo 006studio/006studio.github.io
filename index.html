@@ -152,8 +152,24 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 .process-title{margin:0 0 22px;font-size:clamp(22px,3vw,38px);letter-spacing:-1px}
 .process-media{width:100%;aspect-ratio:16/9;background:#e4dfd5;overflow:hidden;display:grid;place-items:center;color:#777;font-size:10px;font-weight:700}
 .process-media img{width:100%;height:100%;object-fit:cover}
-.final-media{width:100%;aspect-ratio:16/9;background:#111;display:grid;place-items:center;color:var(--beige);font-size:11px;font-weight:700;overflow:hidden}
+.final-media{width:100%;background:#111;overflow:hidden}
 .final-media img,.final-media video{width:100%;height:100%;object-fit:cover}
+
+/* FINAL YOUTUBE VIDEOS */
+.final-video-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:16px;
+  width:100%;
+}
+.final-video-grid iframe{
+  display:block;
+  width:100%;
+  aspect-ratio:9/16;
+  border:0;
+  background:#111;
+}
 .deliverable-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .deliverable-card{padding:26px;background:#ebe7de}
 .deliverable-card strong{font-size:16px}
@@ -162,7 +178,7 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 
 /* SWIPE */
 .swipe-complete{pointer-events:none}
-.swipe-reset{transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s}
+.swipe-reset{transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s cubic-bezier(.22,1,.36,1)}
 
 /* TABLET */
 @media(min-width:801px) and (max-width:1100px){
@@ -218,6 +234,8 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
  .process-item{grid-template-columns:38px minmax(0,1fr);gap:12px}
  .process-list{gap:52px}
  .deliverable-grid{grid-template-columns:1fr}
+ .final-video-grid{grid-template-columns:1fr;gap:20px}
+ .final-video-grid iframe{width:100%;max-width:460px;margin:0 auto}
  .project-back{margin-top:90px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -384,7 +402,7 @@ footer{padding:60px 32px 40px;background:var(--black);color:var(--beige)}
 
     <section class="project-section">
       <div class="project-section-label">FINAL</div>
-      <div class="project-section-content"><div class="final-media" id="projectFinal">FINAL VIDEO / 16:9</div></div>
+      <div class="project-section-content"><div class="final-media" id="projectFinal"></div></div>
     </section>
 
     <section class="project-section">
@@ -515,8 +533,10 @@ function renderProjects(category){
     if(!p)return;
     const card=document.createElement("button");
     card.className="project-card";
+
     const thumb=document.createElement("div");
     thumb.className="project-thumb";
+
     const img=document.createElement("img");
     img.src=p.thumbnail;
     img.alt=p.title;
@@ -532,17 +552,21 @@ function renderProjects(category){
 
     const meta=document.createElement("div");
     meta.className="project-meta";
+
     const left=document.createElement("div");
     const name=document.createElement("div");
     name.className="project-name";
     name.textContent=p.title;
+
     const cat=document.createElement("div");
     cat.className="project-category";
     cat.textContent=p.category;
     left.append(name,cat);
+
     const year=document.createElement("div");
     year.className="project-year";
     year.textContent=p.year;
+
     meta.append(left,year);
     card.append(thumb,meta);
     card.addEventListener("click",()=>openProject(id));
@@ -564,21 +588,26 @@ function openProject(id){
   const p=projectData[id];
   if(!p)return;
   currentProject=id;
+
   $("detailCategory").textContent=p.category;
   $("detailTitle").textContent=p.title;
   $("detailSubtitle").textContent=p.subtitle;
 
   const meta=$("detailMeta");
   meta.innerHTML="";
+
   [["YEAR",p.year],["CLIENT",p.client],["TYPE",p.type]].forEach(([label,value])=>{
     const wrap=document.createElement("div");
     wrap.className="meta-item";
+
     const l=document.createElement("div");
     l.className="meta-item-label";
     l.textContent=label;
+
     const v=document.createElement("div");
     v.className="meta-item-value";
     v.textContent=value;
+
     wrap.append(l,v);
     meta.appendChild(wrap);
   });
@@ -590,11 +619,14 @@ function openProject(id){
   renderProjectDescription("en");
   $("projectEnButton").classList.add("active");
   $("projectViButton").classList.remove("active");
+
   renderProjectRole(p);
   renderProjectProcess(p);
   renderProjectDeliverables(p);
+  renderProjectFinal(p);
+
   $("projectClient").textContent=p.client;
-  $("projectFinal").textContent="FINAL VIDEO / 16:9";
+
   projectDetail.classList.add("open");
   projectDetail.scrollTop=0;
   resetSwipeState(projectDetail);
@@ -604,8 +636,10 @@ function openProject(id){
 function renderProjectDescription(lang){
   const p=projectData[currentProject];
   if(!p)return;
+
   const box=$("projectDescription");
   box.innerHTML="";
+
   const paragraph=document.createElement("p");
   paragraph.textContent=p.description[lang];
   box.appendChild(paragraph);
@@ -614,15 +648,19 @@ function renderProjectDescription(lang){
 function renderProjectRole(p){
   const box=$("projectRole");
   box.innerHTML="";
+
   p.role.forEach((role,i)=>{
     const card=document.createElement("div");
     card.className="role-card";
+
     const num=document.createElement("div");
     num.className="role-number";
     num.textContent=String(i+1).padStart(2,"0");
+
     const name=document.createElement("div");
     name.className="role-name";
     name.textContent=role;
+
     card.append(num,name);
     box.appendChild(card);
   });
@@ -631,30 +669,38 @@ function renderProjectRole(p){
 function renderProjectProcess(p){
   const box=$("projectProcess");
   box.innerHTML="";
+
   p.process.forEach(item=>{
     const wrapper=document.createElement("div");
     wrapper.className="process-item";
+
     const number=document.createElement("div");
     number.className="process-number";
     number.textContent=item.number;
+
     const content=document.createElement("div");
+
     const title=document.createElement("h3");
     title.className="process-title";
     title.textContent=item.title;
     content.appendChild(title);
+
     if(item.caption){
       const caption=document.createElement("p");
       caption.style.cssText="font-size:13px;line-height:1.6;margin:0 0 20px;opacity:.65";
       caption.textContent=item.caption;
       content.appendChild(caption);
     }
+
     const media=document.createElement("div");
     media.className="process-media";
+
     if(item.image){
       addImage(media,item.image,item.title);
     }else{
       media.textContent="VISUAL / IMAGE";
     }
+
     content.appendChild(media);
     wrapper.append(number,content);
     box.appendChild(wrapper);
@@ -664,17 +710,62 @@ function renderProjectProcess(p){
 function renderProjectDeliverables(p){
   const box=$("projectDeliverables");
   box.innerHTML="";
+
   p.deliverables.forEach(item=>{
     const card=document.createElement("div");
     card.className="deliverable-card";
+
     const strong=document.createElement("strong");
     strong.textContent=item;
+
     card.appendChild(strong);
     box.appendChild(card);
   });
 }
 
+/* FINAL VIDEOS
+   BANHMYTAAY: autoplay + muted + loop.
+   Other projects retain the original FINAL placeholder.
+*/
+function renderProjectFinal(p){
+  const box=$("projectFinal");
+  box.innerHTML="";
+
+  if(p.id==="banhmytaay"){
+    const grid=document.createElement("div");
+    grid.className="final-video-grid";
+
+    const videoIds=[
+      "Ty6r45Mu7AA",
+      "isTKxvT3LeQ"
+    ];
+
+    videoIds.forEach((id,index)=>{
+      const iframe=document.createElement("iframe");
+
+      iframe.src=
+        "https://www.youtube.com/embed/"+id+
+        "?autoplay=1&mute=1&controls=0&loop=1&playlist="+id+
+        "&playsinline=1&rel=0";
+
+      iframe.title="BANHMYTAAY Campaign Video "+(index+1);
+      iframe.allow="autoplay; encrypted-media; picture-in-picture; web-share";
+      iframe.setAttribute("allowfullscreen","");
+      iframe.setAttribute("loading","eager");
+
+      grid.appendChild(iframe);
+    });
+
+    box.appendChild(grid);
+  }else{
+    box.textContent="FINAL VIDEO / 16:9";
+  }
+}
+
 function closeProject(){
+  // Removing the YouTube iframes stops playback.
+  $("projectFinal").innerHTML="";
+
   projectDetail.classList.remove("open");
   resetSwipeState(projectDetail);
   setBodyLock();
@@ -682,6 +773,7 @@ function closeProject(){
 
 function backToProjects(){
   closeProject();
+
   if(currentCategory){
     categoryOverlay.classList.add("open");
     categoryOverlay.scrollTop=0;
@@ -693,6 +785,7 @@ function backToProjects(){
 document.querySelectorAll(".category-card").forEach(card=>{
   card.addEventListener("click",()=>openCategory(card.dataset.category));
 });
+
 $("closeCategoryButton").addEventListener("click",closeCategory);
 $("closeProjectButton").addEventListener("click",closeProject);
 $("backToCategoryButton").addEventListener("click",backToProjects);
@@ -701,17 +794,21 @@ $("backToCategoryButton").addEventListener("click",backToProjects);
 document.querySelectorAll("[data-about-lang]").forEach(button=>{
   button.addEventListener("click",()=>{
     const lang=button.dataset.aboutLang;
+
     document.querySelectorAll("[data-about-lang]").forEach(b=>
       b.classList.toggle("active",b.dataset.aboutLang===lang));
+
     $("about-en").style.display=lang==="en"?"block":"none";
     $("about-vi").style.display=lang==="vi"?"block":"none";
   });
 });
+
 $("projectEnButton").addEventListener("click",()=>{
   renderProjectDescription("en");
   $("projectEnButton").classList.add("active");
   $("projectViButton").classList.remove("active");
 });
+
 $("projectViButton").addEventListener("click",()=>{
   renderProjectDescription("vi");
   $("projectViButton").classList.add("active");
@@ -725,6 +822,7 @@ document.querySelectorAll("[data-scroll]").forEach(button=>{
     if(target)target.scrollIntoView({behavior:"smooth"});
   });
 });
+
 $("homeLogo").addEventListener("click",event=>{
   event.preventDefault();
   window.scrollTo({top:0,behavior:"smooth"});
@@ -740,6 +838,7 @@ if("IntersectionObserver" in window){
       }
     });
   },{threshold:.12});
+
   document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 }else{
   document.querySelectorAll(".reveal").forEach(el=>el.classList.add("is-visible"));
@@ -748,50 +847,71 @@ if("IntersectionObserver" in window){
 /* SCROLL INTERACTION */
 const scrollSignatures=document.querySelectorAll(".scroll-signature");
 let scrollFramePending=false;
+
 function scrollMotion(){
   if(scrollFramePending)return;
   scrollFramePending=true;
+
   requestAnimationFrame(()=>{
     const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     if(!reduced){
       const intensity=matchMedia("(max-width:600px)").matches?.42:
         matchMedia("(max-width:1024px)").matches?.65:1;
+
       scrollSignatures.forEach((el,index)=>{
         const r=el.getBoundingClientRect();
         const distance=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight;
         const n=Math.max(-1,Math.min(1,distance));
         const d=index%2===0?1:-1;
-        el.style.transform=`translate3d(${n*38*d*intensity}px,0,0) rotate(${n*2.5*d*intensity}deg) scale(${1-Math.abs(n)*.035*intensity})`;
+
+        el.style.transform=
+          `translate3d(${n*38*d*intensity}px,0,0) rotate(${n*2.5*d*intensity}deg) scale(${1-Math.abs(n)*.035*intensity})`;
       });
     }
+
     scrollFramePending=false;
   });
 }
+
 window.addEventListener("scroll",scrollMotion,{passive:true});
 scrollMotion();
 
 /* MOUSE REACTIVE TYPE */
 if(!matchMedia("(pointer:coarse)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
   let mx=0,my=0,sx=0,sy=0;
-  window.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY},{passive:true});
+
+  window.addEventListener("mousemove",e=>{
+    mx=e.clientX;
+    my=e.clientY;
+  },{passive:true});
+
   function mouseMotion(){
-    sx+=(mx-sx)*.08;sy+=(my-sy)*.08;
+    sx+=(mx-sx)*.08;
+    sy+=(my-sy)*.08;
+
     document.querySelectorAll(".mouse-reactive").forEach(el=>{
       const r=el.getBoundingClientRect();
       const dx=(sx-(r.left+r.width/2))/innerWidth;
       const dy=(sy-(r.top+r.height/2))/innerHeight;
       const lines=el.querySelectorAll(".playful-line");
+
       if(!lines.length){
-        if(!el.classList.contains("main-headline"))el.style.transform=`translate3d(${dx*18}px,${dy*12}px,0) rotate(${dx*2}deg)`;
+        if(!el.classList.contains("main-headline")){
+          el.style.transform=`translate3d(${dx*18}px,${dy*12}px,0) rotate(${dx*2}deg)`;
+        }
         return;
       }
+
       lines.forEach((line,i)=>{
         const m=i===0?.7:-.5;
         line.style.transform=`translate3d(${dx*18*m}px,${dy*12*m}px,0) rotate(${dx*2*m}deg)`;
       });
     });
+
     requestAnimationFrame(mouseMotion);
   }
+
   requestAnimationFrame(mouseMotion);
 }
 
@@ -803,10 +923,13 @@ function resetSwipeState(el){
   el.style.transform="translate3d(0,0,0) scale(1)";
   el.style.opacity="1";
   el.style.transition="";
+
   setTimeout(()=>el.classList.remove("swipe-reset"),500);
 }
+
 function beginSwipe(el,e){
   if(e.touches.length!==1||e.touches[0].clientX>70||!el.classList.contains("open"))return;
+
   const t=e.touches[0];
   el.dataset.swipeActive="true";
   el.dataset.swipeStartX=t.clientX;
@@ -814,30 +937,49 @@ function beginSwipe(el,e){
   el.dataset.swipeCurrentX=t.clientX;
   el.classList.remove("swipe-reset");
 }
+
 function moveSwipe(el,e){
   if(el.dataset.swipeActive!=="true")return;
+
   const t=e.touches[0];
   const dx=t.clientX-Number(el.dataset.swipeStartX);
   const dy=t.clientY-Number(el.dataset.swipeStartY);
+
   if(dx<0||Math.abs(dy)>Math.abs(dx))return;
+
   e.preventDefault();
+
   const progress=Math.min(Math.max(dx/180,0),1);
   el.style.transform=`translate3d(${progress*75}px,0,0) scale(${1-progress*.92})`;
   el.style.opacity=String(1-progress*.9);
   el.dataset.swipeCurrentX=t.clientX;
 }
+
 function endSwipe(el){
   if(el.dataset.swipeActive!=="true")return;
+
   const dx=Number(el.dataset.swipeCurrentX)-Number(el.dataset.swipeStartX);
   el.dataset.swipeActive="false";
+
   if(dx>=90){
     el.classList.add("swipe-complete");
     el.style.transition="transform .38s cubic-bezier(.22,1,.36,1),opacity .38s ease";
     el.style.transform="translate3d(75px,0,0) scale(.02)";
     el.style.opacity="0";
-    setTimeout(()=>el===projectDetail?backToProjects():closeCategory(),380);
-  }else resetSwipeState(el);
+
+    setTimeout(()=>{
+      if(el===projectDetail){
+        if(currentCategory)backToProjects();
+        else closeProject();
+      }else{
+        closeCategory();
+      }
+    },380);
+  }else{
+    resetSwipeState(el);
+  }
 }
+
 [categoryOverlay,projectDetail].forEach(el=>{
   el.addEventListener("touchstart",e=>beginSwipe(el,e),{passive:true});
   el.addEventListener("touchmove",e=>moveSwipe(el,e),{passive:false});
@@ -848,14 +990,20 @@ function endSwipe(el){
 /* ESCAPE KEY */
 document.addEventListener("keydown",e=>{
   if(e.key!=="Escape")return;
-  if(projectDetail.classList.contains("open"))closeProject();
-  else if(categoryOverlay.classList.contains("open"))closeCategory();
+
+  if(projectDetail.classList.contains("open")){
+    closeProject();
+  }else if(categoryOverlay.classList.contains("open")){
+    closeCategory();
+  }
 });
 
 /* INITIAL VIEW */
 window.addEventListener("load",()=>{
   document.querySelectorAll(".reveal").forEach(el=>{
-    if(el.getBoundingClientRect().top<innerHeight*.9)el.classList.add("is-visible");
+    if(el.getBoundingClientRect().top<innerHeight*.9){
+      el.classList.add("is-visible");
+    }
   });
 });
 </script>
